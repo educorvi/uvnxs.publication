@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-from uvnxs.publication import _
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
-from plone.autoform import directives
+from plone.base.utils import safe_hasattr
 from plone.supermodel import model
-from Products.CMFPlone.utils import safe_hasattr
 from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
@@ -20,7 +18,7 @@ class IJatsMetadata(model.Schema):
     """
     """
 
-    directives.fieldset(
+    model.fieldset(
         "jats",
         label="JATS-Metadaten",
         fields=(
@@ -72,7 +70,7 @@ class IJatsMetadata(model.Schema):
 
     jats_subtitle = schema.TextLine(
         title="JATS subtitle",
-        required=False,    
+        required=False,
     )
 
     jats_abstract = schema.Text(
