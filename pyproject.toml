@@ -1,7 +1,7 @@
 [project]
 name = "uvnxs.publication"
 dynamic = ["version"]
-description = "A new addon for Plone"
+description = "Dieses Paket erweitert den bestehenden Dexterity-Typ Document um ein schlankes JATS-Behavior und liefert ein separates Python-Importskript, das eine JATS-XML-Datei einliest und per plone.restapi als Document anlegt."
 readme = "README.md"
 license = "GPL-2.0-only"
 requires-python = ">=3.10"
@@ -31,15 +31,14 @@ classifiers = [
 dependencies = [
     "Products.CMFPlone",
     "plone.api",
-    "plone.restapi",
-    "plone.volto",
-    
+    "z3c.jbot",
 ]
 
 [project.optional-dependencies]
 test = [
     "horse-with-no-namespace",
     "plone.app.testing",
+    "plone.classicui",
     "plone.restapi[test]",
     "pytest",
     "pytest-cov",
@@ -52,10 +51,9 @@ release = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/meinkraeks@gmail.com/uvnxs.publication"
-PyPI = "https://pypi.org/project/uvnxs.publication"
-Source = "https://github.com/meinkraeks@gmail.com/uvnxs.publication"
-Tracker = "https://github.com/meinkraeks@gmail.com/uvnxs.publication/issues"
+Homepage = "https://github.com/educorvi/uvnxs.publication"
+Source = "https://github.com/educorvi/uvnxs.publication"
+Tracker = "https://github.com/educorvi/uvnxs.publication/issues"
 
 
 [project.entry-points."z3c.autoinclude.plugin"]
@@ -88,7 +86,7 @@ filename = "CHANGELOG.md"
 start_string = "<!-- towncrier release notes start -->\n"
 title_format = "## {version} ({project_date})"
 template = "news/.changelog_template.jinja"
-issue_format = "[#{issue}](https://github.com/meinkraeks@gmail.com/uvnxs.publication/issues/{issue})"
+issue_format = "[#{issue}](https://github.com/educorvi/uvnxs.publication/issues/{issue})"
 underlines = ["", "", ""]
 
 [[tool.towncrier.type]]
