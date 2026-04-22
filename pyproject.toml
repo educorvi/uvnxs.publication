@@ -31,9 +31,8 @@ classifiers = [
 dependencies = [
     "Products.CMFPlone",
     "plone.api",
-    "plone.restapi",
-    "plone.volto",
-    
+    "plone.restapi"
+
 ]
 
 [project.optional-dependencies]
