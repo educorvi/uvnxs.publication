@@ -1,30 +1,34 @@
 <configure
-  xmlns="http://namespaces.zope.org/zope"
-  xmlns:browser="http://namespaces.zope.org/browser"
-  xmlns:plone="http://namespaces.plone.org/plone"
-  xmlns:zcml="http://namespaces.zope.org/zcml"
-  i18n_domain="plone">
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="plone"
+    >
 
-    <include package="plone.behavior" file="meta.zcml"/>
+  <include
+      package="plone.behavior"
+      file="meta.zcml"
+      />
 
-    <!-- -*- extra stuff goes here -*- -->
+  <!-- -*- extra stuff goes here -*- -->
 
-    <plone:behavior
-        name="uvnxs.publication.jats_metadata"
-        title="JatsMetadata"
-        description="This behavior provides a set of metadata for handling of Jats-XML Files in Plone Documents."
-        provides=".jats_metadata.IJatsMetadata"
-        factory=".jats_metadata.JatsMetadata"
-        marker=".jats_metadata.IJatsMetadataMarker"
-        />
+  <plone:behavior
+      name="uvnxs.publication.jats_metadata"
+      title="JatsMetadata"
+      description="This behavior provides a set of metadata for handling of Jats-XML Files in Plone Documents."
+      factory=".jats_metadata.JatsMetadata"
+      provides=".jats_metadata.IJatsMetadata"
+      marker=".jats_metadata.IJatsMetadataMarker"
+      />
 
-    <plone:behavior
-        name="uvnxs.publication.dguv_metadata"
-        title="DGUVMetadata"
-        description="This behavior provides a set of metadata for DGUV in Plone Documents."
-        provides=".dguv_metadata.IDguvMetadata"
-        factory=".dguv_metadata.DguvMetadata"
-        marker=".dguv_metadata.IDguvMetadataMarker"
-        />
+  <plone:behavior
+      name="uvnxs.publication.dguv_metadata"
+      title="DGUVMetadata"
+      description="This behavior provides a set of metadata for DGUV in Plone Documents."
+      factory=".dguv_metadata.DguvMetadata"
+      provides=".dguv_metadata.IDguvMetadata"
+      marker=".dguv_metadata.IDguvMetadataMarker"
+      />
 
 </configure>

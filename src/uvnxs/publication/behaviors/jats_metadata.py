@@ -4,8 +4,8 @@ from plone.autoform.interfaces import IFormFieldProvider
 from plone.base.utils import safe_hasattr
 from plone.supermodel import model
 from zope.component import adapter
-from zope.interface import Interface
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.interface import provider
 
 

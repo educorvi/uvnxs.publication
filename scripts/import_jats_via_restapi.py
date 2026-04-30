@@ -8,19 +8,19 @@ The script keeps the Plone-side data model intentionally small:
 
 from __future__ import annotations
 
-import argparse
-import html
-import json
-import re
-import sys
-import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import Iterable
 from urllib.parse import urljoin
 
+import argparse
+import html
+import json
+import re
 import requests
+import sys
+import xml.etree.ElementTree as ET
 
 
 @dataclass
@@ -86,7 +86,9 @@ def parse_pub_date(article: ET.Element) -> date | None:
 
 def extract_authors(article: ET.Element) -> list[str]:
     authors: list[str] = []
-    for contrib in article.findall('.//front/article-meta/contrib-group/contrib[@contrib-type="author"]'):
+    for contrib in article.findall(
+        './/front/article-meta/contrib-group/contrib[@contrib-type="author"]'
+    ):
         surname = text_content(contrib.find("name/surname"))
         given = text_content(contrib.find("name/given-names"))
         collab = text_content(contrib.find("collab"))
@@ -146,22 +148,50 @@ def parse_jats(xml_path: Path, store_raw_xml: bool = False) -> ParsedJATS:
     if article is None:
         raise ValueError("No <article> element found in XML")
 
-    title = text_content(first(article, ".//front/article-meta/title-group/article-title"))
-    subtitle = text_content(first(article, ".//front/article-meta/title-group/subtitle"))
+    title = text_content(
+        first(article, ".//front/article-meta/title-group/article-title")
+    )
+    subtitle = text_content(
+        first(article, ".//front/article-meta/title-group/subtitle")
+    )
 
-    abstract_parts = all_texts(article, ".//front/article-meta/abstract/p", ".//front/article-meta/abstract")
+    abstract_parts = all_texts(
+        article, ".//front/article-meta/abstract/p", ".//front/article-meta/abstract"
+    )
     abstract = "\n\n".join(dict.fromkeys(v for v in abstract_parts if v))
 
     description = abstract.splitlines()[0].strip() if abstract else subtitle
-    article_id = text_content(first(article, './/front/article-meta/article-id[@pub-id-type="publisher-id"]', ".//front/article-meta/article-id"))
-    doi = text_content(first(article, './/front/article-meta/article-id[@pub-id-type="doi"]'))
+    article_id = text_content(
+        first(
+            article,
+            './/front/article-meta/article-id[@pub-id-type="publisher-id"]',
+            ".//front/article-meta/article-id",
+        )
+    )
+    doi = text_content(
+        first(article, './/front/article-meta/article-id[@pub-id-type="doi"]')
+    )
     article_type = article.attrib.get("article-type", "")
     language = article.attrib.get("{http://www.w3.org/XML/1998/namespace}lang", "")
-    journal_title = text_content(first(article, ".//front/journal-meta/journal-title-group/journal-title", ".//front/journal-meta/journal-title"))
-    keywords = [v for v in all_texts(article, ".//front/article-meta/kwd-group/kwd") if v]
+    journal_title = text_content(
+        first(
+            article,
+            ".//front/journal-meta/journal-title-group/journal-title",
+            ".//front/journal-meta/journal-title",
+        )
+    )
+    keywords = [
+        v for v in all_texts(article, ".//front/article-meta/kwd-group/kwd") if v
+    ]
     authors = extract_authors(article)
     pub_date = parse_pub_date(article)
-    license_text = text_content(first(article, ".//front/article-meta/permissions/license/license-p", ".//front/article-meta/permissions/copyright-statement"))
+    license_text = text_content(
+        first(
+            article,
+            ".//front/article-meta/permissions/license/license-p",
+            ".//front/article-meta/permissions/copyright-statement",
+        )
+    )
     body_html = body_to_html(article)
 
     return ParsedJATS(
@@ -254,16 +284,33 @@ def create_document(
 
 def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--api-base", required=True, help="Base URL of plone.restapi, e.g. http://localhost:8080/Plone/++api++")
-    parser.add_argument("--container", default="/", help="Container path below api-base, e.g. /import or /news")
+    parser.add_argument(
+        "--api-base",
+        required=True,
+        help="Base URL of plone.restapi, e.g. http://localhost:8080/Plone/++api++",
+    )
+    parser.add_argument(
+        "--container",
+        default="/",
+        help="Container path below api-base, e.g. /import or /news",
+    )
     parser.add_argument("--xml", required=True, type=Path, help="Path to JATS XML file")
     parser.add_argument("--username", help="Basic-auth username")
     parser.add_argument("--password", help="Basic-auth password")
-    parser.add_argument("--token", help="Authorization header value, e.g. 'Bearer eyJ...' or 'Basic ...'")
+    parser.add_argument(
+        "--token",
+        help="Authorization header value, e.g. 'Bearer eyJ...' or 'Basic ...'",
+    )
     parser.add_argument("--id", dest="explicit_id", help="Explicit Plone id")
-    parser.add_argument("--store-raw-xml", action="store_true", help="Store original XML in jats_source_xml")
+    parser.add_argument(
+        "--store-raw-xml",
+        action="store_true",
+        help="Store original XML in jats_source_xml",
+    )
     parser.add_argument("--timeout", type=int, default=30)
-    parser.add_argument("--dry-run", action="store_true", help="Only print JSON payload")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Only print JSON payload"
+    )
     args = parser.parse_args(list(argv))
 
     if not args.token and not (args.username and args.password):
@@ -294,7 +341,9 @@ def main(argv: Iterable[str]) -> int:
     if response.status_code not in {200, 201}:
         sys.stderr.write(f"Import failed: HTTP {response.status_code}\n")
         try:
-            sys.stderr.write(json.dumps(response.json(), ensure_ascii=False, indent=2) + "\n")
+            sys.stderr.write(
+                json.dumps(response.json(), ensure_ascii=False, indent=2) + "\n"
+            )
         except Exception:
             sys.stderr.write(response.text + "\n")
         return 1
