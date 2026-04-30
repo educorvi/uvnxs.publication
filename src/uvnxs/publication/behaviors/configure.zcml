@@ -18,4 +18,13 @@
         marker=".jats_metadata.IJatsMetadataMarker"
         />
 
+    <plone:behavior
+        name="uvnxs.publication.dguv_metadata"
+        title="DGUVMetadata"
+        description="This behavior provides a set of metadata for DGUV in Plone Documents."
+        provides=".dguv_metadata.IDguvMetadata"
+        factory=".dguv_metadata.DguvMetadata"
+        marker=".dguv_metadata.IDguvMetadataMarker"
+        />
+
 </configure>

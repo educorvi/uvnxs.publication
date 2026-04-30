@@ -15,8 +15,7 @@ class IJatsMetadataMarker(Interface):
 
 @provider(IFormFieldProvider)
 class IJatsMetadata(model.Schema):
-    """
-    """
+    """ """
 
     model.fieldset(
         "jats",
@@ -109,9 +108,10 @@ class IJatsMetadata(model.Schema):
         default="",
     )
 
+
 @implementer(IJatsMetadata)
 @adapter(IJatsMetadataMarker)
-class JatsMetadata(object):
+class JatsMetadata:
     def __init__(self, context):
         self.context = context
 
