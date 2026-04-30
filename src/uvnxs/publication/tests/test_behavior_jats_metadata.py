@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.behavior.interfaces import IBehavior
 from uvnxs.publication.behaviors.jats_metadata import IJatsMetadataMarker
-from uvnxs.publication.testing import INTEGRATION_TESTING  # noqa
+from uvnxs.publication.testing import INTEGRATION_TESTING
 from zope.component import getUtility
 
 import unittest
