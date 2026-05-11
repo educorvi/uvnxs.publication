@@ -33,7 +33,8 @@ dependencies = [
     "plone.api",
     "z3c.jbot",
     "plone.restapi",
-    "xmlschema"
+    "xmlschema",
+    "lxml"
 
 ]
 
