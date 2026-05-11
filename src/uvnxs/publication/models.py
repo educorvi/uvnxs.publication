@@ -105,7 +105,7 @@ class Back:
 
 
 class GeneralSection:
-    type: str | None
+    sec_type: str | None
     label: str | None
     title: str | None
     label_title_raw: str
@@ -113,13 +113,13 @@ class GeneralSection:
 
     def __init__(
         self,
-        type: str | None,
+        sec_type: str | None,
         label: str | None,
         title: str | None,
         label_title_raw: str,
         content_raw: str | None,
     ):
-        self.type = type
+        self.sec_type = sec_type
         self.label = label
         self.title = title
         self.label_title_raw = label_title_raw
@@ -175,7 +175,7 @@ class Section(GeneralSection):
 
     def __init__(
         self,
-        type: str | None,
+        sec_type: str | None,
         label: str | None,
         title: str | None,
         label_title_raw: str,
@@ -183,7 +183,7 @@ class Section(GeneralSection):
         sections: list[Section],
     ):
         super().__init__(
-            type=type,
+            sec_type=sec_type,
             label=label,
             title=title,
             label_title_raw=label_title_raw,
@@ -193,14 +193,14 @@ class Section(GeneralSection):
 
     @classmethod
     def from_xml_element(cls, section: ET.Element) -> Section:
-        type = section.attrib.get("sec-type")
+        sec_type = section.attrib.get("sec-type")
         label, title, label_title_raw = cls._get_label_and_title(section)
         content_raw = cls._get_raw_content(section)
         sections = [
             cls.from_xml_element(sec_elem) for sec_elem in section.findall("sec")
         ]
         return cls(
-            type=type,
+            sec_type=sec_type,
             label=label,
             title=title,
             label_title_raw=label_title_raw,
@@ -214,7 +214,7 @@ class AppendixGroup(GeneralSection):
 
     def __init__(
         self,
-        type: str | None,
+        sec_type: str | None,
         label: str | None,
         title: str | None,
         label_title_raw: str,
@@ -222,7 +222,7 @@ class AppendixGroup(GeneralSection):
         appendixes: list[Appendix],
     ):
         super().__init__(
-            type=type,
+            sec_type=sec_type,
             label=label,
             title=title,
             label_title_raw=label_title_raw,
@@ -232,14 +232,14 @@ class AppendixGroup(GeneralSection):
 
     @classmethod
     def from_xml_element(cls, app_group: ET.Element) -> AppendixGroup:
-        type = app_group.attrib.get("content-type")
+        content_type = app_group.attrib.get("content-type")
         label, title, label_title_raw = cls._get_label_and_title(app_group)
         content_raw = cls._get_raw_content(app_group)
         appendixes = [
             Appendix.from_xml_element(app_elem) for app_elem in app_group.findall("app")
         ]
         return cls(
-            type=type,
+            sec_type=content_type,
             label=label,
             title=title,
             label_title_raw=label_title_raw,
@@ -253,7 +253,7 @@ class Appendix(GeneralSection):
 
     def __init__(
         self,
-        type: str | None,
+        sec_type: str | None,
         label: str | None,
         title: str | None,
         label_title_raw: str,
@@ -261,7 +261,7 @@ class Appendix(GeneralSection):
         sections: list[Section],
     ):
         super().__init__(
-            type=type,
+            sec_type=sec_type,
             label=label,
             title=title,
             label_title_raw=label_title_raw,
@@ -271,14 +271,14 @@ class Appendix(GeneralSection):
 
     @classmethod
     def from_xml_element(cls, app: ET.Element) -> Appendix:
-        type = app.attrib.get("app-type")
+        app_type = app.attrib.get("app-type")
         label, title, label_title_raw = cls._get_label_and_title(app)
         content_raw = cls._get_raw_content(app)
         sections = [
             Section.from_xml_element(sec_elem) for sec_elem in app.findall("sec")
         ]
         return cls(
-            type=type,
+            sec_type=app_type,
             label=label,
             title=title,
             label_title_raw=label_title_raw,
