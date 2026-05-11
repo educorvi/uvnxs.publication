@@ -163,7 +163,7 @@ or pipeline) parameterized.
   <xsl:param name="transform" select="'jats-html.xsl'"/>
 
 <!--  <xsl:param name="css" select="'jats-preview.css'"/>-->
-  <xsl:param name="css" select="'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css'"/>
+<!--  <xsl:param name="css" select="'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css'"/>-->
 
   <xsl:param name="report-warnings" select="'no'"/>
 
@@ -183,13 +183,13 @@ or pipeline) parameterized.
   <!-- ============================================================= -->
 
   <xsl:template match="/">
-    <html>
+<!--    <html>-->
       <!-- HTML header -->
-      <xsl:call-template name="make-html-header"/>
-      <body>
+<!--      <xsl:call-template name="make-html-header"/>-->
+<!--      <body>-->
         <xsl:apply-templates/>
-      </body>
-    </html>
+<!--      </body>-->
+<!--    </html>-->
   </xsl:template>
 
 

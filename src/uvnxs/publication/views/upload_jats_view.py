@@ -1,12 +1,10 @@
 from Products.Five.browser import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
+from uvnxs.publication import _
+from uvnxs.publication.import_models import JATSDocumentPloneImport
+from uvnxs.publication.jats_models import JATSDocument
 from zope.interface import implementer
 from zope.interface import Interface
-from Products.statusmessages.interfaces import IStatusMessage
-
-from uvnxs.publication import _
-
-from uvnxs.publication.jats_models import JATSDocument
-from uvnxs.publication.import_models import JATSDocumentPloneImport
 
 
 class IUploadJatsView(Interface):
