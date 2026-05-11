@@ -11,19 +11,14 @@ class JATSDocument:
         self.article = article
 
     @classmethod
-    def from_xml(cls, xml_path: str, xsd_path: str | None) -> JATSDocument:
-        if not cls._file_exists(xml_path):
-            raise FileNotFoundError(f"XML file not found: {xml_path}")
+    def from_xml(cls, xml_content: str, xsd_path: str | None) -> JATSDocument:
         if xsd_path is not None:
             if not cls._file_exists(xsd_path):
                 raise FileNotFoundError(f"XSD file not found: {xsd_path}")
-            if not cls._validate_xml(xml_path, xsd_path):
-                raise ValueError(
-                    f"XML file is not valid according to the XSD: {xml_path}"
-                )
+            if not cls._validate_xml(xml_content, xsd_path):
+                raise ValueError(f"XML is not valid according to the XSD:")
 
-        tree = ET.parse(xml_path)
-        root = tree.getroot()
+        root = ET.fromstring(xml_content)
         if root.tag != "article":
             raise ValueError(f"Expected root element 'article', got '{root.tag}'")
         article = Article.from_xml_element(root)
@@ -34,9 +29,9 @@ class JATSDocument:
         return os.path.isfile(file_path)
 
     @staticmethod
-    def _validate_xml(xml_path: str, xsd_path: str) -> bool:
+    def _validate_xml(xml_content: str, xsd_path: str) -> bool:
         schema = xmlschema.XMLSchema(xsd_path)
-        return schema.is_valid(xml_path)
+        return schema.is_valid(xml_content)
 
 
 class Article:
@@ -83,6 +78,7 @@ class Front:
         if result == "":
             return None
         return result
+
 
 class Body:
     sections: list[Section]
