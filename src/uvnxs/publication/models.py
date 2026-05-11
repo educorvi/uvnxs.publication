@@ -65,15 +65,24 @@ class Article:
 
 
 class Front:
-    # TODO
+    content_raw: str | None
 
-    def __init__(self):
-        pass
+    def __init__(self, content_raw: str | None):
+        self.content_raw = content_raw
 
     @classmethod
     def from_xml_element(cls, element: ET.Element) -> Front:
-        return cls()
+        content_raw = cls._get_raw_content(element)
+        return cls(content_raw=content_raw)
 
+    @classmethod
+    def _get_raw_content(cls, front: ET.Element) -> str | None:
+        result = ""
+        for elem in front:
+            result += ET.tostring(elem, encoding="unicode", method="xml")
+        if result == "":
+            return None
+        return result
 
 class Body:
     sections: list[Section]
