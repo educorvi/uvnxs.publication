@@ -5,7 +5,7 @@ from zope.interface import implementer
 from uvnxs.publication import _
 
 
-class IFront(model.Schema):
+class IFront(ICommon):
     """Marker interface and Dexterity Python Schema for Front"""
 
 

@@ -1,6 +1,16 @@
 from plone.supermodel import model
 
 
+class ICommon(model.Schema):
+    """Marker interface and Dexterity Python Schema for Common"""
+
+    title = model.TextLine(
+        title="Title",
+        description="The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes.",  # noqa: E501
+        required=True,
+    )
+
+
 class IGeneralSection(model.Schema):
     """Marker interface and Dexterity Python Schema for GeneralSection"""
 

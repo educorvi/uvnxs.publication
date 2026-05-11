@@ -5,7 +5,7 @@ from zope.interface import implementer
 from uvnxs.publication import _
 
 
-class IBody(model.Schema):
+class IBody(ICommon):
     """Marker interface and Dexterity Python Schema for Body"""
 
 

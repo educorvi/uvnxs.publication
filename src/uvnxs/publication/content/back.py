@@ -5,7 +5,7 @@ from zope.interface import implementer
 from uvnxs.publication import _
 
 
-class IBack(model.Schema):
+class IBack(ICommon):
     """Marker interface and Dexterity Python Schema for Back"""
 
 
