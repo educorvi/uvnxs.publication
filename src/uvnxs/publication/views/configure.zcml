@@ -30,6 +30,17 @@
     i18n:domain="uvnxs.publication"
     />
 
+  <browser:page
+    name="jats-view"
+    for="uvnxs.publication.content.article.IArticle"
+    class=".jats_view.JATSView"
+    permission="zope2.View"
+    layer="uvnxs.publication.interfaces.IBrowserLayer"
+    title="JATS View"
+    menu="plone_displayviews"
+    i18n:domain="uvnxs.publication"
+    />
+
 
 
 </configure>
