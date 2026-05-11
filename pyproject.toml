@@ -32,7 +32,8 @@ dependencies = [
     "Products.CMFPlone",
     "plone.api",
     "z3c.jbot",
-    "plone.restapi"
+    "plone.restapi",
+    "xmlschema"
 
 ]
 
