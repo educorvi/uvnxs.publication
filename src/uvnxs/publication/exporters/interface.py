@@ -1,7 +1,7 @@
 import abc
 from typing import Generic, TypeVar
 
-from model import JATSDocument
+from uvnxs.publication.jats_models import JATSDocument
 
 T = TypeVar("T")
 

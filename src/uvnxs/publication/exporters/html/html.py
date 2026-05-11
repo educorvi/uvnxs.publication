@@ -6,17 +6,18 @@ from uvnxs.publication.exporters.interface import Exporter
 from uvnxs.publication.exporters.jats import JatsExporter
 from uvnxs.publication.jats_models import JATSDocument
 
-XSL_PATH = os.path.join(os.path.dirname(__file__), '..', 'jats-html.xsl')
+XSL_PATH = os.path.join(os.path.dirname(__file__), "jats-html.xsl")
 
 
 class HtmlExporter(Exporter[str]):
     xsl_doc: etree.Element
-    JatsExporter: JatsExporter
+    jats_exporter: JatsExporter
     transform: etree.XSLT
+
     def __init__(self):
         xsl_path = os.path.abspath(XSL_PATH)
         self.xsl_doc = etree.parse(xsl_path)
-        self.JatsExporter = JatsExporter()
+        self.jats_exporter = JatsExporter()
         self.transform = etree.XSLT(self.xsl_doc)
 
     # @lru_cache(maxsize=128)
@@ -25,4 +26,4 @@ class HtmlExporter(Exporter[str]):
         return str(self.transform(parsed_xml_doc))
 
     def export(self, document: JATSDocument) -> str:
-        return self._transform(self.JatsExporter.export(document))
+        return self._transform(self.jats_exporter.export(document))
