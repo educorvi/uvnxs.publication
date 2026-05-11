@@ -5,7 +5,7 @@
     >
 
   <i18n:registerTranslations directory="locales" />
-
+  <include package="Products.CMFPlone" />
   <include
       package="Products.CMFCore"
       file="permissions.zcml"
