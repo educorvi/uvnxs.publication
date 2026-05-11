@@ -17,8 +17,7 @@
   <include file="permissions.zcml" />
   <include package=".serializers" />
 
-  <!-- -*- extra stuff goes here -*- -->
-
   <include package=".behaviors" />
+  <include package=".views" />
 
 </configure>

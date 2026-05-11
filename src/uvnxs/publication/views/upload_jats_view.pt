@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="edi.formactions"
+      metal:use-macro="context/main_template/macros/master">
+<body>
+  <metal:block fill-slot="content-core">
+
+  <!--Upload Form-->
+  <form method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend i18n:translate="upload_jats_legend">Import JATS XML</legend>
+      <label for="jats_file" i18n:translate="upload_jats_label">Select XML file:</label>
+      <input type="file" id="jats_file" name="jats_file" accept=".xml,application/xml,text/xml" required />
+      <input type="submit" value="Upload" i18n:attributes="value upload_jats_submit" />
+    </fieldset>
+  </form>
+
+  </metal:block>
+</body>
+</html>

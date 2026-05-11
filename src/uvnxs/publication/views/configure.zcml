@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="uvnxs.publication">
+
+
+  <browser:page
+    name="upload-jats-view"
+    for="uvnxs.publication.content.article.Article"
+    class=".upload_jats_view.UploadJatsView"
+    template="upload_jats_view.pt"
+    permission="zope2.View"
+    layer="uvnxs.publication.interfaces.IBrowserLayer"
+    title="Upload JATS XML"
+    menu="plone_displayviews"
+    i18n:domain="uvnxs.publication"
+    />
+
+
+
+</configure>
