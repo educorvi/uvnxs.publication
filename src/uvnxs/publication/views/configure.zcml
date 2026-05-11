@@ -8,7 +8,7 @@
 
   <browser:page
     name="upload-jats-view"
-    for="uvnxs.publication.content.article.Article"
+    for="Products.CMFCore.interfaces.IFolderish"
     class=".upload_jats_view.UploadJatsView"
     template="upload_jats_view.pt"
     permission="zope2.View"

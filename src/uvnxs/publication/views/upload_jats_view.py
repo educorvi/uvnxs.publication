@@ -5,7 +5,8 @@ from Products.statusmessages.interfaces import IStatusMessage
 
 from uvnxs.publication import _
 
-from uvnxs.publication.models import JATSDocument
+from uvnxs.publication.jats_models import JATSDocument
+from uvnxs.publication.import_models import JATSDocumentPloneImport
 
 
 class IUploadJatsView(Interface):
@@ -18,24 +19,26 @@ class UploadJatsView(BrowserView):
         request = self.request
         if request.method == "POST" and "jats_file" in request.form:
             file_upload = request.form["jats_file"]
+            jats_name = (
+                request.form["jats_name"]
+                if "jats_name" in request.form
+                else getattr(file_upload, "filename", "uploaded_jats").replace(
+                    ".xml", ""
+                )
+            )
             if hasattr(file_upload, "read"):
                 try:
                     xml_content = file_upload.read()
                     if isinstance(xml_content, bytes):
                         xml_content = xml_content.decode("utf-8")
-                        # TODO insert xsd_path
-                        jats = JATSDocument.from_xml(xml_content, xsd_path=None)
-                        success, message = self.import_jats(jats)
-                        if success:
-                            IStatusMessage(request).addStatusMessage(_(message), "info")
-                        else:
-                            IStatusMessage(request).addStatusMessage(
-                                _(message), "error"
-                            )
 
-                    IStatusMessage(request).addStatusMessage(
-                        _("XML file uploaded and is well-formed."), "info"
-                    )
+                    # TODO insert xsd_path
+                    jats = JATSDocument.from_xml(xml_content, xsd_path=None)
+                    success, message = self.import_jats(jats, jats_name)
+                    if success:
+                        IStatusMessage(request).addStatusMessage(_(message), "info")
+                    else:
+                        IStatusMessage(request).addStatusMessage(_(message), "error")
                 except Exception as e:
                     IStatusMessage(request).addStatusMessage(
                         _("Error: Invalid XML syntax: {0}".format(e)), "error"
@@ -46,10 +49,11 @@ class UploadJatsView(BrowserView):
                 )
         return self.index()
 
-    def import_jats(self, jats: JATSDocument) -> tuple[bool, str]:
+    def import_jats(self, jats: JATSDocument, jats_name: str) -> tuple[bool, str]:
         """
         Creates Plone objects out of the JATS XML content. Returns a tuple of (success, message).
         If success is True, message contains a success message. If success is False, message contains an error message.
         """
-        print(jats)
-        return True, _("JATS XML imported successfully.")
+        jats_import = JATSDocumentPloneImport(jats, jats_name, self.context)
+        success, message = jats_import.import_jats()
+        return success, message

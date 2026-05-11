@@ -11,9 +11,16 @@
   <form method="post" enctype="multipart/form-data">
     <fieldset>
       <legend i18n:translate="upload_jats_legend">Import JATS XML</legend>
-      <label for="jats_file" i18n:translate="upload_jats_label">Select XML file:</label>
-      <input type="file" id="jats_file" name="jats_file" accept=".xml,application/xml,text/xml" required />
+
+      <label for="jats_name" i18n:translate="upload_jats_name_label">Name (optional):</label><br />
+      <input type="text" id="jats_name" name="jats_name" /><br />
+      <span i18n:translate="upload_jats_name_desc">If left empty, the filename will be used as the name.</span><br /><br />
+
+      <label for="jats_file" i18n:translate="upload_jats_label">Select XML file:</label><br />
+      <input type="file" id="jats_file" name="jats_file" accept=".xml,application/xml,text/xml" required /><br /><br />
+
       <input type="submit" value="Upload" i18n:attributes="value upload_jats_submit" />
+      <p class="small" i18n:translate="upload_jats_note">Note: This can take a few moments depending on the size of the XML file.</p>
     </fieldset>
   </form>
 
