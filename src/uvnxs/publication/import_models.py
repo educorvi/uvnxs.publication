@@ -2,13 +2,7 @@ from plone import api
 from uvnxs.publication.jats_models import *
 
 
-class GenericImport:
-    def _to(self, parent_container: object, name: str | None = None) -> object:
-        # override this method
-        return None
-
-
-class ArticlePloneImport(GenericImport):
+class ArticlePloneImport:
     article: Article
 
     def __init__(self, article: Article):
@@ -31,7 +25,7 @@ class ArticlePloneImport(GenericImport):
         return new_article
 
 
-class FrontPloneImport(GenericImport):
+class FrontPloneImport:
     front: Front
 
     def __init__(self, front: Front):
@@ -49,7 +43,7 @@ class FrontPloneImport(GenericImport):
         return new_front
 
 
-class BodyPloneImport(GenericImport):
+class BodyPloneImport:
     body: Body
 
     def __init__(self, body: Body):
@@ -68,7 +62,7 @@ class BodyPloneImport(GenericImport):
         return new_body
 
 
-class BackPloneImport(GenericImport):
+class BackPloneImport:
     back: Back
 
     def __init__(self, back: Back):
@@ -87,7 +81,7 @@ class BackPloneImport(GenericImport):
         return new_back
 
 
-class SectionPloneImport(GenericImport):
+class SectionPloneImport:
     section: Section
 
     def __init__(self, section: Section):
@@ -117,7 +111,7 @@ class SectionPloneImport(GenericImport):
         return new_section
 
 
-class AppendixGroupPloneImport(GenericImport):
+class AppendixGroupPloneImport:
     app_group: AppendixGroup
 
     def __init__(self, app_group: AppendixGroup):
@@ -149,7 +143,7 @@ class AppendixGroupPloneImport(GenericImport):
         return new_app_group
 
 
-class AppendixPloneImport(GenericImport):
+class AppendixPloneImport:
     appendix: Appendix
 
     def __init__(self, appendix: Appendix):
@@ -162,7 +156,7 @@ class AppendixPloneImport(GenericImport):
         return new_appendix
 
     def _to(self, parent_container: object, name: str | None = None) -> object:
-        title = title = (
+        title = (
             name
             if name
             else (self.appendix.title if self.appendix.title else "Appendix")
