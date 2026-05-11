@@ -39,7 +39,7 @@ class IGeneralSection(model.Schema):
         required=True,
     )
 
-    content = schema.Text(
+    content_raw = schema.Text(
         title="Content",
         description="The content of the section, equals to content in the XML",
         required=False,
