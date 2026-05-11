@@ -2,9 +2,16 @@ from uvnxs.publication.exporters.interface import Exporter, T
 from uvnxs.publication.jats_models import JATSDocument, Front, Body, Back, Appendix, AppendixGroup, GeneralSection, \
     Article
 
+def _wrap_article_jats(jats: str) -> str:
+    return f"""<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables with MathML3 v1.1 20151215//EN" "JATS-journalpublishing-oasis-article1-mathml3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="de" article-type="DGUV Vorschrift" dtd-version="0.4">
+	{jats}
+</article>
+"""
 
 def _get_article_jats(article: Article) -> str:
-    return f"<article>{_get_front_jats(article.front)}{_get_body_jats(article.body)}{_get_back_jats(article.back)}</article>"
+    content = f"{_get_front_jats(article.front)}{_get_body_jats(article.body)}{_get_back_jats(article.back)}"
+    return _wrap_article_jats(content)
 
 def _get_front_jats(front: Front) -> str:
     return f"<front>{front.content_raw or ''}</front>"
