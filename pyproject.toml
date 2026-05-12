@@ -79,10 +79,16 @@ strict-naming = true
 [tool.hatch.build.targets.sdist]
 exclude = [
   "/.github",
+  "/tests/testdata",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/uvnxs"]
+
+[tool.check-manifest]
+ignore = [
+    "tests/testdata/**",
+]
 
 [tool.towncrier]
 directory = "news/"
