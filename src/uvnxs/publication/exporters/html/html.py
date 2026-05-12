@@ -20,10 +20,11 @@ class HtmlExporter(Exporter[str]):
         self.jats_exporter = JatsExporter()
         self.transform = etree.XSLT(self.xsl_doc)
 
-    # @lru_cache(maxsize=128)
+    @lru_cache(maxsize=128)
     def _transform(self, xml_doc: str) -> str:
         parsed_xml_doc = etree.fromstring(xml_doc)
         return str(self.transform(parsed_xml_doc))
 
+    @lru_cache(maxsize=128)
     def export(self, document: JATSDocument) -> str:
         return self._transform(self.jats_exporter.export(document))
