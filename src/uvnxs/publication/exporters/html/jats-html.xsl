@@ -2635,8 +2635,14 @@ or pipeline) parameterized.
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="thead | tbody | tfoot |
-      col | colgroup | tr | th | td">
+    <xsl:template match="thead | tbody | tfoot | col | colgroup | tr">
+        <xsl:copy>
+            <xsl:apply-templates select="@*" mode="table-copy"/>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="th | td">
         <xsl:copy>
             <xsl:apply-templates select="@*" mode="table-copy"/>
             <xsl:call-template name="named-anchor"/>
