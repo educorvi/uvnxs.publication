@@ -2,6 +2,8 @@
 *.egg-info
 *.pyc
 *.pyo
+*.mo
+.idea
 
 # tools related
 __pycache__/
