@@ -1,7 +1,8 @@
 from __future__ import annotations
 import os
-import xml.etree.ElementTree as ET
+from io import BytesIO
 import xmlschema
+from lxml import etree as ET
 
 
 class JATSDocument:
@@ -17,8 +18,9 @@ class JATSDocument:
                 raise FileNotFoundError(f"XSD file not found: {xsd_path}")
             if not cls._validate_xml(xml_content, xsd_path):
                 raise ValueError(f"XML is not valid according to the XSD:")
-
-        root = ET.fromstring(xml_content)
+        parser = ET.XMLParser(remove_pis=False, remove_comments=False)
+        tree = ET.parse(BytesIO(xml_content.encode('utf-8')), parser=parser)
+        root = tree.getroot()
         if root.tag != "article":
             raise ValueError(f"Expected root element 'article', got '{root.tag}'")
         article = Article.from_xml_element(root)
@@ -107,7 +109,7 @@ class Front:
     def _get_raw_content(cls, front: ET.Element) -> str | None:
         result = ""
         for elem in front:
-            result += ET.tostring(elem, encoding="unicode", method="xml")
+            result += ET.tostring(elem, encoding="unicode")
         if result == "":
             return None
         return result
@@ -191,13 +193,13 @@ class GeneralSection:
     ) -> tuple[str | None, str | None, str]:
         label_element = section.find("label")
         label_string = (
-            ET.tostring(label_element, encoding="unicode", method="xml")
+            ET.tostring(label_element, encoding="unicode")
             if label_element is not None
             else ""
         )
         title_element = section.find("title")
         title_string = (
-            ET.tostring(title_element, encoding="unicode", method="xml")
+            ET.tostring(title_element, encoding="unicode")
             if title_element is not None
             else ""
         )
@@ -219,13 +221,25 @@ class GeneralSection:
     @classmethod
     def _get_raw_content(cls, section: ET.Element) -> str | None:
         result = ""
-        for elem in section:
-            if elem.tag in ["label", "title"]:
+        for node in section.xpath("./node()"):
+            if isinstance(node, str):
+                result += node
                 continue
-            if elem.tag in ["sec", "app"]:
+
+            if not isinstance(node.tag, str):
+                result += ET.tostring(node, encoding="unicode")
+                continue
+
+            if node.tag in ["label", "title"]:
+                if node.tail:
+                    result += node.tail
+                continue
+            if node.tag in ["sec", "app"]:
                 break
-            result += ET.tostring(elem, encoding="unicode", method="xml")
-        if result == "":
+
+            result += ET.tostring(node, encoding="unicode")
+
+        if result.strip() == "":
             return None
         return result
 

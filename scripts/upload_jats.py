@@ -16,7 +16,7 @@ import base64
 import mimetypes
 import os
 import sys
-import xml.etree.ElementTree as ET
+from lxml import etree as ET
 from pathlib import Path
 
 import requests
@@ -80,6 +80,8 @@ def find_image_refs(tree: ET.ElementTree) -> list[ET.Element]:
     """Return all graphic/inline-graphic elements with a local xlink:href."""
     refs = []
     for elem in tree.iter():
+        if not isinstance(elem.tag, str):
+            continue
         # Strip namespace prefix to get the local tag name
         local = elem.tag.split("}")[-1] if "}" in elem.tag else elem.tag
         if local in IMAGE_ELEMENTS:
@@ -217,7 +219,8 @@ def main() -> None:
     # Parse — register namespaces first so round-trip keeps prefixes
     ET.register_namespace("xlink", XLINK_NS)
     ET.register_namespace("mml", "http://www.w3.org/1998/Math/MathML")
-    tree = ET.parse(xml_path)
+    parser = ET.XMLParser(remove_pis=False, remove_comments=False)
+    tree = ET.parse(str(xml_path), parser)
 
     # --- Step 1: find local image references ---
     image_elements = find_image_refs(tree)
