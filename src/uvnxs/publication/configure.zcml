@@ -5,6 +5,12 @@
     >
 
   <i18n:registerTranslations directory="locales" />
+
+  <browser:resourceDirectory
+      xmlns:browser="http://namespaces.zope.org/browser"
+      name="uvnxs.publication"
+      directory="static"
+      />
   <include package="Products.CMFPlone" />
   <include
       package="Products.CMFCore"

@@ -206,6 +206,8 @@ or pipeline) parameterized.
             </title>
             <!--      <link rel="stylesheet" type="text/css" href="{$css}"/>-->
             <style>
+                nav.toc ul { list-style: none; padding-left: 1.5em; }
+                nav.toc > ul { padding-left: 0; }
             </style>
             <!-- XXX check: any other header stuff? XXX -->
         </head>
@@ -1975,6 +1977,10 @@ or pipeline) parameterized.
 
 
     <xsl:template match="title | label | sec-meta" mode="drop-title"/>
+
+    <xsl:template match="processing-instruction()" mode="drop-title">
+        <xsl:apply-templates select="."/>
+    </xsl:template>
 
 
     <xsl:template match="app">
@@ -4101,6 +4107,60 @@ or pipeline) parameterized.
             <xsl:text>[</xsl:text>
             <xsl:value-of select="count(.|preceding-sibling::text())"/>
             <xsl:text>]</xsl:text>
+        </xsl:if>
+    </xsl:template>
+
+
+    <!-- ============================================================= -->
+    <!--  DGUV processing instructions                                 -->
+    <!-- ============================================================= -->
+
+    <!-- <?dguv toc?> — inserts a table of contents linking to all
+         section headings (sec elements with a non-empty title) in the document. -->
+    <xsl:template match="processing-instruction('dguv')[normalize-space(.) = 'toc']">
+        <nav class="jats-html-export-toc">
+            <xsl:call-template name="toc-sections">
+                <xsl:with-param name="sections" select="//body/sec[title[normalize-space(string(.))]] | //back/sec[title[normalize-space(string(.))]] | //back/app[title[normalize-space(string(.))]] | //back/ref-list[title[normalize-space(string(.))]]"/>
+                <xsl:with-param name="depth" select="0"/>
+            </xsl:call-template>
+        </nav>
+    </xsl:template>
+
+    <xsl:template name="toc-sections">
+        <xsl:param name="sections"/>
+        <xsl:param name="depth"/>
+        <xsl:if test="$sections">
+            <ul>
+                <xsl:for-each select="$sections">
+                    <li>
+                        <xsl:variable name="anchor-id">
+                            <xsl:choose>
+                                <xsl:when test="@id">
+                                    <xsl:value-of select="@id"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="generate-id(.)"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:variable>
+                        <xsl:if test="label">
+                            <span class="toc-label">
+                                <xsl:apply-templates select="label/node()"/>
+                            </span>
+                            <xsl:text> </xsl:text>
+                        </xsl:if>
+                        <a href="#{$anchor-id}">
+                            <xsl:apply-templates select="title/node()"/>
+                        </a>
+                        <xsl:if test="sec[title[normalize-space(string(.))]]">
+                            <xsl:call-template name="toc-sections">
+                                <xsl:with-param name="sections" select="sec[title[normalize-space(string(.))]]"/>
+                                <xsl:with-param name="depth" select="$depth + 1"/>
+                            </xsl:call-template>
+                        </xsl:if>
+                    </li>
+                </xsl:for-each>
+            </ul>
         </xsl:if>
     </xsl:template>
 
