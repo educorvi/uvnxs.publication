@@ -8,3 +8,10 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0a0 (2026-05-12)
+
+
+### Internal:
+
+- Exclude testdata from source distribution. [#1](https://github.com/educorvi/uvnxs.publication/issues/1)
