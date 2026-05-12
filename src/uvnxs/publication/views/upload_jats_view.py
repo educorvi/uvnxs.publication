@@ -1,8 +1,10 @@
+from plone.protect.interfaces import IDisableCSRFProtection
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from uvnxs.publication import _
 from uvnxs.publication.import_models import JATSDocumentPloneImport
 from uvnxs.publication.jats_models import JATSDocument
+from zope.interface import alsoProvides
 from zope.interface import implementer
 from zope.interface import Interface
 
@@ -15,6 +17,7 @@ class IUploadJatsView(Interface):
 class UploadJatsView(BrowserView):
     def __call__(self):
         request = self.request
+        alsoProvides(request, IDisableCSRFProtection)
         if request.method == "POST" and "jats_file" in request.form:
             file_upload = request.form["jats_file"]
             jats_name = (
