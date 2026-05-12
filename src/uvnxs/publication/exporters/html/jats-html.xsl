@@ -1942,9 +1942,27 @@ or pipeline) parameterized.
 
 
     <xsl:template match="sec">
+        <xsl:variable name="level" select="count(ancestor::sec) + 2"/>
+        <xsl:variable name="heading-tag">
+            <xsl:choose>
+                <xsl:when test="$level &lt;= 6">
+                    <xsl:value-of select="concat('h', $level)"/>
+                </xsl:when>
+                <xsl:otherwise>h6</xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <div class="section">
             <xsl:call-template name="named-anchor"/>
-            <xsl:apply-templates select="title"/>
+            <xsl:if test="label or title">
+                <xsl:element name="{$heading-tag}">
+                    <xsl:attribute name="class">title</xsl:attribute>
+                    <xsl:if test="label">
+                        <span class="label"><xsl:apply-templates select="label/node()"/></span>
+                        <xsl:text> </xsl:text>
+                    </xsl:if>
+                    <xsl:apply-templates select="title/node()"/>
+                </xsl:element>
+            </xsl:if>
             <xsl:apply-templates select="sec-meta"/>
             <xsl:apply-templates mode="drop-title"/>
         </div>
@@ -1956,7 +1974,7 @@ or pipeline) parameterized.
     </xsl:template>
 
 
-    <xsl:template match="title | sec-meta" mode="drop-title"/>
+    <xsl:template match="title | label | sec-meta" mode="drop-title"/>
 
 
     <xsl:template match="app">
