@@ -9,6 +9,21 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a1 (2026-05-15)
+
+
+### New features:
+
+- Added German translations and updated the message catalogs for the package. 
+- Added batch upload support to `upload_jats.py` and improved its progress and feedback output during imports. 
+- Added extensive article and front metadata fields together with synchronization subscribers to keep related content data in sync. 
+- Expanded the catalog configuration with comprehensive indexing and additional metadata columns for publication content. 
+
+
+### Internal:
+
+- Bumped the package version back to development as `1.0.0a1` after the `1.0.0a0` tag. 
+
 ## 1.0.0a0 (2026-05-12)
 
 
