@@ -1,4 +1,6 @@
 from plone import api
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
 from uvnxs.publication.jats_models import *
 
 
@@ -40,6 +42,7 @@ class FrontPloneImport:
             container=parent_container, type="Front", title=name if name else "Front"
         )
         new_front.content_raw = self.front.content_raw
+        notify(ObjectModifiedEvent(new_front))
         return new_front
 
 
