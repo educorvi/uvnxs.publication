@@ -1,5 +1,6 @@
 from plone.dexterity.content import Container
 from plone.supermodel import model
+from zope import schema
 from zope.interface import implementer
 
 from uvnxs.publication import _
@@ -8,6 +9,334 @@ from uvnxs.publication.content.common import ICommon
 
 class IArticle(ICommon):
     """Marker interface and Dexterity Python Schema for Article"""
+
+    # --- Journal Metadata (journal-meta) ---
+
+    model.fieldset(
+        "journal_meta",
+        label=_("Journal Metadata"),
+        fields=[
+            "journal_id",
+            "journal_title",
+            "journal_subtitle",
+            "issn",
+            "publisher_name",
+            "publisher_institution",
+            "publisher_addr_line",
+            "publisher_postal_code",
+            "publisher_city",
+            "publisher_phone",
+            "publisher_email",
+            "publisher_uri",
+        ],
+    )
+
+    journal_id = schema.TextLine(
+        title=_("Journal ID"),
+        description=_("JATS XML: journal-id"),
+        required=False,
+    )
+
+    journal_title = schema.TextLine(
+        title=_("Journal Title"),
+        description=_("JATS XML: journal-title-group/journal-title"),
+        required=False,
+    )
+
+    journal_subtitle = schema.TextLine(
+        title=_("Journal Subtitle"),
+        description=_("JATS XML: journal-title-group/journal-subtitle"),
+        required=False,
+    )
+
+    issn = schema.TextLine(
+        title=_("ISSN"),
+        description=_("JATS XML: issn"),
+        required=False,
+    )
+
+    publisher_name = schema.TextLine(
+        title=_("Publisher Name"),
+        description=_("JATS XML: publisher/publisher-name"),
+        required=False,
+    )
+
+    publisher_institution = schema.TextLine(
+        title=_("Publisher Institution"),
+        description=_("JATS XML: publisher/publisher-loc/institution"),
+        required=False,
+    )
+
+    publisher_addr_line = schema.TextLine(
+        title=_("Publisher Address"),
+        description=_("JATS XML: publisher/publisher-loc/addr-line"),
+        required=False,
+    )
+
+    publisher_postal_code = schema.TextLine(
+        title=_("Publisher Postal Code"),
+        description=_("JATS XML: publisher/publisher-loc/postal-code"),
+        required=False,
+    )
+
+    publisher_city = schema.TextLine(
+        title=_("Publisher City"),
+        description=_("JATS XML: publisher/publisher-loc/city"),
+        required=False,
+    )
+
+    publisher_phone = schema.TextLine(
+        title=_("Publisher Phone"),
+        description=_("JATS XML: publisher/publisher-loc/phone"),
+        required=False,
+    )
+
+    publisher_email = schema.TextLine(
+        title=_("Publisher Email"),
+        description=_("JATS XML: publisher/publisher-loc/email"),
+        required=False,
+    )
+
+    publisher_uri = schema.TextLine(
+        title=_("Publisher URI"),
+        description=_("JATS XML: publisher/publisher-loc/uri"),
+        required=False,
+    )
+
+    # --- Article Metadata (article-meta) ---
+
+    model.fieldset(
+        "article_meta",
+        label=_("Article Metadata"),
+        fields=[
+            "article_id",
+            "article_subtitle",
+            "author_surname",
+            "co_author_surname",
+            "co_author_aff",
+            "self_uri",
+        ],
+    )
+
+    article_id = schema.TextLine(
+        title=_("Article ID"),
+        description=_("JATS XML: article-id (pub-id-type=publisher-id)"),
+        required=False,
+    )
+
+    article_subtitle = schema.TextLine(
+        title=_("Article Subtitle"),
+        description=_("JATS XML: title-group/subtitle"),
+        required=False,
+    )
+
+    author_surname = schema.TextLine(
+        title=_("Author Surname"),
+        description=_("JATS XML: contrib (contrib-type=Autor) / name / surname"),
+        required=False,
+    )
+
+    co_author_surname = schema.TextLine(
+        title=_("Co-Author Surname"),
+        description=_("JATS XML: contrib (contrib-type=Co-Autor) / name / surname"),
+        required=False,
+    )
+
+    co_author_aff = schema.TextLine(
+        title=_("Co-Author Affiliation"),
+        description=_("JATS XML: contrib (contrib-type=Co-Autor) / aff"),
+        required=False,
+    )
+
+    self_uri = schema.TextLine(
+        title=_("Self URI"),
+        description=_("Canonical URL. JATS XML: self-uri"),
+        required=False,
+    )
+
+    # --- Publication Dates ---
+
+    model.fieldset(
+        "pub_dates",
+        label=_("Publication Dates"),
+        fields=[
+            "pub_date_ausgabedatum",
+            "pub_date_aktualisierte_fassung",
+            "history_initial_publication",
+            "history_correction",
+            "history_latest_version",
+        ],
+    )
+
+    pub_date_ausgabedatum = schema.Date(
+        title=_("Publication Date (Ausgabedatum)"),
+        description=_("JATS XML: pub-date (date-type=Ausgabedatum)"),
+        required=False,
+    )
+
+    pub_date_aktualisierte_fassung = schema.Date(
+        title=_("Publication Date (Aktualisierte Fassung)"),
+        description=_("JATS XML: pub-date (date-type=AktualisierteFassung)"),
+        required=False,
+    )
+
+    history_initial_publication = schema.TextLine(
+        title=_("Initial Publication Year"),
+        description=_("JATS XML: history/date (date-type=initial-publication) / year"),
+        required=False,
+    )
+
+    history_correction = schema.TextLine(
+        title=_("Correction Year"),
+        description=_("JATS XML: history/date (date-type=correction) / year"),
+        required=False,
+    )
+
+    history_latest_version = schema.TextLine(
+        title=_("Latest Version Year"),
+        description=_("JATS XML: history/date (date-type=latest-version) / year"),
+        required=False,
+    )
+
+    # --- Copyright ---
+
+    model.fieldset(
+        "copyright",
+        label=_("Copyright"),
+        fields=[
+            "copyright_statement",
+            "copyright_holder",
+        ],
+    )
+
+    copyright_statement = schema.Text(
+        title=_("Copyright Statement"),
+        description=_("JATS XML: permissions/copyright-statement"),
+        required=False,
+    )
+
+    copyright_holder = schema.TextLine(
+        title=_("Copyright Holder"),
+        description=_("JATS XML: permissions/copyright-holder"),
+        required=False,
+    )
+
+    # --- Abstracts & Keywords ---
+
+    model.fieldset(
+        "abstracts_keywords",
+        label=_("Abstracts & Keywords"),
+        fields=[
+            "abstract_short_title",
+            "abstract_short",
+            "abstract_summary_title",
+            "abstract_summary",
+            "keywords",
+        ],
+    )
+
+    abstract_short_title = schema.TextLine(
+        title=_("Short Abstract Title"),
+        description=_("JATS XML: abstract (abstract-type=short) / title"),
+        required=False,
+    )
+
+    abstract_short = schema.Text(
+        title=_("Short Abstract"),
+        description=_("JATS XML: abstract (abstract-type=short) / p"),
+        required=False,
+    )
+
+    abstract_summary_title = schema.TextLine(
+        title=_("Summary Abstract Title"),
+        description=_("JATS XML: abstract (abstract-type=summary) / title"),
+        required=False,
+    )
+
+    abstract_summary = schema.Text(
+        title=_("Summary Abstract"),
+        description=_("JATS XML: abstract (abstract-type=summary) / p"),
+        required=False,
+    )
+
+    keywords = schema.List(
+        title=_("Keywords"),
+        description=_("Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"),
+        value_type=schema.TextLine(),
+        required=False,
+    )
+
+    # --- DGUV Metadata ---
+
+    model.fieldset(
+        "dguv_meta",
+        label=_("DGUV Metadata"),
+        fields=[
+            "beschreibender_typ",
+            "bisherige_bestellnummer",
+            "webcode",
+            "organisationseinheit",
+            "fachbereich",
+            "sachgebiet",
+            "veroeffentlichungsstatus",
+            "bildnachweis",
+            "ueberschriften_mit_nummerierung",
+        ],
+    )
+
+    beschreibender_typ = schema.TextLine(
+        title=_("Beschreibender Typ"),
+        description=_("Corresponds to custom-meta 'Beschreibender Typ' in JATS XML."),
+        required=False,
+    )
+
+    bisherige_bestellnummer = schema.TextLine(
+        title=_("Bisherige Bestellnummer"),
+        description=_("Corresponds to custom-meta 'Bisherige Bestellnummer' in JATS XML."),
+        required=False,
+    )
+
+    webcode = schema.TextLine(
+        title=_("Webcode"),
+        description=_("Corresponds to custom-meta 'Webcode' in JATS XML."),
+        required=False,
+    )
+
+    organisationseinheit = schema.TextLine(
+        title=_("Organisationseinheit"),
+        description=_("Corresponds to custom-meta 'Organisationseinheit' in JATS XML."),
+        required=False,
+    )
+
+    fachbereich = schema.TextLine(
+        title=_("Fachbereich"),
+        description=_("Corresponds to custom-meta 'Fachbereich' in JATS XML."),
+        required=False,
+    )
+
+    sachgebiet = schema.TextLine(
+        title=_("Sachgebiet"),
+        description=_("Corresponds to custom-meta 'Sachgebiet' in JATS XML."),
+        required=False,
+    )
+
+    veroeffentlichungsstatus = schema.TextLine(
+        title=_("Status"),
+        description=_("Corresponds to custom-meta 'Status' in JATS XML."),
+        required=False,
+    )
+
+    bildnachweis = schema.TextLine(
+        title=_("Bildnachweis"),
+        description=_("Corresponds to custom-meta 'Bildnachweis' in JATS XML."),
+        required=False,
+    )
+
+    ueberschriften_mit_nummerierung = schema.Bool(
+        title=_("Überschriften mit Nummerierung"),
+        description=_("Corresponds to custom-meta 'Überschriften mit Nummerierung' in JATS XML."),
+        required=False,
+    )
 
 
 @implementer(IArticle)
