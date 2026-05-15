@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a2 (2026-05-15)
+
+
+### Bug fixes:
+
+- fix empty metadata bug on import 
+
 ## 1.0.0a1 (2026-05-15)
 
 
