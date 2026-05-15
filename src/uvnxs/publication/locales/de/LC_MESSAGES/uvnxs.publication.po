@@ -1,454 +1,455 @@
-#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-#SOME DESCRIPTIVE TITLE.
-#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# German translations for PACKAGE package.
+# Julian Pollinger <EMAIL@ADDRESS>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-05-15 14:14+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2026-05-15 16:14+0200\n"
+"Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
+"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: uvnxs.publication\n"
+"Language: de\n"
 
 #: uvnxs/publication/content/article.py:228
 msgid "Abstracts & Keywords"
-msgstr ""
+msgstr "Abstracts & Schlüsselwörter"
 
 #: uvnxs/publication/profiles/default/types/Appendix.xml
 msgid "Appendix"
-msgstr ""
+msgstr "Anhang"
 
 #: uvnxs/publication/profiles/default/types/Appendix.xml
 msgid "Appendix of a JATS Document"
-msgstr ""
+msgstr "Anhang eines JATS-Dokuments"
 
 #: uvnxs/publication/profiles/default/types/AppendixGroup.xml
 msgid "AppendixGroup"
-msgstr ""
+msgstr "Anhanggruppe"
 
 #: uvnxs/publication/profiles/default/types/AppendixGroup.xml
 msgid "AppendixGroup of a JATS Document"
-msgstr ""
+msgstr "Anhanggruppe eines JATS-Dokuments"
 
 #: uvnxs/publication/profiles/default/types/Article.xml
 msgid "Article"
-msgstr ""
+msgstr "Artikel"
 
 #: uvnxs/publication/content/article.py:122
 msgid "Article ID"
-msgstr ""
+msgstr "Artikel-ID"
 
 #: uvnxs/publication/content/article.py:110
 msgid "Article Metadata"
-msgstr ""
+msgstr "Artikel-Metadaten"
 
 #: uvnxs/publication/content/article.py:128
 msgid "Article Subtitle"
-msgstr ""
+msgstr "Artikel-Untertitel"
 
 #: uvnxs/publication/profiles/default/types/Article.xml
 msgid "Article of a JATS Document"
-msgstr ""
+msgstr "Artikel eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:134
 msgid "Author Surname"
-msgstr ""
+msgstr "Nachname des Autors"
 
 #: uvnxs/publication/content/article.py:264
 msgid "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"
-msgstr ""
+msgstr "Vom Autor erstellte Schlüsselwörter. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"
 
 #: uvnxs/publication/profiles/default/types/Back.xml
 msgid "Back"
-msgstr ""
+msgstr "Backmatter"
 
 #: uvnxs/publication/profiles/default/types/Back.xml
 msgid "Back of a JATS Document"
-msgstr ""
+msgstr "Backmatter eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:288
 msgid "Beschreibender Typ"
-msgstr ""
+msgstr "Beschreibender Typ"
 
 #: uvnxs/publication/content/article.py:330
 msgid "Bildnachweis"
-msgstr ""
+msgstr "Bildnachweis"
 
 #: uvnxs/publication/content/article.py:294
 msgid "Bisherige Bestellnummer"
-msgstr ""
+msgstr "Bisherige Bestellnummer"
 
 #: uvnxs/publication/profiles/default/types/Body.xml
 msgid "Body"
-msgstr ""
+msgstr "Hauptteil"
 
 #: uvnxs/publication/profiles/default/types/Body.xml
 msgid "Body of a JATS Document"
-msgstr ""
+msgstr "Hauptteil eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:153
 msgid "Canonical URL. JATS XML: self-uri"
-msgstr ""
+msgstr "Kanonische URL. JATS XML: self-uri"
 
 #: uvnxs/publication/content/article.py:146
 msgid "Co-Author Affiliation"
-msgstr ""
+msgstr "Zugehörigkeit des Co-Autors"
 
 #: uvnxs/publication/content/article.py:140
 msgid "Co-Author Surname"
-msgstr ""
+msgstr "Nachname des Co-Autors"
 
 #: uvnxs/publication/content/article.py:205
 msgid "Copyright"
-msgstr ""
+msgstr "Urheberrecht"
 
 #: uvnxs/publication/content/article.py:219
 msgid "Copyright Holder"
-msgstr ""
+msgstr "Urheberrechtsinhaber"
 
 #: uvnxs/publication/content/article.py:213
 msgid "Copyright Statement"
-msgstr ""
+msgstr "Urheberrechtserklärung"
 
 #: uvnxs/publication/content/article.py:190
 msgid "Correction Year"
-msgstr ""
+msgstr "Korrektionsjahr"
 
 #: uvnxs/publication/content/article.py:289
 msgid "Corresponds to custom-meta 'Beschreibender Typ' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Beschreibender Typ' im JATS XML."
 
 #: uvnxs/publication/content/article.py:331
 msgid "Corresponds to custom-meta 'Bildnachweis' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Bildnachweis' im JATS XML."
 
 #: uvnxs/publication/content/article.py:295
 msgid "Corresponds to custom-meta 'Bisherige Bestellnummer' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Bisherige Bestellnummer' im JATS XML."
 
 #: uvnxs/publication/content/article.py:313
 msgid "Corresponds to custom-meta 'Fachbereich' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Fachbereich' im JATS XML."
 
 #: uvnxs/publication/content/article.py:307
 msgid "Corresponds to custom-meta 'Organisationseinheit' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Organisationseinheit' im JATS XML."
 
 #: uvnxs/publication/content/article.py:319
 msgid "Corresponds to custom-meta 'Sachgebiet' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Sachgebiet' im JATS XML."
 
 #: uvnxs/publication/content/article.py:325
 msgid "Corresponds to custom-meta 'Status' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Status' im JATS XML."
 
 #: uvnxs/publication/content/article.py:301
 msgid "Corresponds to custom-meta 'Webcode' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Webcode' im JATS XML."
 
 #: uvnxs/publication/content/article.py:337
 msgid "Corresponds to custom-meta 'Überschriften mit Nummerierung' in JATS XML."
-msgstr ""
+msgstr "Entspricht custom-meta 'Überschriften mit Nummerierung' im JATS XML."
 
 #: uvnxs/publication/content/article.py:273
 msgid "DGUV Metadata"
-msgstr ""
+msgstr "DGUV-Metadaten"
 
 #: uvnxs/publication/views/upload_jats_view.py:45
 msgid "Error: Invalid XML syntax: {0}"
-msgstr ""
+msgstr "Fehler: Ungültige XML-Syntax: {0}"
 
 #: uvnxs/publication/content/article.py:312
 msgid "Fachbereich"
-msgstr ""
+msgstr "Fachbereich"
 
 #: uvnxs/publication/profiles/default/types/Front.xml
 msgid "Front"
-msgstr ""
+msgstr "Frontmatter"
 
 #: uvnxs/publication/profiles/default/types/Front.xml
 msgid "Front of a JATS Document"
-msgstr ""
+msgstr "Frontmatter eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:53
 msgid "ISSN"
-msgstr ""
+msgstr "ISSN"
 
 #: uvnxs/publication/content/article.py:184
 msgid "Initial Publication Year"
-msgstr ""
+msgstr "Jahr der Erstveröffentlichung"
 
 #: uvnxs/publication/views/configure.zcml:31
 msgid "JATS HTML View"
-msgstr ""
+msgstr "JATS HTML-Ansicht"
 
 #: uvnxs/publication/views/configure.zcml:42
 msgid "JATS View"
-msgstr ""
+msgstr "JATS-Ansicht"
 
 #: uvnxs/publication/content/article.py:246
 msgid "JATS XML: abstract (abstract-type=short) / p"
-msgstr ""
+msgstr "JATS XML: abstract (abstract-type=short) / p"
 
 #: uvnxs/publication/content/article.py:240
 msgid "JATS XML: abstract (abstract-type=short) / title"
-msgstr ""
+msgstr "JATS XML: abstract (abstract-type=short) / title"
 
 #: uvnxs/publication/content/article.py:258
 msgid "JATS XML: abstract (abstract-type=summary) / p"
-msgstr ""
+msgstr "JATS XML: abstract (abstract-type=summary) / p"
 
 #: uvnxs/publication/content/article.py:252
 msgid "JATS XML: abstract (abstract-type=summary) / title"
-msgstr ""
+msgstr "JATS XML: abstract (abstract-type=summary) / title"
 
 #: uvnxs/publication/content/article.py:123
 msgid "JATS XML: article-id (pub-id-type=publisher-id)"
-msgstr ""
+msgstr "JATS XML: article-id (pub-id-type=publisher-id)"
 
 #: uvnxs/publication/content/article.py:135
 msgid "JATS XML: contrib (contrib-type=Autor) / name / surname"
-msgstr ""
+msgstr "JATS XML: contrib (contrib-type=Autor) / name / surname"
 
 #: uvnxs/publication/content/article.py:147
 msgid "JATS XML: contrib (contrib-type=Co-Autor) / aff"
-msgstr ""
+msgstr "JATS XML: contrib (contrib-type=Co-Autor) / aff"
 
 #: uvnxs/publication/content/article.py:141
 msgid "JATS XML: contrib (contrib-type=Co-Autor) / name / surname"
-msgstr ""
+msgstr "JATS XML: contrib (contrib-type=Co-Autor) / name / surname"
 
 #: uvnxs/publication/content/article.py:191
 msgid "JATS XML: history/date (date-type=correction) / year"
-msgstr ""
+msgstr "JATS XML: history/date (date-type=correction) / year"
 
 #: uvnxs/publication/content/article.py:185
 msgid "JATS XML: history/date (date-type=initial-publication) / year"
-msgstr ""
+msgstr "JATS XML: history/date (date-type=initial-publication) / year"
 
 #: uvnxs/publication/content/article.py:197
 msgid "JATS XML: history/date (date-type=latest-version) / year"
-msgstr ""
+msgstr "JATS XML: history/date (date-type=latest-version) / year"
 
 #: uvnxs/publication/content/article.py:54
 msgid "JATS XML: issn"
-msgstr ""
+msgstr "JATS XML: issn"
 
 #: uvnxs/publication/content/article.py:36
 msgid "JATS XML: journal-id"
-msgstr ""
+msgstr "JATS XML: journal-id"
 
 #: uvnxs/publication/content/article.py:48
 msgid "JATS XML: journal-title-group/journal-subtitle"
-msgstr ""
+msgstr "JATS XML: journal-title-group/journal-subtitle"
 
 #: uvnxs/publication/content/article.py:42
 msgid "JATS XML: journal-title-group/journal-title"
-msgstr ""
+msgstr "JATS XML: journal-title-group/journal-title"
 
 #: uvnxs/publication/content/article.py:220
 msgid "JATS XML: permissions/copyright-holder"
-msgstr ""
+msgstr "JATS XML: permissions/copyright-holder"
 
 #: uvnxs/publication/content/article.py:214
 msgid "JATS XML: permissions/copyright-statement"
-msgstr ""
+msgstr "JATS XML: permissions/copyright-statement"
 
 #: uvnxs/publication/content/article.py:179
 msgid "JATS XML: pub-date (date-type=AktualisierteFassung)"
-msgstr ""
+msgstr "JATS XML: pub-date (date-type=AktualisierteFassung)"
 
 #: uvnxs/publication/content/article.py:173
 msgid "JATS XML: pub-date (date-type=Ausgabedatum)"
-msgstr ""
+msgstr "JATS XML: pub-date (date-type=Ausgabedatum)"
 
 #: uvnxs/publication/content/article.py:72
 msgid "JATS XML: publisher/publisher-loc/addr-line"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-loc/addr-line"
 
 #: uvnxs/publication/content/article.py:84
 msgid "JATS XML: publisher/publisher-loc/city"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-loc/city"
 
 #: uvnxs/publication/content/article.py:96
 msgid "JATS XML: publisher/publisher-loc/email"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-loc/email"
 
 #: uvnxs/publication/content/article.py:66
 msgid "JATS XML: publisher/publisher-loc/institution"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-loc/institution"
 
 #: uvnxs/publication/content/article.py:90
 msgid "JATS XML: publisher/publisher-loc/phone"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-loc/phone"
 
 #: uvnxs/publication/content/article.py:78
 msgid "JATS XML: publisher/publisher-loc/postal-code"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-loc/postal-code"
 
 #: uvnxs/publication/content/article.py:102
 msgid "JATS XML: publisher/publisher-loc/uri"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-loc/uri"
 
 #: uvnxs/publication/content/article.py:60
 msgid "JATS XML: publisher/publisher-name"
-msgstr ""
+msgstr "JATS XML: publisher/publisher-name"
 
 #: uvnxs/publication/content/article.py:129
 msgid "JATS XML: title-group/subtitle"
-msgstr ""
+msgstr "JATS XML: title-group/subtitle"
 
 #: uvnxs/publication/content/article.py:35
 msgid "Journal ID"
-msgstr ""
+msgstr "Zeitschriften-ID"
 
 #: uvnxs/publication/content/article.py:17
 msgid "Journal Metadata"
-msgstr ""
+msgstr "Zeitschriften-Metadaten"
 
 #: uvnxs/publication/content/article.py:47
 msgid "Journal Subtitle"
-msgstr ""
+msgstr "Zeitschriften-Untertitel"
 
 #: uvnxs/publication/content/article.py:41
 msgid "Journal Title"
-msgstr ""
+msgstr "Zeitschriftentitel"
 
 #: uvnxs/publication/content/article.py:263
 msgid "Keywords"
-msgstr ""
+msgstr "Schlüsselwörter"
 
 #: uvnxs/publication/content/article.py:196
 msgid "Latest Version Year"
-msgstr ""
+msgstr "Jahr der neuesten Version"
 
 #: uvnxs/publication/views/upload_jats_view.py:49
 msgid "No file uploaded or file is invalid."
-msgstr ""
+msgstr "Keine Datei hochgeladen oder Datei ist ungültig."
 
 #: uvnxs/publication/content/article.py:306
 msgid "Organisationseinheit"
-msgstr ""
+msgstr "Organisationseinheit"
 
 #: uvnxs/publication/profiles.zcml:13
 msgid "Package to configure a new uvnxs.publication site"
-msgstr ""
+msgstr "Paket zur Konfiguration einer neuen uvnxs.publication-Website"
 
 #: uvnxs/publication/content/article.py:178
 msgid "Publication Date (Aktualisierte Fassung)"
-msgstr ""
+msgstr "Veröffentlichungsdatum (Aktualisierte Fassung)"
 
 #: uvnxs/publication/content/article.py:172
 msgid "Publication Date (Ausgabedatum)"
-msgstr ""
+msgstr "Veröffentlichungsdatum (Ausgabedatum)"
 
 #: uvnxs/publication/content/article.py:161
 msgid "Publication Dates"
-msgstr ""
+msgstr "Veröffentlichungsdaten"
 
 #: uvnxs/publication/content/article.py:71
 msgid "Publisher Address"
-msgstr ""
+msgstr "Verlagsadresse"
 
 #: uvnxs/publication/content/article.py:83
 msgid "Publisher City"
-msgstr ""
+msgstr "Verlagsort"
 
 #: uvnxs/publication/content/article.py:95
 msgid "Publisher Email"
-msgstr ""
+msgstr "E-Mail des Verlags"
 
 #: uvnxs/publication/content/article.py:65
 msgid "Publisher Institution"
-msgstr ""
+msgstr "Verlagsinstitution"
 
 #: uvnxs/publication/content/article.py:59
 msgid "Publisher Name"
-msgstr ""
+msgstr "Verlagsname"
 
 #: uvnxs/publication/content/article.py:89
 msgid "Publisher Phone"
-msgstr ""
+msgstr "Telefon des Verlags"
 
 #: uvnxs/publication/content/article.py:77
 msgid "Publisher Postal Code"
-msgstr ""
+msgstr "Postleitzahl des Verlags"
 
 #: uvnxs/publication/content/article.py:101
 msgid "Publisher URI"
-msgstr ""
+msgstr "URI des Verlags"
 
 #: uvnxs/publication/content/front.py:13
 msgid "Raw content"
-msgstr ""
+msgstr "Roher Inhalt"
 
 #: uvnxs/publication/content/article.py:318
 msgid "Sachgebiet"
-msgstr ""
+msgstr "Sachgebiet"
 
 #: uvnxs/publication/profiles/default/types/Section.xml
 msgid "Section"
-msgstr ""
+msgstr "Abschnitt"
 
 #: uvnxs/publication/profiles/default/types/Section.xml
 msgid "Section of a JATS Document"
-msgstr ""
+msgstr "Abschnitt eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:152
 msgid "Self URI"
-msgstr ""
+msgstr "Eigene URI"
 
 #: uvnxs/publication/content/article.py:245
 msgid "Short Abstract"
-msgstr ""
+msgstr "Kurzfassung"
 
 #: uvnxs/publication/content/article.py:239
 msgid "Short Abstract Title"
-msgstr ""
+msgstr "Titel der Kurzfassung"
 
 #: uvnxs/publication/content/article.py:324
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: uvnxs/publication/content/article.py:257
 msgid "Summary Abstract"
-msgstr ""
+msgstr "Zusammenfassung"
 
 #: uvnxs/publication/content/article.py:251
 msgid "Summary Abstract Title"
-msgstr ""
+msgstr "Titel der Zusammenfassung"
 
 #: uvnxs/publication/content/front.py:14
 msgid "The raw XML content of the Front section."
-msgstr ""
+msgstr "Der rohe XML-Inhalt des Frontmatter-Abschnitts."
 
 #: uvnxs/publication/profiles.zcml:21
 msgid "Uninstall uvnxs.publication setup."
-msgstr ""
+msgstr "uvnxs.publication-Einrichtung deinstallieren."
 
 #: uvnxs/publication/views/configure.zcml:19
 msgid "Upload JATS XML"
-msgstr ""
+msgstr "JATS XML hochladen"
 
 #: uvnxs/publication/content/article.py:300
 msgid "Webcode"
-msgstr ""
+msgstr "Webcode"
 
 #: uvnxs/publication/profiles.zcml:13
 msgid "uvnxs.publication: Install"
-msgstr ""
+msgstr "uvnxs.publication: Installieren"
 
 #: uvnxs/publication/profiles.zcml:21
 msgid "uvnxs.publication: Uninstall"
-msgstr ""
+msgstr "uvnxs.publication: Deinstallieren"
 
 #: uvnxs/publication/content/article.py:336
 msgid "Überschriften mit Nummerierung"
-msgstr ""
+msgstr "Überschriften mit Nummerierung"
