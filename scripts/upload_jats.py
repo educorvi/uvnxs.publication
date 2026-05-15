@@ -321,14 +321,21 @@ def process_xml(
     xml_bytes = serialise_tree(tree, original_xml)
 
     # --- Step 4: upload JATS XML ---
-    console.print(f"  Uploading JATS XML to [dim]{article_url}/@@upload-jats-view[/dim]…")
-    try:
-        upload_xml(xml_bytes, resolved_name, article_url, auth)
-    except requests.HTTPError as exc:
-        err_console.print(
-            f"  [red]✗[/red] Error uploading JATS XML: {exc}\n    Response: {exc.response.text}"
-        )
-        raise
+    with Progress(
+        TextColumn("  "),
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+        transient=True,
+    ) as progress:
+        progress.add_task(f"Uploading JATS XML to [dim]{article_url}/@@upload-jats-view[/dim]…", total=None)
+        try:
+            upload_xml(xml_bytes, resolved_name, article_url, auth)
+        except requests.HTTPError as exc:
+            err_console.print(
+                f"  [red]✗[/red] Error uploading JATS XML: {exc}\n    Response: {exc.response.text}"
+            )
+            raise
 
     console.print(f"  [green bold]✓ Done.[/green bold] Article [bold]{resolved_name!r}[/bold] imported successfully.\n")
 
