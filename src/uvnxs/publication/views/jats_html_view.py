@@ -11,6 +11,10 @@ class IJATSHtmlView(Interface):
     """Marker Interface for IJATSHtmlView"""
 
 
+class IJATSHtmlRawView(Interface):
+    """Marker Interface for IJATSHtmlRawView"""
+
+
 HTML_EXPORTER = HtmlExporter()
 
 
@@ -20,3 +24,12 @@ class JATSHtmlView(BrowserView):
         jats = JATSDocument.from_plone(self.context)
         self.html = HTML_EXPORTER.export(jats)
         return self.index()
+
+
+@implementer(IJATSHtmlRawView)
+class JATSHtmlRawView(BrowserView):
+    def __call__(self):
+        jats = JATSDocument.from_plone(self.context)
+        html = HTML_EXPORTER.export(jats)
+        self.request.response.setHeader("Content-Type", "text/html; charset=utf-8")
+        return html

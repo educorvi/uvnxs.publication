@@ -31,6 +31,15 @@
     />
 
   <browser:page
+    name="jats-html-raw"
+    for="uvnxs.publication.content.article.IArticle"
+    class=".jats_html_view.JATSHtmlRawView"
+    permission="zope2.View"
+    layer="uvnxs.publication.interfaces.IBrowserLayer"
+    i18n:domain="uvnxs.publication"
+    />
+
+  <browser:page
     name="jats-view"
     for="uvnxs.publication.content.article.IArticle"
     class=".jats_view.JATSView"
