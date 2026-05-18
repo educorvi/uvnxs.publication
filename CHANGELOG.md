@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a3 (2026-05-18)
+
+
+### New features:
+
+- add html raw view 
+
 ## 1.0.0a2 (2026-05-15)
 
 
