@@ -33,7 +33,7 @@ class IGeneralSection(model.Schema):
         required=False,
     )
 
-    label_title_raw = schema.TextLine(
+    label_title_raw = schema.Text(
         title="Label and Title Raw",
         description="Is generated out of label and / or title. Do not modify manually.",
         required=True,
