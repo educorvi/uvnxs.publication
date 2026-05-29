@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a4 (2026-05-29)
+
+
+### New features:
+
+- add control panel for UVNXS Publication settings [#8f606fc](https://github.com/educorvi/uvnxs.publication/issues/8f606fc)
+
+
+### Bug fixes:
+
+- update schema field type from `TextLine` to `Text` for `label_title_raw` [#dc39f17](https://github.com/educorvi/uvnxs.publication/issues/dc39f17)
+- update default branch for jats-importexport client to `main` [#7585082](https://github.com/educorvi/uvnxs.publication/issues/7585082)
+
 ## 1.0.0a3 (2026-05-18)
 
 
