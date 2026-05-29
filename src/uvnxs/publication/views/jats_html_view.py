@@ -2,9 +2,12 @@ from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
 
-from uvnxs.publication import _
-from uvnxs.publication.exporters.html.html import HtmlExporter
-from uvnxs.publication.jats_models import JATSDocument
+import jats_importexport_client
+from plone import api
+
+import asyncio
+
+from uvnxs.publication.views.common import get_api_client
 
 
 class IJATSHtmlView(Interface):
@@ -15,21 +18,21 @@ class IJATSHtmlRawView(Interface):
     """Marker Interface for IJATSHtmlRawView"""
 
 
-HTML_EXPORTER = HtmlExporter()
-
 
 @implementer(IJATSHtmlView)
 class JATSHtmlView(BrowserView):
     def __call__(self):
-        jats = JATSDocument.from_plone(self.context)
-        self.html = HTML_EXPORTER.export(jats)
+        api_instance = jats_importexport_client.ExportApi(get_api_client())
+        path = api.content.get_path(self.context, relative=True)
+        self.html = asyncio.run(api_instance.export_html(path)).html
         return self.index()
 
 
 @implementer(IJATSHtmlRawView)
 class JATSHtmlRawView(BrowserView):
     def __call__(self):
-        jats = JATSDocument.from_plone(self.context)
-        html = HTML_EXPORTER.export(jats)
+        api_instance = jats_importexport_client.ExportApi(get_api_client())
+        path = api.content.get_path(self.context, relative=True)
+        html = asyncio.run(api_instance.export_html(path)).html
         self.request.response.setHeader("Content-Type", "text/html; charset=utf-8")
         return html

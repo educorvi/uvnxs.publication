@@ -22,5 +22,6 @@ class IUvnxsPublicationSettings(Interface):
             "help_jats_hub_base_url",
             default="Basis-URL des JATS ImportExport Hub, z.B. https://hub.example.com",
         ),
-        required=False,
+        required=True,
+        default="http://localhost:8000",
     )

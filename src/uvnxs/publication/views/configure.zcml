@@ -7,18 +7,6 @@
 
 
   <browser:page
-    name="upload-jats-view"
-    for="Products.CMFCore.interfaces.IFolderish"
-    class=".upload_jats_view.UploadJatsView"
-    template="upload_jats_view.pt"
-    permission="zope2.View"
-    layer="uvnxs.publication.interfaces.IBrowserLayer"
-    title="Upload JATS XML"
-    menu="plone_displayviews"
-    i18n:domain="uvnxs.publication"
-    />
-
-  <browser:page
     name="jats-html-view"
     for="uvnxs.publication.content.article.IArticle"
     class=".jats_html_view.JATSHtmlView"

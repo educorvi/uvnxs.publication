@@ -1,22 +1,22 @@
+import asyncio
+
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
+from plone import api
+import jats_importexport_client
 
-from uvnxs.publication import _
-from uvnxs.publication.exporters.interface import Exporter
-from uvnxs.publication.exporters.jats import JatsExporter
-from uvnxs.publication.jats_models import JATSDocument
-
+from uvnxs.publication.views.common import get_api_client
 
 class IJATSView(Interface):
     """Marker Interface for IJATSView"""
 
 
-EXPORTER: Exporter = JatsExporter()
-
 
 @implementer(IJATSView)
 class JATSView(BrowserView):
     def __call__(self):
-        jats = JATSDocument.from_plone(self.context)
-        return EXPORTER.export(jats)
+        api_instance = jats_importexport_client.ExportApi(get_api_client())
+        path = api.content.get_path(self.context, relative=True)
+        ret = asyncio.run(api_instance.export_jats(path)).jats
+        return ret
