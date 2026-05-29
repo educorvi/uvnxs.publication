@@ -3,6 +3,9 @@
           i18n:domain="uvnxs.publication"
 >
 
-  <!-- -*- extra stuff goes here -*- -->
+  <records
+      interface="uvnxs.publication.interfaces.IUvnxsPublicationSettings"
+      prefix="uvnxs.publication"
+  />
 
 </registry>

@@ -50,6 +50,13 @@
     i18n:domain="uvnxs.publication"
     />
 
+  <include package="plone.app.registry" />
 
+  <browser:page
+    name="uvnxs-publication-settings"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".controlpanel.UvnxsPublicationSettingsView"
+    permission="cmf.ManagePortal"
+    />
 
 </configure>
