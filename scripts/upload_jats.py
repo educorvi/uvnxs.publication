@@ -196,7 +196,7 @@ def upload_xml(
     jats_name: str,
     article_url: str,
     auth: tuple[str, str],
-) -> None:
+) -> requests.Response:
     """
     POST the (modified) XML to @@upload_jats_view as a multipart form upload,
     matching the web-form fields expected by UploadJatsView.
@@ -226,7 +226,7 @@ def serialise_tree(tree: ET.ElementTree, original_xml: str) -> bytes:
     # Collect lines that should precede the root element
     header_lines = []
     for line in original_xml.splitlines():
-        stripped = stripped_line = line.strip()
+        stripped = line.strip()
         if stripped.startswith("<?xml") or stripped.startswith("<!DOCTYPE"):
             header_lines.append(line)
         else:

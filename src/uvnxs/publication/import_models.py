@@ -1,7 +1,15 @@
 from plone import api
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
-from uvnxs.publication.jats_models import *
+from uvnxs.publication.jats_models import (
+    Appendix,
+    AppendixGroup,
+    Article,
+    Back,
+    Body,
+    Front,
+    Section,
+)
 
 
 class ArticlePloneImport:

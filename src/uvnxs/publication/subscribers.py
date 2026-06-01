@@ -307,7 +307,7 @@ def update_article_metadata_from_front(front, event):
     if am is not None:
         _read_article_meta(article, am)
 
-    article.reindexObject(idxs=["SearchableText"])
+    article.reindexObject()
 
 
 def update_front_content_from_article(article, event):
