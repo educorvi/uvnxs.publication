@@ -6,6 +6,12 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <browser:resourceDirectory
+      xmlns:browser="http://namespaces.zope.org/browser"
+      name="uvnxs.publication"
+      directory="static"
+      />
+  <include package="Products.CMFPlone" />
   <include
       package="Products.CMFCore"
       file="permissions.zcml"
@@ -17,8 +23,26 @@
   <include file="permissions.zcml" />
   <include package=".serializers" />
 
-  <!-- -*- extra stuff goes here -*- -->
-
   <include package=".behaviors" />
+  <include package=".views" />
+
+  <!-- Sync Article metadata from Front content_raw on add/modify -->
+  <subscriber
+      for="uvnxs.publication.content.front.IFront
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler="uvnxs.publication.subscribers.update_article_metadata_from_front"
+      />
+  <subscriber
+      for="uvnxs.publication.content.front.IFront
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler="uvnxs.publication.subscribers.update_article_metadata_from_front"
+      />
+
+  <!-- Sync Front content_raw from Article metadata on modify -->
+  <subscriber
+      for="uvnxs.publication.content.article.IArticle
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler="uvnxs.publication.subscribers.update_front_content_from_article"
+      />
 
 </configure>

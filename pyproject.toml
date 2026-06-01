@@ -32,8 +32,10 @@ dependencies = [
     "Products.CMFPlone",
     "plone.api",
     "z3c.jbot",
-    "plone.restapi"
-
+    "plone.restapi",
+    "xmlschema",
+    "lxml",
+    "jats_importexport_client"
 ]
 
 [project.optional-dependencies]
@@ -45,6 +47,9 @@ test = [
     "pytest",
     "pytest-cov",
     "pytest-plone>=1.0.0a2",
+]
+scripts = [
+    "rich"
 ]
 release = [
     "zest.releaser[recommended]",
@@ -63,6 +68,12 @@ target = "plone"
 
 [tool.uv]
 managed = false
+prerelease = "allow"
+
+[[tool.uv.index]]
+name = "uvc-plone"
+url = "https://pypi.bg-kooperation.de"
+
 
 [tool.hatch.version]
 path = "src/uvnxs/publication/__init__.py"
@@ -77,10 +88,16 @@ strict-naming = true
 [tool.hatch.build.targets.sdist]
 exclude = [
   "/.github",
+  "/tests/testdata",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/uvnxs"]
+
+[tool.check-manifest]
+ignore = [
+    "tests/testdata/**",
+]
 
 [tool.towncrier]
 directory = "news/"

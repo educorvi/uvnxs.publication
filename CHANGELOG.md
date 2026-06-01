@@ -8,3 +8,52 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0a4 (2026-05-29)
+
+
+### New features:
+
+- add control panel for UVNXS Publication settings [#8f606fc](https://github.com/educorvi/uvnxs.publication/issues/8f606fc)
+
+
+### Bug fixes:
+
+- update schema field type from `TextLine` to `Text` for `label_title_raw` [#dc39f17](https://github.com/educorvi/uvnxs.publication/issues/dc39f17)
+- update default branch for jats-importexport client to `main` [#7585082](https://github.com/educorvi/uvnxs.publication/issues/7585082)
+
+## 1.0.0a3 (2026-05-18)
+
+
+### New features:
+
+- add html raw view 
+
+## 1.0.0a2 (2026-05-15)
+
+
+### Bug fixes:
+
+- fix empty metadata bug on import 
+
+## 1.0.0a1 (2026-05-15)
+
+
+### New features:
+
+- Added German translations and updated the message catalogs for the package. 
+- Added batch upload support to `upload_jats.py` and improved its progress and feedback output during imports. 
+- Added extensive article and front metadata fields together with synchronization subscribers to keep related content data in sync. 
+- Expanded the catalog configuration with comprehensive indexing and additional metadata columns for publication content. 
+
+
+### Internal:
+
+- Bumped the package version back to development as `1.0.0a1` after the `1.0.0a0` tag. 
+
+## 1.0.0a0 (2026-05-12)
+
+
+### Internal:
+
+- Exclude testdata from source distribution. [#1](https://github.com/educorvi/uvnxs.publication/issues/1)

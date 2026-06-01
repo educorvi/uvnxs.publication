@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
         name="portal_controlpanel"
+        i18n:domain="uvnxs.publication"
 >
 
-  <!-- -*- extra stuff goes here -*- -->
+  <configlet
+      title="UVNXS Publication"
+      action_id="uvnxs-publication-settings"
+      appId="uvnxs-publication-settings"
+      category="Products"
+      condition_expr=""
+      icon_expr=""
+      url_expr="string:${portal_url}/@@uvnxs-publication-settings"
+      visible="True"
+      i18n:attributes="title">
+    <permission>Manage portal</permission>
+  </configlet>
 
 </object>
