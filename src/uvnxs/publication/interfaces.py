@@ -1,5 +1,5 @@
 """Module where all interfaces, events and exceptions live."""
-
+from plone.app.caching.operations import default
 from uvnxs.publication import _
 from zope import schema
 from zope.interface import Interface
@@ -24,4 +24,18 @@ class IUvnxsPublicationSettings(Interface):
         ),
         required=True,
         default="http://localhost:8000",
+    )
+
+    use_api_key = schema.Bool(
+        title=_("label_use_api_key", default="API Key verwenden"),
+        description=_("help_use_api_key", default="API Key für den JATS ImportExport Hub verwenden"),
+        required=False,
+        default=False
+    )
+
+    api_key = schema.TextLine(
+        title=_("label_api_key", default="API Key"),
+        description=_("help_api_key", default="API Key für den JATS ImportExport Hub"),
+        required=False,
+        default="abc123"
     )
