@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a5 (2026-06-01)
+
+
+### New features:
+
+- API key support [#fff4c46](https://github.com/educorvi/uvnxs.publication/issues/fff4c46)
+
+
+### Bug fixes:
+
+- new response type [#e36624b](https://github.com/educorvi/uvnxs.publication/issues/e36624b)
+
 ## 1.0.0a4 (2026-05-29)
 
 
