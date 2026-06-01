@@ -24,7 +24,7 @@ class JATSHtmlView(BrowserView):
     def __call__(self):
         api_instance = jats_importexport_client.ExportApi(get_api_client())
         path = api.content.get_path(self.context, relative=True)
-        self.html = asyncio.run(api_instance.export_html(path)).html
+        self.html = api_instance.export_html(path).dict().get('html', '')
         return self.index()
 
 
@@ -33,6 +33,6 @@ class JATSHtmlRawView(BrowserView):
     def __call__(self):
         api_instance = jats_importexport_client.ExportApi(get_api_client())
         path = api.content.get_path(self.context, relative=True)
-        html = asyncio.run(api_instance.export_html(path)).html
+        html = api_instance.export_html(path).dict().get('html', '')
         self.request.response.setHeader("Content-Type", "text/html; charset=utf-8")
         return html
