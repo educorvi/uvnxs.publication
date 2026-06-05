@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a6 (2026-06-05)
+
+
+### New features:
+
+- empty cache on update [#b1dda9b](https://github.com/educorvi/uvnxs.publication/issues/b1dda9b)
+
 ## 1.0.0a5 (2026-06-01)
 
 
