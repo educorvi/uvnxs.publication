@@ -1,10 +1,18 @@
 """Event subscribers for uvnxs.publication content types."""
 from __future__ import annotations
 
+from Acquisition import aq_parent
+
 import datetime
+
+from plone import api
 
 from lxml import etree as ET
 
+import jats_importexport_client
+
+from .content.article import IArticle
+from .views.common import get_api_client
 
 _XLINK_NS = "http://www.w3.org/1999/xlink"
 _XLINK_HREF = f"{{{_XLINK_NS}}}href"
@@ -343,3 +351,17 @@ def update_front_content_from_article(article, event):
         front.content_raw = new_content_raw
     finally:
         front._updating_from_article = False
+
+def article_ancestor_change_handler(obj, event):
+    """
+    Event handler to find and print the 'Article' ancestor of a modified object.
+    """
+    current_obj = obj
+    while current_obj is not None:
+        if IArticle.providedBy(current_obj):
+            path = api.content.get_path(current_obj, relative=True)
+            api_instance = jats_importexport_client.ExportApi(get_api_client())
+            api_instance.clear_export_cache(path=path)
+            return
+        # Traverse up the acquisition chain
+        current_obj = aq_parent(current_obj)
