@@ -1,12 +1,17 @@
 """Module where all interfaces, events and exceptions live."""
 from plone.app.caching.operations import default
+from plone.schema.interfaces import IFormLayer
 from uvnxs.publication import _
 from zope import schema
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
-class IBrowserLayer(IDefaultBrowserLayer):
+class IUvNxsFormLayer(IFormLayer):
+    """Marker interface for the uvnxs form layer."""
+
+
+class IBrowserLayer(IDefaultBrowserLayer, IUvNxsFormLayer):
     """Marker interface that defines a browser layer."""
 
 
@@ -39,3 +44,9 @@ class IUvnxsPublicationSettings(Interface):
         required=False,
         default="abc123"
     )
+
+class IXmlEditorWidget(Interface):
+    """Marker interface for widgets that can be used in the XML editor."""
+
+class IFieldWidget(Interface):
+    """Marker interface for widgets that can be used in the field editor."""

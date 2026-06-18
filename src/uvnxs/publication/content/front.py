@@ -1,9 +1,10 @@
 from plone.dexterity.content import Container
 from zope import schema
 from zope.interface import implementer
-
+from plone.autoform import directives as form
 from uvnxs.publication import _
 from uvnxs.publication.content.common import ICommon
+from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 
 
 class IFront(ICommon):
@@ -14,6 +15,7 @@ class IFront(ICommon):
         description=_("The raw XML content of the Front section."),
         required=False,
     )
+    form.widget(content_raw=XmlEditorFieldWidget)
 
 
 @implementer(IFront)

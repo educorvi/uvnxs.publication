@@ -1,0 +1,6 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag=""
+>
+<xml-editor name="${view/name}" initial-value="${view/value}"/>
+</html>

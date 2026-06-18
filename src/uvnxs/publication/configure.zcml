@@ -11,6 +11,11 @@
     name="uvnxs.publication"
     directory="static"
   />
+  <browser:resourceDirectory
+    xmlns:browser="http://namespaces.zope.org/browser"
+    name="uvnxs.publication.vue"
+    directory="vue"
+  />
   <include package="Products.CMFPlone"/>
   <include
     package="Products.CMFCore"
@@ -25,7 +30,7 @@
 
   <include package=".behaviors"/>
   <include package=".views"/>
-
+  <include file="widgets.zcml"/>
   <!-- Sync Article metadata from Front content_raw on add/modify -->
   <subscriber
     for="uvnxs.publication.content.front.IFront
