@@ -4,7 +4,6 @@ from uvnxs.publication.views.common import get_api_client
 from zope.interface import implementer
 from zope.interface import Interface
 
-import asyncio
 import jats_importexport_client
 
 

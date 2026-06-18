@@ -75,7 +75,7 @@ def _sub(parent: ET.Element, tag: str, text: str | None = None) -> ET.Element:
 def _parse_front_content(content_raw: str) -> ET.Element | None:
     """Wrap content_raw in <front> and parse it; return root or None on error."""
     try:
-        return ET.fromstring(f"<front>{content_raw}</front>".encode("utf-8"))
+        return ET.fromstring(f"<front>{content_raw}</front>".encode())
     except ET.XMLSyntaxError:
         return None
 

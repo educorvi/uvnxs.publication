@@ -1,6 +1,5 @@
 """Module where all interfaces, events and exceptions live."""
 
-from plone.app.caching.operations import default
 from plone.schema.interfaces import IFormLayer
 from uvnxs.publication import _
 from zope import schema
