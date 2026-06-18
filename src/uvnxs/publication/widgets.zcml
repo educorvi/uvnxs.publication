@@ -5,22 +5,22 @@
 
   <adapter
       factory=".widgets.xml_editor.XmlEditorFieldWidget"
-      for="uvnxs.publication.interfaces.IUvNxsFormLayer"
       provides="z3c.form.interfaces.IFieldWidget"
+      for="uvnxs.publication.interfaces.IUvNxsFormLayer"
       />
 
   <z3c:widgetTemplate
-      mode="input"
       widget=".interfaces.IXmlEditorWidget"
-      layer="uvnxs.publication.interfaces.IUvNxsFormLayer"
       template="widgets/xml_editor.pt"
+      layer="uvnxs.publication.interfaces.IUvNxsFormLayer"
+      mode="input"
       />
 
   <z3c:widgetTemplate
-      mode="display"
       widget=".interfaces.IXmlEditorWidget"
-      layer="uvnxs.publication.interfaces.IUvNxsFormLayer"
       template="widgets/xml_editor_display.pt"
+      layer="uvnxs.publication.interfaces.IUvNxsFormLayer"
+      mode="display"
       />
 
 </configure>

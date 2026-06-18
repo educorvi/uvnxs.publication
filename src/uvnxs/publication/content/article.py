@@ -1,10 +1,9 @@
 from plone.dexterity.content import Container
 from plone.supermodel import model
-from zope import schema
-from zope.interface import implementer
-
 from uvnxs.publication import _
 from uvnxs.publication.content.common import ICommon
+from zope import schema
+from zope.interface import implementer
 
 
 class IArticle(ICommon):
@@ -261,7 +260,9 @@ class IArticle(ICommon):
 
     keywords = schema.List(
         title=_("Keywords"),
-        description=_("Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"),
+        description=_(
+            "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"
+        ),
         value_type=schema.TextLine(),
         required=False,
     )
@@ -292,7 +293,9 @@ class IArticle(ICommon):
 
     bisherige_bestellnummer = schema.TextLine(
         title=_("Bisherige Bestellnummer"),
-        description=_("Corresponds to custom-meta 'Bisherige Bestellnummer' in JATS XML."),
+        description=_(
+            "Corresponds to custom-meta 'Bisherige Bestellnummer' in JATS XML."
+        ),
         required=False,
     )
 
@@ -334,7 +337,9 @@ class IArticle(ICommon):
 
     ueberschriften_mit_nummerierung = schema.Bool(
         title=_("Überschriften mit Nummerierung"),
-        description=_("Corresponds to custom-meta 'Überschriften mit Nummerierung' in JATS XML."),
+        description=_(
+            "Corresponds to custom-meta 'Überschriften mit Nummerierung' in JATS XML."
+        ),
         required=False,
     )
 

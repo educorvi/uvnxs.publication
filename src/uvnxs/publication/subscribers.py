@@ -1,39 +1,41 @@
 """Event subscribers for uvnxs.publication content types."""
+
 from __future__ import annotations
-
-from Acquisition import aq_parent
-
-import datetime
-
-from plone import api
-
-from lxml import etree as ET
-
-import jats_importexport_client
 
 from .content.article import IArticle
 from .views.common import get_api_client
+from Acquisition import aq_parent
+from lxml import etree as ET
+from plone import api
+
+import datetime
+import jats_importexport_client
+
 
 _XLINK_NS = "http://www.w3.org/1999/xlink"
 _XLINK_HREF = f"{{{_XLINK_NS}}}href"
 
 # Ordered list of custom-meta entries: (meta-name, article field, to_xml, from_xml)
 _CUSTOM_META = [
-    ("Beschreibender Typ",          "beschreibender_typ",               None,                              None),
-    ("Bisherige Bestellnummer",     "bisherige_bestellnummer",          None,                              None),
-    ("Webcode",                     "webcode",                          None,                              None),
-    ("Organisationseinheit",        "organisationseinheit",             None,                              None),
-    ("Fachbereich",                 "fachbereich",                      None,                              None),
-    ("Sachgebiet",                  "sachgebiet",                       None,                              None),
-    ("Status",                      "veroeffentlichungsstatus",         None,                              None),
-    ("Bildnachweis",                "bildnachweis",                     None,                              None),
-    ("Überschriften mit Nummerierung", "ueberschriften_mit_nummerierung",
+    ("Beschreibender Typ", "beschreibender_typ", None, None),
+    ("Bisherige Bestellnummer", "bisherige_bestellnummer", None, None),
+    ("Webcode", "webcode", None, None),
+    ("Organisationseinheit", "organisationseinheit", None, None),
+    ("Fachbereich", "fachbereich", None, None),
+    ("Sachgebiet", "sachgebiet", None, None),
+    ("Status", "veroeffentlichungsstatus", None, None),
+    ("Bildnachweis", "bildnachweis", None, None),
+    (
+        "Überschriften mit Nummerierung",
+        "ueberschriften_mit_nummerierung",
         lambda v: "ja" if v else "nein",
-        lambda v: v.lower() == "ja" if v else False),
+        lambda v: v.lower() == "ja" if v else False,
+    ),
 ]
 
 
 # ── Shared low-level helpers ─────────────────────────────────────────────────
+
 
 def _text(element: ET.Element, xpath: str) -> str | None:
     """Return stripped text of the first matching element, or None."""
@@ -87,6 +89,7 @@ def _find_front(article) -> object | None:
 
 # ── XML → Article ────────────────────────────────────────────────────────────
 
+
 def _read_journal_meta(article, jm: ET.Element) -> None:
     article.journal_id = _text(jm, "journal-id")
     article.journal_title = _text(jm, "journal-title-group/journal-title")
@@ -103,9 +106,15 @@ def _read_journal_meta(article, jm: ET.Element) -> None:
         article.publisher_email = _text(loc, "email")
         article.publisher_uri = _text(loc, "uri")
     else:
-        for field in ("publisher_institution", "publisher_addr_line",
-                      "publisher_postal_code", "publisher_city",
-                      "publisher_phone", "publisher_email", "publisher_uri"):
+        for field in (
+            "publisher_institution",
+            "publisher_addr_line",
+            "publisher_postal_code",
+            "publisher_city",
+            "publisher_phone",
+            "publisher_email",
+            "publisher_uri",
+        ):
             setattr(article, field, None)
 
 
@@ -120,7 +129,9 @@ def _read_article_meta(article, am: ET.Element) -> None:
     article.article_subtitle = _text(am, "title-group/subtitle")
 
     author = am.find("contrib-group/contrib[@contrib-type='Autor']")
-    article.author_surname = _text(author, "name/surname") if author is not None else None
+    article.author_surname = (
+        _text(author, "name/surname") if author is not None else None
+    )
 
     co_author = am.find("contrib-group/contrib[@contrib-type='Co-Autor']")
     if co_author is not None:
@@ -130,12 +141,20 @@ def _read_article_meta(article, am: ET.Element) -> None:
         article.co_author_surname = None
         article.co_author_aff = None
 
-    article.pub_date_ausgabedatum = _parse_date(am, "pub-date[@date-type='Ausgabedatum']")
-    article.pub_date_aktualisierte_fassung = _parse_date(am, "pub-date[@date-type='AktualisierteFassung']")
+    article.pub_date_ausgabedatum = _parse_date(
+        am, "pub-date[@date-type='Ausgabedatum']"
+    )
+    article.pub_date_aktualisierte_fassung = _parse_date(
+        am, "pub-date[@date-type='AktualisierteFassung']"
+    )
 
-    article.history_initial_publication = _text(am, "history/date[@date-type='initial-publication']/year")
+    article.history_initial_publication = _text(
+        am, "history/date[@date-type='initial-publication']/year"
+    )
     article.history_correction = _text(am, "history/date[@date-type='correction']/year")
-    article.history_latest_version = _text(am, "history/date[@date-type='latest-version']/year")
+    article.history_latest_version = _text(
+        am, "history/date[@date-type='latest-version']/year"
+    )
 
     article.copyright_statement = _text(am, "permissions/copyright-statement")
     article.copyright_holder = _text(am, "permissions/copyright-holder")
@@ -163,13 +182,19 @@ def _read_article_meta(article, am: ET.Element) -> None:
 
     kwd_group = am.find("kwd-group[@kwd-group-type='author-generated']")
     article.keywords = (
-        [kwd.text.strip() for kwd in kwd_group.findall("kwd") if kwd.text and kwd.text.strip()]
+        [
+            kwd.text.strip()
+            for kwd in kwd_group.findall("kwd")
+            if kwd.text and kwd.text.strip()
+        ]
         if kwd_group is not None
         else []
     )
 
     custom_meta_map = {
-        name_el.text.strip(): (value_el.text.strip() if value_el is not None and value_el.text else None)
+        name_el.text.strip(): (
+            value_el.text.strip() if value_el is not None and value_el.text else None
+        )
         for cm in am.findall("custom-meta-group/custom-meta")
         if (name_el := cm.find("meta-name")) is not None and name_el.text
         for value_el in [cm.find("meta-value")]
@@ -181,6 +206,7 @@ def _read_article_meta(article, am: ET.Element) -> None:
 
 
 # ── Article → XML ────────────────────────────────────────────────────────────
+
 
 def _build_journal_meta(article) -> ET.Element:
     jm = ET.Element("journal-meta")
@@ -275,7 +301,7 @@ def _build_article_meta(article) -> ET.Element:
 
     kg = _sub(am, "kwd-group")
     kg.set("kwd-group-type", "author-generated")
-    for kwd in (getattr(article, "keywords", None) or []):
+    for kwd in getattr(article, "keywords", None) or []:
         _sub(kg, "kwd", kwd)
 
     cmg = _sub(am, "custom-meta-group")
@@ -289,6 +315,7 @@ def _build_article_meta(article) -> ET.Element:
 
 
 # ── Event handlers ───────────────────────────────────────────────────────────
+
 
 def update_article_metadata_from_front(front, event):
     """Sync Article metadata fields from Front.content_raw (Front added/modified)."""
@@ -351,6 +378,7 @@ def update_front_content_from_article(article, event):
         front.content_raw = new_content_raw
     finally:
         front._updating_from_article = False
+
 
 def article_ancestor_change_handler(obj, event):
     """

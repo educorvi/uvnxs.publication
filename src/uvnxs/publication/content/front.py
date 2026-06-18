@@ -1,10 +1,10 @@
-from plone.dexterity.content import Container
-from zope import schema
-from zope.interface import implementer
 from plone.autoform import directives as form
+from plone.dexterity.content import Container
 from uvnxs.publication import _
 from uvnxs.publication.content.common import ICommon
 from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
+from zope import schema
+from zope.interface import implementer
 
 
 class IFront(ICommon):

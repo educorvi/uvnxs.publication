@@ -2,5 +2,8 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag=""
 >
-<xml-editor name="${view/name}" initial-value="${view/value}" disabled/>
+  <xml-editor disabled
+              initial-value="${view/value}"
+              name="${view/name}"
+  ></xml-editor>
 </html>

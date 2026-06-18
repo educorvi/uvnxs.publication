@@ -1,50 +1,51 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:i18n="http://namespaces.zope.org/i18n"
-    i18n_domain="uvnxs.publication">
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="uvnxs.publication"
+    >
 
 
   <browser:page
-    name="jats-html-view"
-    for="uvnxs.publication.content.article.IArticle"
-    class=".jats_html_view.JATSHtmlView"
-    template="jats_html_view.pt"
-    permission="zope2.View"
-    layer="uvnxs.publication.interfaces.IBrowserLayer"
-    title="JATS HTML View"
-    menu="plone_displayviews"
-    i18n:domain="uvnxs.publication"
-    />
+      name="jats-html-view"
+      for="uvnxs.publication.content.article.IArticle"
+      class=".jats_html_view.JATSHtmlView"
+      template="jats_html_view.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="JATS HTML View"
+      i18n:domain="uvnxs.publication"
+      />
 
   <browser:page
-    name="jats-html-raw"
-    for="uvnxs.publication.content.article.IArticle"
-    class=".jats_html_view.JATSHtmlRawView"
-    permission="zope2.View"
-    layer="uvnxs.publication.interfaces.IBrowserLayer"
-    i18n:domain="uvnxs.publication"
-    />
+      name="jats-html-raw"
+      for="uvnxs.publication.content.article.IArticle"
+      class=".jats_html_view.JATSHtmlRawView"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      i18n:domain="uvnxs.publication"
+      />
 
   <browser:page
-    name="jats-view"
-    for="uvnxs.publication.content.article.IArticle"
-    class=".jats_view.JATSView"
-    permission="zope2.View"
-    layer="uvnxs.publication.interfaces.IBrowserLayer"
-    title="JATS View"
-    menu="plone_displayviews"
-    i18n:domain="uvnxs.publication"
-    />
+      name="jats-view"
+      for="uvnxs.publication.content.article.IArticle"
+      class=".jats_view.JATSView"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="JATS View"
+      i18n:domain="uvnxs.publication"
+      />
 
   <include package="plone.app.registry" />
 
   <browser:page
-    name="uvnxs-publication-settings"
-    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    class=".controlpanel.UvnxsPublicationSettingsView"
-    permission="cmf.ManagePortal"
-    />
+      name="uvnxs-publication-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.UvnxsPublicationSettingsView"
+      permission="cmf.ManagePortal"
+      />
 
 </configure>

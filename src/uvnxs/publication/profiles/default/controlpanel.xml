@@ -4,16 +4,16 @@
         i18n:domain="uvnxs.publication"
 >
 
-  <configlet
-      title="UVNXS Publication"
-      action_id="uvnxs-publication-settings"
-      appId="uvnxs-publication-settings"
-      category="Products"
-      condition_expr=""
-      icon_expr=""
-      url_expr="string:${portal_url}/@@uvnxs-publication-settings"
-      visible="True"
-      i18n:attributes="title">
+  <configlet action_id="uvnxs-publication-settings"
+             appId="uvnxs-publication-settings"
+             category="Products"
+             condition_expr=""
+             icon_expr=""
+             title="UVNXS Publication"
+             url_expr="string:${portal_url}/@@uvnxs-publication-settings"
+             visible="True"
+             i18n:attributes="title"
+  >
     <permission>Manage portal</permission>
   </configlet>
 

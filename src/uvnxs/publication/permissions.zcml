@@ -1,38 +1,38 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
   <permission
-        id="uvnxs.publication.AddArticle"
-        title="uvnxs.publication: Add Article"
-    />
+      id="uvnxs.publication.AddArticle"
+      title="uvnxs.publication: Add Article"
+      />
 
   <permission
-        id="uvnxs.publication.AddAppendix"
-        title="uvnxs.publication: Add Appendix"
-    />
+      id="uvnxs.publication.AddAppendix"
+      title="uvnxs.publication: Add Appendix"
+      />
 
   <permission
-        id="uvnxs.publication.AddAppendixGroup"
-        title="uvnxs.publication: Add AppendixGroup"
-    />
+      id="uvnxs.publication.AddAppendixGroup"
+      title="uvnxs.publication: Add AppendixGroup"
+      />
 
   <permission
-        id="uvnxs.publication.AddBack"
-        title="uvnxs.publication: Add Back"
-    />
+      id="uvnxs.publication.AddBack"
+      title="uvnxs.publication: Add Back"
+      />
 
   <permission
-        id="uvnxs.publication.AddBody"
-        title="uvnxs.publication: Add Body"
-    />
+      id="uvnxs.publication.AddBody"
+      title="uvnxs.publication: Add Body"
+      />
 
   <permission
-        id="uvnxs.publication.AddFront"
-        title="uvnxs.publication: Add Front"
-    />
+      id="uvnxs.publication.AddFront"
+      title="uvnxs.publication: Add Front"
+      />
 
   <permission
-        id="uvnxs.publication.AddSection"
-        title="uvnxs.publication: Add Section"
-    />
+      id="uvnxs.publication.AddSection"
+      title="uvnxs.publication: Add Section"
+      />
 
 </configure>
