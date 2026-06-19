@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a10 (2026-06-19)
+
+
+### New features:
+
+- basic easysection [#7550836](https://github.com/educorvi/uvnxs.publication/issues/7550836)
+
+
+### Internal:
+
+- news [#a3d0eb1](https://github.com/educorvi/uvnxs.publication/issues/a3d0eb1)
+
 ## 1.0.0a9 (2026-06-19)
 
 
