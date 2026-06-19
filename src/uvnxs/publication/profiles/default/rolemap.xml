@@ -65,5 +65,14 @@
       <role name="Contributor" />
     </permission>
 
+    <permission acquire="True"
+                name="uvnxs.publication: Add EasySection"
+    >
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Owner" />
+      <role name="Contributor" />
+    </permission>
+
   </permissions>
 </rolemap>

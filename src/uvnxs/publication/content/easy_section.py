@@ -1,64 +1,37 @@
 # from plone.app.textfield import RichText
 # from plone.autoform import directives
+from plone.app.textfield import RichText
 from plone.dexterity.content import Container
-# from plone.namedfile import field as namedfile
 from plone.supermodel import model
-# from plone.supermodel.directives import fieldset
-# from z3c.form.browser.radio import RadioFieldWidget
-# from zope import schema
+from zope import schema
 from zope.interface import implementer
-from plone.app.dexterity.textindexer import searchable
 
-# from uvnxs.publication import _
+from uvnxs.publication import _
 
 
 class IEasySection(model.Schema):
     """ Marker interface and Dexterity Python Schema for EasySection
     """
-    # If you want, you can load a xml model created TTW here
-    # and customize it in Python:
 
-    # model.load('easy_section.xml')
+    label = schema.TextLine(
+        title=_("Label"),
+        description=_("The label of the section, i.e. 'III'"),
+        required=False,
+    )
 
-    # add the following line to make your field searchable in
-    # the default SearchableText index
-    #
-    # searchable('fieldname')
+    title = schema.TextLine(
+        title=_("Title"),
+        description=_("The title of the section"),
+        required=False,
+    )
 
-    # directives.widget(level=RadioFieldWidget)
-    # level = schema.Choice(
-    #     title=_('Sponsoring Level'),
-    #     vocabulary=LevelVocabulary,
-    #     required=True
-    # )
+    content = RichText(
+        title=_("Content"),
+        description=_("The content of the section"),
+        default_mime_type='text/html',
+        output_mime_type='text/x-html-safe',
+    )
 
-    # text = RichText(
-    #     title=_('Text'),
-    #     required=False
-    # )
-
-    # url = schema.URI(
-    #     title=_('Link'),
-    #     required=False
-    # )
-
-    # fieldset('Images', fields=['logo', 'advertisement'])
-    # logo = namedfile.NamedBlobImage(
-    #     title=_('Logo'),
-    #     required=False,
-    # )
-
-    # advertisement = namedfile.NamedBlobImage(
-    #     title=_('Advertisement (Gold-sponsors and above)'),
-    #     required=False,
-    # )
-
-    # directives.read_permission(notes='cmf.ManagePortal')
-    # directives.write_permission(notes='cmf.ManagePortal')
-    # notes = RichText(
-    #     title=_('Secret Notes (only for site-admins)'),
-    #     required=False
-    # )
 
 
 @implementer(IEasySection)

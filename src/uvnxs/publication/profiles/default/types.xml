@@ -7,5 +7,5 @@
   <object meta_type="Dexterity FTI" name="Section"/>
   <object meta_type="Dexterity FTI" name="AppendixGroup"/>
   <object meta_type="Dexterity FTI" name="Appendix"/>
-  <object name="EasySection" meta_type="Dexterity FTI"/>
+  <object meta_type="Dexterity FTI" name="EasySection" />
 </object>

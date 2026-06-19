@@ -35,4 +35,9 @@
       title="uvnxs.publication: Add Section"
       />
 
+  <permission
+      id="uvnxs.publication.AddEasySection"
+      title="uvnxs.publication: Add EasySection"
+      />
+
 </configure>
