@@ -51,7 +51,3 @@ class IUvnxsPublicationSettings(Interface):
 
 class IXmlEditorWidget(Interface):
     """Marker interface for widgets that can be used in the XML editor."""
-
-
-class IFieldWidget(Interface):
-    """Marker interface for widgets that can be used in the field editor."""

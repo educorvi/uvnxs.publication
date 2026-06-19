@@ -13,8 +13,8 @@
       />
   <browser:resourceDirectory
       xmlns:browser="http://namespaces.zope.org/browser"
-      name="uvnxs.publication.vue"
-      directory="vue"
+      name="uvnxs.publication.xml-editor"
+      directory="vue/xml-editor-webcomponent/dist"
       />
   <include package="Products.CMFPlone" />
   <include

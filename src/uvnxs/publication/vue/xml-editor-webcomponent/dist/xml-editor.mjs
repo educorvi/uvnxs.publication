@@ -17953,7 +17953,6 @@ var zT, BT, VT, HT, UT = e((() => {
 				modelValue: n.value,
 				"onUpdate:modelValue": i[0] ||= (e) => n.value = e,
 				extensions: t,
-				onChange: i[1] ||= (e) => console.log("change", e),
 				disabled: e.disabled
 			}, null, 8, ["modelValue", "disabled"])]), Br("input", {
 				type: "hidden",

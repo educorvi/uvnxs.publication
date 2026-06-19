@@ -10,7 +10,7 @@
   <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
            prefix="plone.bundles/uvnxs.publication.xml-editor"
   >
-    <value key="jscompilation">++resource++uvnxs.publication.vue/xml-editor-webcomponent/dist/xml-editor.umd.js</value>
+    <value key="jscompilation">++resource++uvnxs.publication.xml-editor/xml-editor.umd.js</value>
     <value key="enabled">True</value>
     <value key="load_async">False</value>
     <value key="load_defer">True</value>

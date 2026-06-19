@@ -26,10 +26,9 @@ watch(() => props.initialValue, (newValue) => {
     <codemirror
     v-model="codeModel"
     :extensions="extensions"
-    @change="console.log('change', $event)"
     :disabled="disabled"
   />
   </div>
-  <input type="hidden" :value="codeModel" :name="name"></input>
+  <input type="hidden" :value="codeModel" :name="name"/>
 </template>
 
