@@ -7,7 +7,7 @@
       factory=".widgets.xml_editor.XmlEditorFieldWidget"
       provides="z3c.form.interfaces.IFieldWidget"
       for="zope.schema.interfaces.IField
-        uvnxs.publication.interfaces.IUvNxsFormLayer"
+           uvnxs.publication.interfaces.IUvNxsFormLayer"
       />
 
   <z3c:widgetTemplate

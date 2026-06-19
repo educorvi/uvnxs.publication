@@ -2,7 +2,8 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag=""
 >
-  <xml-editor initial-value="${view/value}"
+  <xml-editor formatbuttontext="${view/formatButtonText}"
+              initial-value="${view/value}"
               name="${view/name}"
   ></xml-editor>
 </html>

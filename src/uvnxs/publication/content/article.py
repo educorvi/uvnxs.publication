@@ -261,7 +261,7 @@ class IArticle(ICommon):
     keywords = schema.List(
         title=_("Keywords"),
         description=_(
-            "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd" #NOQA: E501
+            "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"  # NOQA: E501
         ),
         value_type=schema.TextLine(),
         required=False,
