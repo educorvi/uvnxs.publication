@@ -18252,7 +18252,7 @@ var nE, rE, iE, aE, oE = o((() => {
 				n.value = e;
 			});
 			function i() {
-				n.value = (0, TE.default)(n.value);
+				n.value = (0, TE.default)(`<root>${n.value}</root>`).replace(/^<root>[\r\n]{0,}/g, "").replace(/[\r\n]{0,}<\/root>$/g, "");
 			}
 			return (r, a) => (Hr(), Kr(va, null, [Xr("div", EE, [e.disabled ? ti("", !0) : (Hr(), Kr("button", {
 				key: 0,

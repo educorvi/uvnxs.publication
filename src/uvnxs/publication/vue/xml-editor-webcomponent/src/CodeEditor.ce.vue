@@ -23,13 +23,18 @@ watch(() => props.initialValue, (newValue) => {
 })
 
 function formatXml() {
-  codeModel.value = xmlFormat(codeModel.value)
+  const rootXml = `<root>${codeModel.value}</root>`
+  codeModel.value = xmlFormat(rootXml)
+    .replace(/^<root>[\r\n]{0,}/g, '')
+    .replace(/[\r\n]{0,}<\/root>$/g, '')
 }
 </script>
 
 <template>
   <div class="card">
-    <button class="btn btn-outline-light w-100" v-if="!disabled" @click.stop.prevent="formatXml">{{formatButtonText || 'Reformat'}}</button>
+    <button class="btn btn-outline-light w-100" v-if="!disabled" @click.stop.prevent="formatXml">
+      {{ formatButtonText || 'Reformat' }}
+    </button>
     <codemirror
       style="max-height: 500px"
       v-model="codeModel"
