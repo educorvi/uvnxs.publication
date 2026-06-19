@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a9 (2026-06-19)
+
+
+### Bug fixes:
+
+- allow xml formatting even if there are multiple root nodes [#2b939a2](https://github.com/educorvi/uvnxs.publication/issues/2b939a2)
+
 ## 1.0.0a8 (2026-06-19)
 
 No significant changes.
