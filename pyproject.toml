@@ -91,6 +91,9 @@ exclude = [
   "/tests/testdata",
 ]
 
+[tool.hatch.build.targets.sdist.force-include]
+"src/uvnxs/publication/vue/xml-editor-webcomponent/dist" = "src/uvnxs/publication/vue/xml-editor-webcomponent/dist"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/uvnxs"]
 
