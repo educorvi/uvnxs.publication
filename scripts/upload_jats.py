@@ -14,19 +14,24 @@ Accepts multiple file paths and glob patterns, e.g.:
   upload_jats.py articles/*.xml --url ...
 """
 
+from lxml import etree as ET
+from pathlib import Path
+from rich.console import Console
+from rich.panel import Panel
+from rich.progress import BarColumn
+from rich.progress import Progress
+from rich.progress import SpinnerColumn
+from rich.progress import TaskProgressColumn
+from rich.progress import TextColumn
+from rich.table import Table
+
 import argparse
 import base64
 import glob as _glob
 import mimetypes
-import sys
-from lxml import etree as ET
-from pathlib import Path
-
 import requests
-from rich.console import Console
-from rich.panel import Panel
-from rich.progress import BarColumn, Progress, SpinnerColumn, TaskProgressColumn, TextColumn
-from rich.table import Table
+import sys
+
 
 console = Console(stderr=False)
 err_console = Console(stderr=True)
@@ -207,14 +212,11 @@ def upload_xml(
     }
     data = {"jats_name": jats_name}
 
-    response = requests.post(
-        upload_endpoint,
-        files=files,
-        data=data,
-        auth=auth
-    )
+    response = requests.post(upload_endpoint, files=files, data=data, auth=auth)
     response.raise_for_status()
-    console.print(f"  [green]✓[/green] Upload succeeded with status [bold]{response.status_code}[/bold]")
+    console.print(
+        f"  [green]✓[/green] Upload succeeded with status [bold]{response.status_code}[/bold]"
+    )
     return response
 
 
@@ -265,11 +267,15 @@ def process_xml(
     article_title = extract_article_title(tree)
     # Use explicit CLI name > JATS title > filename stem as fallback
     resolved_name = jats_name or article_title or xml_path.stem
-    console.print(Panel(f"[bold]{resolved_name}[/bold]", title=str(xml_path), expand=False))
+    console.print(
+        Panel(f"[bold]{resolved_name}[/bold]", title=str(xml_path), expand=False)
+    )
 
     # --- Step 1: find local image references ---
     image_elements = find_image_refs(tree)
-    console.print(f"  Found [cyan]{len(image_elements)}[/cyan] local image reference(s).")
+    console.print(
+        f"  Found [cyan]{len(image_elements)}[/cyan] local image reference(s)."
+    )
 
     # --- Step 2: upload images and rewrite hrefs ---
     uploaded: dict[str, str] = {}
@@ -300,7 +306,9 @@ def process_xml(
                 progress.advance(task)
                 continue
 
-            progress.update(task, description=f"Uploading [bold]{image_path.name}[/bold]…")
+            progress.update(
+                task, description=f"Uploading [bold]{image_path.name}[/bold]…"
+            )
             try:
                 plone_url = upload_image(image_path, images_url, auth)
             except requests.HTTPError as exc:
@@ -328,7 +336,10 @@ def process_xml(
         console=console,
         transient=True,
     ) as progress:
-        progress.add_task(f"Uploading JATS XML to [dim]{article_url}/@@upload-jats-view[/dim]…", total=None)
+        progress.add_task(
+            f"Uploading JATS XML to [dim]{article_url}/@@upload-jats-view[/dim]…",
+            total=None,
+        )
         try:
             upload_xml(xml_bytes, resolved_name, article_url, auth)
         except requests.HTTPError as exc:
@@ -337,7 +348,9 @@ def process_xml(
             )
             raise
 
-    console.print(f"  [green bold]✓ Done.[/green bold] Article [bold]{resolved_name!r}[/bold] imported successfully.\n")
+    console.print(
+        f"  [green bold]✓ Done.[/green bold] Article [bold]{resolved_name!r}[/bold] imported successfully.\n"
+    )
 
 
 def main() -> None:
@@ -365,7 +378,9 @@ def main() -> None:
     errors: list[Path] = []
     for xml_path in xml_paths:
         if not xml_path.is_file():
-            err_console.print(f"[red]Error:[/red] XML file not found: [bold]{xml_path}[/bold]")
+            err_console.print(
+                f"[red]Error:[/red] XML file not found: [bold]{xml_path}[/bold]"
+            )
             errors.append(xml_path)
             continue
 
@@ -387,9 +402,7 @@ def main() -> None:
     console.print(table)
 
     if errors:
-        err_console.print(
-            f"\n[red bold]{len(errors)} file(s) failed.[/red bold]"
-        )
+        err_console.print(f"\n[red bold]{len(errors)} file(s) failed.[/red bold]")
         sys.exit(1)
 
 

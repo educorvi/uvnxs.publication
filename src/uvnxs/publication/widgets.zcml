@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    >
+
+  <adapter
+      factory=".widgets.xml_editor.XmlEditorFieldWidget"
+      provides="z3c.form.interfaces.IFieldWidget"
+      for="zope.schema.interfaces.IField
+           uvnxs.publication.interfaces.IUvNxsFormLayer"
+      />
+
+  <z3c:widgetTemplate
+      widget=".interfaces.IXmlEditorWidget"
+      template="widgets/xml_editor.pt"
+      layer="uvnxs.publication.interfaces.IUvNxsFormLayer"
+      mode="input"
+      />
+
+  <z3c:widgetTemplate
+      widget=".interfaces.IXmlEditorWidget"
+      template="widgets/xml_editor_display.pt"
+      layer="uvnxs.publication.interfaces.IUvNxsFormLayer"
+      mode="display"
+      />
+
+</configure>

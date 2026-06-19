@@ -1,7 +1,6 @@
 from plone.dexterity.content import Container
-from zope.interface import implementer
-
 from uvnxs.publication.content.common import ICommon
+from zope.interface import implementer
 
 
 class IBack(ICommon):

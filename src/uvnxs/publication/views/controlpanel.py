@@ -8,7 +8,9 @@ from uvnxs.publication.interfaces import IUvnxsPublicationSettings
 class UvnxsPublicationSettingsEditForm(RegistryEditForm):
     schema = IUvnxsPublicationSettings
     schema_prefix = "uvnxs.publication"
-    label = _("label_uvnxs_publication_settings", default="UVNXS Publication Einstellungen")
+    label = _(
+        "label_uvnxs_publication_settings", default="UVNXS Publication Einstellungen"
+    )
 
 
 UvnxsPublicationSettingsView = layout.wrap_form(

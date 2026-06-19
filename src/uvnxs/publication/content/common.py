@@ -1,4 +1,6 @@
+from plone.autoform import directives as form
 from plone.supermodel import model
+from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 from zope import schema
 
 
@@ -44,3 +46,5 @@ class IGeneralSection(model.Schema):
         description="The content of the section, equals to content in the XML",
         required=False,
     )
+
+    form.widget(content_raw=XmlEditorFieldWidget, label_title_raw=XmlEditorFieldWidget)

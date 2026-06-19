@@ -189,6 +189,7 @@ preview = true
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["E501", "RUF001", "S101"]
+"scripts/*" = ["ALL"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
