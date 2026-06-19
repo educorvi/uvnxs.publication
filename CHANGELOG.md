@@ -9,6 +9,20 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a7 (2026-06-19)
+
+
+### New features:
+
+- xml editor [#b8590ca](https://github.com/educorvi/uvnxs.publication/issues/b8590ca)
+
+
+### Internal:
+
+- pr review feedback [#5b357a4](https://github.com/educorvi/uvnxs.publication/issues/5b357a4)
+- linting [#78035e3](https://github.com/educorvi/uvnxs.publication/issues/78035e3)
+- translations [#e8e4df6](https://github.com/educorvi/uvnxs.publication/issues/e8e4df6)
+
 ## 1.0.0a6 (2026-06-05)
 
 
