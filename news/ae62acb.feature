@@ -1,0 +1,1 @@
+add content type BauaDocument
