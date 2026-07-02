@@ -3,13 +3,17 @@ from plone.supermodel import model
 from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 from zope import schema
 
+from uvnxs.publication import _
+
 
 class ICommon(model.Schema):
     """Marker interface and Dexterity Python Schema for Common"""
 
     title = schema.TextLine(
-        title="Title",
-        description="The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes.",  # noqa: E501
+        title=_("Title"),
+        description=_(
+            "The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes."  # noqa: E501
+        ),
         required=True,
     )
 

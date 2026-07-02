@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-19 08:21+0000\n"
+"POT-Creation-Date: 2026-07-02 12:51+0000\n"
 "PO-Revision-Date: 2026-05-15 16:14+0200\n"
 "Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -18,9 +18,17 @@ msgstr ""
 "Domain: uvnxs.publication\n"
 "Language: de\n"
 
+#: uvnxs/publication/profiles/default/types/BauaDocument.xml
+msgid "A document for the Bundesanstalt für Arbeitsschutz und Arbeitsmedizin"
+msgstr "Ein Dokument für die Bundesanstalt für Arbeitsschutz und Arbeitsmedizin"
+
 #: uvnxs/publication/content/article.py:227
 msgid "Abstracts & Keywords"
 msgstr "Abstracts & Schlüsselwörter"
+
+#: uvnxs/publication/content/baua_document.py:24
+msgid "Additional Information"
+msgstr "Zusatzinformationen"
 
 #: uvnxs/publication/profiles/default/types/Appendix.xml
 msgid "Appendix"
@@ -74,6 +82,10 @@ msgstr "Backmatter"
 msgid "Back of a JATS Document"
 msgstr "Backmatter eines JATS-Dokuments"
 
+#: uvnxs/publication/profiles/default/types/BauaDocument.xml
+msgid "BauaDocument"
+msgstr "Baua-Dokument"
+
 #: uvnxs/publication/content/article.py:289
 msgid "Beschreibender Typ"
 msgstr "Beschreibender Typ"
@@ -105,6 +117,10 @@ msgstr "Zugehörigkeit des Co-Autors"
 #: uvnxs/publication/content/article.py:139
 msgid "Co-Author Surname"
 msgstr "Nachname des Co-Autors"
+
+#: uvnxs/publication/content/easy_section.py:29
+msgid "Content"
+msgstr "Inhalt"
 
 #: uvnxs/publication/content/article.py:204
 msgid "Copyright"
@@ -162,9 +178,21 @@ msgstr "Entspricht custom-meta 'Überschriften mit Nummerierung' im JATS XML."
 msgid "DGUV Metadata"
 msgstr "DGUV-Metadaten"
 
+#: uvnxs/publication/profiles/default/types/EasySection.xml
+msgid "Easy to use alternative to the Section"
+msgstr ""
+
+#: uvnxs/publication/profiles/default/types/EasySection.xml
+msgid "EasySection"
+msgstr ""
+
 #: uvnxs/publication/content/article.py:315
 msgid "Fachbereich"
 msgstr "Fachbereich"
+
+#: uvnxs/publication/content/baua_document.py:14
+msgid "File"
+msgstr "Datei"
 
 #: uvnxs/publication/profiles/default/types/Front.xml
 msgid "Front"
@@ -322,6 +350,10 @@ msgstr "Zeitschriftentitel"
 msgid "Keywords"
 msgstr "Schlüsselwörter"
 
+#: uvnxs/publication/content/easy_section.py:17
+msgid "Label"
+msgstr ""
+
 #: uvnxs/publication/content/article.py:195
 msgid "Latest Version Year"
 msgstr "Jahr der neuesten Version"
@@ -329,6 +361,10 @@ msgstr "Jahr der neuesten Version"
 #: uvnxs/publication/content/article.py:309
 msgid "Organisationseinheit"
 msgstr "Organisationseinheit"
+
+#: uvnxs/publication/content/baua_document.py:29
+msgid "Original URL"
+msgstr "Originale URL"
 
 #: uvnxs/publication/profiles.zcml:13
 msgid "Package to configure a new uvnxs.publication site"
@@ -414,6 +450,10 @@ msgstr "Titel der Kurzfassung"
 msgid "Status"
 msgstr "Status"
 
+#: uvnxs/publication/content/baua_document.py:19
+msgid "Subtitle"
+msgstr "Untertitel"
+
 #: uvnxs/publication/content/article.py:256
 msgid "Summary Abstract"
 msgstr "Zusammenfassung"
@@ -422,9 +462,30 @@ msgstr "Zusammenfassung"
 msgid "Summary Abstract Title"
 msgstr "Titel der Zusammenfassung"
 
+#: uvnxs/publication/content/easy_section.py:30
+msgid "The content of the section"
+msgstr "Der Inhalt des Abschnitts"
+
+#: uvnxs/publication/content/easy_section.py:18
+msgid "The label of the section, i.e. 'III'"
+msgstr "Das Label des Abschnitts, z. B. 'III'"
+
 #: uvnxs/publication/content/front.py:15
 msgid "The raw XML content of the Front section."
 msgstr "Der rohe XML-Inhalt des Frontmatter-Abschnitts."
+
+#: uvnxs/publication/content/common.py:14
+msgid "The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes."
+msgstr "Der Titel wird verwendet, um die ID zu generieren. Nachdem die ID generiert wurde, kann der Titel geändert werden, ohne dass die ID verändert wird. Der Titel wird nicht angezeigt."
+
+#: uvnxs/publication/content/easy_section.py:24
+msgid "The title of the section"
+msgstr "Der Titel des Abschnitts"
+
+#: uvnxs/publication/content/common.py:13
+#: uvnxs/publication/content/easy_section.py:23
+msgid "Title"
+msgstr "Titel"
 
 #: uvnxs/publication/profiles/default/controlpanel.xml
 msgid "UVNXS Publication"

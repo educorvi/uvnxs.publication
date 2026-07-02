@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-19 08:21+0000\n"
+"POT-Creation-Date: 2026-07-02 12:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: uvnxs.publication\n"
 
+#: uvnxs/publication/profiles/default/types/BauaDocument.xml
+msgid "A document for the Bundesanstalt für Arbeitsschutz und Arbeitsmedizin"
+msgstr ""
+
 #: uvnxs/publication/content/article.py:227
 msgid "Abstracts & Keywords"
+msgstr ""
+
+#: uvnxs/publication/content/baua_document.py:24
+msgid "Additional Information"
 msgstr ""
 
 #: uvnxs/publication/profiles/default/types/Appendix.xml
@@ -73,6 +81,10 @@ msgstr ""
 msgid "Back of a JATS Document"
 msgstr ""
 
+#: uvnxs/publication/profiles/default/types/BauaDocument.xml
+msgid "BauaDocument"
+msgstr ""
+
 #: uvnxs/publication/content/article.py:289
 msgid "Beschreibender Typ"
 msgstr ""
@@ -103,6 +115,10 @@ msgstr ""
 
 #: uvnxs/publication/content/article.py:139
 msgid "Co-Author Surname"
+msgstr ""
+
+#: uvnxs/publication/content/easy_section.py:29
+msgid "Content"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:204
@@ -161,8 +177,20 @@ msgstr ""
 msgid "DGUV Metadata"
 msgstr ""
 
+#: uvnxs/publication/profiles/default/types/EasySection.xml
+msgid "Easy to use alternative to the Section"
+msgstr ""
+
+#: uvnxs/publication/profiles/default/types/EasySection.xml
+msgid "EasySection"
+msgstr ""
+
 #: uvnxs/publication/content/article.py:315
 msgid "Fachbereich"
+msgstr ""
+
+#: uvnxs/publication/content/baua_document.py:14
+msgid "File"
 msgstr ""
 
 #: uvnxs/publication/profiles/default/types/Front.xml
@@ -321,12 +349,20 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
+#: uvnxs/publication/content/easy_section.py:17
+msgid "Label"
+msgstr ""
+
 #: uvnxs/publication/content/article.py:195
 msgid "Latest Version Year"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:309
 msgid "Organisationseinheit"
+msgstr ""
+
+#: uvnxs/publication/content/baua_document.py:29
+msgid "Original URL"
 msgstr ""
 
 #: uvnxs/publication/profiles.zcml:13
@@ -413,6 +449,10 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+#: uvnxs/publication/content/baua_document.py:19
+msgid "Subtitle"
+msgstr ""
+
 #: uvnxs/publication/content/article.py:256
 msgid "Summary Abstract"
 msgstr ""
@@ -421,8 +461,29 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
+#: uvnxs/publication/content/easy_section.py:30
+msgid "The content of the section"
+msgstr ""
+
+#: uvnxs/publication/content/easy_section.py:18
+msgid "The label of the section, i.e. 'III'"
+msgstr ""
+
 #: uvnxs/publication/content/front.py:15
 msgid "The raw XML content of the Front section."
+msgstr ""
+
+#: uvnxs/publication/content/common.py:14
+msgid "The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes."
+msgstr ""
+
+#: uvnxs/publication/content/easy_section.py:24
+msgid "The title of the section"
+msgstr ""
+
+#: uvnxs/publication/content/common.py:13
+#: uvnxs/publication/content/easy_section.py:23
+msgid "Title"
 msgstr ""
 
 #: uvnxs/publication/profiles/default/controlpanel.xml

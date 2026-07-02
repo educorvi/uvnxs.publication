@@ -1,0 +1,31 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "BauaDocument"
+msgstr "Baua-Dokument"
+
+msgid "Appendix"
+msgstr "Anhang"
+
+msgid "AppendixGroup"
+msgstr "Anhanggruppe"
+
+msgid "Article"
+msgstr "Artikel"
+
+msgid "Back"
+msgstr "Backmatter"
+
+msgid "Body"
+msgstr "Hauptteil"
+
+msgid "EasySection"
+msgstr ""
+
+msgid "Front"
+msgstr "Frontmatter"
+
+msgid "Section"
+msgstr "Abschnitt"
