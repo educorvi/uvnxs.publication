@@ -8,4 +8,5 @@
   <object meta_type="Dexterity FTI" name="AppendixGroup"/>
   <object meta_type="Dexterity FTI" name="Appendix"/>
   <object meta_type="Dexterity FTI" name="EasySection" />
+  <object meta_type="Dexterity FTI" name="BauaDocument" />
 </object>
