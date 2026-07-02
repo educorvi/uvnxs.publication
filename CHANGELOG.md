@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a11 (2026-07-02)
+
+
+### New features:
+
+- add content type BauaDocument [#ae62acb](https://github.com/educorvi/uvnxs.publication/issues/ae62acb)
+
+
+### Bug fixes:
+
+- pyproject.toml [#007a712](https://github.com/educorvi/uvnxs.publication/issues/007a712)
+- translations [#4e3e9b0](https://github.com/educorvi/uvnxs.publication/issues/4e3e9b0)
+
 ## 1.0.0a10 (2026-06-19)
 
 
