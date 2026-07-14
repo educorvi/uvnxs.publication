@@ -382,6 +382,26 @@ def update_front_content_from_article(article, event):
         front._updating_from_article = False
 
 
+def create_front_body_back_in_article(article, event):
+    """Create a front, body and back in the article when it is added."""
+    if getattr(article, "portal_type", None) != "Article":
+        return
+
+    # Create Front, Body, and Back objects if they don't exist
+    for sub_type in ("Front", "Body", "Back"):
+        if not any(
+            getattr(item, "portal_type", None) == sub_type
+            for item in article.objectValues()
+        ):
+            api.content.create(
+                container=article, type=sub_type, title=sub_type, id=sub_type.lower()
+            )
+
+            if sub_type == "Front":
+                # Initialize Front.content_raw with the current Article metadata
+                update_front_content_from_article(article, event)
+
+
 def article_ancestor_change_handler(obj, event):
     """
     Event handler to find and print the 'Article' ancestor of a modified object.
