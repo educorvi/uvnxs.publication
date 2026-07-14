@@ -8,6 +8,8 @@ from Acquisition import aq_parent
 from lxml import etree as ET
 from plone import api
 
+from uvnxs.publication import logger
+
 import datetime
 import jats_importexport_client
 
@@ -388,8 +390,11 @@ def article_ancestor_change_handler(obj, event):
     while current_obj is not None:
         if IArticle.providedBy(current_obj):
             path = api.content.get_path(current_obj, relative=True)
-            api_instance = jats_importexport_client.ExportApi(get_api_client())
-            api_instance.clear_export_cache(path=path)
+            try:
+                api_instance = jats_importexport_client.ExportApi(get_api_client())
+                api_instance.clear_export_cache(path=path)
+            except Exception as e:
+                logger.error(f"Error clearing export cache for {path}: {e}")
             return
         # Traverse up the acquisition chain
         current_obj = aq_parent(current_obj)
