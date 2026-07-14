@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a12 (2026-07-14)
+
+
+### Bug fixes:
+
+- add error handling for export cache clearing [#8f84fc6](https://github.com/educorvi/uvnxs.publication/issues/8f84fc6)
+
 ## 1.0.0a11 (2026-07-02)
 
 
