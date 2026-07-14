@@ -1,10 +1,9 @@
 from plone.dexterity.content import Container
 from plone.namedfile.field import NamedBlobFile
-from uvnxs.publication.content.common import ICommon
-from zope.interface import implementer
-from zope import schema
-
 from uvnxs.publication import _
+from uvnxs.publication.content.common import ICommon
+from zope import schema
+from zope.interface import implementer
 
 
 class IBauaDocument(ICommon):

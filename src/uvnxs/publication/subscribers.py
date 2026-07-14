@@ -7,7 +7,6 @@ from .views.common import get_api_client
 from Acquisition import aq_parent
 from lxml import etree as ET
 from plone import api
-
 from uvnxs.publication import logger
 
 import datetime

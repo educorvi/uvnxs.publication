@@ -3,15 +3,13 @@
 from plone.app.textfield import RichText
 from plone.dexterity.content import Container
 from plone.supermodel import model
+from uvnxs.publication import _
 from zope import schema
 from zope.interface import implementer
 
-from uvnxs.publication import _
-
 
 class IEasySection(model.Schema):
-    """ Marker interface and Dexterity Python Schema for EasySection
-    """
+    """Marker interface and Dexterity Python Schema for EasySection"""
 
     label = schema.TextLine(
         title=_("Label"),
@@ -28,13 +26,11 @@ class IEasySection(model.Schema):
     content = RichText(
         title=_("Content"),
         description=_("The content of the section"),
-        default_mime_type='text/html',
-        output_mime_type='text/x-html-safe',
+        default_mime_type="text/html",
+        output_mime_type="text/x-html-safe",
     )
-
 
 
 @implementer(IEasySection)
 class EasySection(Container):
-    """ Content-type class for IEasySection
-    """
+    """Content-type class for IEasySection"""
