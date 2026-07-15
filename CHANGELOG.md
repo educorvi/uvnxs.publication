@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a13 (2026-07-15)
+
+
+### Bug fixes:
+
+- update wheel config to force-include XML editor webcomponent files [#6351560](https://github.com/educorvi/uvnxs.publication/issues/6351560)
+
 ## 1.0.0a12 (2026-07-14)
 
 
