@@ -7,6 +7,7 @@ from .views.common import get_api_client
 from Acquisition import aq_parent
 from lxml import etree as ET
 from plone import api
+from zope.lifecycleevent.interfaces import IObjectMovedEvent
 
 from uvnxs.publication import logger
 
@@ -384,6 +385,9 @@ def update_front_content_from_article(article, event):
 
 def create_front_body_back_in_article(article, event):
     """Create a front, body and back in the article when it is added."""
+    if isinstance(event, IObjectMovedEvent):
+        return  # Skip if the event is a move (not an add)
+
     if getattr(article, "portal_type", None) != "Article":
         return
 
