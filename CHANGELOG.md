@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a14 (2026-07-17)
+
+
+### Bug fixes:
+
+- localize section fields and update translation files [#324399a](https://github.com/educorvi/uvnxs.publication/issues/324399a)
+
 ## 1.0.0a13 (2026-07-15)
 
 
