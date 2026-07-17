@@ -22,7 +22,9 @@ class IGeneralSection(model.Schema):
 
     sec_type = schema.TextLine(
         title=_("Type"),
-        description=_("The type of the section, equals to sec-type, app-type or content-type in the XML"),  # noqa: E501
+        description=_(
+            "The type of the section, equals to sec-type, app-type or content-type in the XML"
+        ),  # noqa: E501
         required=False,
     )
 
@@ -40,7 +42,9 @@ class IGeneralSection(model.Schema):
 
     label_title_raw = schema.Text(
         title=_("Label and Title Raw"),
-        description=_("Is generated out of label and / or title. Do not modify manually."),
+        description=_(
+            "Is generated out of label and / or title. Do not modify manually."
+        ),  # noqa: E501
         required=True,
     )
 
