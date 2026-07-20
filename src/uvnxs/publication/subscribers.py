@@ -8,6 +8,7 @@ from Acquisition import aq_parent
 from lxml import etree as ET
 from plone import api
 from zope.lifecycleevent.interfaces import IObjectMovedEvent
+from zope.globalrequest import getRequest
 
 from uvnxs.publication import logger
 
@@ -389,6 +390,12 @@ def create_front_body_back_in_article(article, event):
         return  # Skip if the event is a move (not an add)
 
     if getattr(article, "portal_type", None) != "Article":
+        return
+
+    # Only create Front, Body, and Back if the request URL ends with "++add++Article"
+    # and thereas the request was sent from the add form and not an API call
+    request = getRequest()
+    if not request or not request.URL.endswith("++add++Article"):
         return
 
     # Create Front, Body, and Back objects if they don't exist
