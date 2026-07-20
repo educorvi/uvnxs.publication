@@ -48,4 +48,16 @@
       permission="cmf.ManagePortal"
       />
 
+  <browser:page
+      name="jats-list-view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".jats_list_view.JatsListView"
+      template="jats_list_view.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="JATS List View"
+      i18n:domain="uvnxs.publication"
+      />
+
 </configure>
