@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-17 14:35+0000\n"
+"POT-Creation-Date: 2026-07-20 14:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,7 @@ msgid "Article"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:121
+#: uvnxs/publication/views/jats_list_view.pt:13
 msgid "Article ID"
 msgstr ""
 
@@ -117,7 +118,7 @@ msgstr ""
 msgid "Co-Author Surname"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:48
+#: uvnxs/publication/content/common.py:52
 #: uvnxs/publication/content/easy_section.py:27
 msgid "Content"
 msgstr ""
@@ -210,12 +211,16 @@ msgstr ""
 msgid "Initial Publication Year"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:43
+#: uvnxs/publication/content/common.py:45
 msgid "Is generated out of label and / or title. Do not modify manually."
 msgstr ""
 
 #: uvnxs/publication/views/configure.zcml:20
 msgid "JATS HTML View"
+msgstr ""
+
+#: uvnxs/publication/views/configure.zcml:61
+msgid "JATS List View"
 msgstr ""
 
 #: uvnxs/publication/views/configure.zcml:40
@@ -354,12 +359,12 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:30
+#: uvnxs/publication/content/common.py:32
 #: uvnxs/publication/content/easy_section.py:15
 msgid "Label"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:42
+#: uvnxs/publication/content/common.py:44
 msgid "Label and Title Raw"
 msgstr ""
 
@@ -460,6 +465,7 @@ msgid "Status"
 msgstr ""
 
 #: uvnxs/publication/content/baua_document.py:18
+#: uvnxs/publication/views/jats_list_view.pt:14
 msgid "Subtitle"
 msgstr ""
 
@@ -475,11 +481,11 @@ msgstr ""
 msgid "The content of the section"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:49
+#: uvnxs/publication/content/common.py:53
 msgid "The content of the section, equals to content in the XML"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:31
+#: uvnxs/publication/content/common.py:33
 msgid "The label of the section, equals to label in the XML"
 msgstr ""
 
@@ -499,7 +505,7 @@ msgstr ""
 msgid "The title of the section"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:37
+#: uvnxs/publication/content/common.py:39
 msgid "The title of the section, equals to title in the XML"
 msgstr ""
 
@@ -509,6 +515,7 @@ msgstr ""
 
 #: uvnxs/publication/content/common.py:12
 #: uvnxs/publication/content/easy_section.py:21
+#: uvnxs/publication/views/jats_list_view.pt:14
 msgid "Title"
 msgstr ""
 
@@ -541,6 +548,16 @@ msgstr ""
 #. Default: "API Key für den JATS ImportExport Hub verwenden"
 #: uvnxs/publication/interfaces.py:36
 msgid "help_use_api_key"
+msgstr ""
+
+#. Default: "Publication Date"
+#: uvnxs/publication/views/jats_list_view.pt:15
+msgid "jats-list-view_publication_date"
+msgstr ""
+
+#. Default: "Updated"
+#: uvnxs/publication/views/jats_list_view.pt:15
+msgid "jats-list-view_updated"
 msgstr ""
 
 #. Default: "API Key"
