@@ -1,4 +1,3 @@
-from edi.jsonforms import _
 from Products.Five.browser import BrowserView
 
 
