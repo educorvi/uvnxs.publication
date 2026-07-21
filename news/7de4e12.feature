@@ -1,0 +1,1 @@
+allow EasySections inside Sections
