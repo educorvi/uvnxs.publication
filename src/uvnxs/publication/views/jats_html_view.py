@@ -1,6 +1,7 @@
 from plone import api
 from Products.Five.browser import BrowserView
 from uvnxs.publication import _
+from uvnxs.publication import logger
 from uvnxs.publication.views.common import get_api_client
 from zope.interface import implementer
 from zope.interface import Interface
@@ -29,9 +30,8 @@ class JATSHtmlView(BrowserView):
                 " the front and/or body are missing."
             )
         except Exception as e:
-            self.html = _("Error while exporting the article to HTML: {error}").format(
-                error=str(e)
-            )
+            logger.exception(f"Error while exporting the article to HTML: {e}")
+            self.html = _("Error while exporting the article to HTML.")
         return self.index()
 
 
