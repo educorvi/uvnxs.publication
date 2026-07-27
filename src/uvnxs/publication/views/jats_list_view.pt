@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="uvnxs.publication"
+>
+  <body>
+    <metal:block fill-slot="content-core">
+      <table class="table">
+        <thead>
+          <tr>
+            <th i18n:translate="">Article ID</th>
+            <th><span i18n:translate="">Title</span><br /><small i18n:translate="">Subtitle</small></th>
+            <th><span i18n:translate="jats-list-view_publication_date">Publication Date</span>
+              <small i18n:translate="jats-list-view_updated">Updated</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr tal:repeat="doc view/jats_documents">
+            <td>
+              <a tal:content="doc/article-id"
+                 tal:attributes="
+                   href doc/url;
+                 "
+              >Article ID</a>
+            </td>
+            <td>
+              <a tal:attributes="
+                   href doc/url;
+                 "><span tal:content="doc/title">Title</span><br /><small tal:content="doc/subtitle">Subtitle</small></a>
+            </td>
+            <td>
+              <span tal:content="doc/pub_date">Publication Date</span><br /><small tal:content="doc/pub_date_updated">Updated</small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </metal:block>
+    <!-- <metal:block fill-slot="style_slot">
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/html-export.css;
+            "
+      />
+    </metal:block> -->
+  </body>
+</html>

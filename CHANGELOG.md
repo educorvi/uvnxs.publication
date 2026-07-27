@@ -9,6 +9,46 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a15 (2026-07-21)
+
+
+### New features:
+
+- allow EasySections inside Sections [#7de4e12](https://github.com/educorvi/uvnxs.publication/issues/7de4e12)
+- add jats-list-view [#234861](https://github.com/educorvi/uvnxs.publication/issues/234861)
+
+
+### Bug fixes:
+
+- update translations [#02523cf](https://github.com/educorvi/uvnxs.publication/issues/02523cf)
+- remove wheel.force-include from pyproject.toml [#4083699](https://github.com/educorvi/uvnxs.publication/issues/4083699)
+
+
+### Internal:
+
+- upgrade step [#2116f14](https://github.com/educorvi/uvnxs.publication/issues/2116f14)
+
+## 1.0.0a14 (2026-07-17)
+
+
+### Bug fixes:
+
+- localize section fields and update translation files [#324399a](https://github.com/educorvi/uvnxs.publication/issues/324399a)
+
+## 1.0.0a13 (2026-07-15)
+
+
+### Bug fixes:
+
+- update wheel config to force-include XML editor webcomponent files [#6351560](https://github.com/educorvi/uvnxs.publication/issues/6351560)
+
+## 1.0.0a12 (2026-07-14)
+
+
+### Bug fixes:
+
+- add error handling for export cache clearing [#8f84fc6](https://github.com/educorvi/uvnxs.publication/issues/8f84fc6)
+
 ## 1.0.0a11 (2026-07-02)
 
 

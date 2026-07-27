@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-02 12:51+0000\n"
+"POT-Creation-Date: 2026-07-20 14:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Abstracts & Keywords"
 msgstr ""
 
-#: uvnxs/publication/content/baua_document.py:24
+#: uvnxs/publication/content/baua_document.py:23
 msgid "Additional Information"
 msgstr ""
 
@@ -47,6 +47,7 @@ msgid "Article"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:121
+#: uvnxs/publication/views/jats_list_view.pt:13
 msgid "Article ID"
 msgstr ""
 
@@ -114,7 +115,8 @@ msgstr ""
 msgid "Co-Author Surname"
 msgstr ""
 
-#: uvnxs/publication/content/easy_section.py:29
+#: uvnxs/publication/content/common.py:52
+#: uvnxs/publication/content/easy_section.py:27
 msgid "Content"
 msgstr ""
 
@@ -186,7 +188,7 @@ msgstr ""
 msgid "Fachbereich"
 msgstr ""
 
-#: uvnxs/publication/content/baua_document.py:14
+#: uvnxs/publication/content/baua_document.py:13
 msgid "File"
 msgstr ""
 
@@ -206,8 +208,16 @@ msgstr ""
 msgid "Initial Publication Year"
 msgstr ""
 
+#: uvnxs/publication/content/common.py:45
+msgid "Is generated out of label and / or title. Do not modify manually."
+msgstr ""
+
 #: uvnxs/publication/views/configure.zcml:20
 msgid "JATS HTML View"
+msgstr ""
+
+#: uvnxs/publication/views/configure.zcml:61
+msgid "JATS List View"
 msgstr ""
 
 #: uvnxs/publication/views/configure.zcml:40
@@ -346,8 +356,13 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-#: uvnxs/publication/content/easy_section.py:17
+#: uvnxs/publication/content/common.py:32
+#: uvnxs/publication/content/easy_section.py:15
 msgid "Label"
+msgstr ""
+
+#: uvnxs/publication/content/common.py:44
+msgid "Label and Title Raw"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:195
@@ -358,7 +373,7 @@ msgstr ""
 msgid "Organisationseinheit"
 msgstr ""
 
-#: uvnxs/publication/content/baua_document.py:29
+#: uvnxs/publication/content/baua_document.py:28
 msgid "Original URL"
 msgstr ""
 
@@ -446,7 +461,8 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: uvnxs/publication/content/baua_document.py:19
+#: uvnxs/publication/content/baua_document.py:18
+#: uvnxs/publication/views/jats_list_view.pt:14
 msgid "Subtitle"
 msgstr ""
 
@@ -458,11 +474,19 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
-#: uvnxs/publication/content/easy_section.py:30
+#: uvnxs/publication/content/easy_section.py:28
 msgid "The content of the section"
 msgstr ""
 
-#: uvnxs/publication/content/easy_section.py:18
+#: uvnxs/publication/content/common.py:53
+msgid "The content of the section, equals to content in the XML"
+msgstr ""
+
+#: uvnxs/publication/content/common.py:33
+msgid "The label of the section, equals to label in the XML"
+msgstr ""
+
+#: uvnxs/publication/content/easy_section.py:16
 msgid "The label of the section, i.e. 'III'"
 msgstr ""
 
@@ -470,17 +494,30 @@ msgstr ""
 msgid "The raw XML content of the Front section."
 msgstr ""
 
-#: uvnxs/publication/content/common.py:14
+#: uvnxs/publication/content/common.py:13
 msgid "The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes."
 msgstr ""
 
-#: uvnxs/publication/content/easy_section.py:24
+#: uvnxs/publication/content/easy_section.py:22
 msgid "The title of the section"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:13
-#: uvnxs/publication/content/easy_section.py:23
+#: uvnxs/publication/content/common.py:39
+msgid "The title of the section, equals to title in the XML"
+msgstr ""
+
+#: uvnxs/publication/content/common.py:25
+msgid "The type of the section, equals to sec-type, app-type or content-type in the XML"
+msgstr ""
+
+#: uvnxs/publication/content/common.py:12
+#: uvnxs/publication/content/easy_section.py:21
+#: uvnxs/publication/views/jats_list_view.pt:14
 msgid "Title"
+msgstr ""
+
+#: uvnxs/publication/content/common.py:24
+msgid "Type"
 msgstr ""
 
 #: uvnxs/publication/profiles/default/controlpanel.xml
@@ -509,6 +546,16 @@ msgstr "Base URL of JATS ImportExport Hub, e.g. https://hub.example.com"
 #: uvnxs/publication/interfaces.py:36
 msgid "help_use_api_key"
 msgstr "Use API Key when using JATS ImportExport Hub"
+
+#. Default: "Publication Date"
+#: uvnxs/publication/views/jats_list_view.pt:15
+msgid "jats-list-view_publication_date"
+msgstr ""
+
+#. Default: "Updated"
+#: uvnxs/publication/views/jats_list_view.pt:15
+msgid "jats-list-view_updated"
+msgstr ""
 
 #. Default: "API Key"
 #: uvnxs/publication/interfaces.py:45

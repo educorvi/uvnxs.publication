@@ -21,32 +21,36 @@ class IGeneralSection(model.Schema):
     """Marker interface and Dexterity Python Schema for GeneralSection"""
 
     sec_type = schema.TextLine(
-        title="Type",
-        description="The type of the section, equals to sec-type, app-type or content-type in the XML",  # noqa: E501
+        title=_("Type"),
+        description=_(
+            "The type of the section, equals to sec-type, app-type or content-type in the XML"  # noqa: E501
+        ),
         required=False,
     )
 
     label = schema.TextLine(
-        title="Label",
-        description="The label of the section, equals to label in the XML",
+        title=_("Label"),
+        description=_("The label of the section, equals to label in the XML"),
         required=False,
     )
 
     title = schema.TextLine(
-        title="Title",
-        description="The title of the section, equals to title in the XML",
+        title=_("Title"),
+        description=_("The title of the section, equals to title in the XML"),
         required=False,
     )
 
     label_title_raw = schema.Text(
-        title="Label and Title Raw",
-        description="Is generated out of label and / or title. Do not modify manually.",
+        title=_("Label and Title Raw"),
+        description=_(
+            "Is generated out of label and / or title. Do not modify manually."
+        ),
         required=True,
     )
 
     content_raw = schema.Text(
-        title="Content",
-        description="The content of the section, equals to content in the XML",
+        title=_("Content"),
+        description=_("The content of the section, equals to content in the XML"),
         required=False,
     )
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-02 12:51+0000\n"
+"POT-Creation-Date: 2026-07-20 14:00+0000\n"
 "PO-Revision-Date: 2026-05-15 16:14+0200\n"
 "Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -26,7 +26,7 @@ msgstr "Ein Dokument für die Bundesanstalt für Arbeitsschutz und Arbeitsmedizi
 msgid "Abstracts & Keywords"
 msgstr "Abstracts & Schlüsselwörter"
 
-#: uvnxs/publication/content/baua_document.py:24
+#: uvnxs/publication/content/baua_document.py:23
 msgid "Additional Information"
 msgstr "Zusatzinformationen"
 
@@ -51,6 +51,7 @@ msgid "Article"
 msgstr "Artikel"
 
 #: uvnxs/publication/content/article.py:121
+#: uvnxs/publication/views/jats_list_view.pt:13
 msgid "Article ID"
 msgstr "Artikel-ID"
 
@@ -118,7 +119,8 @@ msgstr "Zugehörigkeit des Co-Autors"
 msgid "Co-Author Surname"
 msgstr "Nachname des Co-Autors"
 
-#: uvnxs/publication/content/easy_section.py:29
+#: uvnxs/publication/content/common.py:52
+#: uvnxs/publication/content/easy_section.py:27
 msgid "Content"
 msgstr "Inhalt"
 
@@ -190,7 +192,7 @@ msgstr ""
 msgid "Fachbereich"
 msgstr "Fachbereich"
 
-#: uvnxs/publication/content/baua_document.py:14
+#: uvnxs/publication/content/baua_document.py:13
 msgid "File"
 msgstr "Datei"
 
@@ -210,9 +212,17 @@ msgstr "ISSN"
 msgid "Initial Publication Year"
 msgstr "Jahr der Erstveröffentlichung"
 
+#: uvnxs/publication/content/common.py:45
+msgid "Is generated out of label and / or title. Do not modify manually."
+msgstr "Wird aus Label und / oder Titel generiert. Bitte nicht manuell ändern."
+
 #: uvnxs/publication/views/configure.zcml:20
 msgid "JATS HTML View"
 msgstr "JATS HTML-Ansicht"
+
+#: uvnxs/publication/views/configure.zcml:61
+msgid "JATS List View"
+msgstr "JATS-Liste"
 
 #: uvnxs/publication/views/configure.zcml:40
 msgid "JATS View"
@@ -350,9 +360,14 @@ msgstr "Zeitschriftentitel"
 msgid "Keywords"
 msgstr "Schlüsselwörter"
 
-#: uvnxs/publication/content/easy_section.py:17
+#: uvnxs/publication/content/common.py:32
+#: uvnxs/publication/content/easy_section.py:15
 msgid "Label"
-msgstr ""
+msgstr "Label"
+
+#: uvnxs/publication/content/common.py:44
+msgid "Label and Title Raw"
+msgstr "Label und Titel (XML)"
 
 #: uvnxs/publication/content/article.py:195
 msgid "Latest Version Year"
@@ -362,7 +377,7 @@ msgstr "Jahr der neuesten Version"
 msgid "Organisationseinheit"
 msgstr "Organisationseinheit"
 
-#: uvnxs/publication/content/baua_document.py:29
+#: uvnxs/publication/content/baua_document.py:28
 msgid "Original URL"
 msgstr "Originale URL"
 
@@ -416,7 +431,7 @@ msgstr "URI des Verlags"
 
 #: uvnxs/publication/content/front.py:14
 msgid "Raw content"
-msgstr "Roher Inhalt"
+msgstr "XML Inhalt"
 
 #: uvnxs/publication/widgets/xml_editor.py:12
 msgid "Reformat"
@@ -450,7 +465,8 @@ msgstr "Titel der Kurzfassung"
 msgid "Status"
 msgstr "Status"
 
-#: uvnxs/publication/content/baua_document.py:19
+#: uvnxs/publication/content/baua_document.py:18
+#: uvnxs/publication/views/jats_list_view.pt:14
 msgid "Subtitle"
 msgstr "Untertitel"
 
@@ -462,30 +478,51 @@ msgstr "Zusammenfassung"
 msgid "Summary Abstract Title"
 msgstr "Titel der Zusammenfassung"
 
-#: uvnxs/publication/content/easy_section.py:30
+#: uvnxs/publication/content/easy_section.py:28
 msgid "The content of the section"
 msgstr "Der Inhalt des Abschnitts"
 
-#: uvnxs/publication/content/easy_section.py:18
+#: uvnxs/publication/content/common.py:53
+msgid "The content of the section, equals to content in the XML"
+msgstr "Der Inhalt des Abschnitts, entspricht content im XML"
+
+#: uvnxs/publication/content/common.py:33
+msgid "The label of the section, equals to label in the XML"
+msgstr "Das Label des Abschnitts, entspricht label im XML"
+
+#: uvnxs/publication/content/easy_section.py:16
 msgid "The label of the section, i.e. 'III'"
 msgstr "Das Label des Abschnitts, z. B. 'III'"
 
 #: uvnxs/publication/content/front.py:15
 msgid "The raw XML content of the Front section."
-msgstr "Der rohe XML-Inhalt des Frontmatter-Abschnitts."
+msgstr "Der XML-Inhalt des Frontmatter-Abschnitts."
 
-#: uvnxs/publication/content/common.py:14
+#: uvnxs/publication/content/common.py:13
 msgid "The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes."
 msgstr "Der Titel wird verwendet, um die ID zu generieren. Nachdem die ID generiert wurde, kann der Titel geändert werden, ohne dass die ID verändert wird. Der Titel wird nicht angezeigt."
 
-#: uvnxs/publication/content/easy_section.py:24
+#: uvnxs/publication/content/easy_section.py:22
 msgid "The title of the section"
 msgstr "Der Titel des Abschnitts"
 
-#: uvnxs/publication/content/common.py:13
-#: uvnxs/publication/content/easy_section.py:23
+#: uvnxs/publication/content/common.py:39
+msgid "The title of the section, equals to title in the XML"
+msgstr "Der Titel des Abschnitts, entspricht title im XML"
+
+#: uvnxs/publication/content/common.py:25
+msgid "The type of the section, equals to sec-type, app-type or content-type in the XML"
+msgstr "Der Typ des Abschnitts, entspricht sec-type, app-type oder content-type im XML"
+
+#: uvnxs/publication/content/common.py:12
+#: uvnxs/publication/content/easy_section.py:21
+#: uvnxs/publication/views/jats_list_view.pt:14
 msgid "Title"
 msgstr "Titel"
+
+#: uvnxs/publication/content/common.py:24
+msgid "Type"
+msgstr "Typ"
 
 #: uvnxs/publication/profiles/default/controlpanel.xml
 msgid "UVNXS Publication"
@@ -513,6 +550,16 @@ msgstr "Basis-URL des JATS ImportExport Hub, z.B. https://hub.example.com"
 #: uvnxs/publication/interfaces.py:36
 msgid "help_use_api_key"
 msgstr "API Key für den JATS ImportExport Hub verwenden"
+
+#. Default: "Publication Date"
+#: uvnxs/publication/views/jats_list_view.pt:15
+msgid "jats-list-view_publication_date"
+msgstr "Ausgabedatum"
+
+#. Default: "Updated"
+#: uvnxs/publication/views/jats_list_view.pt:15
+msgid "jats-list-view_updated"
+msgstr "aktualisierte Fassung"
 
 #. Default: "API Key"
 #: uvnxs/publication/interfaces.py:45

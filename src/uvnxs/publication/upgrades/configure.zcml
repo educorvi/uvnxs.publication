@@ -34,6 +34,15 @@
       handler=".to_1002.add_xml_editor_bundle"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1003"
+      description="Add jats-list-view as available view method on Folder FTI."
+      profile="uvnxs.publication:default"
+      source="1002"
+      destination="1003"
+      handler=".to_1003.add_jats_list_view"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
