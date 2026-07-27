@@ -1,12 +1,11 @@
 from plone import api
 from Products.Five.browser import BrowserView
+from uvnxs.publication import _
 from uvnxs.publication.views.common import get_api_client
 from zope.interface import implementer
 from zope.interface import Interface
 
 import jats_importexport_client
-
-from uvnxs.publication import _
 
 
 class IJATSHtmlView(Interface):
@@ -26,7 +25,7 @@ class JATSHtmlView(BrowserView):
             self.html = api_instance.export_html(path).dict().get("html", "")
         except jats_importexport_client.exceptions.ServiceException:
             self.html = _(
-                '<p class="error">Der Artikel kann nicht angezeigt werden, da Front und/oder Body fehlen</p>'
+                '<p class="error">Der Artikel kann nicht angezeigt werden, da Front und/oder Body fehlen</p>'  # noqa: E501
             )
         except Exception as e:
             self.html = _(

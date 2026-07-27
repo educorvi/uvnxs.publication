@@ -52,7 +52,7 @@
   <!-- Create Front, Body, Back on Article creation -->
   <subscriber
       for="uvnxs.publication.content.article.IArticle
-            zope.lifecycleevent.interfaces.IObjectAddedEvent"
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
       handler="uvnxs.publication.subscribers.create_front_and_body_in_article"
       />
   <subscriber

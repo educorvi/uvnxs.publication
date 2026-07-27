@@ -1,9 +1,8 @@
 from plone.autoform import directives as form
 from plone.supermodel import model
+from uvnxs.publication import _
 from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 from zope import schema
-
-from uvnxs.publication import _
 
 
 class ICommon(model.Schema):

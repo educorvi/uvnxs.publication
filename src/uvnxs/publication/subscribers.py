@@ -7,12 +7,10 @@ from .views.common import get_api_client
 from Acquisition import aq_parent
 from lxml import etree as ET
 from plone import api
-from zope.lifecycleevent.interfaces import IObjectMovedEvent
-from zope.globalrequest import getRequest
-
 from plone.rest.interfaces import IAPIRequest
-
 from uvnxs.publication import logger
+from zope.globalrequest import getRequest
+from zope.lifecycleevent.interfaces import IObjectMovedEvent
 
 import datetime
 import jats_importexport_client
