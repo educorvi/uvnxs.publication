@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a16 (2026-07-27)
+
+
+### New features:
+
+- article eventhandler (#5) [#5](https://github.com/educorvi/uvnxs.publication/issues/5)
+
 ## 1.0.0a15 (2026-07-21)
 
 
