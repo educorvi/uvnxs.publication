@@ -10,6 +10,8 @@ from plone import api
 from zope.lifecycleevent.interfaces import IObjectMovedEvent
 from zope.globalrequest import getRequest
 
+from plone.rest.interfaces import IAPIRequest
+
 from uvnxs.publication import logger
 
 import datetime
@@ -384,33 +386,39 @@ def update_front_content_from_article(article, event):
         front._updating_from_article = False
 
 
-def create_front_body_back_in_article(article, event):
-    """Create a front, body and back in the article when it is added."""
+def create_front_and_body_in_article(article, event):
+    """Create a front and body in the article when it is added."""
     if isinstance(event, IObjectMovedEvent):
         return  # Skip if the event is a move (not an add)
 
     if getattr(article, "portal_type", None) != "Article":
         return
 
-    # Only create Front, Body, and Back if the request URL ends with "++add++Article"
-    # and thereas the request was sent from the add form and not an API call
+    # Only create Front and Body if the request was sent from the add form and
+    # not an API call
     request = getRequest()
-    if not request or not request.URL.endswith("++add++Article"):
+    if IAPIRequest.providedBy(request):
         return
 
-    # Create Front, Body, and Back objects if they don't exist
-    for sub_type in ("Front", "Body", "Back"):
+    body = None
+    # Create Front and Body objects if they don't exist
+    for sub_type in ("Front", "Body"):
         if not any(
             getattr(item, "portal_type", None) == sub_type
             for item in article.objectValues()
         ):
-            api.content.create(
+            article_child = api.content.create(
                 container=article, type=sub_type, title=sub_type, id=sub_type.lower()
             )
+            if sub_type == "Body":
+                body = article_child
 
             if sub_type == "Front":
                 # Initialize Front.content_raw with the current Article metadata
                 update_front_content_from_article(article, event)
+
+    if body is not None and request is not None:
+        request.response.redirect(f"{body.absolute_url()}")
 
 
 def article_ancestor_change_handler(obj, event):

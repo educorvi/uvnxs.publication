@@ -53,7 +53,7 @@
   <subscriber
       for="uvnxs.publication.content.article.IArticle
             zope.lifecycleevent.interfaces.IObjectAddedEvent"
-      handler="uvnxs.publication.subscribers.create_front_body_back_in_article"
+      handler="uvnxs.publication.subscribers.create_front_and_body_in_article"
       />
   <subscriber
       for="zope.container.interfaces.IContained
