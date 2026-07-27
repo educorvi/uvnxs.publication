@@ -49,6 +49,12 @@
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler="uvnxs.publication.subscribers.update_front_content_from_article"
       />
+  <!-- Create Front and Body on Article creation -->
+  <subscriber
+      for="uvnxs.publication.content.article.IArticle
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler="uvnxs.publication.subscribers.create_front_and_body_in_article"
+      />
   <subscriber
       for="zope.container.interfaces.IContained
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"

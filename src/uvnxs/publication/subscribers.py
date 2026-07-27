@@ -7,7 +7,10 @@ from .views.common import get_api_client
 from Acquisition import aq_parent
 from lxml import etree as ET
 from plone import api
+from plone.rest.interfaces import IAPIRequest
 from uvnxs.publication import logger
+from zope.globalrequest import getRequest
+from zope.lifecycleevent.interfaces import IObjectMovedEvent
 
 import datetime
 import jats_importexport_client
@@ -379,6 +382,41 @@ def update_front_content_from_article(article, event):
         front.content_raw = new_content_raw
     finally:
         front._updating_from_article = False
+
+
+def create_front_and_body_in_article(article, event):
+    """Create a front and body in the article when it is added."""
+    if IObjectMovedEvent.providedBy(event):
+        return  # Skip if the event is a move (not an add)
+
+    if getattr(article, "portal_type", None) != "Article":
+        return
+
+    # Only create Front and Body if the request was sent from the add form and
+    # not an API call
+    request = getRequest()
+    if IAPIRequest.providedBy(request):
+        return
+
+    body = None
+    # Create Front and Body objects if they don't exist
+    for sub_type in ("Front", "Body"):
+        if not any(
+            getattr(item, "portal_type", None) == sub_type
+            for item in article.objectValues()
+        ):
+            article_child = api.content.create(
+                container=article, type=sub_type, title=sub_type, id=sub_type.lower()
+            )
+            if sub_type == "Body":
+                body = article_child
+
+            if sub_type == "Front":
+                # Initialize Front.content_raw with the current Article metadata
+                update_front_content_from_article(article, event)
+
+    if body is not None and request is not None:
+        request.response.redirect(f"{body.absolute_url()}")
 
 
 def article_ancestor_change_handler(obj, event):

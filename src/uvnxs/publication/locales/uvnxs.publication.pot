@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-20 14:00+0000\n"
+"POT-Creation-Date: 2026-07-27 09:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,6 +185,10 @@ msgstr ""
 
 #: uvnxs/publication/profiles/default/types/EasySection.xml
 msgid "EasySection"
+msgstr ""
+
+#: uvnxs/publication/views/jats_html_view.py:33
+msgid "Error while exporting the article to HTML: {error}"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:315
@@ -477,6 +481,10 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
+#: uvnxs/publication/views/jats_html_view.py:27
+msgid "The article cannot be displayed in HTML format because the front and/or body are missing."
+msgstr ""
+
 #: uvnxs/publication/content/easy_section.py:28
 msgid "The content of the section"
 msgstr ""
@@ -556,7 +564,7 @@ msgid "jats-list-view_publication_date"
 msgstr ""
 
 #. Default: "Updated"
-#: uvnxs/publication/views/jats_list_view.pt:15
+#: uvnxs/publication/views/jats_list_view.pt:16
 msgid "jats-list-view_updated"
 msgstr ""
 
