@@ -5,7 +5,7 @@ from zope.i18nmessageid import MessageFactory
 import logging
 
 
-__version__ = "1.0.0a16"
+__version__ = "1.0.0a17.dev0"
 
 PACKAGE_NAME = "uvnxs.publication"
 
