@@ -25,12 +25,13 @@ class JATSHtmlView(BrowserView):
             self.html = api_instance.export_html(path).dict().get("html", "")
         except jats_importexport_client.exceptions.ServiceException:
             self.html = _(
-                '<p class="error">Der Artikel kann nicht angezeigt werden, da Front und/oder Body fehlen</p>'  # noqa: E501
+                "The article cannot be displayed in HTML format because"
+                " the front and/or body are missing."
             )
         except Exception as e:
-            self.html = _(
-                "<p>Fehler beim Exportieren des Artikels zu HTML: {error}</p>"
-            ).format(error=str(e))
+            self.html = _("Error while exporting the article to HTML: {error}").format(
+                error=str(e)
+            )
         return self.index()
 
 
