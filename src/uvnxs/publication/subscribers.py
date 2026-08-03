@@ -8,6 +8,7 @@ from Acquisition import aq_parent
 from lxml import etree as ET
 from plone import api
 from plone.rest.interfaces import IAPIRequest
+from uvnxs.publication import _
 from uvnxs.publication import logger
 from zope.globalrequest import getRequest
 from zope.lifecycleevent.interfaces import IObjectMovedEvent
@@ -399,14 +400,20 @@ def create_front_and_body_in_article(article, event):
         return
 
     body = None
+    types = ("Front", "Body")
+    titles = (_("Front"), _("Body"))
     # Create Front and Body objects if they don't exist
-    for sub_type in ("Front", "Body"):
+    for i in range(len(types)):
+        sub_type = types[i]
         if not any(
             getattr(item, "portal_type", None) == sub_type
             for item in article.objectValues()
         ):
             article_child = api.content.create(
-                container=article, type=sub_type, title=sub_type, id=sub_type.lower()
+                container=article,
+                type=sub_type,
+                title=titles[i],
+                id=sub_type.lower(),
             )
             if sub_type == "Body":
                 body = article_child

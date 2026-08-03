@@ -10,22 +10,22 @@ msgid "Appendix"
 msgstr "Anhang"
 
 msgid "AppendixGroup"
-msgstr "Anhanggruppe"
+msgstr "Anhang-Gruppe"
 
 msgid "Article"
 msgstr "Artikel"
 
 msgid "Back"
-msgstr "Backmatter"
+msgstr "Schlussteil"
 
 msgid "Body"
-msgstr "Hauptteil"
+msgstr "Textkörper"
 
 msgid "EasySection"
-msgstr ""
+msgstr "HTML-Abschnitt"
 
 msgid "Front"
-msgstr "Frontmatter"
+msgstr "Metadaten"
 
 msgid "Section"
-msgstr "Abschnitt"
+msgstr "JATS-Abschnitt"

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-07-27 09:59+0000\n"
+"POT-Creation-Date: 2026-08-03 10:09+0000\n"
 "PO-Revision-Date: 2026-05-15 16:14+0200\n"
 "Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -40,11 +40,11 @@ msgstr "Anhang eines JATS-Dokuments"
 
 #: uvnxs/publication/profiles/default/types/AppendixGroup.xml
 msgid "AppendixGroup"
-msgstr "Anhanggruppe"
+msgstr "Anhang-Gruppe"
 
 #: uvnxs/publication/profiles/default/types/AppendixGroup.xml
 msgid "AppendixGroup of a JATS Document"
-msgstr "Anhanggruppe eines JATS-Dokuments"
+msgstr "Anhang-Gruppe eines JATS-Dokuments"
 
 #: uvnxs/publication/profiles/default/types/Article.xml
 msgid "Article"
@@ -77,11 +77,11 @@ msgstr "Vom Autor erstellte Schlüsselwörter. JATS XML: kwd-group (kwd-group-ty
 
 #: uvnxs/publication/profiles/default/types/Back.xml
 msgid "Back"
-msgstr "Backmatter"
+msgstr "Schlussteil"
 
 #: uvnxs/publication/profiles/default/types/Back.xml
 msgid "Back of a JATS Document"
-msgstr "Backmatter eines JATS-Dokuments"
+msgstr "Schlussteil eines JATS-Dokuments"
 
 #: uvnxs/publication/profiles/default/types/BauaDocument.xml
 msgid "BauaDocument"
@@ -100,12 +100,13 @@ msgid "Bisherige Bestellnummer"
 msgstr "Bisherige Bestellnummer"
 
 #: uvnxs/publication/profiles/default/types/Body.xml
+#: uvnxs/publication/subscribers.py:405
 msgid "Body"
-msgstr "Hauptteil"
+msgstr "Textkörper"
 
 #: uvnxs/publication/profiles/default/types/Body.xml
 msgid "Body of a JATS Document"
-msgstr "Hauptteil eines JATS-Dokuments"
+msgstr "Textkörper eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:152
 msgid "Canonical URL. JATS XML: self-uri"
@@ -138,7 +139,7 @@ msgstr "Urheberrechtserklärung"
 
 #: uvnxs/publication/content/article.py:189
 msgid "Correction Year"
-msgstr "Korrektionsjahr"
+msgstr "Korrekturjahr"
 
 #: uvnxs/publication/content/article.py:290
 msgid "Corresponds to custom-meta 'Beschreibender Typ' in JATS XML."
@@ -182,15 +183,15 @@ msgstr "DGUV-Metadaten"
 
 #: uvnxs/publication/profiles/default/types/EasySection.xml
 msgid "Easy to use alternative to the Section"
-msgstr ""
+msgstr "Leicht zu verwenden im Vergleich zum JATS-Abschnitt"
 
 #: uvnxs/publication/profiles/default/types/EasySection.xml
 msgid "EasySection"
-msgstr ""
+msgstr "HTML-Abschnitt"
 
-#: uvnxs/publication/views/jats_html_view.py:33
-msgid "Error while exporting the article to HTML: {error}"
-msgstr "Fehler beim Exportieren des Artikels zu HTML: {error}"
+#: uvnxs/publication/views/jats_html_view.py:34
+msgid "Error while exporting the article to HTML."
+msgstr "Fehler beim Exportieren des Artikels zu HTML."
 
 #: uvnxs/publication/content/article.py:315
 msgid "Fachbereich"
@@ -201,12 +202,13 @@ msgid "File"
 msgstr "Datei"
 
 #: uvnxs/publication/profiles/default/types/Front.xml
+#: uvnxs/publication/subscribers.py:405
 msgid "Front"
-msgstr "Frontmatter"
+msgstr "Metadaten"
 
 #: uvnxs/publication/profiles/default/types/Front.xml
 msgid "Front of a JATS Document"
-msgstr "Frontmatter eines JATS-Dokuments"
+msgstr "Metadaten eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:52
 msgid "ISSN"
@@ -439,7 +441,7 @@ msgstr "XML Inhalt"
 
 #: uvnxs/publication/widgets/xml_editor.py:12
 msgid "Reformat"
-msgstr "Neu formattieren"
+msgstr "Neu formatieren"
 
 #: uvnxs/publication/content/article.py:321
 msgid "Sachgebiet"
@@ -447,7 +449,7 @@ msgstr "Sachgebiet"
 
 #: uvnxs/publication/profiles/default/types/Section.xml
 msgid "Section"
-msgstr "Abschnitt"
+msgstr "JATS-Abschnitt"
 
 #: uvnxs/publication/profiles/default/types/Section.xml
 msgid "Section of a JATS Document"
@@ -482,9 +484,9 @@ msgstr "Zusammenfassung"
 msgid "Summary Abstract Title"
 msgstr "Titel der Zusammenfassung"
 
-#: uvnxs/publication/views/jats_html_view.py:27
+#: uvnxs/publication/views/jats_html_view.py:28
 msgid "The article cannot be displayed in HTML format because the front and/or body are missing."
-msgstr "Der Artikel kann nicht als HTML angezeigt werden, weil Front und/oder Body fehlen."
+msgstr "Der Artikel kann nicht als HTML angezeigt werden, weil Metadaten und/oder Textkörper fehlen."
 
 #: uvnxs/publication/content/easy_section.py:28
 msgid "The content of the section"

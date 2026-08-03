@@ -8,12 +8,10 @@
   <!-- Basic properties -->
   <property name="title"
             i18n:translate=""
-  >Body
-  </property>
+  >Body</property>
   <property name="description"
             i18n:translate=""
-  >Body of a JATS Document
-  </property>
+  >Body of a JATS Document</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Body</property>
