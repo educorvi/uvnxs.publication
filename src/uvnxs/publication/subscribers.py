@@ -387,8 +387,6 @@ def update_front_content_from_article(article, event):
 
 def create_front_and_body_in_article(article, event):
     """Create a front and body in the article when it is added."""
-    if IObjectMovedEvent.providedBy(event):
-        return  # Skip if the event is a move (not an add)
 
     if getattr(article, "portal_type", None) != "Article":
         return
