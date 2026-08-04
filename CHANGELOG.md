@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a17 (2026-08-04)
+
+
+### Bug fixes:
+
+- fix translation issues [#ae437b4](https://github.com/educorvi/uvnxs.publication/issues/ae437b4)
+- fix article eventhandler [#50c6fb1](https://github.com/educorvi/uvnxs.publication/issues/50c6fb1)
+
+
+### Internal:
+
+- migration [#1e4b991](https://github.com/educorvi/uvnxs.publication/issues/1e4b991)
+
 ## 1.0.0a16 (2026-07-27)
 
 
