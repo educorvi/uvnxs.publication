@@ -44,13 +44,13 @@
       />
 
   <genericsetup:upgradeStep
-    title="Migrate to 1004"
-    description="Fix translation of Body, prohibit creation of Section via UI."
-    profile="uvnxs.publication:default"
-    source="1003"
-    destination="1004"
-    handler=".to_1004.apply_type_changes"
-    />
+      title="Migrate to 1004"
+      description="Fix translation of Body, prohibit creation of Section via UI."
+      profile="uvnxs.publication:default"
+      source="1003"
+      destination="1004"
+      handler=".to_1004.apply_type_changes"
+      />
 
   <!-- -*- extra stuff goes here -*- -->
 

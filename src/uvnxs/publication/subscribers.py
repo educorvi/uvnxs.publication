@@ -11,7 +11,6 @@ from plone.rest.interfaces import IAPIRequest
 from uvnxs.publication import _
 from uvnxs.publication import logger
 from zope.globalrequest import getRequest
-from zope.lifecycleevent.interfaces import IObjectMovedEvent
 
 import datetime
 import jats_importexport_client
