@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="uvnxs.publication"
+      metal:use-macro="context/main_template/macros/master">
+<body>
+
+<metal:custom_title fill-slot="content-title">
+  <h1 i18n:translate="article-by-webcode_search-title">
+    Search for articles in <span i18n:name="title" tal:replace="structure context/Title"></span>
+  </h1>
+
+  <!-- @@title view template: -->
+  <!--
+  <h1 tal:define="title context/Title" tal:condition="title" tal:content="title">
+    Title or id
+  </h1>
+  -->
+
+</metal:custom_title>
+
+<metal:custom_description fill-slot="content-description">
+
+</metal:custom_description>
+
+<metal:content-core fill-slot="content-core">
+  <metal:block define-macro="content-core">
+
+    <h2 i18n:translate="article-by-webcode_results">Results</h2>
+    <!--<div tal:replace="view/my_custom_view_method" />-->
+    <div tal:repeat="brain view/brains" >
+      <article class="search-result" tal:define="article brain/getObject">
+        <div class="search-result-content">
+          <span class="search-result-title text-xxlarge typo-strong" tal:content="article/title"></span>
+          <p class="search-result-url" tal:content="brain/getPath"></p>
+          <p class="search-result-description" tal:content="article/abstract_short"></p>
+          <a class="link-styled typo-strong" tal:attributes="href brain/getURL">
+            <span i18n:translate="article-by-webcode_link">Link</span>
+            <i class="ph ph-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <hr class="divider"/>
+      </article>
+    </div>
+
+  </metal:block>
+</metal:content-core>
+</body>
+</html>

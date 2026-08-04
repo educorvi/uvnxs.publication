@@ -54,6 +54,17 @@
       title="JATS HTML View"
       i18n:domain="uvnxs.publication"
       />
+  <browser:page
+      name="article-by-webcode"
+      for="*"
+      class=".article_by_webcode.ArticleByWebcode"
+      template="article_by_webcode.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Article by Webcode"
+      i18n:domain="uvnxs.publication"
+      />
 
   <browser:page
       name="jats-html-edit-view"

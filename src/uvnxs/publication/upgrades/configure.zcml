@@ -104,5 +104,13 @@
       destination="1010"
       handler=".to_1010.register_new_content_type"
       />
+  <genericsetup:upgradeStep
+      title="Migrate to 1011"
+      description="Add and populate the webcode catalog index."
+      profile="uvnxs.publication:default"
+      source="1010"
+      destination="1011"
+      handler=".to_1005.add_webcode_index"
+      />
 
 </configure>
