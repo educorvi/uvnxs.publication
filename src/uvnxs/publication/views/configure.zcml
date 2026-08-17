@@ -20,6 +20,18 @@
       />
 
   <browser:page
+      name="jats-html-edit-view"
+      for="uvnxs.publication.content.article.IArticle"
+      class=".jats_html_view.JATSHtmlEditView"
+      template="jats_html_view.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="JATS HTML Edit View"
+      i18n:domain="uvnxs.publication"
+      />
+
+  <browser:page
       name="jats-html-raw"
       for="uvnxs.publication.content.article.IArticle"
       class=".jats_html_view.JATSHtmlRawView"

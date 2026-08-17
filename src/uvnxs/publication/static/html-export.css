@@ -6,3 +6,7 @@ nav.jats-html-export-toc ul {
 nav.jats-html-export-toc > ul {
   padding-left: 0;
 }
+
+a.section-edit-link > i {
+  font-size: .75em;
+}

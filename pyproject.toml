@@ -35,7 +35,7 @@ dependencies = [
     "plone.restapi",
     "xmlschema",
     "lxml",
-    "jats_importexport_client >= 1.0.0a3"
+    "jats_importexport_client >= 1.0.0a15"
 ]
 
 [project.optional-dependencies]
