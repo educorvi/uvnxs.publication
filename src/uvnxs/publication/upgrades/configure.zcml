@@ -52,6 +52,15 @@
       handler=".to_1004.apply_type_changes"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1005"
+      description="Register the new article edit view."
+      profile="uvnxs.publication:default"
+      source="1004"
+      destination="1005"
+      handler=".to_1005.register_new_article_edit_view"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
