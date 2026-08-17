@@ -9,6 +9,23 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a18 (2026-08-17)
+
+
+### New features:
+
+- new edit view for jats article [#3439284](https://github.com/educorvi/uvnxs.publication/issues/3439284)
+
+
+### Bug fixes:
+
+- remove jats-view (raw) from view methods [#f3a7b3f](https://github.com/educorvi/uvnxs.publication/issues/f3a7b3f)
+
+
+### Internal:
+
+- migration [#a041b21](https://github.com/educorvi/uvnxs.publication/issues/a041b21)
+
 ## 1.0.0a17 (2026-08-04)
 
 
