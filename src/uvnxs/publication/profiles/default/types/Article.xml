@@ -67,7 +67,6 @@
   <property name="view_methods">
     <element value="view" />
     <element value="jats-html-view" />
-    <element value="jats-view" />
   </property>
 
   <!-- Method aliases -->
