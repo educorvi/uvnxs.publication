@@ -215,7 +215,7 @@ msgstr "Wird aus Label und / oder Titel generiert. Bitte nicht manuell ändern."
 
 #: uvnxs/publication/views/configure.zcml:32
 msgid "JATS HTML Edit View"
-msgstr ""
+msgstr "JATS HTML-Bearbeitungsansicht"
 
 #: uvnxs/publication/views/configure.zcml:20
 msgid "JATS HTML View"
