@@ -61,4 +61,11 @@
       handler="uvnxs.publication.subscribers.article_ancestor_change_handler"
       />
 
+  <!-- Save jats and html on article version creation -->
+  <subscriber
+      for="uvnxs.publication.content.article.IArticle
+          zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler="uvnxs.publication.subscribers.save_jats_and_html_on_version"
+  />
+
 </configure>
