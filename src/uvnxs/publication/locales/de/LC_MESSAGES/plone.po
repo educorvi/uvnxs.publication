@@ -24,8 +24,5 @@ msgstr "Textkörper"
 msgid "EasySection"
 msgstr "HTML-Abschnitt"
 
-msgid "Front"
-msgstr "Metadaten"
-
 msgid "Section"
 msgstr "JATS-Abschnitt"

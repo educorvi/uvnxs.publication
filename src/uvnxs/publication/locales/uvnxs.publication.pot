@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-03 10:09+0000\n"
+"POT-Creation-Date: 2026-08-20 13:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgid "Bisherige Bestellnummer"
 msgstr ""
 
 #: uvnxs/publication/profiles/default/types/Body.xml
-#: uvnxs/publication/subscribers.py:405
+#: uvnxs/publication/subscribers.py:31
 msgid "Body"
 msgstr ""
 
@@ -188,7 +188,7 @@ msgstr ""
 msgid "EasySection"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:34
+#: uvnxs/publication/views/jats_html_view.py:38
 msgid "Error while exporting the article to HTML."
 msgstr ""
 
@@ -198,15 +198,6 @@ msgstr ""
 
 #: uvnxs/publication/content/baua_document.py:13
 msgid "File"
-msgstr ""
-
-#: uvnxs/publication/profiles/default/types/Front.xml
-#: uvnxs/publication/subscribers.py:405
-msgid "Front"
-msgstr ""
-
-#: uvnxs/publication/profiles/default/types/Front.xml
-msgid "Front of a JATS Document"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:52
@@ -221,15 +212,19 @@ msgstr ""
 msgid "Is generated out of label and / or title. Do not modify manually."
 msgstr ""
 
+#: uvnxs/publication/views/configure.zcml:32
+msgid "JATS HTML Edit View"
+msgstr ""
+
 #: uvnxs/publication/views/configure.zcml:20
 msgid "JATS HTML View"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:61
+#: uvnxs/publication/views/configure.zcml:73
 msgid "JATS List View"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:40
+#: uvnxs/publication/views/configure.zcml:52
 msgid "JATS View"
 msgstr ""
 
@@ -434,10 +429,6 @@ msgstr ""
 msgid "Publisher URI"
 msgstr ""
 
-#: uvnxs/publication/content/front.py:14
-msgid "Raw content"
-msgstr ""
-
 #: uvnxs/publication/widgets/xml_editor.py:12
 msgid "Reformat"
 msgstr ""
@@ -483,8 +474,8 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:28
-msgid "The article cannot be displayed in HTML format because the front and/or body are missing."
+#: uvnxs/publication/views/jats_html_view.py:32
+msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 
 #: uvnxs/publication/content/easy_section.py:28
@@ -501,10 +492,6 @@ msgstr ""
 
 #: uvnxs/publication/content/easy_section.py:16
 msgid "The label of the section, i.e. 'III'"
-msgstr ""
-
-#: uvnxs/publication/content/front.py:15
-msgid "The raw XML content of the Front section."
 msgstr ""
 
 #: uvnxs/publication/content/common.py:13

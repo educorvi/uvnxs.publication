@@ -26,11 +26,6 @@
       />
 
   <permission
-      id="uvnxs.publication.AddFront"
-      title="uvnxs.publication: Add Front"
-      />
-
-  <permission
       id="uvnxs.publication.AddSection"
       title="uvnxs.publication: Add Section"
       />

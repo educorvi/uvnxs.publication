@@ -61,6 +61,15 @@
       handler=".to_1005.register_new_article_edit_view"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1006"
+      description="Delete content type Front."
+      profile="uvnxs.publication:default"
+      source="1005"
+      destination="1006"
+      handler=".to_1006.delete_content_type_front"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
