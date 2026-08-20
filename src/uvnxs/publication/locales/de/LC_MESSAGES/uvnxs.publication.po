@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-03 10:09+0000\n"
+"POT-Creation-Date: 2026-08-20 13:42+0000\n"
 "PO-Revision-Date: 2026-05-15 16:14+0200\n"
 "Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -100,7 +100,7 @@ msgid "Bisherige Bestellnummer"
 msgstr "Bisherige Bestellnummer"
 
 #: uvnxs/publication/profiles/default/types/Body.xml
-#: uvnxs/publication/subscribers.py:405
+#: uvnxs/publication/subscribers.py:31
 msgid "Body"
 msgstr "Textkörper"
 
@@ -189,7 +189,7 @@ msgstr "Leicht zu verwenden im Vergleich zum JATS-Abschnitt"
 msgid "EasySection"
 msgstr "HTML-Abschnitt"
 
-#: uvnxs/publication/views/jats_html_view.py:34
+#: uvnxs/publication/views/jats_html_view.py:38
 msgid "Error while exporting the article to HTML."
 msgstr "Fehler beim Exportieren des Artikels zu HTML."
 
@@ -200,15 +200,6 @@ msgstr "Fachbereich"
 #: uvnxs/publication/content/baua_document.py:13
 msgid "File"
 msgstr "Datei"
-
-#: uvnxs/publication/profiles/default/types/Front.xml
-#: uvnxs/publication/subscribers.py:405
-msgid "Front"
-msgstr "Metadaten"
-
-#: uvnxs/publication/profiles/default/types/Front.xml
-msgid "Front of a JATS Document"
-msgstr "Metadaten eines JATS-Dokuments"
 
 #: uvnxs/publication/content/article.py:52
 msgid "ISSN"
@@ -222,15 +213,19 @@ msgstr "Jahr der Erstveröffentlichung"
 msgid "Is generated out of label and / or title. Do not modify manually."
 msgstr "Wird aus Label und / oder Titel generiert. Bitte nicht manuell ändern."
 
+#: uvnxs/publication/views/configure.zcml:32
+msgid "JATS HTML Edit View"
+msgstr ""
+
 #: uvnxs/publication/views/configure.zcml:20
 msgid "JATS HTML View"
 msgstr "JATS HTML-Ansicht"
 
-#: uvnxs/publication/views/configure.zcml:61
+#: uvnxs/publication/views/configure.zcml:73
 msgid "JATS List View"
 msgstr "JATS-Liste"
 
-#: uvnxs/publication/views/configure.zcml:40
+#: uvnxs/publication/views/configure.zcml:52
 msgid "JATS View"
 msgstr "JATS-Ansicht"
 
@@ -435,10 +430,6 @@ msgstr "Postleitzahl des Verlags"
 msgid "Publisher URI"
 msgstr "URI des Verlags"
 
-#: uvnxs/publication/content/front.py:14
-msgid "Raw content"
-msgstr "XML Inhalt"
-
 #: uvnxs/publication/widgets/xml_editor.py:12
 msgid "Reformat"
 msgstr "Neu formatieren"
@@ -484,9 +475,9 @@ msgstr "Zusammenfassung"
 msgid "Summary Abstract Title"
 msgstr "Titel der Zusammenfassung"
 
-#: uvnxs/publication/views/jats_html_view.py:28
-msgid "The article cannot be displayed in HTML format because the front and/or body are missing."
-msgstr "Der Artikel kann nicht als HTML angezeigt werden, weil Metadaten und/oder Textkörper fehlen."
+#: uvnxs/publication/views/jats_html_view.py:32
+msgid "The article cannot be displayed in HTML format because the body is missing."
+msgstr ""
 
 #: uvnxs/publication/content/easy_section.py:28
 msgid "The content of the section"
@@ -503,10 +494,6 @@ msgstr "Das Label des Abschnitts, entspricht label im XML"
 #: uvnxs/publication/content/easy_section.py:16
 msgid "The label of the section, i.e. 'III'"
 msgstr "Das Label des Abschnitts, z. B. 'III'"
-
-#: uvnxs/publication/content/front.py:15
-msgid "The raw XML content of the Front section."
-msgstr "Der XML-Inhalt des Frontmatter-Abschnitts."
 
 #: uvnxs/publication/content/common.py:13
 msgid "The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes."

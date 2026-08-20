@@ -31,7 +31,7 @@ class JATSHtmlView(BrowserView):
         except jats_importexport_client.exceptions.ServiceException:
             self.html = _(
                 "The article cannot be displayed in HTML format because"
-                " the front and/or body are missing."
+                " the body is missing."
             )
         except Exception as e:
             logger.exception(f"Error while exporting the article to HTML: {e}")

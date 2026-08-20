@@ -31,29 +31,11 @@
   <include package=".behaviors" />
   <include package=".views" />
   <include file="widgets.zcml" />
-  <!-- Sync Article metadata from Front content_raw on add/modify -->
-  <subscriber
-      for="uvnxs.publication.content.front.IFront
-           zope.lifecycleevent.interfaces.IObjectAddedEvent"
-      handler="uvnxs.publication.subscribers.update_article_metadata_from_front"
-      />
-  <subscriber
-      for="uvnxs.publication.content.front.IFront
-           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-      handler="uvnxs.publication.subscribers.update_article_metadata_from_front"
-      />
-
-  <!-- Sync Front content_raw from Article metadata on modify -->
-  <subscriber
-      for="uvnxs.publication.content.article.IArticle
-           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-      handler="uvnxs.publication.subscribers.update_front_content_from_article"
-      />
-  <!-- Create Front and Body on Article creation -->
+  <!-- Create Body on Article creation -->
   <subscriber
       for="uvnxs.publication.content.article.IArticle
            zope.lifecycleevent.interfaces.IObjectAddedEvent"
-      handler="uvnxs.publication.subscribers.create_front_and_body_in_article"
+      handler="uvnxs.publication.subscribers.create_body_in_article"
       />
   <subscriber
       for="zope.container.interfaces.IContained

@@ -48,15 +48,6 @@
     </permission>
 
     <permission acquire="True"
-                name="uvnxs.publication: Add Front"
-    >
-      <role name="Manager" />
-      <role name="Site Administrator" />
-      <role name="Owner" />
-      <role name="Contributor" />
-    </permission>
-
-    <permission acquire="True"
                 name="uvnxs.publication: Add Section"
     >
       <role name="Manager" />
