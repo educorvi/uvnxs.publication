@@ -449,8 +449,9 @@ def save_jats_and_html_on_version(obj, event):
     if not IArticle.providedBy(obj):
         return
 
-    if getattr(obj, "REQUEST", None):
-        changeNote = get_change_note(obj.REQUEST, None)
+    request = getRequest()
+    if request:
+        changeNote = get_change_note(request, None)
         if not changeNote:
             return
 
