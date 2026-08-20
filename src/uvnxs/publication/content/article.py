@@ -1,3 +1,4 @@
+from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.supermodel import model
 from uvnxs.publication import _
@@ -339,6 +340,25 @@ class IArticle(ICommon):
         title=_("Überschriften mit Nummerierung"),
         description=_(
             "Corresponds to custom-meta 'Überschriften mit Nummerierung' in JATS XML."
+        ),
+        required=False,
+    )
+
+    # Internal fields, not shown on add/edit forms
+    form.omitted("html_content_rev")
+    html_content_rev = schema.SourceText(
+        title=_("HTML Content Revision"),
+        description=_(
+            "Stores the HTML content of the article for versioning purposes."
+        ),
+        required=False,
+    )
+
+    form.omitted("jats_content_rev")
+    jats_content_rev = schema.SourceText(
+        title=_("JATS Content Revision"),
+        description=_(
+            "Stores the JATS XML content of the article for versioning purposes."
         ),
         required=False,
     )

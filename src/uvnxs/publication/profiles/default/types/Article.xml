@@ -51,7 +51,7 @@
     <!--<element value="plone.relateditems"/>-->
     <!--<element value="plone.richtext"/>-->
     <!--<element value="plone.tableofcontents"/>-->
-    <!--<element value="plone.versioning" />-->
+    <element value="plone.versioning" />
     <!--<element value="plone.translatable" />-->
     <!--<element value="plone.nextprevioustoggle" />-->
     <!--<element value="plone.nextpreviousenabled" />-->

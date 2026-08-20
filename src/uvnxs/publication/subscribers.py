@@ -11,6 +11,7 @@ from plone.rest.interfaces import IAPIRequest
 from uvnxs.publication import _
 from uvnxs.publication import logger
 from zope.globalrequest import getRequest
+from plone.app.versioningbehavior.utils import get_change_note
 
 import datetime
 import jats_importexport_client
@@ -439,3 +440,20 @@ def article_ancestor_change_handler(obj, event):
             return
         # Traverse up the acquisition chain
         current_obj = aq_parent(current_obj)
+
+
+def save_jats_and_html_on_version(obj, event):
+    """
+    Event handler to save JATS and HTML representations of an Article when it is versioned.
+    """
+    if not IArticle.providedBy(obj):
+        return
+
+    request = getRequest()
+    if request:
+        changeNote = get_change_note(request, None)
+        if not changeNote:
+            return
+
+        obj.html_content_rev = api.content.get_view("jats-html-raw", obj)()
+        obj.jats_content_rev = api.content.get_view("jats-view", obj)()
