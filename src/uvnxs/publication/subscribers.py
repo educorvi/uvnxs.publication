@@ -21,10 +21,9 @@ def create_body_in_article(article, event):
     if getattr(article, "portal_type", None) != "Article":
         return
 
-    # Only create Body if the request was sent from the add form and
-    # not an API call
+    # Skip Body creation for plone.restapi requests.
     request = getRequest()
-    if IAPIRequest.providedBy(request):
+    if request is not None and IAPIRequest.providedBy(request):
         return
 
     body = None
