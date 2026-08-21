@@ -6,6 +6,8 @@ from uvnxs.publication.content.common import ICommon
 from zope import schema
 from zope.interface import implementer
 
+from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
+
 
 class IArticle(ICommon):
     """Marker interface and Dexterity Python Schema for Article"""
@@ -115,6 +117,7 @@ class IArticle(ICommon):
             "co_author_surname",
             "co_author_aff",
             "self_uri",
+            "article_categories"
         ],
     )
 
@@ -141,18 +144,28 @@ class IArticle(ICommon):
         description=_("JATS XML: contrib (contrib-type=Co-Autor) / name / surname"),
         required=False,
     )
+    form.omitted("co_author_surname")
 
     co_author_aff = schema.TextLine(
         title=_("Co-Author Affiliation"),
         description=_("JATS XML: contrib (contrib-type=Co-Autor) / aff"),
         required=False,
     )
+    form.omitted("co_author_aff")
 
     self_uri = schema.TextLine(
         title=_("Self URI"),
         description=_("Canonical URL. JATS XML: self-uri"),
         required=False,
     )
+
+    article_categories = schema.Text(
+        title=_("Article Categories"),
+        description=_("JATS XML: article-categories"),
+        required=False,
+    )
+    form.widget(article_categories=XmlEditorFieldWidget)
+    form.omitted("article_categories")
 
     # --- Publication Dates ---
 
