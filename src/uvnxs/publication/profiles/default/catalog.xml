@@ -41,7 +41,7 @@
   <index meta_type="FieldIndex"
          name="article_id"
   ><indexed_attr value="article_id" /></index>
-  <index meta_type="FieldIndex"
+  <index meta_type="KeywordIndex"
          name="article_subtitle"
   ><indexed_attr value="article_subtitle" /></index>
   <index meta_type="FieldIndex"

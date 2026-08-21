@@ -127,9 +127,10 @@ class IArticle(ICommon):
         required=False,
     )
 
-    article_subtitle = schema.TextLine(
+    article_subtitle = schema.List(
         title=_("Article Subtitle"),
-        description=_("JATS XML: title-group/subtitle"),
+        description=_("JATS XML: title-group/subtitle (one per line)"),
+        value_type=schema.TextLine(),
         required=False,
     )
 

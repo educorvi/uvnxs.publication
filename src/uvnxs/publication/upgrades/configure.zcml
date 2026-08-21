@@ -70,6 +70,15 @@
       handler=".to_1006.delete_content_type_front"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1007"
+      description="Convert article subtitles to lists."
+      profile="uvnxs.publication:default"
+      source="1006"
+      destination="1007"
+      handler=".to_1007.convert_article_subtitles_to_lists"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
