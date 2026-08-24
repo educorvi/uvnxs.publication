@@ -35,7 +35,10 @@ dependencies = [
     "plone.restapi",
     "xmlschema",
     "lxml",
-    "jats_importexport_client >= 1.0.0a15"
+    "jats_importexport_client >= 1.0.0a15",
+    "collective.collectionfilter",
+    "collective.restapi.facetedsearch",
+    "collective.taxonomy",
 ]
 
 [project.optional-dependencies]
@@ -46,10 +49,7 @@ test = [
     "plone.restapi[test]",
     "pytest",
     "pytest-cov",
-    "pytest-plone>=1.0.0a2",
-    "collective.collectionfilter",
-    "collective.restapi.facetedsearch",
-    "collective.taxonomy",
+    "pytest-plone>=1.0.0a2"
 ]
 scripts = [
     "rich"
