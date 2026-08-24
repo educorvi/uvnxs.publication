@@ -47,6 +47,9 @@ test = [
     "pytest",
     "pytest-cov",
     "pytest-plone>=1.0.0a2",
+    "collective.collectionfilter",
+    "collective.restapi.facetedsearch",
+    "collective.taxonomy",
 ]
 scripts = [
     "rich"
