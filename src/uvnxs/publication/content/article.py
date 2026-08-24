@@ -3,10 +3,37 @@ from plone.dexterity.content import Container
 from plone.supermodel import model
 from uvnxs.publication import _
 from uvnxs.publication.content.common import ICommon
+from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 from zope import schema
 from zope.interface import implementer
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
-from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
+
+journal_title_values = [
+    ("dguv-vorschrift", "DGUV Vorschrift"),
+    ("dguv-information", "DGUV Information"),
+    ("dguv-regel", "DGUV Regel"),
+    ("dguv-grundsatz", "DGUV Grundsatz"),
+    ("fachbereich-aktuell", "Fachbereich AKTUELL"),
+]
+journal_title_terms = [
+    SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
+    for pair in journal_title_values
+]
+journal_title_vocabulary = SimpleVocabulary(journal_title_terms)
+
+journal_subtitle_values = [
+    ("durchfuehrungsanweisung", "Durchführungsanweisung"),
+    ("unfallverhuetungsvorschrift", "Unfallverhütungsvorschrift"),
+    ("konkretisierende-regel", "Konkretisierende Regel"),
+    ("branchenregel", "Branchenregel"),
+]
+journal_subtitle_terms = [
+    SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
+    for pair in journal_subtitle_values
+]
+journal_subtitle_vocabulary = SimpleVocabulary(journal_subtitle_terms)
 
 
 class IArticle(ICommon):
@@ -39,15 +66,17 @@ class IArticle(ICommon):
         required=False,
     )
 
-    journal_title = schema.TextLine(
+    journal_title = schema.Choice(
         title=_("Journal Title"),
         description=_("JATS XML: journal-title-group/journal-title"),
+        vocabulary=journal_title_vocabulary,
         required=False,
     )
 
-    journal_subtitle = schema.TextLine(
+    journal_subtitle = schema.Choice(
         title=_("Journal Subtitle"),
         description=_("JATS XML: journal-title-group/journal-subtitle"),
+        vocabulary=journal_subtitle_vocabulary,
         required=False,
     )
 
@@ -117,7 +146,7 @@ class IArticle(ICommon):
             "co_author_surname",
             "co_author_aff",
             "self_uri",
-            "article_categories"
+            "article_categories",
         ],
     )
 
