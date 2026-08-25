@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-21 08:41+0000\n"
+"POT-Creation-Date: 2026-08-25 09:42+0000\n"
 "PO-Revision-Date: 2026-05-15 16:14+0200\n"
 "Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -193,7 +193,7 @@ msgstr "Leicht zu verwenden im Vergleich zum JATS-Abschnitt"
 msgid "EasySection"
 msgstr "HTML-Abschnitt"
 
-#: uvnxs/publication/views/jats_html_view.py:38
+#: uvnxs/publication/views/jats_html_view.py:80
 msgid "Error while exporting the article to HTML."
 msgstr "Fehler beim Exportieren des Artikels zu HTML."
 
@@ -241,11 +241,11 @@ msgstr "JATS HTML-Bearbeitungsansicht"
 msgid "JATS HTML View"
 msgstr "JATS HTML-Ansicht"
 
-#: uvnxs/publication/views/configure.zcml:73
+#: uvnxs/publication/views/configure.zcml:82
 msgid "JATS List View"
 msgstr "JATS-Liste"
 
-#: uvnxs/publication/views/configure.zcml:52
+#: uvnxs/publication/views/configure.zcml:61
 msgid "JATS View"
 msgstr "JATS-Ansicht"
 
@@ -511,7 +511,7 @@ msgstr "Zusammenfassung"
 msgid "Summary Abstract Title"
 msgstr "Titel der Zusammenfassung"
 
-#: uvnxs/publication/views/jats_html_view.py:32
+#: uvnxs/publication/views/jats_html_view.py:74
 msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 
