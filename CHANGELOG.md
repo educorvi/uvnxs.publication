@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a21 (2026-08-25)
+
+
+### Bug fixes:
+
+- include webcomponent [#2ca3f58](https://github.com/educorvi/uvnxs.publication/issues/2ca3f58)
+
 ## 1.0.0a20 (2026-08-25)
 
 
