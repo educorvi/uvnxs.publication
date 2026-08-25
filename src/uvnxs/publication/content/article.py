@@ -326,7 +326,6 @@ class IArticle(ICommon):
             "organisationseinheit",
             "fachbereich",
             "sachgebiet",
-            "veroeffentlichungsstatus",
             "bildnachweis",
             "ueberschriften_mit_nummerierung",
         ],
@@ -361,12 +360,6 @@ class IArticle(ICommon):
     sachgebiet = schema.TextLine(
         title=_("Sachgebiet"),
         description=_("Corresponds to custom-meta 'Sachgebiet' in JATS XML."),
-        required=False,
-    )
-
-    veroeffentlichungsstatus = schema.TextLine(
-        title=_("Status"),
-        description=_("Corresponds to custom-meta 'Status' in JATS XML."),
         required=False,
     )
 
