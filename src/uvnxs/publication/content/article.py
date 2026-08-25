@@ -150,6 +150,7 @@ class IArticle(ICommon):
             "co_author_aff",
             "self_uri",
             "article_categories",
+            "related_articles",
         ],
     )
 
@@ -199,6 +200,16 @@ class IArticle(ICommon):
     )
     form.widget(article_categories=XmlEditorFieldWidget)
     form.omitted("article_categories")
+
+    related_articles = schema.List(
+        title=_("Related Articles"),
+        description=_(
+            "List of related articles (article-id values) separated by newlines. JATS XML: related-article. This list can be transformed into links to the actual plone articles via the API."  # noqa: E501
+        ),
+        value_type=schema.TextLine(),
+        required=False,
+        default=[],
+    )
 
     # --- Publication Dates ---
 
