@@ -210,6 +210,7 @@ class IArticle(ICommon):
         required=False,
         default=[],
     )
+    form.omitted("related_articles")
 
     # --- Publication Dates ---
 
