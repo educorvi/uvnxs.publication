@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a20 (2026-08-25)
+
+
+### Internal:
+
+- pin hatchling [#b4866d9](https://github.com/educorvi/uvnxs.publication/issues/b4866d9)
+
 ## 1.0.0a19 (2026-08-25)
 
 
