@@ -288,7 +288,6 @@ class IArticle(ICommon):
             "abstract_short",
             "abstract_summary_title",
             "abstract_summary",
-            # "keywords",
         ],
     )
 
@@ -316,15 +315,6 @@ class IArticle(ICommon):
         required=False,
     )
 
-    # keywords = schema.List(
-    #     title=_("Keywords"),
-    #     description=_(
-    #         "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"  # NOQA: E501
-    #     ),
-    #     value_type=schema.TextLine(),
-    #     required=False,
-    # )
-
     # --- DGUV Metadata ---
 
     model.fieldset(
@@ -333,7 +323,6 @@ class IArticle(ICommon):
         fields=[
             "beschreibender_typ",
             "bisherige_bestellnummer",
-            "webcode",
             "organisationseinheit",
             "fachbereich",
             "sachgebiet",
@@ -354,12 +343,6 @@ class IArticle(ICommon):
         description=_(
             "Corresponds to custom-meta 'Bisherige Bestellnummer' in JATS XML."
         ),
-        required=False,
-    )
-
-    webcode = schema.TextLine(
-        title=_("Webcode"),
-        description=_("Corresponds to custom-meta 'Webcode' in JATS XML."),
         required=False,
     )
 
