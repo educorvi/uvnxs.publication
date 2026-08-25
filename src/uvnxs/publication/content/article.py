@@ -66,17 +66,20 @@ class IArticle(ICommon):
         required=False,
     )
 
-    journal_title = schema.Choice(
+    # TODO migration?
+    # journal_title = schema.Choice(
+    journal_title = schema.TextLine(
         title=_("Journal Title"),
         description=_("JATS XML: journal-title-group/journal-title"),
-        vocabulary=journal_title_vocabulary,
+        # vocabulary=journal_title_vocabulary,
         required=False,
     )
 
-    journal_subtitle = schema.Choice(
+    # journal_subtitle = schema.Choice(
+    journal_subtitle = schema.TextLine(
         title=_("Journal Subtitle"),
         description=_("JATS XML: journal-title-group/journal-subtitle"),
-        vocabulary=journal_subtitle_vocabulary,
+        # vocabulary=journal_subtitle_vocabulary,
         required=False,
     )
 
