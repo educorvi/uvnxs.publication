@@ -79,6 +79,13 @@
       handler=".to_1007.convert_article_subtitles_to_lists"
       />
 
-  <!-- -*- extra stuff goes here -*- -->
+  <genericsetup:upgradeStep
+      title="Migrate to 1008"
+      description="Update article metadata"
+      profile="uvnxs.publication:default"
+      source="1007"
+      destination="1008"
+      handler=".to_1008.update_article_metadata"
+      />
 
 </configure>
