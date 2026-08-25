@@ -46,13 +46,13 @@
   <!-- Save jats and html on article version creation -->
   <subscriber
       for="uvnxs.publication.content.article.IArticle
-          zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler="uvnxs.publication.subscribers.save_jats_and_html_on_version"
-  />
+      />
 
   <adapter
-    factory=".collectionfilter.groupby_modifier"
-    name="vur-facets"
-/>
+      factory=".collectionfilter.groupby_modifier"
+      name="vur-facets"
+      />
 
 </configure>

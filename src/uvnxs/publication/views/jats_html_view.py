@@ -52,7 +52,7 @@ _HTML_TEMPLATE = """
         </div>
     </div>
 </div>
-"""
+"""  # noqa: E501
 
 
 def _get_html(context, include_edit_links=False):
@@ -61,14 +61,23 @@ def _get_html(context, include_edit_links=False):
     api_instance = jats_importexport_client.ExportApi(get_api_client())
     path = api.content.get_path(context, relative=True)
     try:
-        response_dict = api_instance.export_html(path, include_edit_links=include_edit_links).dict()
+        response_dict = api_instance.export_html(
+            path, include_edit_links=include_edit_links
+        ).dict()
         html = response_dict.get("html", "")
         front = response_dict.get("front", "")
         article_id = context.article_id
         article_title = context.title
         pdf_url = context.absolute_url() + "/jats-pdf-view"
         pdf_filename = f"{article_title}.pdf"
-        return _HTML_TEMPLATE.format(front=front, html=html, article_id=article_id, article_title=article_title, pdf_url=pdf_url, pdf_filename=pdf_filename), None
+        return _HTML_TEMPLATE.format(
+            front=front,
+            html=html,
+            article_id=article_id,
+            article_title=article_title,
+            pdf_url=pdf_url,
+            pdf_filename=pdf_filename,
+        ), None
     except jats_importexport_client.exceptions.ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
         return None, _(
@@ -85,7 +94,9 @@ class JATSHtmlView(BrowserView):
     INCLUDE_EDIT_LINKS = False
 
     def __call__(self):
-        html, error_message = _get_html(self.context, include_edit_links=self.INCLUDE_EDIT_LINKS)
+        html, error_message = _get_html(
+            self.context, include_edit_links=self.INCLUDE_EDIT_LINKS
+        )
         self.html = html or error_message
         return self.index()
 

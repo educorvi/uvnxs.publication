@@ -1,4 +1,3 @@
-
 from collective.collectionfilter.interfaces import IGroupByCriteria
 from collective.collectionfilter.interfaces import IGroupByModifier
 from zope.component import adapter
