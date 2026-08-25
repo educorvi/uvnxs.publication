@@ -82,7 +82,7 @@ url = "https://pypi.bg-kooperation.de"
 path = "src/uvnxs/publication/__init__.py"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling<1.32"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
