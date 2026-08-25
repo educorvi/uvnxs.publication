@@ -288,7 +288,7 @@ class IArticle(ICommon):
             "abstract_short",
             "abstract_summary_title",
             "abstract_summary",
-            "keywords",
+            # "keywords",
         ],
     )
 
@@ -316,14 +316,14 @@ class IArticle(ICommon):
         required=False,
     )
 
-    keywords = schema.List(
-        title=_("Keywords"),
-        description=_(
-            "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"  # NOQA: E501
-        ),
-        value_type=schema.TextLine(),
-        required=False,
-    )
+    # keywords = schema.List(
+    #     title=_("Keywords"),
+    #     description=_(
+    #         "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"  # NOQA: E501
+    #     ),
+    #     value_type=schema.TextLine(),
+    #     required=False,
+    # )
 
     # --- DGUV Metadata ---
 
