@@ -8,6 +8,7 @@ from zope import schema
 from zope.interface import implementer
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
+from plone.app.dexterity import textindexer
 
 
 journal_title_values = [
@@ -281,9 +282,10 @@ class IArticle(ICommon):
 
     # --- Abstracts & Keywords ---
 
+    # TODO translate
     model.fieldset(
         "abstracts_keywords",
-        label=_("Abstracts & Keywords"),
+        label=_("Abstracts"),
         fields=[
             "abstract_short_title",
             "abstract_short",
@@ -292,12 +294,14 @@ class IArticle(ICommon):
         ],
     )
 
+    textindexer.searchable("abstract_short_title")
     abstract_short_title = schema.TextLine(
         title=_("Short Abstract Title"),
         description=_("JATS XML: abstract (abstract-type=short) / title"),
         required=False,
     )
 
+    textindexer.searchable("abstract_short")
     abstract_short = schema.Text(
         title=_("Short Abstract"),
         description=_("JATS XML: abstract (abstract-type=short) / p"),

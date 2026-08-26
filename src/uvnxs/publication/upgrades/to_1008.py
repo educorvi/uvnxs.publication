@@ -4,8 +4,10 @@ from plone import api
 
 def update_article_metadata(context):
     """Update the article metadata.
-    - activate plone.relateditems (to extend relatec_articles) and nva.webcode.webcode
-      (to replace webcode attribute) behaviors
+    - activate behaviors:
+        - plone.relateditems (to extend relatec_articles)
+        - nva.webcode.webcode (to replace webcode attribute)
+        - plone.textindexer (to search for abstract_short and abstract_short_title)
     - migrations for
         - journal_title and journal_subtitle from Textline to choice fields TODO
         - move content from custom field "keywords" (list of strings) to
@@ -27,7 +29,7 @@ def update_article_metadata(context):
         # migrate keywords to subject
         keywords = getattr(article, "keywords", None)
         if keywords:
-            article.subject = tuple(list(article.subject) + keywords)
+            article.subjects = tuple(list(article.subjects) + keywords)
             article.keywords = None
 
         # migrate veroeffentlichungsstatus to plone workflow state
@@ -43,3 +45,6 @@ def update_article_metadata(context):
                 obj=article, to_state=workflow_state_map[veroeffentlichungsstatus]
             )
         article.veroeffentlichungsstatus = None
+
+        # reindex to make sure abstract_short and abstract_short_title are indexed
+        article.reindexObject()
