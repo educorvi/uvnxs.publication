@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a22 (2026-08-26)
+
+
+### New features:
+
+- style and print (#8) [#8](https://github.com/educorvi/uvnxs.publication/issues/8)
+
 ## 1.0.0a21 (2026-08-25)
 
 
