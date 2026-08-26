@@ -344,15 +344,6 @@
   font-style: italic;
 }
 
-.article-fragment .boxed-text,
-.article-fragment .disp-quote,
-.article-fragment [content-type*=durchf i] {
-  margin-block: 24px;
-  padding: 24px;
-  border-left: 1px solid var(--dguv-advisory);
-  background: var(--dguv-advisory-background);
-}
-
 .article-fragment .table-wrap table {
   border-block: 1px solid #000;
 }
