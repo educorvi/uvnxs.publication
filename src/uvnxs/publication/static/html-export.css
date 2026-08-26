@@ -88,6 +88,11 @@
 
 /* ==================== Article Sidebar - Metadata ==================== */
 
+/* Dont display plone external link icon in metadata table */
+.article-fragment svg.markspeciallinks__icon {
+  display: none;
+}
+
 .article-fragment .metadata-small table {
   width: 100%;
   margin: 0;

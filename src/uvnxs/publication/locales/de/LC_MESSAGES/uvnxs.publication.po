@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-26 08:40+0000\n"
+"POT-Creation-Date: 2026-08-26 09:54+0000\n"
 "PO-Revision-Date: 2026-05-15 16:14+0200\n"
 "Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -185,7 +185,7 @@ msgstr "Entspricht custom-meta 'Überschriften mit Nummerierung' im JATS XML."
 msgid "DGUV Metadata"
 msgstr "DGUV-Metadaten"
 
-#: uvnxs/publication/views/jats_html_view.py:27
+#: uvnxs/publication/views/jats_html_view.py:80
 msgid "Download PDF"
 msgstr "PDF Herunterladen"
 
@@ -197,7 +197,7 @@ msgstr "Leicht zu verwenden im Vergleich zum JATS-Abschnitt"
 msgid "EasySection"
 msgstr "HTML-Abschnitt"
 
-#: uvnxs/publication/views/jats_html_view.py:91
+#: uvnxs/publication/views/jats_html_view.py:90
 msgid "Error while exporting the article to HTML."
 msgstr "Fehler beim Exportieren des Artikels zu HTML."
 
@@ -515,7 +515,7 @@ msgstr "Zusammenfassung"
 msgid "Summary Abstract Title"
 msgstr "Titel der Zusammenfassung"
 
-#: uvnxs/publication/views/jats_html_view.py:85
+#: uvnxs/publication/views/jats_html_view.py:84
 msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 

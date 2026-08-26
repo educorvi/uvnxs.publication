@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-26 08:40+0000\n"
+"POT-Creation-Date: 2026-08-26 09:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,7 +181,7 @@ msgstr ""
 msgid "DGUV Metadata"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:27
+#: uvnxs/publication/views/jats_html_view.py:80
 msgid "Download PDF"
 msgstr ""
 
@@ -193,7 +193,7 @@ msgstr ""
 msgid "EasySection"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:91
+#: uvnxs/publication/views/jats_html_view.py:90
 msgid "Error while exporting the article to HTML."
 msgstr ""
 
@@ -511,7 +511,7 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:85
+#: uvnxs/publication/views/jats_html_view.py:84
 msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 

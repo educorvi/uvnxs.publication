@@ -24,7 +24,6 @@ class IJATSHtmlRawView(Interface):
 class IJATSPdfView(Interface):
     """Marker Interface for IJATSPdfView"""
 
-_STRING_DOWNLOAD_PDF = _("Download PDF")
 
 _HTML_TEMPLATE = """
 <div class="article-shell row gx-10">
@@ -78,7 +77,7 @@ def _get_html(context, include_edit_links=False):
             article_title=article_title,
             pdf_url=pdf_url,
             pdf_filename=pdf_filename,
-            download_pdf=_STRING_DOWNLOAD_PDF,
+            download_pdf=api.portal.translate(_("Download PDF")),
         ), None
     except jats_importexport_client.exceptions.ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
