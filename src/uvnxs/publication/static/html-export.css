@@ -1,12 +1,511 @@
-nav.jats-html-export-toc ul {
-  list-style: none;
-  padding-left: 1.5em;
+@charset "UTF-8";
+
+/* ==================== Edit View ==================== */
+
+.article-fragment a.section-edit-link > i {
+  font-size: .75em;
 }
 
-nav.jats-html-export-toc > ul {
+/* ==================== Variables ==================== */
+
+:root {
+  --dguv-primary: #004994;
+  --dguv-text: #000;
+  --dguv-text-secondary: #555;
+  --dguv-table-border: #d9d9d9;
+  --dguv-background-light: #ededed;
+  --dguv-background-blue: rgb(0 99 175 / 5%);
+  --dguv-advisory: #62a72b;
+  --dguv-advisory-background: rgb(98 167 43 / 5%);
+  --dguv-space-xs: 6px;
+  --dguv-space-sm: 12px;
+  --dguv-space-lg: 24px;
+  --dguv-space-xl: 48px;
+}
+
+/* ==================== Article Header ==================== */
+
+.article-header {
+  margin-bottom: 48px;
+}
+
+.article-header-article-id {
+  margin: 0;
+  color: var(--dguv-text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.article-header-article-title {
+  margin: 24px 0;
+  font-size: clamp(48px, 4.17vw, 72px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.article-action {
+  min-height: 44px;
+  gap: 10px;
+  margin-right: -1px;
+  padding: 12px 16px;
+  font-size: 14px;
+}
+
+.article-action:hover {
+  background: var(--dguv-background-light);
+  color: #000;
+}
+
+.article-action img {
+  width: 11px;
+  height: 11px;
+}
+
+/* ==================== Article Sidebar ==================== */
+
+.article-sidebar-panel {
+  overflow: auto;
+}
+
+.article-fragment--front #article-front,
+.article-fragment--content #article-content {
+  display: block;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+}
+
+.article-fragment--front .metadata-and-toc {
+  display: block;
+  margin: 0;
+  border: 0;
+  font-size: 14px;
+}
+
+/* ==================== Article Sidebar - Metadata ==================== */
+
+.article-fragment .metadata-small table {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.article-fragment .metadata-small td {
+  padding: 12px;
+  border: 0;
+  border-bottom: 1px solid #000;
+}
+
+.article-fragment .metadata-small table tr[data-meta-field="journal-title"] td,
+.article-fragment .metadata-small table tr[data-meta-field="journal-subtitle"] td {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.article-fragment .metadata-small tr:first-child,
+.article-fragment .metadata-small tr:first-child > * {
+  border-top: 0;
+}
+
+.article-fragment .metadata-small table,
+.article-fragment .metadata-small td,
+.article-fragment .metadata-small td a {
+  color: var(--dguv-text);
+}
+
+.article-fragment .metadata-small tr:last-child td a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.article-fragment .metadata-small tr:last-child td a::after {
+  content: "";
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  margin-left: auto;
+  background-color: currentcolor;
+  -webkit-mask: url("icons/arrow-right.svg") center/contain no-repeat;
+  mask: url("icons/arrow-right.svg") center/contain no-repeat;
+}
+
+/* ==================== Article Sidebar - TOC ==================== */
+
+.article-fragment .jats-html-export-toc {
+  position: static;
+  max-height: none;
+  overflow: visible;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.article-fragment .jats-html-export-toc::before {
+  display: block;
+  margin-bottom: 10px;
+  content: "Inhaltsverzeichnis";
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.article-fragment .jats-html-export-toc ul {
+  margin: 0;
+  padding-left: 14px;
+  list-style: none;
+}
+
+.article-fragment .jats-html-export-toc > ul {
   padding-left: 0;
 }
 
-a.section-edit-link > i {
-  font-size: .75em;
+.article-fragment .jats-html-export-toc li {
+  margin-block: 3px;
+}
+
+.article-fragment .jats-html-export-toc a {
+  color: #000;
+  text-decoration: none;
+}
+
+.article-fragment .jats-html-export-toc a:hover {
+  color: var(--dguv-primary);
+  text-decoration: underline;
+}
+
+.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title,
+.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title > *,
+.article-fragment .jats-html-export-toc > ul > li > .toc-label,
+.article-fragment .jats-html-export-toc > ul > li > a {
+  color: var(--dguv-primary)!important;
+  font-weight: 700!important;
+}
+
+.article-fragment .jats-html-export-toc .toc-entry:has(> .toc-label) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 0.25em;
+  align-items: baseline;
+}
+
+.article-fragment .jats-html-export-toc .toc-entry:has(> .toc-label) > .toc-label {
+  grid-column: 1;
+}
+
+.article-fragment .jats-html-export-toc .toc-entry:has(> .toc-label) > .toc-title {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] {
+  display: block;
+}
+
+.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-label {
+  display: block;
+  color: #000;
+  font-weight: 400;
+}
+
+.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title {
+  display: block;
+}
+
+.article-fragment .jats-html-export-toc > ul > li:not(:last-child) {
+  margin-block-end: var(--dguv-space-sm);
+}
+
+/* ==================== Article Body ==================== */
+
+.article-fragment #article-body,
+.article-fragment #article-back {
+  color: var(--dguv-text);
+  font-size: 18px;
+  line-height: 1.42;
+}
+
+.article-fragment #article-body p {
+  margin-block: 1lh;
+}
+
+.article-fragment #article-body > .section,
+.article-fragment #article-back > .section {
+  margin-bottom: 48px;
+}
+
+.article-fragment #article-body h2.title,
+.article-fragment #article-back h2.title {
+  color: var(--dguv-primary);
+}
+
+.article-fragment #article-body h2.title > .label,
+.article-fragment #article-back h2.title > .label {
+  display: block;
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.article-fragment h2,
+.article-fragment h2 :not(.label),
+.article-fragment .section > .title,
+.article-fragment .section > .title :not(.label) {
+  margin: 48px 0 24px;
+  font-size: 24px!important;
+  font-weight: 700!important;
+  line-height: 1.35!important;
+}
+
+.article-fragment h2 .label,
+.article-fragment .section > .title .label {
+  line-height: 1.35!important;
+}
+
+.article-fragment h3,
+.article-fragment h3 *,
+.article-fragment .section .section > .title,
+.article-fragment .section .section > .title * {
+  margin: 32px 0 16px;
+  font-size: 22px!important;
+  font-weight: 700!important;
+  line-height: 1.35!important;
+  color: var(--dguv-text)!important;
+}
+
+.article-fragment p {
+  margin: 0 0 1em;
+}
+
+.article-fragment .boxed-text,
+.article-fragment .disp-quote,
+.article-fragment [content-type*=durchf i] {
+  margin-block: 24px;
+  padding: 24px;
+  border-left: 1px solid var(--dguv-advisory);
+  background: var(--dguv-advisory-background);
+}
+
+.article-fragment .table-wrap {
+  max-width: 100%;
+  margin-block: 32px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.article-fragment table {
+  border-collapse: collapse;
+}
+
+.article-fragment .table-wrap table {
+  min-width: 720px;
+  font-size: 16px;
+}
+
+.article-fragment .table-wrap th,
+.article-fragment .table-wrap td {
+  padding: 8px 10px;
+  border: 1px solid var(--dguv-table-border);
+  vertical-align: top;
+}
+
+.article-fragment img {
+  max-width: 100%;
+  height: auto;
+}
+
+.article-fragment #article-body > .section[data-sec-type=preamble] {
+  padding: var(--dguv-space-lg);
+  background: var(--dguv-background-blue);
+}
+
+.article-fragment #article-body > .section[data-sec-type=preamble] > h2.title {
+  margin-top: 0;
+}
+
+.article-fragment #article-body .section[data-sec-type=highlight-info],
+.article-fragment #article-back .section[data-sec-type=highlight-info] {
+  margin-block: var(--dguv-space-lg);
+  margin-block-end: var(--dguv-space-xl);
+  padding: var(--dguv-space-lg);
+  border-left: 2px solid var(--dguv-advisory);
+  background: var(--dguv-advisory-background);
+}
+
+.article-fragment #article-body .section[data-sec-type=highlight-info] > p.first {
+  margin-block-start: 0;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.article-fragment .table-wrap table {
+  border-block: 1px solid #000;
+}
+
+.article-fragment .table-wrap :is(th, td) {
+  border: 0;
+  border-bottom: 1px solid #000;
+}
+
+.article-fragment .table-wrap tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.article-fragment :is(#article-body, #article-back) div.table {
+  width: 100%;
+  margin-block: 32px;
+  border-block: 1px solid #000;
+}
+
+.article-fragment :is(#article-body, #article-back) div.table > .row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  margin: 0;
+  border-bottom: 1px solid #000;
+}
+
+.article-fragment :is(#article-body, #article-back) div.table > .row:last-child {
+  border-bottom: 0;
+}
+
+.article-fragment :is(#article-body, #article-back) div.table > .row > :is(.col-2, .col) {
+  min-width: 0;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 8px 10px;
+}
+
+.article-fragment :is(#article-body, #article-back) div.table > .row > .col-2 {
+  flex: 0 0 16.666667%;
+  width: 16.666667%;
+  max-width: 16.666667%;
+}
+
+.article-fragment :is(#article-body, #article-back) div.table > .row > .col:not(.col-2) {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+}
+
+.article-fragment :is(#article-body, #article-back) div.table > :not(caption) > * > p {
+  padding: 0;
+  margin: 0;
+}
+
+.article-fragment :is(#article-body, #article-back) :is(table, .table) p {
+  padding: 0;
+  margin: 0;
+}
+
+.article-fragment .fig > :is(.label, .caption, .permissions) {
+  color: var(--dguv-text-secondary);
+  font-size: 16px;
+}
+
+.article-fragment .fig > .caption .title {
+  color: inherit;
+  font-size: inherit;
+}
+
+.article-fragment .fig :is(.caption, .permissions) p {
+  margin-block: 0 !important;
+}
+
+.article-fragment #article-body .list > :is(ul, ol),
+.article-fragment #article-back .list > :is(ul, ol) {
+  margin-block: 1lh;
+  padding-inline-start: 1.5em;
+  list-style-position: outside;
+}
+
+.article-fragment #article-body .list > ul,
+.article-fragment #article-back .list > ul {
+  padding-inline-start: 1.25em;
+  list-style-type: disc !important;
+}
+
+.article-fragment #article-body .list > ul > li,
+.article-fragment #article-back .list > ul > li {
+  padding-inline-start: 0;
+}
+
+.article-fragment #article-body .list > ul > li::marker,
+.article-fragment #article-back .list > ul > li::marker {
+  font-size: 0.75em;
+}
+
+.article-fragment #article-body .list > ol,
+.article-fragment #article-back .list > ol {
+  list-style-type: decimal;
+}
+
+.article-fragment #article-body .list > :is(ul, ol) > li,
+.article-fragment #article-back .list > :is(ul, ol) > li {
+  padding-inline-start: 0.25em;
+}
+
+.article-fragment #article-body .list > :is(ul, ol) > li + li,
+.article-fragment #article-back .list > :is(ul, ol) > li + li {
+  margin-block-start: 0.1lh;
+}
+
+.article-fragment #article-body .list > :is(ul, ol) > li > p,
+.article-fragment #article-back .list > :is(ul, ol) > li > p {
+  margin-block: 0;
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste {
+  margin-block: 0.1lh;
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste > p {
+  display: grid;
+  grid-template-columns: minmax(1.5em, max-content) minmax(0, 1fr);
+  column-gap: var(--dguv-space-sm);
+  margin-block: 0;
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste .list-label {
+  grid-column: 1;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste .list-item {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste[data-list-level="2"] > p {
+  margin-inline-start: calc(1.5em + var(--dguv-space-sm));
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste[data-list-level="3"] > p {
+  margin-inline-start: calc(2*(1.5em + var(--dguv-space-sm)));
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste[data-list-type=ordered] + .list {
+  margin-inline-start: calc(1.5em + var(--dguv-space-sm));
+}
+
+.article-fragment :is(#article-body, #article-back) .freie-liste[data-list-type=ordered] + .list > :is(ul, ol) {
+  margin-block-start: 0.5lh;
+}
+
+.article-fragment #article-body .section[data-sec-type=highlight-info] .list > :is(ul, ol),
+.article-fragment #article-back .section[data-sec-type=highlight-info] .list > :is(ul, ol) {
+  margin: 0;
+}
+
+
+.article-fragment #article-body p:last-child,
+.article-fragment #article-body li:last-child p:last-child {
+  margin-bottom: 0;
 }

@@ -41,6 +41,15 @@
       />
 
   <browser:page
+      name="jats-pdf-view"
+      for="uvnxs.publication.content.article.IArticle"
+      class=".jats_html_view.JATSPdfView"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      i18n:domain="uvnxs.publication"
+      />
+
+  <browser:page
       name="jats-view"
       for="uvnxs.publication.content.article.IArticle"
       class=".jats_view.JATSView"

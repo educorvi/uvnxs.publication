@@ -35,7 +35,7 @@ dependencies = [
     "plone.restapi",
     "xmlschema",
     "lxml",
-    "jats_importexport_client >= 1.0.0a15",
+    "jats_importexport_client >= 1.0.0a23",
     "collective.collectionfilter",
     "collective.restapi.facetedsearch",
     "collective.taxonomy",

@@ -3,10 +3,9 @@ from plone.dexterity.content import Container
 from plone.supermodel import model
 from uvnxs.publication import _
 from uvnxs.publication.content.common import ICommon
+from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 from zope import schema
 from zope.interface import implementer
-
-from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 
 
 class IArticle(ICommon):
@@ -117,7 +116,7 @@ class IArticle(ICommon):
             "co_author_surname",
             "co_author_aff",
             "self_uri",
-            "article_categories"
+            "article_categories",
         ],
     )
 
