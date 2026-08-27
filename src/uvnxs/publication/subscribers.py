@@ -53,6 +53,17 @@ def article_ancestor_change_handler(obj, event):
     """
     Event handler to find and print the 'Article' ancestor of a modified object.
     """
+    request = getRequest()
+
+    suppress_invalidation = (
+        request is not None
+        and IAPIRequest.providedBy(request)
+        and request.getHeader("X-UVNXS-Suppress-Cache-Invalidation") == "1"
+    )
+
+    if suppress_invalidation:
+        return
+
     current_obj = obj
     while current_obj is not None:
         if IArticle.providedBy(current_obj):

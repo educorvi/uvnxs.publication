@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+
+/* Custom edits */
+.article-action[aria-disabled="true"] {
+  cursor: wait;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.article-action .loading-indicator{
+  height: 1em;
+}
 /* ==================== Edit View ==================== */
 
 .article-fragment a.section-edit-link > i {
@@ -87,6 +98,11 @@
 }
 
 /* ==================== Article Sidebar - Metadata ==================== */
+
+/* Dont display plone external link icon in metadata table */
+.article-fragment svg.markspeciallinks__icon {
+  display: none;
+}
 
 .article-fragment .metadata-small table {
   width: 100%;

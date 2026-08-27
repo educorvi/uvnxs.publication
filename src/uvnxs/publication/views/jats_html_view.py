@@ -24,7 +24,6 @@ class IJATSHtmlRawView(Interface):
 class IJATSPdfView(Interface):
     """Marker Interface for IJATSPdfView"""
 
-_STRING_DOWNLOAD_PDF = _("Download PDF")
 
 _HTML_TEMPLATE = """
 <div class="article-shell row gx-10">
@@ -44,6 +43,10 @@ _HTML_TEMPLATE = """
             <div class="article-actions d-flex mt-4">
                 <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}">
                     <img src="/++resource++uvnxs.publication/icons/download.svg" alt="" aria-hidden="true">
+                    <div class="loading-indicator loading-indicator--orbit loading-indicator--swing-flip d-none" role="status" aria-live="polite" aria-label="Lädt">
+                        <span class="loading-indicator__dot"></span>
+                        <span class="loading-indicator__semi"></span>
+                    </div>
                     <span>{download_pdf}</span>
                 </a>
             </div>
@@ -78,7 +81,7 @@ def _get_html(context, include_edit_links=False):
             article_title=article_title,
             pdf_url=pdf_url,
             pdf_filename=pdf_filename,
-            download_pdf=_STRING_DOWNLOAD_PDF,
+            download_pdf=api.portal.translate(_("Download PDF")),
         ), None
     except jats_importexport_client.exceptions.ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
