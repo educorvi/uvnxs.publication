@@ -38,9 +38,10 @@ def update_article_metadata(context):
         article = brain.getObject()
 
         # migrate keywords to subject
-        keywords = getattr(article, "keywords", None)
+        keywords = getattr(article, "keywords", [])
         if keywords:
-            article.subjects = tuple(list(article.subjects) + keywords)
+            subjects = getattr(article, "subjects", None) or ()
+            article.subjects = tuple(subjects) + tuple(keywords)
             article.keywords = None
 
         # migrate veroeffentlichungsstatus to plone workflow state
