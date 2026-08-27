@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="uvnxs.publication"
+>
+  <body>
+    <metal:block fill-slot="main">
+      <div class="vur">
+        <section class="vur-header">
+          <h1 tal:content="structure context/title"></h1>
+          <tal:block tal:condition="context/description">
+            <p class="vur-header-description"
+               tal:content="structure context/description"
+            ></p>
+          </tal:block>
+          <form class="vur-search"
+                action=""
+                role="search"
+          >
+            <label for="search-query">Im Regelwerk suchen</label>
+            <div class="d-flex w-100">
+              <input id="search-query"
+                     name="search-query"
+                     placeholder="Suchbegriff, Dokumentnummer oder Webcode"
+                     type="search"
+              />
+              <button type="submit">Suchen</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="vur-section">
+          <h2>Rubriken</h2>
+          <div class="vur-grid">
+            <tal:block tal:repeat="rubrik view/rubriken">
+              <tal:block tal:condition="rubrik/url">
+                <a class="vur-card d-flex flex-column border border-black text-black text-decoration-none"
+                   tal:attributes="
+                     href rubrik/url;
+                   "
+                >
+                  <span class="vur-card-count"
+                        tal:content="rubrik/count"
+                  ></span>
+                  <h3 class="vur-card-title mt-auto"
+                      tal:content="structure rubrik/title"
+                  ></h3>
+                  <span class="vur-card-description"
+                        tal:content="structure rubrik/description"
+                  ></span>
+                </a>
+              </tal:block>
+            </tal:block>
+          </div>
+        </section>
+      </div>
+    </metal:block>
+    <metal:block fill-slot="style_slot">
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/common.css;
+            "
+      />
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/landing-page-search.css;
+            "
+      />
+    </metal:block>
+  </body>
+</html>

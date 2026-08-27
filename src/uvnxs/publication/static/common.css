@@ -1,0 +1,90 @@
+@charset "UTF-8";
+:root {
+  --dguv-primary: #004994;
+  --dguv-text: #000;
+  --dguv-background-light: #ededed;
+}
+
+/* header section */
+
+.vur .vur-header {
+  padding-bottom: 96px;
+}
+
+.vur .vur-header h1 {
+  margin: 24px 0;
+  font-size: clamp(48px, 4.17vw, 72px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.vur .vur-header .vur-header-description {
+  font-size: 22px;
+}
+
+/* section */
+
+.vur .vur-section {
+  padding-top: 72px;
+  padding-bottom: 96px;
+  border-top: 1px solid var(--dguv-primary);
+}
+
+.vur .vur-section h2 {
+  margin-bottom: 32px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* grid and card */
+
+.vur .vur-grid {
+  display: grid!important;
+  gap: 1.5rem!important;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.vur .vur-card {
+  min-height: 260px;
+  padding: 1.5rem!important;
+}
+
+.vur .vur-card:hover {
+  background: var(--dguv-background-light);
+  color: var(--dguv-text);
+}
+
+.vur .vur-card-count {
+  color: var(--dguv-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.vur .vur-card-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--dguv-text);
+}
+
+/* responsive - small width */
+
+@media (max-width: 1023.99px) {
+  .vur .vur-header h1 {
+    margin-block: 20px;
+    font-size: clamp(42px, 12vw, 48px);
+  }
+
+  .vur .vur-header {
+    padding-bottom: 48px;
+  }
+
+  .vur .vur-section {
+    padding-top: 48px;
+    padding-bottom: 64px;
+  }
+
+  .vur .vur-grid {
+    grid-template-columns: 1fr;
+  }
+}

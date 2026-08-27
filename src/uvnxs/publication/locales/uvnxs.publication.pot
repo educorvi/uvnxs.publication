@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-27 11:20+0000\n"
+"POT-Creation-Date: 2026-08-27 16:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,7 +172,7 @@ msgstr ""
 msgid "DGUV Metadata"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:80
+#: uvnxs/publication/views/jats_html_view.py:84
 msgid "Download PDF"
 msgstr ""
 
@@ -184,7 +184,7 @@ msgstr ""
 msgid "EasySection"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:90
+#: uvnxs/publication/views/jats_html_view.py:94
 msgid "Error while exporting the article to HTML."
 msgstr ""
 
@@ -224,19 +224,19 @@ msgstr ""
 msgid "JATS Content Revision"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:32
+#: uvnxs/publication/views/configure.zcml:68
 msgid "JATS HTML Edit View"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:20
+#: uvnxs/publication/views/configure.zcml:56
 msgid "JATS HTML View"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:82
+#: uvnxs/publication/views/configure.zcml:44
 msgid "JATS List View"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:61
+#: uvnxs/publication/views/configure.zcml:97
 msgid "JATS View"
 msgstr ""
 
@@ -502,7 +502,7 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:84
+#: uvnxs/publication/views/jats_html_view.py:88
 msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 
@@ -558,6 +558,14 @@ msgstr ""
 
 #: uvnxs/publication/profiles.zcml:21
 msgid "Uninstall uvnxs.publication setup."
+msgstr ""
+
+#: uvnxs/publication/views/configure.zcml:32
+msgid "VuR Filter View"
+msgstr ""
+
+#: uvnxs/publication/views/configure.zcml:20
+msgid "VuR Landing Page"
 msgstr ""
 
 #. Default: "API Key für den JATS ImportExport Hub"

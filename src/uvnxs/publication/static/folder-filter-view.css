@@ -1,0 +1,113 @@
+@charset "UTF-8";
+:root {
+  --dguv-primary: #004994;
+  --dguv-text: #000;
+  --dguv-text-secondary: #555;
+  --dguv-border: #d5d5d5;
+  --dguv-background-light: #ededed;
+}
+
+/* override header padding */
+.vur .vur-header {
+  padding-bottom: 48px!important;
+}
+
+/* filter section */
+
+.vur .vur-filter-section {
+  margin-top: 48px;
+  border: 1px solid var(--dguv-text);
+}
+
+.vur .vur-filter-section > * {
+  padding: 24px;
+}
+
+.vur .vur-filter-section__header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--dguv-text);
+}
+
+.vur .vur-filter-section__filterlist {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.vur .vur-filter-section__sorting {
+  border-top: 1px solid var(--dguv-text);
+}
+
+.vur .vur-filter-section__sort select {
+  width: auto;
+}
+
+/* try to remove the default arrow from the select element, but it also removes the theme arrow */
+/* .vur .vur-filter-section__sort select {
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+} */
+
+/* documents list */
+
+.vur .vur-documents-list__item:not(:last-child) {
+  border-bottom: 1px solid var(--dguv-border);
+}
+
+.vur .vur-documents-list__item:hover {
+  background: var(--dguv-background-light);
+  color: var(--dguv-text);
+}
+
+.vur .vur-documents-list__item > a {
+  padding-block: 32px;
+  display: grid;
+  align-items: start;
+  grid-template-columns: 70% 30%;
+}
+
+.vur .vur-documents-list__item-content {
+  padding-right: 48px;
+}
+
+.vur .vur-documents-list__article-id {
+  margin: 0;
+  color: var(--dguv-text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.vur .vur-documents-list__title {
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.vur .vur-documents-list__item-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 1023.99px) {
+  .vur .vur-filter-section__filterlist {
+    grid-template-columns: 1fr;
+  }
+
+  .vur .vur-documents-list__item > a {
+    grid-template-columns: 1fr;
+  }
+
+  .vur .vur-documents-list__item-dates {
+    flex-direction: row;
+    gap: 24px;
+  }
+}

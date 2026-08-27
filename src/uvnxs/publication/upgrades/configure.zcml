@@ -88,4 +88,13 @@
       handler=".to_1008.update_article_metadata"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1009"
+      description="Register the new landing page view and folder filter view."
+      profile="uvnxs.publication:default"
+      source="1008"
+      destination="1009"
+      handler=".to_1009.register_landing_page_view_and_folder_filter_view"
+      />
+
 </configure>
