@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a24 (2026-08-27)
+
+
+### Bug fixes:
+
+- handle missing attributes in keyword migration [#90a07c1](https://github.com/educorvi/uvnxs.publication/issues/90a07c1)
+
 ## 1.0.0a23 (2026-08-27)
 
 
