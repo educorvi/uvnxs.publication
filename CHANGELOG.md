@@ -9,6 +9,25 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a23 (2026-08-27)
+
+
+### New features:
+
+- change article metadata and behaviors, change catalog/index/workflow [#b4eed29](https://github.com/educorvi/uvnxs.publication/issues/b4eed29)
+- add asynchronous PDF download functionality with spinner indicator [#76edb35](https://github.com/educorvi/uvnxs.publication/issues/76edb35)
+
+
+### Bug fixes:
+
+- prevent cache invalidation when specific header is present [#7af9fd9](https://github.com/educorvi/uvnxs.publication/issues/7af9fd9)
+- html view translation and external link icon [#d0121c4](https://github.com/educorvi/uvnxs.publication/issues/d0121c4)
+
+
+### Internal:
+
+- revert remove wheel.force-include [#5b55b5a](https://github.com/educorvi/uvnxs.publication/issues/5b55b5a)
+
 ## 1.0.0a22 (2026-08-26)
 
 
