@@ -1,3 +1,4 @@
+from plone.app.dexterity import textindexer
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.supermodel import model
@@ -6,6 +7,34 @@ from uvnxs.publication.content.common import ICommon
 from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
 from zope import schema
 from zope.interface import implementer
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
+
+
+journal_title_values = [
+    ("dguv-vorschrift", "DGUV Vorschrift"),
+    ("dguv-information", "DGUV Information"),
+    ("dguv-regel", "DGUV Regel"),
+    ("dguv-grundsatz", "DGUV Grundsatz"),
+    ("fachbereich-aktuell", "Fachbereich AKTUELL"),
+]
+journal_title_terms = [
+    SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
+    for pair in journal_title_values
+]
+journal_title_vocabulary = SimpleVocabulary(journal_title_terms)
+
+journal_subtitle_values = [
+    ("durchfuehrungsanweisung", "Durchführungsanweisung"),
+    ("unfallverhuetungsvorschrift", "Unfallverhütungsvorschrift"),
+    ("konkretisierende-regel", "Konkretisierende Regel"),
+    ("branchenregel", "Branchenregel"),
+]
+journal_subtitle_terms = [
+    SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
+    for pair in journal_subtitle_values
+]
+journal_subtitle_vocabulary = SimpleVocabulary(journal_subtitle_terms)
 
 
 class IArticle(ICommon):
@@ -38,15 +67,20 @@ class IArticle(ICommon):
         required=False,
     )
 
+    # TODO migration?
+    # journal_title = schema.Choice(
     journal_title = schema.TextLine(
         title=_("Journal Title"),
         description=_("JATS XML: journal-title-group/journal-title"),
+        # vocabulary=journal_title_vocabulary,
         required=False,
     )
 
+    # journal_subtitle = schema.Choice(
     journal_subtitle = schema.TextLine(
         title=_("Journal Subtitle"),
         description=_("JATS XML: journal-title-group/journal-subtitle"),
+        # vocabulary=journal_subtitle_vocabulary,
         required=False,
     )
 
@@ -117,6 +151,7 @@ class IArticle(ICommon):
             "co_author_aff",
             "self_uri",
             "article_categories",
+            "related_articles",
         ],
     )
 
@@ -158,6 +193,7 @@ class IArticle(ICommon):
         description=_("Canonical URL. JATS XML: self-uri"),
         required=False,
     )
+    form.omitted("self_uri")
 
     article_categories = schema.Text(
         title=_("Article Categories"),
@@ -166,6 +202,16 @@ class IArticle(ICommon):
     )
     form.widget(article_categories=XmlEditorFieldWidget)
     form.omitted("article_categories")
+
+    related_articles = schema.List(
+        title=_("Related Articles"),
+        description=_(
+            "List of related articles (article-id values) separated by newlines. JATS XML: related-article. This list can be transformed into links to the actual plone articles via the API."  # noqa: E501
+        ),
+        value_type=schema.TextLine(),
+        required=False,
+    )
+    form.omitted("related_articles")
 
     # --- Publication Dates ---
 
@@ -236,24 +282,26 @@ class IArticle(ICommon):
 
     # --- Abstracts & Keywords ---
 
+    # TODO translate
     model.fieldset(
         "abstracts_keywords",
-        label=_("Abstracts & Keywords"),
+        label=_("Abstracts"),
         fields=[
             "abstract_short_title",
             "abstract_short",
             "abstract_summary_title",
             "abstract_summary",
-            "keywords",
         ],
     )
 
+    textindexer.searchable("abstract_short_title")
     abstract_short_title = schema.TextLine(
         title=_("Short Abstract Title"),
         description=_("JATS XML: abstract (abstract-type=short) / title"),
         required=False,
     )
 
+    textindexer.searchable("abstract_short")
     abstract_short = schema.Text(
         title=_("Short Abstract"),
         description=_("JATS XML: abstract (abstract-type=short) / p"),
@@ -272,15 +320,6 @@ class IArticle(ICommon):
         required=False,
     )
 
-    keywords = schema.List(
-        title=_("Keywords"),
-        description=_(
-            "Author-generated keywords. JATS XML: kwd-group (kwd-group-type=author-generated) / kwd"  # NOQA: E501
-        ),
-        value_type=schema.TextLine(),
-        required=False,
-    )
-
     # --- DGUV Metadata ---
 
     model.fieldset(
@@ -289,11 +328,9 @@ class IArticle(ICommon):
         fields=[
             "beschreibender_typ",
             "bisherige_bestellnummer",
-            "webcode",
             "organisationseinheit",
             "fachbereich",
             "sachgebiet",
-            "veroeffentlichungsstatus",
             "bildnachweis",
             "ueberschriften_mit_nummerierung",
         ],
@@ -313,12 +350,6 @@ class IArticle(ICommon):
         required=False,
     )
 
-    webcode = schema.TextLine(
-        title=_("Webcode"),
-        description=_("Corresponds to custom-meta 'Webcode' in JATS XML."),
-        required=False,
-    )
-
     organisationseinheit = schema.TextLine(
         title=_("Organisationseinheit"),
         description=_("Corresponds to custom-meta 'Organisationseinheit' in JATS XML."),
@@ -334,12 +365,6 @@ class IArticle(ICommon):
     sachgebiet = schema.TextLine(
         title=_("Sachgebiet"),
         description=_("Corresponds to custom-meta 'Sachgebiet' in JATS XML."),
-        required=False,
-    )
-
-    veroeffentlichungsstatus = schema.TextLine(
-        title=_("Status"),
-        description=_("Corresponds to custom-meta 'Status' in JATS XML."),
         required=False,
     )
 

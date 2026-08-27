@@ -39,6 +39,7 @@ dependencies = [
     "collective.collectionfilter",
     "collective.restapi.facetedsearch",
     "collective.taxonomy",
+    "nva.webcode",
 ]
 
 [project.optional-dependencies]

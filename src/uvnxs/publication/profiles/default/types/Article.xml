@@ -46,8 +46,9 @@
     <element value="plone.publication" />
     <element value="plone.categorization" />
     <element value="plone.locking" />
+    <element value="nva.webcode.webcode" />
     <!--<element value="plone.leadimage"/>-->
-    <!--<element value="plone.relateditems"/>-->
+    <element value="plone.relateditems" />
     <!--<element value="plone.richtext"/>-->
     <!--<element value="plone.tableofcontents"/>-->
     <element value="plone.versioning" />
@@ -56,6 +57,7 @@
     <!--<element value="plone.nextpreviousenabled" />-->
     <!--<element value="plone.navigationroot" />-->
     <!--<element value="plone.selectablecontrainstypes" />-->
+    <element value="plone.textindexer" />
   </property>
 
   <!-- View information -->

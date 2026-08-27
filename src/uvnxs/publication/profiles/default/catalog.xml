@@ -5,99 +5,67 @@
   <index meta_type="FieldIndex"
          name="journal_id"
   ><indexed_attr value="journal_id" /></index>
+
   <index meta_type="FieldIndex"
          name="journal_title"
   ><indexed_attr value="journal_title" /></index>
+
   <index meta_type="FieldIndex"
          name="journal_subtitle"
   ><indexed_attr value="journal_subtitle" /></index>
-  <index meta_type="FieldIndex"
-         name="issn"
-  ><indexed_attr value="issn" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_name"
-  ><indexed_attr value="publisher_name" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_institution"
-  ><indexed_attr value="publisher_institution" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_addr_line"
-  ><indexed_attr value="publisher_addr_line" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_postal_code"
-  ><indexed_attr value="publisher_postal_code" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_city"
-  ><indexed_attr value="publisher_city" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_phone"
-  ><indexed_attr value="publisher_phone" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_email"
-  ><indexed_attr value="publisher_email" /></index>
-  <index meta_type="FieldIndex"
-         name="publisher_uri"
-  ><indexed_attr value="publisher_uri" /></index>
+
   <index meta_type="FieldIndex"
          name="article_id"
   ><indexed_attr value="article_id" /></index>
+
+  <!-- KeywordIndex for list fields -->
   <index meta_type="KeywordIndex"
          name="article_subtitle"
   ><indexed_attr value="article_subtitle" /></index>
-  <index meta_type="FieldIndex"
-         name="author_surname"
-  ><indexed_attr value="author_surname" /></index>
-  <index meta_type="FieldIndex"
-         name="co_author_surname"
-  ><indexed_attr value="co_author_surname" /></index>
-  <index meta_type="FieldIndex"
-         name="co_author_aff"
-  ><indexed_attr value="co_author_aff" /></index>
-  <index meta_type="FieldIndex"
-         name="self_uri"
-  ><indexed_attr value="self_uri" /></index>
-  <index meta_type="FieldIndex"
-         name="history_initial_publication"
-  ><indexed_attr value="history_initial_publication" /></index>
-  <index meta_type="FieldIndex"
-         name="history_correction"
-  ><indexed_attr value="history_correction" /></index>
-  <index meta_type="FieldIndex"
-         name="history_latest_version"
-  ><indexed_attr value="history_latest_version" /></index>
-  <index meta_type="FieldIndex"
-         name="copyright_holder"
-  ><indexed_attr value="copyright_holder" /></index>
+
+  <index meta_type="KeywordIndex"
+         name="relatedItems"
+  ><indexed_attr value="relatedItems" /></index>
+
+  <!-- DateIndex for date fields -->
+  <index meta_type="DateIndex"
+         name="pub_date_ausgabedatum"
+  ><indexed_attr value="pub_date_ausgabedatum" /></index>
+
+  <!-- DateIndex for date fields -->
+  <index meta_type="DateIndex"
+         name="pub_date_aktualisierte_fassung"
+  ><indexed_attr value="pub_date_aktualisierte_fassung" /></index>
+
   <index meta_type="FieldIndex"
          name="abstract_short_title"
   ><indexed_attr value="abstract_short_title" /></index>
+
   <index meta_type="FieldIndex"
-         name="abstract_summary_title"
-  ><indexed_attr value="abstract_summary_title" /></index>
-  <index meta_type="FieldIndex"
-         name="beschreibender_typ"
-  ><indexed_attr value="beschreibender_typ" /></index>
-  <index meta_type="FieldIndex"
-         name="bisherige_bestellnummer"
-  ><indexed_attr value="bisherige_bestellnummer" /></index>
+         name="abstract_short"
+  ><indexed_attr value="abstract_short" /></index>
+
+  <!-- KeywordIndex for list fields -->
+  <index meta_type="KeywordIndex"
+         name="subjects"
+  ><indexed_attr value="subjects" /></index>
+
   <index meta_type="FieldIndex"
          name="webcode"
   ><indexed_attr value="webcode" /></index>
+
   <index meta_type="FieldIndex"
          name="organisationseinheit"
   ><indexed_attr value="organisationseinheit" /></index>
+
   <index meta_type="FieldIndex"
          name="fachbereich"
   ><indexed_attr value="fachbereich" /></index>
+
   <index meta_type="FieldIndex"
          name="sachgebiet"
   ><indexed_attr value="sachgebiet" /></index>
-  <index meta_type="FieldIndex"
-         name="veroeffentlichungsstatus"
-  ><indexed_attr value="veroeffentlichungsstatus" /></index>
-  <index meta_type="FieldIndex"
-         name="bildnachweis"
-  ><indexed_attr value="bildnachweis" /></index>
+
 
   <!-- ZCTextIndex for multi-sentence text fields -->
   <!--  <index meta_type="ZCTextIndex" name="copyright_statement">-->
@@ -116,6 +84,7 @@
            value="plone_lexicon"
     />
   </index>
+
   <index meta_type="ZCTextIndex"
          name="abstract_summary"
   >
@@ -128,63 +97,21 @@
     />
   </index>
 
-  <!-- DateIndex for date fields -->
-  <index meta_type="DateIndex"
-         name="pub_date_ausgabedatum"
-  ><indexed_attr value="pub_date_ausgabedatum" /></index>
-  <index meta_type="DateIndex"
-         name="pub_date_aktualisierte_fassung"
-  ><indexed_attr value="pub_date_aktualisierte_fassung" /></index>
-
-  <!-- KeywordIndex for list fields -->
-  <index meta_type="KeywordIndex"
-         name="keywords"
-  ><indexed_attr value="keywords" /></index>
-
-  <!-- BooleanIndex for boolean fields -->
-  <index meta_type="BooleanIndex"
-         name="ueberschriften_mit_nummerierung"
-  ><indexed_attr value="ueberschriften_mit_nummerierung" /></index>
-
   <!-- Metadata columns (for use in listings without waking up objects) -->
   <column value="journal_id" />
   <column value="journal_title" />
   <column value="journal_subtitle" />
-  <column value="issn" />
-  <column value="publisher_name" />
-  <column value="publisher_institution" />
-  <column value="publisher_addr_line" />
-  <column value="publisher_postal_code" />
-  <column value="publisher_city" />
-  <column value="publisher_phone" />
-  <column value="publisher_email" />
-  <column value="publisher_uri" />
   <column value="article_id" />
   <column value="article_subtitle" />
-  <column value="author_surname" />
-  <column value="co_author_surname" />
-  <column value="co_author_aff" />
-  <column value="self_uri" />
+  <column value="relatedItems" />
   <column value="pub_date_ausgabedatum" />
   <column value="pub_date_aktualisierte_fassung" />
-  <column value="history_initial_publication" />
-  <column value="history_correction" />
-  <column value="history_latest_version" />
-  <column value="copyright_statement" />
-  <column value="copyright_holder" />
   <column value="abstract_short_title" />
   <column value="abstract_short" />
-  <column value="abstract_summary_title" />
-  <column value="abstract_summary" />
-  <column value="keywords" />
-  <column value="beschreibender_typ" />
-  <column value="bisherige_bestellnummer" />
+  <column value="subjects" />
   <column value="webcode" />
   <column value="organisationseinheit" />
   <column value="fachbereich" />
   <column value="sachgebiet" />
-  <column value="veroeffentlichungsstatus" />
-  <column value="bildnachweis" />
-  <column value="ueberschriften_mit_nummerierung" />
 
 </object>
