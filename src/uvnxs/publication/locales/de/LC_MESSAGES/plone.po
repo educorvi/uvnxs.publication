@@ -26,3 +26,6 @@ msgstr "HTML-Abschnitt"
 
 msgid "Section"
 msgstr "JATS-Abschnitt"
+
+msgid "Draft"
+msgstr "Entwurf"

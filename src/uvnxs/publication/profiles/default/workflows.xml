@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+ <property
+    name="title">Contains workflow definitions for package uvnx.publication</property>
+ <object name="vur" meta_type="Workflow"/>
+ <bindings>
+  <type type_id="Article">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+  <type type_id="AppendixGroup">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+  <type type_id="Appendix">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+  <type type_id="Back">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+  <type type_id="BauaDocument">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+  <type type_id="Body">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+  <type type_id="EasySection">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+  <type type_id="Section">
+   <bound-workflow workflow_id="vur"/>
+  </type>
+ </bindings>
+</object>

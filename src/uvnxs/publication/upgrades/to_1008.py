@@ -4,10 +4,11 @@ from plone import api
 
 def update_article_metadata(context):
     """Update the article metadata.
-    - activate behaviors:
+    - activate behaviors (by rerunning typeinfo import step):
         - plone.relateditems (to extend relatec_articles)
         - nva.webcode.webcode (to replace webcode attribute)
         - plone.textindexer (to search for abstract_short and abstract_short_title)
+    - rerun workflow import step to new vur workflow
     - migrations for
         - journal_title and journal_subtitle from Textline to choice fields TODO
         - move content from custom field "keywords" (list of strings) to
@@ -22,6 +23,12 @@ def update_article_metadata(context):
         "typeinfo",
     )
 
+    # reload workflow settings
+    setup.runImportStepFromProfile(
+        "profile-uvnxs.publication:default",
+        "workflow",
+    )
+
     all_articles = context.portal_catalog(portal_type="Article")
     for brain in all_articles:
         article = brain.getObject()
@@ -33,17 +40,17 @@ def update_article_metadata(context):
             article.keywords = None
 
         # migrate veroeffentlichungsstatus to plone workflow state
-        workflow_state_map = {
-            "intern veröffentlicht": "internally_published",
-            "veröffentlicht": "internally_published",  # yes, also internally_published
-            "zurückgezogen": "internal",
-            "privat": "private",
-        }
-        veroeffentlichungsstatus = getattr(article, "veroeffentlichungsstatus", None)
-        if veroeffentlichungsstatus in workflow_state_map:
-            api.content.transition(
-                obj=article, to_state=workflow_state_map[veroeffentlichungsstatus]
-            )
+        # workflow_state_map = {
+        #     "intern veröffentlicht": "internally_published",
+        #     "veröffentlicht": "internally_published",  # yes, also internally_published
+        #     "zurückgezogen": "draft",
+        #     "privat": "private",
+        # }
+        # veroeffentlichungsstatus = getattr(article, "veroeffentlichungsstatus", None)
+        # if veroeffentlichungsstatus in workflow_state_map:
+        #     api.content.transition(
+        #         obj=article, to_state=workflow_state_map[veroeffentlichungsstatus]
+        #     )
         article.veroeffentlichungsstatus = None
 
         # reindex to make sure abstract_short and abstract_short_title are indexed
