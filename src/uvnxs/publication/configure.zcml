@@ -50,4 +50,9 @@
       handler="uvnxs.publication.subscribers.save_jats_and_html_on_version"
       />
 
+  <adapter
+      factory=".collectionfilter.groupby_modifier"
+      name="vur-facets"
+      />
+
 </configure>

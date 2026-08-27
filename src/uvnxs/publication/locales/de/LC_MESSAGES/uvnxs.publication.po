@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-26 10:01+0000\n"
+"POT-Creation-Date: 2026-08-27 11:20+0000\n"
 "PO-Revision-Date: 2026-05-15 16:14+0200\n"
 "Last-Translator: Julian Pollinger <EMAIL@ADDRESS>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -50,7 +50,7 @@ msgstr "Anhang-Gruppe eines JATS-Dokuments"
 msgid "Article"
 msgstr "Artikel"
 
-#: uvnxs/publication/content/article.py:198
+#: uvnxs/publication/content/article.py:199
 msgid "Article Categories"
 msgstr ""
 
@@ -173,6 +173,10 @@ msgstr "Entspricht custom-meta 'Überschriften mit Nummerierung' im JATS XML."
 msgid "DGUV Metadata"
 msgstr "DGUV-Metadaten"
 
+#: uvnxs/publication/views/jats_html_view.py:27
+msgid "Download PDF"
+msgstr "PDF Herunterladen"
+
 #: uvnxs/publication/profiles/default/types/EasySection.xml
 msgid "Easy to use alternative to the Section"
 msgstr "Leicht zu verwenden im Vergleich zum JATS-Abschnitt"
@@ -181,7 +185,7 @@ msgstr "Leicht zu verwenden im Vergleich zum JATS-Abschnitt"
 msgid "EasySection"
 msgstr "HTML-Abschnitt"
 
-#: uvnxs/publication/views/jats_html_view.py:38
+#: uvnxs/publication/views/jats_html_view.py:91
 msgid "Error while exporting the article to HTML."
 msgstr "Fehler beim Exportieren des Artikels zu HTML."
 
@@ -229,11 +233,11 @@ msgstr "JATS HTML-Bearbeitungsansicht"
 msgid "JATS HTML View"
 msgstr "JATS HTML-Ansicht"
 
-#: uvnxs/publication/views/configure.zcml:73
+#: uvnxs/publication/views/configure.zcml:82
 msgid "JATS List View"
 msgstr "JATS-Liste"
 
-#: uvnxs/publication/views/configure.zcml:52
+#: uvnxs/publication/views/configure.zcml:61
 msgid "JATS View"
 msgstr "JATS-Ansicht"
 
@@ -253,7 +257,7 @@ msgstr "JATS XML: abstract (abstract-type=summary) / p"
 msgid "JATS XML: abstract (abstract-type=summary) / title"
 msgstr "JATS XML: abstract (abstract-type=summary) / title"
 
-#: uvnxs/publication/content/article.py:199
+#: uvnxs/publication/content/article.py:200
 msgid "JATS XML: article-categories"
 msgstr ""
 
@@ -382,7 +386,7 @@ msgstr "Label und Titel (XML)"
 msgid "Latest Version Year"
 msgstr "Jahr der neuesten Version"
 
-#: uvnxs/publication/content/article.py:207
+#: uvnxs/publication/content/article.py:208
 msgid "List of related articles (article-id values) separated by newlines. JATS XML: related-article. This list can be transformed into links to the actual plone articles via the API."
 msgstr "Liste verknüpfter Artikel (article-id Werte) mit neuen Zeilen getrennt. JATS XML: related-article. Diese Liste kann über die API in Links zu den Plone Artikeln umgewandelt werden."
 
@@ -450,7 +454,7 @@ msgstr ""
 msgid "Reformat"
 msgstr "Neu formatieren"
 
-#: uvnxs/publication/content/article.py:206
+#: uvnxs/publication/content/article.py:207
 msgid "Related Articles"
 msgstr "Verknüpfte Artikel"
 
@@ -499,7 +503,7 @@ msgstr "Zusammenfassung"
 msgid "Summary Abstract Title"
 msgstr "Titel der Zusammenfassung"
 
-#: uvnxs/publication/views/jats_html_view.py:32
+#: uvnxs/publication/views/jats_html_view.py:85
 msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 

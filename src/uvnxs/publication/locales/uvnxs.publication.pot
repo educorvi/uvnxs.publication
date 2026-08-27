@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-08-26 10:01+0000\n"
+"POT-Creation-Date: 2026-08-27 11:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Article"
 msgstr ""
 
-#: uvnxs/publication/content/article.py:198
+#: uvnxs/publication/content/article.py:199
 msgid "Article Categories"
 msgstr ""
 
@@ -172,6 +172,10 @@ msgstr ""
 msgid "DGUV Metadata"
 msgstr ""
 
+#: uvnxs/publication/views/jats_html_view.py:27
+msgid "Download PDF"
+msgstr ""
+
 #: uvnxs/publication/profiles/default/types/EasySection.xml
 msgid "Easy to use alternative to the Section"
 msgstr ""
@@ -180,7 +184,7 @@ msgstr ""
 msgid "EasySection"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:38
+#: uvnxs/publication/views/jats_html_view.py:91
 msgid "Error while exporting the article to HTML."
 msgstr ""
 
@@ -228,11 +232,11 @@ msgstr ""
 msgid "JATS HTML View"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:73
+#: uvnxs/publication/views/configure.zcml:82
 msgid "JATS List View"
 msgstr ""
 
-#: uvnxs/publication/views/configure.zcml:52
+#: uvnxs/publication/views/configure.zcml:61
 msgid "JATS View"
 msgstr ""
 
@@ -252,7 +256,7 @@ msgstr ""
 msgid "JATS XML: abstract (abstract-type=summary) / title"
 msgstr ""
 
-#: uvnxs/publication/content/article.py:199
+#: uvnxs/publication/content/article.py:200
 msgid "JATS XML: article-categories"
 msgstr ""
 
@@ -381,7 +385,7 @@ msgstr ""
 msgid "Latest Version Year"
 msgstr ""
 
-#: uvnxs/publication/content/article.py:207
+#: uvnxs/publication/content/article.py:208
 msgid "List of related articles (article-id values) separated by newlines. JATS XML: related-article. This list can be transformed into links to the actual plone articles via the API."
 msgstr ""
 
@@ -449,7 +453,7 @@ msgstr ""
 msgid "Reformat"
 msgstr ""
 
-#: uvnxs/publication/content/article.py:206
+#: uvnxs/publication/content/article.py:207
 msgid "Related Articles"
 msgstr ""
 
@@ -498,7 +502,7 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:32
+#: uvnxs/publication/views/jats_html_view.py:85
 msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 

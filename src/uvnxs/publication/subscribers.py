@@ -69,8 +69,8 @@ def article_ancestor_change_handler(obj, event):
 
 def save_jats_and_html_on_version(obj, event):
     """
-    Event handler to save JATS and HTML representations of an Article when it is
-    versioned.
+    Event handler to save JATS and HTML representations of an Article
+    when it is versioned.
     """
     if not IArticle.providedBy(obj):
         return

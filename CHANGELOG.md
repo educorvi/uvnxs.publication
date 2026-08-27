@@ -9,6 +9,48 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a22 (2026-08-26)
+
+
+### New features:
+
+- style and print (#8) [#8](https://github.com/educorvi/uvnxs.publication/issues/8)
+
+## 1.0.0a21 (2026-08-25)
+
+
+### Bug fixes:
+
+- include webcomponent [#2ca3f58](https://github.com/educorvi/uvnxs.publication/issues/2ca3f58)
+
+## 1.0.0a20 (2026-08-25)
+
+
+### Internal:
+
+- pin hatchling [#b4866d9](https://github.com/educorvi/uvnxs.publication/issues/b4866d9)
+
+## 1.0.0a19 (2026-08-25)
+
+
+### New features:
+
+- add support for collective collectionfilter and faceted search [#8efafdc](https://github.com/educorvi/uvnxs.publication/issues/8efafdc)
+- event handler to save jats and html on version of article (#6) [#6](https://github.com/educorvi/uvnxs.publication/issues/6)
+- remove front (#7) [#7](https://github.com/educorvi/uvnxs.publication/issues/7)
+
+
+### Bug fixes:
+
+- switch `article_subtitle` to list [#61a6d46](https://github.com/educorvi/uvnxs.publication/issues/61a6d46)
+- add article_categories field with XML editor widget and omit unused fields [#bbc0f56](https://github.com/educorvi/uvnxs.publication/issues/bbc0f56)
+
+
+### Internal:
+
+- update dependencies in pyproject.toml [#a629bab](https://github.com/educorvi/uvnxs.publication/issues/a629bab)
+- commit migration [#be063f4](https://github.com/educorvi/uvnxs.publication/issues/be063f4)
+
 ## 1.0.0a18 (2026-08-17)
 
 

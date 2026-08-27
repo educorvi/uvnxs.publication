@@ -35,7 +35,10 @@ dependencies = [
     "plone.restapi",
     "xmlschema",
     "lxml",
-    "jats_importexport_client >= 1.0.0a15",
+    "jats_importexport_client >= 1.0.0a23",
+    "collective.collectionfilter",
+    "collective.restapi.facetedsearch",
+    "collective.taxonomy",
     "nva.webcode",
 ]
 
@@ -47,7 +50,7 @@ test = [
     "plone.restapi[test]",
     "pytest",
     "pytest-cov",
-    "pytest-plone>=1.0.0a2",
+    "pytest-plone>=1.0.0a2"
 ]
 scripts = [
     "rich"
@@ -73,14 +76,14 @@ prerelease = "allow"
 
 [[tool.uv.index]]
 name = "uvc-plone"
-url = "https://pypi.bg-kooperation.de"
+url = "https://pypi2.bg-kooperation.de"
 
 
 [tool.hatch.version]
 path = "src/uvnxs/publication/__init__.py"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling<1.32"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
@@ -93,6 +96,9 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.sdist.force-include]
+"src/uvnxs/publication/vue/xml-editor-webcomponent/dist" = "src/uvnxs/publication/vue/xml-editor-webcomponent/dist"
+
+[tool.hatch.build.targets.wheel.force-include]
 "src/uvnxs/publication/vue/xml-editor-webcomponent/dist" = "src/uvnxs/publication/vue/xml-editor-webcomponent/dist"
 
 [tool.hatch.build.targets.wheel]

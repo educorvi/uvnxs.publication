@@ -1,9 +1,3 @@
 <configure xmlns="http://namespaces.zope.org/zope">
-
-  <!--
-    Keep this add-on lightweight: avoid globally including plone.restapi/plone.volto
-    from here, because their named adapter "text" can be traversed as context/text
-    in classic templates and collide with rich text field access.
-  -->
-
+  <include package="collective.restapi.facetedsearch" />
 </configure>
