@@ -210,7 +210,6 @@ class IArticle(ICommon):
         ),
         value_type=schema.TextLine(),
         required=False,
-        default=[],
     )
     form.omitted("related_articles")
 

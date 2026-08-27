@@ -9,7 +9,6 @@ def update_article_metadata(context):
         - plone.textindexer (to search for abstract_short and abstract_short_title)
     - rerun workflow import step to new vur workflow
     - migrations for
-        - journal_title and journal_subtitle from Textline to choice fields TODO
         - move content from custom field "keywords" (list of strings) to
           plone.categorization "subjects" (tuple of strings)
         - not necessary for "webcode", as it is the same as the nva.webcode field
@@ -26,6 +25,12 @@ def update_article_metadata(context):
     setup.runImportStepFromProfile(
         "profile-uvnxs.publication:default",
         "workflow",
+    )
+
+    # reload catalog settings (indexes/columns)
+    setup.runImportStepFromProfile(
+        "profile-uvnxs.publication:default",
+        "catalog",
     )
 
     all_articles = context.portal_catalog(portal_type="Article")

@@ -175,7 +175,7 @@
   </transition>
   <transition after_script=""
               before_script=""
-              new_state="internally_published "
+              new_state="internally_published"
               title="Publish internally"
               transition_id="publish_internally"
               trigger="USER"

@@ -2,7 +2,7 @@
 <object meta_type="Plone Workflow Tool"
         name="portal_workflow"
 >
-  <property name="title">Contains workflow definitions for package uvnx.publication</property>
+  <property name="title">Contains workflow definitions for package uvnxs.publication</property>
   <object meta_type="Workflow"
           name="vur"
   />
