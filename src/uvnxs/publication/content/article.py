@@ -193,6 +193,7 @@ class IArticle(ICommon):
         description=_("Canonical URL. JATS XML: self-uri"),
         required=False,
     )
+    form.omitted("self_uri")
 
     article_categories = schema.Text(
         title=_("Article Categories"),
