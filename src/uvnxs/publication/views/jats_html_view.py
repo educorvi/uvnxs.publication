@@ -43,6 +43,10 @@ _HTML_TEMPLATE = """
             <div class="article-actions d-flex mt-4">
                 <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}">
                     <img src="/++resource++uvnxs.publication/icons/download.svg" alt="" aria-hidden="true">
+                    <div class="loading-indicator loading-indicator--orbit loading-indicator--swing-flip d-none" role="status" aria-live="polite" aria-label="Lädt">
+                        <span class="loading-indicator__dot"></span>
+                        <span class="loading-indicator__semi"></span>
+                    </div>
                     <span>{download_pdf}</span>
                 </a>
             </div>
