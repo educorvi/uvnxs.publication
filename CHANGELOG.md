@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a25 (2026-08-27)
+
+
+### New features:
+
+- landing page view and folder filter view [#ede52a7](https://github.com/educorvi/uvnxs.publication/issues/ede52a7)
+
 ## 1.0.0a24 (2026-08-27)
 
 
