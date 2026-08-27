@@ -35,7 +35,7 @@ dependencies = [
     "plone.restapi",
     "xmlschema",
     "lxml",
-    "jats_importexport_client >= 1.0.0a23",
+    "jats_importexport_client >= 1.0.0a24",
     "collective.collectionfilter",
     "collective.restapi.facetedsearch",
     "collective.taxonomy",
@@ -76,7 +76,7 @@ prerelease = "allow"
 
 [[tool.uv.index]]
 name = "uvc-plone"
-url = "https://pypi2.bg-kooperation.de"
+url = "https://pypi2.bg-kooperation.de/simple"
 
 
 [tool.hatch.version]
