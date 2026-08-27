@@ -1,11 +1,10 @@
 from Products.CMFCore.utils import getToolByName
-from plone import api
 
 
 def update_article_metadata(context):
     """Update the article metadata.
     - activate behaviors (by rerunning typeinfo import step):
-        - plone.relateditems (to extend relatec_articles)
+        - plone.relateditems (to extend related_articles)
         - nva.webcode.webcode (to replace webcode attribute)
         - plone.textindexer (to search for abstract_short and abstract_short_title)
     - rerun workflow import step to new vur workflow
@@ -42,7 +41,7 @@ def update_article_metadata(context):
         # migrate veroeffentlichungsstatus to plone workflow state
         # workflow_state_map = {
         #     "intern veröffentlicht": "internally_published",
-        #     "veröffentlicht": "internally_published",  # yes, also internally_published
+        #     "veröffentlicht": "internally_published", # yes, also internally_published
         #     "zurückgezogen": "draft",
         #     "privat": "private",
         # }

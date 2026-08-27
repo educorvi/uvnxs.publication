@@ -48,7 +48,7 @@
     <element value="plone.locking" />
     <element value="nva.webcode.webcode" />
     <!--<element value="plone.leadimage"/>-->
-    <element value="plone.relateditems"/>
+    <element value="plone.relateditems" />
     <!--<element value="plone.richtext"/>-->
     <!--<element value="plone.tableofcontents"/>-->
     <element value="plone.versioning" />
