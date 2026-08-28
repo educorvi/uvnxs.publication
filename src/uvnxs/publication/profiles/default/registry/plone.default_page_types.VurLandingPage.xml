@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+  <record
+      field="default_page_types"
+      interface="plone.base.interfaces.controlpanel.ITypesSchema"
+      name="plone.default_page_types"
+  >
+    <value purge="false">
+      <element>VurLandingPage</element>
+    </value>
+  </record>
+</registry>
