@@ -40,4 +40,9 @@
       title="uvnxs.publication: Add BauaDocument"
       />
 
+  <permission
+      id="uvnxs.publication.AddVurLandingPage"
+      title="uvnxs.publication: Add VurLandingPage"
+      />
+
 </configure>

@@ -4,8 +4,11 @@ from uvnxs.publication.testing import INTEGRATION_TESTING  # noqa
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from plone.base.interfaces.controlpanel import ITypesSchema
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.registry.interfaces import IRegistry
 from zope.component import createObject
+from zope.component import getUtility
 from zope.component import queryUtility
 
 import unittest
@@ -31,6 +34,17 @@ class VurLandingPageIntegrationTest(unittest.TestCase):
     def test_ct_vur_landing_page_fti(self):
         fti = queryUtility(IDexterityFTI, name='VurLandingPage')
         self.assertTrue(fti)
+
+    def test_ct_vur_landing_page_default_view(self):
+        fti = queryUtility(IDexterityFTI, name='VurLandingPage')
+        self.assertEqual('vur-landing-page', fti.default_view)
+        self.assertEqual('vur-landing-page', fti.immediate_view)
+        self.assertEqual(('vur-landing-page',), fti.view_methods)
+
+    def test_ct_vur_landing_page_selectable_as_default(self):
+        registry = getUtility(IRegistry)
+        types_settings = registry.forInterface(ITypesSchema, prefix='plone')
+        self.assertIn('VurLandingPage', types_settings.default_page_types)
 
     def test_ct_vur_landing_page_factory(self):
         fti = queryUtility(IDexterityFTI, name='VurLandingPage')

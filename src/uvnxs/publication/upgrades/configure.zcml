@@ -96,5 +96,13 @@
       destination="1009"
       handler=".to_1009.register_landing_page_view_and_folder_filter_view"
       />
+  <genericsetup:upgradeStep
+      title="Migrate to 1010"
+      description="Register the new content type."
+      profile="uvnxs.publication:default"
+      source="1009"
+      destination="1010"
+      handler=".to_1010.register_new_content_type"
+      />
 
 </configure>

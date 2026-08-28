@@ -10,26 +10,18 @@ class IVuRLandingPageView(Interface):
 @implementer(IVuRLandingPageView)
 class VuRLandingPageView(BrowserView):
     def __call__(self):
-        rubriken = [
-            "Vorschriften",
-            "Regeln",
-            "Informationen",
-            "Grundsätze",
-            "Fachbereich AKTUELL",
-        ]
-        rubriken = dict.fromkeys(rubriken)
-        for child in self.context.restrictedTraverse("@@contentlisting")():
-            if child.portal_type != "Folder":
+        rubriken = []
+        for relation in self.context.rubriken or []:
+            folder = relation.to_object
+            if folder is None:
                 continue
-            title = child.title
-            if title in rubriken and rubriken[title] is None:
-                rubriken[title] = {
-                    "title": title,
-                    "description": child.description,
-                    "url": child.getObject().absolute_url(),
-                    "count": len(
-                        child.getObject().restrictedTraverse("@@contentlisting")()
-                    ),
+            rubriken.append(
+                {
+                    "title": folder.Title(),
+                    "description": folder.Description(),
+                    "url": folder.absolute_url(),
+                    "count": len(folder.restrictedTraverse("@@contentlisting")()),
                 }
-        self.rubriken = list(filter(lambda x: x is not None, rubriken.values()))
+            )
+        self.rubriken = rubriken
         return self.index()
