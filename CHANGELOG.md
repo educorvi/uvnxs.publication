@@ -9,6 +9,24 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a26 (2026-08-28)
+
+
+### New features:
+
+- implement folder-based "rubriken" handling for VurLandingPage and adjust view configuration [#9d4169f](https://github.com/educorvi/uvnxs.publication/issues/9d4169f)
+
+
+### Bug fixes:
+
+- resolve issue with article subtitle array in list view [#385a239](https://github.com/educorvi/uvnxs.publication/issues/385a239)
+
+
+### Internal:
+
+- revert remove wheel.force-include [#ba16045](https://github.com/educorvi/uvnxs.publication/issues/ba16045)
+- bump default profile version to 1010 and update related test [#62ca4a1](https://github.com/educorvi/uvnxs.publication/issues/62ca4a1)
+
 ## 1.0.0a25 (2026-08-27)
 
 
