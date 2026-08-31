@@ -5,6 +5,7 @@ from uvnxs.publication import logger
 from uvnxs.publication.views.common import get_api_client
 from zope.interface import implementer
 from zope.interface import Interface
+import re
 
 import jats_importexport_client
 
@@ -58,6 +59,44 @@ _HTML_TEMPLATE = """
 </div>
 """  # noqa: E501
 
+# Regex for webcode links
+WEBCODE_PATTERN = r"p\d{6}"
+LINK_PATTERN = re.compile(
+    rf"""(?P<prefix>
+            <a\b[^>]*?\bhref\s*=\s*(?P<quote>["'])
+        )
+        https://publikationen\.dguv\.de/
+        DguvWebcode/index/query/
+        (?P<webcode>{WEBCODE_PATTERN})
+        /?
+        (?P=quote)
+    """,
+    re.IGNORECASE | re.VERBOSE,
+)
+
+
+def _get_target_url(webcode: str) -> str | None:
+    catalog = api.portal.get_tool("portal_catalog")
+
+    brains = catalog(
+        portal_type="Article",
+        webcode=webcode.lower(),
+    )
+
+    return brains[0].getURL() if brains else None
+
+
+def _replace_external_publication_links(html: str):
+    """Replace external links with internal links."""
+    def replace(match: re.Match[str]) -> str:
+        webcode = match.group("webcode").lower()
+        target_url = _get_target_url(webcode)
+        if target_url is None:
+            return match.group(0)
+
+        return f'{match.group("prefix")}{target_url}{match.group("quote")}'
+
+    return LINK_PATTERN.sub(replace, html)
 
 def _get_html(context, include_edit_links=False):
     """Get the HTML representation of the JATS XML content.
@@ -69,6 +108,7 @@ def _get_html(context, include_edit_links=False):
             path, include_edit_links=include_edit_links
         ).dict()
         html = response_dict.get("html", "")
+        html = _replace_external_publication_links(html)
         front = response_dict.get("front", "")
         article_id = context.article_id
         article_title = context.title
