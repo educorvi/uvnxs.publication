@@ -11,7 +11,9 @@
         <section class="vur-header">
           <h1 tal:content="structure context/title"></h1>
           <tal:block tal:condition="context/description">
-            <p tal:content="structure context/description"></p>
+            <p class="vur-header-description"
+               tal:content="structure context/description"
+            ></p>
           </tal:block>
 
           <section class="vur-filter-section">

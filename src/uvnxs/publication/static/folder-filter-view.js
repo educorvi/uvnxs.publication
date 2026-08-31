@@ -95,6 +95,8 @@ addEventListener('DOMContentLoaded', () => {
         // If sorting by publication date, sort in descending order (newest first)
         if (sortBy === 'pub_date') {
             documents.sort((a, b) => sortValue(b, sortBy).localeCompare(sortValue(a, sortBy), 'de'));
+        } else if (sortBy === 'article_id') {
+            documents.sort((a, b) => sortValue(a, sortBy).localeCompare(sortValue(b, sortBy), 'de', { numeric: true }));
         } else {
             documents.sort((a, b) => sortValue(a, sortBy).localeCompare(sortValue(b, sortBy), 'de'));
         }
