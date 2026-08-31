@@ -26,6 +26,7 @@
   <include file="dependencies.zcml" />
   <include file="profiles.zcml" />
   <include file="permissions.zcml" />
+  <include package=".api" />
   <include package=".serializers" />
 
   <include package=".behaviors" />
