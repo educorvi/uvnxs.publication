@@ -8,6 +8,22 @@
   <body>
     <metal:block fill-slot="main">
       <div class="vur">
+        <datalist id="vur-fachbereiche-json"
+                  tal:attributes="
+                    json string:${view/fachbereiche_json};
+                  "
+        ></datalist>
+        <datalist id="vur-sachgebiete-json"
+                  tal:attributes="
+                    json string:${view/sachgebiete_json};
+                  "
+        ></datalist>
+        <datalist id="vur-documents-json"
+                  tal:attributes="
+                    json string:${view/documents_json};
+                  "
+        ></datalist>
+
         <section class="vur-header">
           <h1 tal:content="structure context/title"></h1>
           <tal:block tal:condition="context/description">
@@ -28,14 +44,14 @@
                   <label id="fachbereich-label"
                          for="fachbereich-multi-select"
                   >Fachbereich</label>
-                  <div class="form-multi-select"
+                  <div id="fachbereich-multi-select-container"
                        data-max-chips="5"
                        data-placeholder="Auswählen"
                   >
                     <div class="ms-field">
                       <button class="ms-trigger"
                               id="fachbereich-multi-select"
-                              aria-controls="multi-select-listbox"
+                              aria-controls="fachbereich-multi-select-listbox"
                               aria-expanded="false"
                               aria-haspopup="listbox"
                               aria-labelledby="fachbereich-label multi-select-value"
@@ -47,7 +63,7 @@
                       ></span>
                     </div>
                     <ul class="ms-listbox"
-                        id="multi-select-listbox"
+                        id="fachbereich-multi-select-listbox"
                         aria-labelledby="fachbereich-label"
                         aria-multiselectable="true"
                         hidden
@@ -63,22 +79,6 @@
                               aria-hidden="true"
                         ></span><span class="ms-option-label">Alle ausw&auml;hlen</span>
                       </li>
-                      <tal:block tal:repeat="fachbereich view/fachbereiche">
-                        <li class="ms-option"
-                            aria-selected="false"
-                            role="option"
-                            tabindex="-1"
-                            tal:attributes="
-                              data-value fachbereich;
-                            "
-                        >
-                          <span class="ms-check"
-                                aria-hidden="true"
-                          ></span><span class="ms-option-label"
-                                tal:content="fachbereich"
-                          ></span>
-                        </li>
-                      </tal:block>
                     </ul>
                     <span class="ms-visually-hidden"
                           aria-live="polite"
@@ -89,14 +89,14 @@
                   <label id="sachgebiet-label"
                          for="sachgebiet-multi-select"
                   >Sachgebiet</label>
-                  <div class="form-multi-select"
+                  <div id="sachgebiet-multi-select-container"
                        data-max-chips="5"
                        data-placeholder="Auswählen"
                   >
                     <div class="ms-field">
                       <button class="ms-trigger"
                               id="sachgebiet-multi-select"
-                              aria-controls="multi-select-listbox"
+                              aria-controls="sachgebiet-multi-select-listbox"
                               aria-expanded="false"
                               aria-haspopup="listbox"
                               aria-labelledby="sachgebiet-label multi-select-value"
@@ -108,7 +108,7 @@
                       ></span>
                     </div>
                     <ul class="ms-listbox"
-                        id="multi-select-listbox"
+                        id="sachgebiet-multi-select-listbox"
                         aria-labelledby="sachgebiet-label"
                         aria-multiselectable="true"
                         hidden
@@ -124,22 +124,6 @@
                               aria-hidden="true"
                         ></span><span class="ms-option-label">Alle ausw&auml;hlen</span>
                       </li>
-                      <tal:block tal:repeat="sachgebiet view/sachgebiete">
-                        <li class="ms-option"
-                            aria-selected="false"
-                            role="option"
-                            tabindex="-1"
-                            tal:attributes="
-                              data-value sachgebiet;
-                            "
-                        >
-                          <span class="ms-check"
-                                aria-hidden="true"
-                          ></span><span class="ms-option-label"
-                                tal:content="sachgebiet"
-                          ></span>
-                        </li>
-                      </tal:block>
                     </ul>
                     <span class="ms-visually-hidden"
                           aria-live="polite"
@@ -171,11 +155,6 @@
           </section>
         </section>
 
-        <datalist id="vur-documents-json"
-                  tal:attributes="
-                    json string:${view/documents_json};
-                  "
-        ></datalist>
         <section class="vur-documents-list"></section>
       </div>
     </metal:block>

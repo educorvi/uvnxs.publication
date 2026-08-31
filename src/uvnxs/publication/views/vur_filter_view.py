@@ -36,10 +36,28 @@ class VuRFilterView(BrowserView):
             )
         ]
         self.documents_json = json.dumps(documents, ensure_ascii=False)
-        self.fachbereiche = sorted({
+
+        sachgebiete = {}
+        for doc in documents:
+            if not (sachgebiet := doc["sachgebiet"]):
+                continue
+            if sachgebiet not in sachgebiete:
+                sachgebiete[sachgebiet] = []
+            if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[
+                sachgebiet
+            ]:
+                sachgebiete[sachgebiet].append(fachbereich)
+        self.sachgebiete_json = json.dumps(
+            [
+                {"name": sg, "fachbereiche": fachbereiche}
+                for sg, fachbereiche in sachgebiete.items()
+            ],
+            ensure_ascii=False,
+        )
+
+        fachbereiche = sorted({
             doc["fachbereich"] for doc in documents if doc["fachbereich"]
         })
-        self.sachgebiete = sorted({
-            doc["sachgebiet"] for doc in documents if doc["sachgebiet"]
-        })
+        self.fachbereiche_json = json.dumps(fachbereiche, ensure_ascii=False)
+
         return self.index()
