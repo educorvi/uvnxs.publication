@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a28 (2026-09-01)
+
+
+### New features:
+
+- views and search (#10) [#10](https://github.com/educorvi/uvnxs.publication/issues/10)
+
 ## 1.0.0a27 (2026-09-01)
 
 
