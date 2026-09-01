@@ -1,0 +1,290 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="uvnxs.publication"
+>
+  <body>
+    <metal:block fill-slot="main">
+      <div class="vur">
+        <datalist id="vur-fachbereiche-json"
+                  tal:attributes="
+                    json string:${view/fachbereiche_json};
+                  "
+        ></datalist>
+        <datalist id="vur-sachgebiete-json"
+                  tal:attributes="
+                    json string:${view/sachgebiete_json};
+                  "
+        ></datalist>
+        <datalist id="vur-rubriken-json"
+                  tal:attributes="
+                    json string:${view/rubriken_json};
+                  "
+        ></datalist>
+        <datalist id="vur-documents-json"
+                  tal:attributes="
+                    json string:${view/documents_json};
+                  "
+        ></datalist>
+
+        <section class="vur-header">
+          <h1>Recherche</h1>
+          <form class="vur-search"
+                action=""
+                role="search"
+                tal:attributes="
+                  action string:${context/portal_url}/@@search;
+                "
+          >
+            <label for="search-query">Im Regelwerk suchen</label>
+            <div class="d-flex w-100">
+              <input id="search-query"
+                     name="SearchableText"
+                     placeholder="Suchbegriff oder Webcode"
+                     type="search"
+                     tal:attributes="
+                       value view/query;
+                     "
+              />
+              <button type="submit">Suchen</button>
+            </div>
+          </form>
+
+          <tal:block tal:condition="view/has_results">
+            <section class="vur-filter-section">
+              <div class="vur-filter-section__filters">
+                <div class="vur-filter-section__header d-flex flex-wrap align-items-baseline justify-content-between gap-3">
+                  <h2>Ergebnisse filtern</h2>
+                  <p class="small">Mehrfachauswahl erweitert die Trefferliste.</p>
+                </div>
+
+                <div class="vur-filter-section__filterlist">
+                  <div class="form-group">
+                    <label id="rubrik-label"
+                           for="rubrik-multi-select"
+                    >Rubrik</label>
+                    <div id="rubrik-multi-select-container"
+                         data-max-chips="5"
+                         data-placeholder="Auswählen"
+                    >
+                      <div class="ms-field">
+                        <button class="ms-trigger"
+                                id="rubrik-multi-select"
+                                aria-controls="rubrik-multi-select-listbox"
+                                aria-expanded="false"
+                                aria-haspopup="listbox"
+                                aria-labelledby="rubrik-label multi-select-value"
+                                type="button"
+                        ></button>
+                        <span class="ms-value"></span>
+                        <span class="ms-chevron"
+                              aria-hidden="true"
+                        ></span>
+                      </div>
+                      <ul class="ms-listbox"
+                          id="rubrik-multi-select-listbox"
+                          aria-labelledby="rubrik-label"
+                          aria-multiselectable="true"
+                          hidden
+                          role="listbox"
+                      >
+                        <li class="ms-option ms-option-all"
+                            id="rubrik-multi-select-option-all"
+                            aria-selected="false"
+                            role="option"
+                            tabindex="-1"
+                        >
+                          <span class="ms-check"
+                                aria-hidden="true"
+                          ></span><span class="ms-option-label">Alle ausw&auml;hlen</span>
+                        </li>
+                      </ul>
+                      <span class="ms-visually-hidden"
+                            aria-live="polite"
+                      ></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label id="fachbereich-label"
+                           for="fachbereich-multi-select"
+                    >Fachbereich</label>
+                    <div id="fachbereich-multi-select-container"
+                         data-max-chips="5"
+                         data-placeholder="Auswählen"
+                    >
+                      <div class="ms-field">
+                        <button class="ms-trigger"
+                                id="fachbereich-multi-select"
+                                aria-controls="fachbereich-multi-select-listbox"
+                                aria-expanded="false"
+                                aria-haspopup="listbox"
+                                aria-labelledby="fachbereich-label multi-select-value"
+                                type="button"
+                        ></button>
+                        <span class="ms-value"></span>
+                        <span class="ms-chevron"
+                              aria-hidden="true"
+                        ></span>
+                      </div>
+                      <ul class="ms-listbox"
+                          id="fachbereich-multi-select-listbox"
+                          aria-labelledby="fachbereich-label"
+                          aria-multiselectable="true"
+                          hidden
+                          role="listbox"
+                      >
+                        <li class="ms-option ms-option-all"
+                            id="fachbereich-multi-select-option-all"
+                            aria-selected="false"
+                            role="option"
+                            tabindex="-1"
+                        >
+                          <span class="ms-check"
+                                aria-hidden="true"
+                          ></span><span class="ms-option-label">Alle ausw&auml;hlen</span>
+                        </li>
+                      </ul>
+                      <span class="ms-visually-hidden"
+                            aria-live="polite"
+                      ></span>
+                    </div>
+                  </div>
+                  <div class="form-group flex-fill">
+                    <label id="sachgebiet-label"
+                           for="sachgebiet-multi-select"
+                    >Sachgebiet</label>
+                    <div id="sachgebiet-multi-select-container"
+                         data-max-chips="5"
+                         data-placeholder="Auswählen"
+                    >
+                      <div class="ms-field">
+                        <button class="ms-trigger"
+                                id="sachgebiet-multi-select"
+                                aria-controls="sachgebiet-multi-select-listbox"
+                                aria-expanded="false"
+                                aria-haspopup="listbox"
+                                aria-labelledby="sachgebiet-label multi-select-value"
+                                type="button"
+                        ></button>
+                        <span class="ms-value"></span>
+                        <span class="ms-chevron"
+                              aria-hidden="true"
+                        ></span>
+                      </div>
+                      <ul class="ms-listbox"
+                          id="sachgebiet-multi-select-listbox"
+                          aria-labelledby="sachgebiet-label"
+                          aria-multiselectable="true"
+                          hidden
+                          role="listbox"
+                      >
+                        <li class="ms-option ms-option-all"
+                            id="sachgebiet-multi-select-option-all"
+                            aria-selected="false"
+                            role="option"
+                            tabindex="-1"
+                        >
+                          <span class="ms-check"
+                                aria-hidden="true"
+                          ></span><span class="ms-option-label">Alle ausw&auml;hlen</span>
+                        </li>
+                      </ul>
+                      <span class="ms-visually-hidden"
+                            aria-live="polite"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vur-filter-section__sorting d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                  <div>
+                    <strong tal:content="view/count"></strong>
+                    <span>Ergebnisse</span>
+                  </div>
+                  <div>
+                    &bull;
+                  </div>
+                  <div class="vur-filter-section__results-count">
+                    <strong></strong>
+                    <span>nach Filtern</span>
+                  </div>
+                </div>
+                <div class="vur-filter-section__sort d-flex align-items-center gap-3">
+                  <label for="sort-select"><strong>Sortieren nach</strong></label>
+                  <select class="form-select"
+                          id="sort-select"
+                          name="sort-select"
+                  >
+                    <option selected
+                            value="article_id"
+                    >Artikel-ID</option>
+                    <option value="title">Titel</option>
+                    <option value="pub_date">Ausgabedatum</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+          </tal:block>
+
+          <tal:block tal:condition="not: view/has_results">
+            <section class="vur-no-results">
+              <tal:block tal:condition="not: view/has_query">
+                <p>Bitte geben Sie einen Suchbegriff oder Webcode ein.</p>
+              </tal:block>
+              <tal:block tal:condition="view/has_query">
+                <p>Keine Ergebnisse gefunden.</p>
+              </tal:block>
+            </section>
+          </tal:block>
+        </section>
+
+        <tal:block tal:condition="view/has_results">
+          <section class="vur-documents-list"></section>
+        </tal:block>
+      </div>
+    </metal:block>
+
+    <metal:block fill-slot="style_slot">
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/common.css;
+            "
+      />
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/search-field.css;
+            "
+      />
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/common-filter-view.css;
+            "
+      />
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/search-filter-view.css;
+            "
+      />
+    </metal:block>
+    <metal:block fill-slot="javascript_head_slot">
+      <script type="module"
+              tal:attributes="
+                src string:${context/portal_url}/++resource++uvnxs.publication/theme/multi-select.js;
+              "
+      ></script>
+      <script type="module"
+              tal:attributes="
+                src string:${context/portal_url}/++resource++uvnxs.publication/js/common-filter-view.js;
+              "
+      ></script>
+    </metal:block>
+  </body>
+</html>

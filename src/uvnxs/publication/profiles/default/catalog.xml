@@ -97,6 +97,19 @@
     />
   </index>
 
+  <!-- Aggregated text of an Article's descendants, see Article.SearchableFullText -->
+  <index meta_type="ZCTextIndex"
+         name="vur_fulltext"
+  >
+    <indexed_attr value="SearchableFullText" />
+    <extra name="index_type"
+           value="Okapi BM25 Rank"
+    />
+    <extra name="lexicon_id"
+           value="plone_lexicon"
+    />
+  </index>
+
   <!-- Metadata columns (for use in listings without waking up objects) -->
   <column value="journal_id" />
   <column value="journal_title" />

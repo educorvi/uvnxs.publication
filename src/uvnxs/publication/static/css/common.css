@@ -42,7 +42,7 @@
 .vur .vur-grid {
   display: grid!important;
   gap: 1.5rem!important;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .vur .vur-card {
@@ -69,7 +69,13 @@
 
 /* responsive - small width */
 
-@media (max-width: 1023.99px) {
+@media (max-width: 1439.98px) {
+  .vur .vur-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1023.98px) {
   .vur .vur-header h1 {
     margin-block: 20px;
     font-size: clamp(42px, 12vw, 48px);
@@ -84,6 +90,12 @@
     padding-bottom: 64px;
   }
 
+  .vur .vur-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767.98px) {
   .vur .vur-grid {
     grid-template-columns: 1fr;
   }

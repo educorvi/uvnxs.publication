@@ -31,6 +31,17 @@
       i18n:domain="uvnxs.publication"
       />
 
+  <!-- Overrides Plone's default @@search view to search only Articles. -->
+  <browser:page
+      name="search"
+      for="plone.base.interfaces.INavigationRoot"
+      class=".vur_search_view.VuRSearchView"
+      template="vur_search_view.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      i18n:domain="uvnxs.publication"
+      />
+
   <browser:page
       name="jats-list-view"
       for="plone.app.contenttypes.interfaces.IFolder"

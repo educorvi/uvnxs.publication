@@ -10,6 +10,77 @@ from zope.interface import implementer
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
+import re
+
+
+_TAG_REGEX = re.compile(r"<[^>]+>")
+
+_ARTICLE = "Article"
+_BODY = "Body"
+_BACK = "Back"
+_APPENDIX_GROUP = "AppendixGroup"
+_APPENDIX = "Appendix"
+_SECTION = "Section"
+_EASY_SECTION = "EasySection"
+
+_TYPES_WITH_TITLE = [
+    _ARTICLE,
+    _BODY,
+    _BACK,
+    _APPENDIX_GROUP,
+    _APPENDIX,
+    _SECTION,
+    _EASY_SECTION,
+]
+_TYPES_WITH_CONTENT_RAW = [_APPENDIX_GROUP, _APPENDIX, _SECTION]
+_TYPES_WITH_CONTENT = [_EASY_SECTION]
+_TYPES_WITH_CHILDREN = [_ARTICLE, _BODY, _BACK, _APPENDIX_GROUP, _APPENDIX, _SECTION]
+
+
+def _collect_text_values(obj):
+    """Collect text values from the given object for full-text indexing.
+
+    This function recursively collects text from the object's title, raw content,
+    and child objects based on the object's portal type.
+    """
+    values = []
+    if not obj:
+        return values
+
+    portal_type = obj.portal_type
+
+    if portal_type in _TYPES_WITH_TITLE:
+        values.append(obj.title)
+
+    if obj.portal_type == _ARTICLE:
+        values.extend([
+            obj.journal_id,
+            obj.journal_title,
+            obj.journal_subtitle,
+            obj.article_id,
+            obj.abstract_short_title,
+            obj.abstract_short,
+            obj.abstract_summary_title,
+            obj.abstract_summary,
+        ])
+        for subtitle in obj.article_subtitle or []:
+            if subtitle:
+                values.append(subtitle)
+
+    if portal_type in _TYPES_WITH_CONTENT_RAW and obj.content_raw:
+        text_content = _TAG_REGEX.sub(" ", obj.content_raw)
+        values.append(text_content)
+
+    if portal_type in _TYPES_WITH_CONTENT and obj.content and obj.content.raw:
+        text_content = _TAG_REGEX.sub(" ", obj.content.raw)
+        values.append(text_content)
+
+    if portal_type in _TYPES_WITH_CHILDREN:
+        for child in obj.objectValues():
+            values.extend(_collect_text_values(child))
+
+    return values
+
 
 journal_title_values = [
     ("dguv-vorschrift", "DGUV Vorschrift"),
@@ -405,3 +476,8 @@ class IArticle(ICommon):
 @implementer(IArticle)
 class Article(Container):
     """Content-type class for IArticle"""
+
+    def SearchableFullText(self):
+        """Collect searchable text for the article for full-text indexing."""
+        values = _collect_text_values(self)
+        return " ".join(str(value) for value in values if value)

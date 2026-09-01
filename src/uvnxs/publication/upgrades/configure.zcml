@@ -105,4 +105,13 @@
       handler=".to_1010.register_new_content_type"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1011"
+      description="Reindex articles to add searchable text."
+      profile="uvnxs.publication:default"
+      source="1010"
+      destination="1011"
+      handler=".to_1011.add_article_searchable_text"
+      />
+
 </configure>
