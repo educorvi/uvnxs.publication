@@ -163,13 +163,13 @@
       <link rel="stylesheet"
             type="text/css"
             tal:attributes="
-              href string:${context/portal_url}/++resource++uvnxs.publication/common.css;
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/common.css;
             "
       />
       <link rel="stylesheet"
             type="text/css"
             tal:attributes="
-              href string:${context/portal_url}/++resource++uvnxs.publication/folder-filter-view.css;
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/common-filter-view.css;
             "
       />
     </metal:block>
@@ -181,7 +181,7 @@
       ></script>
       <script type="module"
               tal:attributes="
-                src string:${context/portal_url}/++resource++uvnxs.publication/folder-filter-view.js;
+                src string:${context/portal_url}/++resource++uvnxs.publication/js/folder-filter-view.js;
               "
       ></script>
     </metal:block>
