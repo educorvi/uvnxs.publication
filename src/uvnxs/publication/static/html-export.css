@@ -8,9 +8,10 @@
   pointer-events: none;
 }
 
-.article-action .loading-indicator{
+.article-action .loading-indicator {
   height: 1em;
 }
+
 /* ==================== Edit View ==================== */
 
 .article-fragment a.section-edit-link > i {
@@ -119,9 +120,23 @@
 }
 
 .article-fragment .metadata-small table tr[data-meta-field="journal-title"] td,
-.article-fragment .metadata-small table tr[data-meta-field="journal-subtitle"] td {
+.article-fragment .metadata-small table tr[data-meta-field="journal-subtitle"] td,
+.metadata-title {
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.metadata-title {
+  margin-bottom: 0.5em !important;
+}
+
+.article-fragment .metadata-small table tr[data-meta-field="related-articles"] td ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.article-fragment .metadata-small table tr[data-meta-field="related-articles"] td ul > li:last-child {
 }
 
 .article-fragment .metadata-small tr:first-child,
@@ -135,14 +150,14 @@
   color: var(--dguv-text);
 }
 
-.article-fragment .metadata-small tr:last-child td a {
+.article-fragment .metadata-small tr[data-meta-field="document-uri"] td a {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 
-.article-fragment .metadata-small tr:last-child td a::after {
+.article-fragment .metadata-small tr[data-meta-field="document-uri"] td a::after {
   content: "";
   width: 1em;
   height: 1em;
@@ -200,8 +215,8 @@
 .article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title > *,
 .article-fragment .jats-html-export-toc > ul > li > .toc-label,
 .article-fragment .jats-html-export-toc > ul > li > a {
-  color: var(--dguv-primary)!important;
-  font-weight: 700!important;
+  color: var(--dguv-primary) !important;
+  font-weight: 700 !important;
 }
 
 .article-fragment .jats-html-export-toc .toc-entry:has(> .toc-label) {
@@ -274,14 +289,14 @@
 .article-fragment .section > .title,
 .article-fragment .section > .title :not(.label) {
   margin: 48px 0 24px;
-  font-size: 24px!important;
-  font-weight: 700!important;
-  line-height: 1.35!important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
 }
 
 .article-fragment h2 .label,
 .article-fragment .section > .title .label {
-  line-height: 1.35!important;
+  line-height: 1.35 !important;
 }
 
 .article-fragment h3,
@@ -289,10 +304,10 @@
 .article-fragment .section .section > .title,
 .article-fragment .section .section > .title * {
   margin: 32px 0 16px;
-  font-size: 22px!important;
-  font-weight: 700!important;
-  line-height: 1.35!important;
-  color: var(--dguv-text)!important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: var(--dguv-text) !important;
 }
 
 .article-fragment p {
@@ -504,7 +519,7 @@
 }
 
 .article-fragment :is(#article-body, #article-back) .freie-liste[data-list-level="3"] > p {
-  margin-inline-start: calc(2*(1.5em + var(--dguv-space-sm)));
+  margin-inline-start: calc(2 * (1.5em + var(--dguv-space-sm)));
 }
 
 .article-fragment :is(#article-body, #article-back) .freie-liste[data-list-type=ordered] + .list {
