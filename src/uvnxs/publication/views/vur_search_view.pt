@@ -63,11 +63,11 @@
                 <div class="vur-filter-section__filterlist">
                   <div class="form-group">
                     <label id="rubrik-label"
-                          for="rubrik-multi-select"
+                           for="rubrik-multi-select"
                     >Rubrik</label>
                     <div id="rubrik-multi-select-container"
-                        data-max-chips="5"
-                        data-placeholder="Auswählen"
+                         data-max-chips="5"
+                         data-placeholder="Auswählen"
                     >
                       <div class="ms-field">
                         <button class="ms-trigger"
@@ -107,11 +107,11 @@
                   </div>
                   <div class="form-group">
                     <label id="fachbereich-label"
-                          for="fachbereich-multi-select"
+                           for="fachbereich-multi-select"
                     >Fachbereich</label>
                     <div id="fachbereich-multi-select-container"
-                        data-max-chips="5"
-                        data-placeholder="Auswählen"
+                         data-max-chips="5"
+                         data-placeholder="Auswählen"
                     >
                       <div class="ms-field">
                         <button class="ms-trigger"
@@ -152,11 +152,11 @@
                   </div>
                   <div class="form-group flex-fill">
                     <label id="sachgebiet-label"
-                          for="sachgebiet-multi-select"
+                           for="sachgebiet-multi-select"
                     >Sachgebiet</label>
                     <div id="sachgebiet-multi-select-container"
-                        data-max-chips="5"
-                        data-placeholder="Auswählen"
+                         data-max-chips="5"
+                         data-placeholder="Auswählen"
                     >
                       <div class="ms-field">
                         <button class="ms-trigger"

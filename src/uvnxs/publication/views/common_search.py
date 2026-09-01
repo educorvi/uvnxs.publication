@@ -13,13 +13,16 @@ def get_document_for_article(obj):
         "url": obj.absolute_url(),
     }
 
+
 def get_rubriken(documents):
     """Return a list of unique rubriken from the given documents."""
     return sorted({doc["rubrik"] for doc in documents if doc["rubrik"]})
 
+
 def get_fachbereiche(documents):
     """Return a list of unique fachbereiche from the given documents."""
     return sorted({doc["fachbereich"] for doc in documents if doc["fachbereich"]})
+
 
 def get_sachgebiete(documents):
     """Return a list of sachgebiete with their associated fachbereiche."""
@@ -29,6 +32,11 @@ def get_sachgebiete(documents):
             continue
         if sachgebiet not in sachgebiete:
             sachgebiete[sachgebiet] = []
-        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[sachgebiet]:
+        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[
+            sachgebiet
+        ]:
             sachgebiete[sachgebiet].append(fachbereich)
-    return [{"name": sg, "fachbereiche": fachbereiche} for sg, fachbereiche in sachgebiete.items()]
+    return [
+        {"name": sg, "fachbereiche": fachbereiche}
+        for sg, fachbereiche in sachgebiete.items()
+    ]
