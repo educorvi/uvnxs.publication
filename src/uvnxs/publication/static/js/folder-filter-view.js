@@ -1,4 +1,4 @@
-import { initMultiSelect } from './theme/multi-select.js';
+import { initMultiSelect } from '../theme/multi-select.js';
 
 addEventListener('DOMContentLoaded', () => {
     // Convert an ISO date string to a German date string (e.g. "2024-06-01" -> "01. Juni 2024")
