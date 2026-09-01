@@ -73,6 +73,7 @@
                         <button class="ms-trigger"
                                 id="rubrik-multi-select"
                                 aria-controls="rubrik-multi-select-listbox"
+                                aria-expanded="false"
                                 aria-haspopup="listbox"
                                 aria-labelledby="rubrik-label multi-select-value"
                                 type="button"

@@ -38,5 +38,5 @@ def get_sachgebiete(documents):
             sachgebiete[sachgebiet].append(fachbereich)
     return [
         {"name": sg, "fachbereiche": fachbereiche}
-        for sg, fachbereiche in sachgebiete.items()
+        for sg, fachbereiche in sorted(sachgebiete.items())
     ]
