@@ -134,9 +134,18 @@
             </div>
 
             <div class="vur-filter-section__sorting d-flex flex-wrap align-items-center justify-content-between gap-3">
-              <div class="vur-filter-section__results-count">
-                <strong></strong>
-                <span>Dokumente</span>
+              <div class="d-flex flex-wrap align-items-center gap-3">
+                <div>
+                  <strong tal:content="view/count"></strong>
+                  <span>Dokumente</span>
+                </div>
+                <div>
+                  &bull;
+                </div>
+                <div class="vur-filter-section__results-count">
+                  <strong></strong>
+                  <span>nach Filter</span>
+                </div>
               </div>
               <div class="vur-filter-section__sort d-flex align-items-center gap-3">
                 <label for="sort-select"><strong>Sortieren nach</strong></label>
