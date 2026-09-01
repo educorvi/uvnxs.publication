@@ -9,6 +9,15 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a27 (2026-09-01)
+
+
+### New features:
+
+- styling for related articles [#b5c0c16](https://github.com/educorvi/uvnxs.publication/issues/b5c0c16)
+- add "all_descendents" service to allow prefetching the article [#b230e7f](https://github.com/educorvi/uvnxs.publication/issues/b230e7f)
+- replace external publication links with internal links in JATS HTML view [#4e87bf9](https://github.com/educorvi/uvnxs.publication/issues/4e87bf9)
+
 ## 1.0.0a26 (2026-08-28)
 
 
