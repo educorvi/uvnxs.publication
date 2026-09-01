@@ -18,12 +18,15 @@
           <form class="vur-search"
                 action=""
                 role="search"
+                tal:attributes="
+                  action string:${context/portal_url}/@@search;
+                "
           >
             <label for="search-query">Im Regelwerk suchen</label>
             <div class="d-flex w-100">
               <input id="search-query"
-                     name="search-query"
-                     placeholder="Suchbegriff, Dokumentnummer oder Webcode"
+                     name="SearchableText"
+                     placeholder="Suchbegriff oder Webcode"
                      type="search"
               />
               <button type="submit">Suchen</button>

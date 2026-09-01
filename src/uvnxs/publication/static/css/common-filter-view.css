@@ -30,12 +30,6 @@
   color: var(--dguv-text);
 }
 
-.vur .vur-filter-section__filterlist {
-  display: grid;
-  gap: .75rem;
-  grid-template-columns: repeat(2, 1fr);
-}
-
 .vur .vur-filter-section__sorting {
   border-top: 1px solid var(--dguv-text);
 }
@@ -98,10 +92,6 @@
 }
 
 @media (max-width: 1023.99px) {
-  .vur .vur-filter-section__filterlist {
-    grid-template-columns: 1fr;
-  }
-
   .vur .vur-documents-list__item > a {
     grid-template-columns: 1fr;
   }

@@ -87,10 +87,14 @@ addEventListener('DOMContentLoaded', () => {
 
     // Read the current filter selections from the DOM and update the state
     function setFilterSelections() {
-        for (const [id, target] of [
+        const targetList = [
             ['fachbereich-multi-select', 'fachbereiche'],
             ['sachgebiet-multi-select', 'sachgebiete'],
-        ]) {
+        ];
+        if (state.hasRubriken) {
+            targetList.unshift(['rubrik-multi-select', 'rubrik']);
+        }
+        for (const [id, target] of targetList) {
             const trigger = document.getElementById(id);
             const control = trigger && trigger.closest('.form-multi-select');
             const values = new Set();
@@ -145,7 +149,7 @@ addEventListener('DOMContentLoaded', () => {
 
     // Apply the current filters and sorting to the document list
     function applyFiltersAndSort() {
-        let { fachbereiche, sachgebiete, sortBy } = state;
+        let { has_rubriken, rubriken, fachbereiche, sachgebiete, sortBy } = state;
 
         // sort the documents based on the selected sortBy field
         // If sorting by publication date, sort in descending order (newest first)
@@ -168,9 +172,10 @@ addEventListener('DOMContentLoaded', () => {
         // filter the documents based on the selected fachbereiche and sachgebiete by hiding or showing the corresponding DOM elements
         let visibleCount = 0;
         for (const doc of documents) {
+            const matchRubrik = !has_rubriken || rubriken.size === 0 || rubriken.has(doc.rubrik);
             const matchFb = fachbereiche.size === 0 || fachbereiche.has(doc.fachbereich);
             const matchSg = sachgebiete.size === 0 || sachgebiete.has(doc.sachgebiet);
-            const shouldShow = matchFb && matchSg;
+            const shouldShow = matchFb && matchSg && matchRubrik;
             if (shouldShow) {
                 visibleCount++;
                 resultsSection.appendChild(doc.domElement);
@@ -187,17 +192,24 @@ addEventListener('DOMContentLoaded', () => {
 
 
     // DOM elements
+    const resultsSection = document.querySelector('.vur-documents-list');
+    if (!resultsSection) {
+        return;
+    }
     const filterSection = document.querySelector('.vur-filter-section__filters');
+    const rubrikenContainer = document.getElementById('rubrik-multi-select-container');
+    const rubrikenUl = document.getElementById('rubrik-multi-select-listbox');
     const fachbereicheContainer = document.getElementById('fachbereich-multi-select-container');
     const fachbereicheUl = document.getElementById('fachbereich-multi-select-listbox');
     let sachgebietContainer = document.getElementById('sachgebiet-multi-select-container');
     const sachgebieteUl = document.getElementById('sachgebiet-multi-select-listbox');
     const sortSelect = document.getElementById('sort-select');
     const countEl = document.querySelector('.vur-filter-section__results-count strong');
-    const resultsSection = document.querySelector('.vur-documents-list');
 
     // state for the selected filters and sorting option
     const state = {
+        hasRubriken: rubrikenContainer !== null,
+        rubriken: new Set(),
         fachbereiche: new Set(),
         sachgebiete: new Set(),
         sortBy: sortSelect.value || 'article_id',
@@ -218,6 +230,15 @@ addEventListener('DOMContentLoaded', () => {
     }
 
     // filters and filter dependencies
+    if (state.hasRubriken) {
+        const rubrikenDatalist = document.getElementById('vur-rubriken-json');
+        const rubrikenAll = JSON.parse(rubrikenDatalist.getAttribute('json') || '[]');
+        for (const rubrik of rubrikenAll) {
+            const rubrikElement = createMultiSelectOption(rubrik);
+            rubrikenUl.appendChild(rubrikElement);
+        }
+    }
+
     const fachbereicheDatalist = document.getElementById('vur-fachbereiche-json');
     const fachbereicheAll = JSON.parse(fachbereicheDatalist.getAttribute('json') || '[]');
     for (const fachbereich of fachbereicheAll) {
@@ -232,6 +253,10 @@ addEventListener('DOMContentLoaded', () => {
     }
 
     if (typeof initMultiSelect === 'function') {
+        if (state.hasRubriken) {
+            rubrikenContainer.classList.add('form-multi-select');
+            initMultiSelect(rubrikenContainer);
+        }
         fachbereicheContainer.classList.add('form-multi-select');
         initMultiSelect(fachbereicheContainer);
         sachgebietContainer.classList.add('form-multi-select');

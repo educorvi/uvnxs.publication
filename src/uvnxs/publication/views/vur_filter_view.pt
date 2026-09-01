@@ -144,7 +144,7 @@
                 </div>
                 <div class="vur-filter-section__results-count">
                   <strong></strong>
-                  <span>nach Filter</span>
+                  <span>nach Filtern</span>
                 </div>
               </div>
               <div class="vur-filter-section__sort d-flex align-items-center gap-3">
@@ -181,6 +181,12 @@
               href string:${context/portal_url}/++resource++uvnxs.publication/css/common-filter-view.css;
             "
       />
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/folder-filter-view.css;
+            "
+      />
     </metal:block>
     <metal:block fill-slot="javascript_head_slot">
       <script type="module"
@@ -190,7 +196,7 @@
       ></script>
       <script type="module"
               tal:attributes="
-                src string:${context/portal_url}/++resource++uvnxs.publication/js/folder-filter-view.js;
+                src string:${context/portal_url}/++resource++uvnxs.publication/js/common-filter-view.js;
               "
       ></script>
     </metal:block>
