@@ -6,7 +6,7 @@ class JatsListView(BrowserView):
         self.jats_documents = [
             {
                 "title": doc.title,
-                "subtitle": ', '.join(doc.article_subtitle),
+                "subtitle": ", ".join(doc.article_subtitle),
                 "url": doc.getURL(),
                 "article-id": doc.article_id,
                 "pub_date": doc.pub_date_ausgabedatum,

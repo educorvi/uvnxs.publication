@@ -15,13 +15,11 @@ class VuRLandingPageView(BrowserView):
             folder = relation.to_object
             if folder is None:
                 continue
-            rubriken.append(
-                {
-                    "title": folder.Title(),
-                    "description": folder.Description(),
-                    "url": folder.absolute_url(),
-                    "count": len(folder.restrictedTraverse("@@contentlisting")()),
-                }
-            )
+            rubriken.append({
+                "title": folder.Title(),
+                "description": folder.Description(),
+                "url": folder.absolute_url(),
+                "count": len(folder.restrictedTraverse("@@contentlisting")()),
+            })
         self.rubriken = rubriken
         return self.index()

@@ -5,9 +5,9 @@ from uvnxs.publication import logger
 from uvnxs.publication.views.common import get_api_client
 from zope.interface import implementer
 from zope.interface import Interface
-import re
 
 import jats_importexport_client
+import re
 
 
 class IJATSHtmlView(Interface):
@@ -88,15 +88,17 @@ def _get_target_url(webcode: str) -> str | None:
 
 def _replace_external_publication_links(html: str):
     """Replace external links with internal links."""
+
     def replace(match: re.Match[str]) -> str:
         webcode = match.group("webcode").lower()
         target_url = _get_target_url(webcode)
         if target_url is None:
             return match.group(0)
 
-        return f'{match.group("prefix")}{target_url}{match.group("quote")}'
+        return f"{match.group('prefix')}{target_url}{match.group('quote')}"
 
     return LINK_PATTERN.sub(replace, html)
+
 
 def _get_html(context, include_edit_links=False):
     """Get the HTML representation of the JATS XML content.

@@ -1,15 +1,19 @@
 <configure
-  xmlns="http://namespaces.zope.org/zope"
-  xmlns:plone="http://namespaces.plone.org/plone">
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    >
 
-  <adapter factory=".get.AllDescendents" name="all_descendents"/>
+  <adapter
+      factory=".get.AllDescendents"
+      name="all_descendents"
+      />
 
   <plone:service
-    method="GET"
-    for="zope.interface.Interface"
-    factory=".get.AllDescendentsGet"
-    name="@all_descendents"
-    permission="zope2.View"
-    />
+      method="GET"
+      factory=".get.AllDescendentsGet"
+      for="zope.interface.Interface"
+      permission="zope2.View"
+      name="@all_descendents"
+      />
 
 </configure>

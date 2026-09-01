@@ -5,22 +5,21 @@ from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.services import Service
 from zope.component import adapter
 from zope.component import getMultiAdapter
-from zope.interface import Interface
 from zope.interface import implementer
+from zope.interface import Interface
 
 
 @implementer(IExpandableElement)
 @adapter(Interface, Interface)
-class AllDescendents(object):
-
+class AllDescendents:
     def __init__(self, context, request):
         self.context = context.aq_explicit
         self.request = request
 
     def __call__(self, expand=False):
         result = {
-            'all_descendents': {
-                '@id': f'{self.context.absolute_url()}/@all_descendents',
+            "all_descendents": {
+                "@id": f"{self.context.absolute_url()}/@all_descendents",
             },
         }
         if not expand:
@@ -40,9 +39,7 @@ class AllDescendents(object):
             if path == context_path:
                 continue
 
-            summary = getMultiAdapter(
-                (brain, self.request), ISerializeToJsonSummary
-            )()
+            summary = getMultiAdapter((brain, self.request), ISerializeToJsonSummary)()
             item = getMultiAdapter(
                 (brain.getObject(), self.request), ISerializeToJson
             )()
@@ -62,7 +59,6 @@ class AllDescendents(object):
 
 
 class AllDescendentsGet(Service):
-
     def reply(self):
         service_factory = AllDescendents(self.context, self.request)
-        return service_factory(expand=True)['all_descendents']
+        return service_factory(expand=True)["all_descendents"]

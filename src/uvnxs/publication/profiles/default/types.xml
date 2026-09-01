@@ -1,12 +1,32 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<object meta_type="Plone Types Tool" name="portal_types">
-  <object meta_type="Dexterity FTI" name="Article"/>
-  <object meta_type="Dexterity FTI" name="Body"/>
-  <object meta_type="Dexterity FTI" name="Back"/>
-  <object meta_type="Dexterity FTI" name="Section"/>
-  <object meta_type="Dexterity FTI" name="AppendixGroup"/>
-  <object meta_type="Dexterity FTI" name="Appendix"/>
-  <object meta_type="Dexterity FTI" name="EasySection"/>
-  <object meta_type="Dexterity FTI" name="BauaDocument"/>
-  <object name="VurLandingPage" meta_type="Dexterity FTI"/>
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Types Tool"
+        name="portal_types"
+>
+  <object meta_type="Dexterity FTI"
+          name="Article"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Body"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Back"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Section"
+  />
+  <object meta_type="Dexterity FTI"
+          name="AppendixGroup"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Appendix"
+  />
+  <object meta_type="Dexterity FTI"
+          name="EasySection"
+  />
+  <object meta_type="Dexterity FTI"
+          name="BauaDocument"
+  />
+  <object meta_type="Dexterity FTI"
+          name="VurLandingPage"
+  />
 </object>

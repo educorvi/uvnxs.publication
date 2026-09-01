@@ -1,20 +1,20 @@
 from plone.app.z3cform.widgets.relateditems import RelatedItemsFieldWidget
 from plone.autoform import directives
 from plone.dexterity.content import Container
+
 # from plone.namedfile import field as namedfile
 from plone.supermodel import model
-# from plone.supermodel.directives import fieldset
-# from z3c.form.browser.radio import RadioFieldWidget
-from zope.interface import implementer
+from uvnxs.publication import _
 from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
 
-from uvnxs.publication import _
+# from plone.supermodel.directives import fieldset
+# from z3c.form.browser.radio import RadioFieldWidget
+from zope.interface import implementer
 
 
 class IVurLandingPage(model.Schema):
-    """ Marker interface and Dexterity Python Schema for VurLandingPage
-    """
+    """Marker interface and Dexterity Python Schema for VurLandingPage"""
 
     directives.widget(
         "rubriken",
@@ -78,5 +78,4 @@ class IVurLandingPage(model.Schema):
 
 @implementer(IVurLandingPage)
 class VurLandingPage(Container):
-    """ Content-type class for IVurLandingPage
-    """
+    """Content-type class for IVurLandingPage"""
