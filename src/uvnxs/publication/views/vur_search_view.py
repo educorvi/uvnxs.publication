@@ -84,5 +84,6 @@ class VuRSearchView(BrowserView):
             site = api.portal.get()
             return [site.absolute_url_path()]
         return [
-            rubrik.to_object.absolute_url_path() for rubrik in vur_landing_page.rubriken
+            "/".join(rubrik.to_object.getPhysicalPath())
+            for rubrik in vur_landing_page.rubriken
         ]
