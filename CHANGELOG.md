@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a30 (2026-09-02)
+
+
+### Bug fixes:
+
+- search path [#78c67de](https://github.com/educorvi/uvnxs.publication/issues/78c67de)
+
 ## 1.0.0a29 (2026-09-02)
 
 
