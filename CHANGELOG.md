@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a29 (2026-09-02)
+
+
+### Bug fixes:
+
+- search (#11) [#11](https://github.com/educorvi/uvnxs.publication/issues/11)
+
+
+### Internal:
+
+- revert remove wheel.force-include [#927096d](https://github.com/educorvi/uvnxs.publication/issues/927096d)
+
 ## 1.0.0a28 (2026-09-01)
 
 
