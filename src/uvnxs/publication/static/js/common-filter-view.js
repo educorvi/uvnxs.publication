@@ -92,7 +92,7 @@ addEventListener('DOMContentLoaded', () => {
             ['sachgebiet-multi-select', 'sachgebiete'],
         ];
         if (state.hasRubriken) {
-            targetList.unshift(['rubrik-multi-select', 'rubrik']);
+            targetList.unshift(['rubrik-multi-select', 'rubriken']);
         }
         for (const [id, target] of targetList) {
             const trigger = document.getElementById(id);
@@ -149,7 +149,7 @@ addEventListener('DOMContentLoaded', () => {
 
     // Apply the current filters and sorting to the document list
     function applyFiltersAndSort() {
-        let { has_rubriken, rubriken, fachbereiche, sachgebiete, sortBy } = state;
+        let { hasRubriken, rubriken, fachbereiche, sachgebiete, sortBy } = state;
 
         // sort the documents based on the selected sortBy field
         // If sorting by publication date, sort in descending order (newest first)
@@ -172,7 +172,7 @@ addEventListener('DOMContentLoaded', () => {
         // filter the documents based on the selected fachbereiche and sachgebiete by hiding or showing the corresponding DOM elements
         let visibleCount = 0;
         for (const doc of documents) {
-            const matchRubrik = !has_rubriken || rubriken.size === 0 || rubriken.has(doc.rubrik);
+            const matchRubrik = !hasRubriken || rubriken.size === 0 || rubriken.has(doc.rubrik);
             const matchFb = fachbereiche.size === 0 || fachbereiche.has(doc.fachbereich);
             const matchSg = sachgebiete.size === 0 || sachgebiete.has(doc.sachgebiet);
             const shouldShow = matchFb && matchSg && matchRubrik;
