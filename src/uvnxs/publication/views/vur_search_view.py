@@ -34,9 +34,12 @@ class VuRSearchView(BrowserView):
 
     def _search(self, query):
         catalog = api.portal.get_tool("portal_catalog")
+        search_paths = self._get_search_paths()
 
         # An exact Webcode match wins, no further searching needed.
-        webcode_brains = catalog(portal_type="Article", webcode=query)
+        webcode_brains = catalog(
+            portal_type="Article", webcode=query, path=search_paths
+        )
         if len(webcode_brains) > 0:
             return [
                 get_document_for_article(webcode_brain.getObject())
@@ -45,9 +48,41 @@ class VuRSearchView(BrowserView):
 
         seen_uids = set()
         results = []
-        for brain in catalog(portal_type="Article", vur_fulltext=query):
+        for brain in catalog(
+            portal_type="Article", vur_fulltext=query, path=search_paths
+        ):
             if brain.UID in seen_uids:
                 continue
             seen_uids.add(brain.UID)
             results.append(get_document_for_article(brain.getObject()))
         return results
+
+    def _get_vur_landing_page(self):
+        # try to get the landing page from the default page property (view) first
+        site = api.portal.get()
+        vur_landing_page_id = site.getProperty("default_page")
+        if vur_landing_page_id:
+            vur_landing_page = site.get(vur_landing_page_id)
+            if vur_landing_page and vur_landing_page.portal_type == "VurLandingPage":
+                return vur_landing_page
+
+        # if no landing page is found via the default page property (view),
+        # return the first root object that is a VurLandingPage
+        for child in site.objectValues():
+            if child.portal_type == "VurLandingPage":
+                return child
+
+        return None
+
+    def _get_search_paths(self):
+        vur_landing_page = self._get_vur_landing_page()
+        if (
+            not vur_landing_page
+            or not vur_landing_page.rubriken
+            or len(vur_landing_page.rubriken) == 0
+        ):
+            site = api.portal.get()
+            return [site.absolute_url_path()]
+        return [
+            rubrik.to_object.absolute_url_path() for rubrik in vur_landing_page.rubriken
+        ]
