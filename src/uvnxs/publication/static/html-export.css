@@ -255,6 +255,28 @@
 
 /* ==================== Article Body ==================== */
 
+/* Relative image sizes */
+.article-fragment--content {
+  container-type: inline-size;
+}
+.article-fragment--content img.image-size-icon {
+  width: 5cqw;
+}
+.article-fragment--content img.image-size-small {
+  width: 25cqw;
+}
+.article-fragment--content img.image-size-medium {
+  width: 50cqw;
+}
+.article-fragment--content img.image-size-large {
+  width: 100cqw;
+}
+.article-fragment--content img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 .article-fragment #article-body,
 .article-fragment #article-back {
   color: var(--dguv-text);
@@ -344,11 +366,6 @@
   padding: 8px 10px;
   border: 1px solid var(--dguv-table-border);
   vertical-align: top;
-}
-
-.article-fragment img {
-  max-width: 100%;
-  height: auto;
 }
 
 .article-fragment #article-body > .section[data-sec-type=preamble] {
