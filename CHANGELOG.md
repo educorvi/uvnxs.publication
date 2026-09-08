@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a32 (2026-09-08)
+
+
+### Bug fixes:
+
+- remove section label, add default for label_title_raw [#298495d](https://github.com/educorvi/uvnxs.publication/issues/298495d)
+
 ## 1.0.0a31 (2026-09-08)
 
 
