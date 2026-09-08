@@ -110,8 +110,17 @@ journal_subtitle_terms = [
 journal_subtitle_vocabulary = SimpleVocabulary(journal_subtitle_terms)
 
 
-class IArticle(ICommon):
+class IArticle(model.Schema):
     """Marker interface and Dexterity Python Schema for Article"""
+
+    # --- Title and Language ---
+    title = schema.TextLine(
+        title=_("Title"),
+        description=_(
+            "The title of the article. The title is used to generate an ID. Once the ID is generated, the title can be changed without changing the ID."  # noqa: E501
+        ),
+        required=True,
+    )
 
     xml_lang = schema.TextLine(
         title=_("Language"),
