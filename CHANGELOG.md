@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a31 (2026-09-08)
+
+
+### New features:
+
+- add support for language variants [#836fafc](https://github.com/educorvi/uvnxs.publication/issues/836fafc)
+
+
+### Bug fixes:
+
+- correct image sizes [#3472142](https://github.com/educorvi/uvnxs.publication/issues/3472142)
+
 ## 1.0.0a30 (2026-09-02)
 
 
