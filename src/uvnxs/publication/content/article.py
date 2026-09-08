@@ -1,4 +1,5 @@
 from plone.app.dexterity import textindexer
+from plone.app.z3cform.widgets.contentbrowser import ContentBrowserFieldWidget
 from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.supermodel import model
@@ -9,6 +10,7 @@ from zope import schema
 from zope.interface import implementer
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
+from z3c.relationfield.schema import RelationChoice, RelationList
 
 import re
 
@@ -110,6 +112,13 @@ journal_subtitle_vocabulary = SimpleVocabulary(journal_subtitle_terms)
 
 class IArticle(ICommon):
     """Marker interface and Dexterity Python Schema for Article"""
+
+    xml_lang = schema.TextLine(
+        title=_("Language"),
+        description=_("JATS XML: xml:lang attribute of the article"),
+        required=True,
+        default="de",
+    )
 
     # --- Journal Metadata (journal-meta) ---
 
@@ -223,6 +232,7 @@ class IArticle(ICommon):
             "self_uri",
             "article_categories",
             "related_articles",
+            "related_articles_translations",
         ],
     )
 
@@ -277,12 +287,22 @@ class IArticle(ICommon):
     related_articles = schema.List(
         title=_("Related Articles"),
         description=_(
-            "List of related articles (article-id values) separated by newlines. JATS XML: related-article. This list can be transformed into links to the actual plone articles via the API."  # noqa: E501
+            "List of related articles (webcode values) separated by newlines. JATS XML: related-article. This list can be transformed into links to the actual plone articles via the API."  # noqa: E501
         ),
         value_type=schema.TextLine(),
         required=False,
     )
     form.omitted("related_articles")
+
+    related_articles_translations = schema.List(
+        title=_("Related Articles Translations"),
+        description=_(
+            "List of translations (webcode values) separated by newlines. JATS XML: related-article. This list can be transformed into links to the actual plone articles via the API."  # noqa: E501
+        ),
+        value_type=schema.TextLine(),
+        required=False,
+    )
+    form.omitted("related_articles_translations")
 
     # --- Publication Dates ---
 
@@ -470,6 +490,33 @@ class IArticle(ICommon):
             "Stores the JATS XML content of the article for versioning purposes."
         ),
         required=False,
+    )
+
+    # --- Kategorisierung ---
+
+    model.fieldset(
+        "categorization",
+        label=_("Categorization"),
+        fields=[
+            "related_items_translations",
+        ],
+    )
+
+    form.widget(
+        "related_items_translations",
+        ContentBrowserFieldWidget,
+        vocabulary="plone.app.vocabularies.Catalog",
+        pattern_options={
+            "selectableTypes": ["Article"],
+        },
+    )
+    related_items_translations = RelationList(
+        title=_("Language Variants"),
+        required=False,
+        default=[],
+        value_type=RelationChoice(
+            title=_("Language Variants"), vocabulary="plone.app.vocabularies.Catalog"
+        ),
     )
 
 
