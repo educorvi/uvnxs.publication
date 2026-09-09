@@ -31,5 +31,11 @@
     <type type_id="Section">
       <bound-workflow workflow_id="vur" />
     </type>
+    <type type_id="Image">
+      <bound-workflow workflow_id="vur" />
+    </type>
+    <type type_id="File">
+      <bound-workflow workflow_id="vur" />
+    </type>
   </bindings>
 </object>

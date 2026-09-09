@@ -123,4 +123,13 @@
       handler=".to_1012.add_article_searchable_text"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1013"
+      description="Update workflow for existing content. Images and Files are now also using the vur workflow."
+      profile="uvnxs.publication:default"
+      source="1012"
+      destination="1013"
+      handler=".to_1013.update_workflow"
+      />
+
 </configure>
