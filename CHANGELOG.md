@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a33 (2026-09-09)
+
+
+### New features:
+
+- vur workflow also for images and files [#9a9da5a](https://github.com/educorvi/uvnxs.publication/issues/9a9da5a)
+
 ## 1.0.0a32 (2026-09-08)
 
 
