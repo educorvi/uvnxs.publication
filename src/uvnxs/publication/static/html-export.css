@@ -212,7 +212,7 @@
 }
 
 .article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title,
-.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title > *,
+.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title *,
 .article-fragment .jats-html-export-toc > ul > li > .toc-label,
 .article-fragment .jats-html-export-toc > ul > li > a {
   color: var(--dguv-primary) !important;
