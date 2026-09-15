@@ -332,6 +332,39 @@
   color: var(--dguv-text) !important;
 }
 
+.article-fragment h4,
+.article-fragment h4 *,
+.article-fragment .section .section > .title,
+.article-fragment .section .section > .title * {
+  margin: 28px 0 12px;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: var(--dguv-text) !important;
+}
+
+.article-fragment h5,
+.article-fragment h5 *,
+.article-fragment .section .section > .title,
+.article-fragment .section .section > .title * {
+  margin: 24px 0 10px;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: var(--dguv-text) !important;
+}
+
+.article-fragment h6,
+.article-fragment h6 *,
+.article-fragment .section .section > .title,
+.article-fragment .section .section > .title * {
+  margin: 20px 0 8px;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: var(--dguv-text) !important;
+}
+
 .article-fragment p {
   margin: 0 0 1em;
 }
