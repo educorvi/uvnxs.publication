@@ -132,4 +132,22 @@
       handler=".to_1013.update_workflow"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1014"
+      description="Add content-view as an available view method on Body."
+      profile="uvnxs.publication:default"
+      source="1013"
+      destination="1014"
+      handler=".to_1014.register_content_view"
+      />
+
+  <genericsetup:upgradeStep
+      title="Migrate to 1015"
+      description="Make content-view the default view on Body, Back and AppendixGroup."
+      profile="uvnxs.publication:default"
+      source="1014"
+      destination="1015"
+      handler=".to_1015.register_content_view"
+      />
+
 </configure>

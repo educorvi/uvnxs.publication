@@ -107,6 +107,42 @@
       i18n:domain="uvnxs.publication"
       />
 
+  <browser:page
+      name="content-view"
+      for="uvnxs.publication.content.body.IBody"
+      class=".article_content_tree_view.ArticleContentTreeView"
+      template="article_content_tree_view.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Content View"
+      i18n:domain="uvnxs.publication"
+      />
+
+  <browser:page
+      name="content-view"
+      for="uvnxs.publication.content.back.IBack"
+      class=".article_content_tree_view.ArticleContentTreeView"
+      template="article_content_tree_view.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Content View"
+      i18n:domain="uvnxs.publication"
+      />
+
+  <browser:page
+      name="content-view"
+      for="uvnxs.publication.content.appendix_group.IAppendixGroup"
+      class=".article_content_tree_view.ArticleContentTreeView"
+      template="article_content_tree_view.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Content View"
+      i18n:domain="uvnxs.publication"
+      />
+
   <include package="plone.app.registry" />
 
   <browser:page
