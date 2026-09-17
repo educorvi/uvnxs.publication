@@ -9,6 +9,20 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a34 (2026-09-17)
+
+
+### New features:
+
+- treeview [#4f0fe3d](https://github.com/educorvi/uvnxs.publication/issues/4f0fe3d)
+
+
+### Bug fixes:
+
+- adapt clear-export-cache to new jats-importexport-client [#ccc7714](https://github.com/educorvi/uvnxs.publication/issues/ccc7714)
+- pdf export toc styling [#6e370d2](https://github.com/educorvi/uvnxs.publication/issues/6e370d2)
+- style h4, h5, h6 [#e5058bf](https://github.com/educorvi/uvnxs.publication/issues/e5058bf)
+
 ## 1.0.0a33 (2026-09-09)
 
 
