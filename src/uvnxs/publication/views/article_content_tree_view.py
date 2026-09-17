@@ -7,25 +7,24 @@ from zope.interface import Interface
 
 
 class IArticleContentTreeView(Interface):
-    """ Marker Interface for IArticleContentTreeView"""
+    """Marker Interface for IArticleContentTreeView"""
 
 
 @implementer(IArticleContentTreeView)
 class ArticleContentTreeView(BrowserView):
-
     def content_tree(self, container=None):
         if container is None:
             container = self.context
-        if not getattr(aq_base(container), 'isPrincipiaFolderish', False):
+        if not getattr(aq_base(container), "isPrincipiaFolderish", False):
             return []
 
         security = getSecurityManager()
         return [
             {
-                'title': child.Title() or child.getId(),
-                'url': child.absolute_url(),
-                'children': self.content_tree(child),
+                "title": child.Title() or child.getId(),
+                "url": child.absolute_url(),
+                "children": self.content_tree(child),
             }
             for child in container.objectValues()
-            if security.checkPermission('View', child)
+            if security.checkPermission("View", child)
         ]

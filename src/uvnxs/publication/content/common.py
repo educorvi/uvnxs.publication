@@ -40,7 +40,9 @@ class IGeneralSection(model.Schema):
 
     title = schema.TextLine(
         title=_("Title"),
-        description=_("The title is only used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes. For changing the displayed title, use the label and title xml field."), # noqa: E501
+        description=_(
+            "The title is only used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes. For changing the displayed title, use the label and title xml field."  # noqa: E501
+        ),
         required=False,
     )
 

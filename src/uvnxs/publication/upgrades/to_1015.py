@@ -7,6 +7,6 @@ def register_content_view(context):
     for type_id in ("Body", "Back", "AppendixGroup"):
         fti = portal_types[type_id]
         if "content-view" not in fti.view_methods:
-            fti.view_methods = tuple(fti.view_methods) + ("content-view",)
+            fti.view_methods = (*tuple(fti.view_methods), "content-view")
         fti.default_view = "content-view"
         fti.immediate_view = "content-view"

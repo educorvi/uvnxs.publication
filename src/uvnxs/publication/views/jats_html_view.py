@@ -107,7 +107,7 @@ def _get_html(context, include_edit_links=False):
     path = api.content.get_path(context, relative=True)
     try:
         response_dict = api_instance.export_html(
-            path, include_edit_links=include_edit_links
+            path=path, include_edit_links=include_edit_links
         ).dict()
         html = response_dict.get("html", "")
         html = _replace_external_publication_links(html)
@@ -171,7 +171,7 @@ class JATSPdfView(BrowserView):
         api_instance = jats_importexport_client.ExportApi(get_api_client())
         path = api.content.get_path(self.context, relative=True)
         try:
-            response = api_instance.export_pdf(path)
+            response = api_instance.export_pdf(path=path)
             return response
         except jats_importexport_client.exceptions.ServiceException:
             logger.error("ServiceException while exporting the article to PDF.")

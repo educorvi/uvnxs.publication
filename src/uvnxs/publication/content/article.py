@@ -4,13 +4,13 @@ from plone.autoform import directives as form
 from plone.dexterity.content import Container
 from plone.supermodel import model
 from uvnxs.publication import _
-from uvnxs.publication.content.common import ICommon
 from uvnxs.publication.widgets.xml_editor import XmlEditorFieldWidget
+from z3c.relationfield.schema import RelationChoice
+from z3c.relationfield.schema import RelationList
 from zope import schema
 from zope.interface import implementer
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-from z3c.relationfield.schema import RelationChoice, RelationList
 
 import re
 
