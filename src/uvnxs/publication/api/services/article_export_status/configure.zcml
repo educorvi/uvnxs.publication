@@ -1,0 +1,15 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:plone="http://namespaces.plone.org/plone">
+
+  <adapter factory=".get.ArticleExportStatus" name="article_export_status"/>
+
+  <plone:service
+    method="GET"
+    for="uvnxs.publication.content.article.IArticle"
+    factory=".get.ArticleExportStatusGet"
+    name="@article_export_status"
+    permission="zope2.View"
+    />
+
+</configure>

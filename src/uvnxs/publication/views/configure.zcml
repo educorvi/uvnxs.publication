@@ -67,6 +67,15 @@
       />
 
   <browser:page
+      name="wait-for-export"
+      for="uvnxs.publication.content.article.IArticle"
+      class=".wait_for_export.WaitForExport"
+      template="wait_for_export.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
       name="jats-html-edit-view"
       for="uvnxs.publication.content.article.IArticle"
       class=".jats_html_view.JATSHtmlEditView"
