@@ -68,13 +68,12 @@ def article_ancestor_change_handler(obj, event):
     while current_obj is not None:
         if IArticle.providedBy(current_obj):
             path = api.content.get_path(current_obj, relative=True)
-            webcode = getattr(current_obj, "webcode", None)
             try:
-                api_instance = jats_importexport_client.ExportApi(get_api_client())
-                api_instance.clear_export_cache(path=path, webcode=webcode)
+                api_instance = jats_importexport_client.CacheManagementApi(get_api_client())
+                api_instance.clear_export_cache(path=path)
             except Exception as e:
                 logger.error(
-                    f"Error clearing export cache for {path} (webcode: {webcode}): {e}"
+                    f"Error clearing export cache for {path}: {e}"
                 )
             return
         # Traverse up the acquisition chain
