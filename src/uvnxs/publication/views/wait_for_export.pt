@@ -39,6 +39,7 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const exportType = urlParams.get('export-type');
+    const redirectView = urlParams.get('redirect-view');
     let completed = false;
     while (!completed) {
       console.log("Exporting...");
@@ -51,7 +52,11 @@
       await sleep(200);
     }
     console.log("Export done! Redirecting...");
-    window.location.href = ".";
+    if (redirectView) {
+      window.location.href = "./" + redirectView;
+    } else {
+      window.location.href = ".";
+    }
   </script>
 </metal:content-core>
 

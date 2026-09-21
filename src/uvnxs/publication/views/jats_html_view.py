@@ -144,13 +144,14 @@ def _get_html(context, include_edit_links=False):
 @implementer(IJATSHtmlView)
 class JATSHtmlView(BrowserView):
     INCLUDE_EDIT_LINKS = False
+    REDIRECT_VIEW = None
 
     def __call__(self):
         html, error_message = _get_html(
             self.context, include_edit_links=self.INCLUDE_EDIT_LINKS
         )
         if html is None and error_message is None:
-            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=html"
+            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=html&redirect-view=" + (self.REDIRECT_VIEW or "")
             self.request.response.redirect(target_url, status=302)
         self.html = html or error_message
         return self.index()
@@ -159,12 +160,16 @@ class JATSHtmlView(BrowserView):
 @implementer(IJATSHtmlEditView)
 class JATSHtmlEditView(JATSHtmlView):
     INCLUDE_EDIT_LINKS = True
+    REDIRECT_VIEW = "jats-html-edit-view"
 
 
 @implementer(IJATSHtmlRawView)
 class JATSHtmlRawView(BrowserView):
     def __call__(self):
         html, error_message = _get_html(self.context, include_edit_links=False)
+        if html is None and error_message is None:
+            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=html&redirect-view=jats-html-raw"
+            self.request.response.redirect(target_url, status=302)
         if error_message:
             self.request.response.setHeader("Content-Type", "text/plain; charset=utf-8")
             return error_message
