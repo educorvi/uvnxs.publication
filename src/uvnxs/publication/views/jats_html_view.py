@@ -109,7 +109,7 @@ def _get_html(context, include_edit_links=False):
     try:
         response = api_instance.export_html_async(
             path=path,
-            # include_edit_links=include_edit_links
+            include_edit_links=include_edit_links
         )
         if not isinstance(response, HtmlDocumentResponse):
             return None, None
@@ -151,8 +151,9 @@ class JATSHtmlView(BrowserView):
         html, error_message = _get_html(
             self.context, include_edit_links=self.INCLUDE_EDIT_LINKS
         )
+        export_type = "html_edit_links" if self.INCLUDE_EDIT_LINKS else "html"
         if html is None and error_message is None:
-            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=html&redirect-view=" + (self.REDIRECT_VIEW or "")
+            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=" + export_type + "&redirect-view=" + (self.REDIRECT_VIEW or "")
             self.request.response.redirect(target_url, status=302)
         self.html = html or error_message
         return self.index()
