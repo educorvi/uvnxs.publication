@@ -31,26 +31,34 @@
 
         <section class="vur-header">
           <h1>Recherche</h1>
-          <form class="vur-search"
-                action=""
-                role="search"
-                tal:attributes="
-                  action string:${context/portal_url}/@@search;
-                "
-          >
-            <label for="search-query">Im Regelwerk suchen</label>
-            <div class="d-flex w-100">
-              <input id="search-query"
-                     name="SearchableText"
-                     placeholder="Suchbegriff oder Webcode"
-                     type="search"
-                     tal:attributes="
-                       value view/query;
-                     "
-              />
-              <button type="submit">Suchen</button>
+          <tal:block tal:condition="python: view.has_query or not view.has_subjects">
+            <form class="vur-search"
+                  action=""
+                  role="search"
+                  tal:attributes="
+                    action string:${context/portal_url}/@@search;
+                  "
+            >
+              <label for="search-query">Im Regelwerk suchen</label>
+              <div class="d-flex w-100">
+                <input id="search-query"
+                      name="SearchableText"
+                      placeholder="Suchbegriff oder Webcode"
+                      type="search"
+                      tal:attributes="
+                        value view/query;
+                      "
+                />
+                <button type="submit">Suchen</button>
+              </div>
+            </form>
+          </tal:block>
+          <tal:block tal:condition="python: not view.has_query and view.has_subjects">
+            <div class="vur-subjects">
+              <p class="label">Schlagwörter</p>
+              <p class="subjects" tal:content="python: ', '.join(view.subjects)"></p>
             </div>
-          </form>
+          </tal:block>
 
           <tal:block tal:condition="view/has_results">
             <section class="vur-filter-section">
@@ -232,11 +240,11 @@
 
           <tal:block tal:condition="not: view/has_results">
             <section class="vur-no-results">
-              <tal:block tal:condition="not: view/has_query">
-                <p>Bitte geben Sie einen Suchbegriff oder Webcode ein.</p>
-              </tal:block>
-              <tal:block tal:condition="view/has_query">
+              <tal:block tal:condition="python: view.has_query or view.has_subjects">
                 <p>Keine Ergebnisse gefunden.</p>
+              </tal:block>
+              <tal:block tal:condition="python: not view.has_query and not view.has_subjects">
+                <p>Bitte geben Sie einen Suchbegriff oder Webcode ein.</p>
               </tal:block>
             </section>
           </tal:block>
