@@ -109,7 +109,7 @@
       name="jats-view"
       for="uvnxs.publication.content.article.IArticle"
       class=".jats_view.JATSView"
-      permission="zope2.View"
+      permission="cmf.ManagePortal"
       layer="uvnxs.publication.interfaces.IBrowserLayer"
       menu="plone_displayviews"
       title="JATS View"
