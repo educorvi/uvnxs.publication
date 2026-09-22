@@ -80,7 +80,7 @@
       for="uvnxs.publication.content.article.IArticle"
       class=".jats_html_view.JATSHtmlEditView"
       template="jats_html_view.pt"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       layer="uvnxs.publication.interfaces.IBrowserLayer"
       menu="plone_displayviews"
       title="JATS HTML Edit View"

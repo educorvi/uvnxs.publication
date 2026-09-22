@@ -25,7 +25,7 @@
 <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-    <div class="w-100 text-center">
+    <div id="export-progress" class="w-100 text-center" role="status">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
@@ -40,22 +40,30 @@
     const urlParams = new URLSearchParams(window.location.search);
     const exportType = urlParams.get('export-type');
     const redirectView = urlParams.get('redirect-view');
-    let completed = false;
-    while (!completed) {
-      console.log("Exporting...");
-      const res = await (await fetch(`./@article_export_status?export-type=` + exportType, {
-        headers: {
-          Accept: 'application/json'
+    try {
+      let completed = false;
+      while (!completed) {
+        const response = await fetch('./@article_export_status?export-type=' + encodeURIComponent(exportType), {
+          headers: {Accept: 'application/json'}
+        });
+        if (!response.ok) {
+          throw new Error('Export status request failed with status ' + response.status);
         }
-      })).json();
-      completed = (res.state === "Completed");
-      await sleep(200);
-    }
-    console.log("Export done! Redirecting...");
-    if (redirectView) {
-      window.location.href = "./" + redirectView;
-    } else {
-      window.location.href = ".";
+        const res = await response.json();
+        if (!['Completed', 'In Progress'].includes(res.state)) {
+          throw new Error('Export failed: ' + res.state);
+        }
+        completed = (res.state === 'Completed');
+        if (!completed) {
+          await sleep(200);
+        }
+      }
+      window.location.href = redirectView ? './' + redirectView : '.';
+    } catch (error) {
+      console.error('Export failed:', error);
+      const progress = document.getElementById('export-progress');
+      progress.setAttribute('role', 'alert');
+      progress.textContent = 'Export fehlgeschlagen. Bitte versuchen Sie es erneut.';
     }
   </script>
 </metal:content-core>

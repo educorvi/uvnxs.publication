@@ -9,6 +9,7 @@ from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
 from jats_importexport_client import ExportAsyncApi
+from jats_importexport_client.exceptions import ApiException
 
 from uvnxs.publication.views.common import get_api_client
 
@@ -30,25 +31,34 @@ class ArticleExportStatus(object):
             api_instance = ExportAsyncApi(get_api_client())
             path = api.content.get_path(self.context, relative=True)
 
-            if start:
-                match export_type:
-                    case "html":
-                        result = api_instance.export_html_async_with_http_info(path=path)
-                    case "pdf":
+            if export_type not in ("html", "html_edit_links", "pdf"):
+                raise BadRequest(
+                    "Unsupported export-type. Supported values: html, html_edit_links, pdf"
+                )
+            try:
+                if start:
+                    if export_type == "pdf":
                         result = api_instance.export_pdf_async_with_http_info(path=path)
-                    case _:
-                        raise BadRequest("Unsupported export-type. Supported values: html, pdf")
-                if result.status_code == 200:
-                    state = "Completed"
-            else:
-                try:
-                    result = api_instance.export_status_async_with_http_info(path=path, export_type=export_type)
-                    if result.status_code == 200:
-                        state = "Completed"
-                except Exception as e:
-                    logger.error(
-                        f"Error exporting {path}: {e}"
+                    else:
+                        result = api_instance.export_html_async_with_http_info(
+                            path=path, include_edit_links=export_type == "html_edit_links"
+                        )
+                else:
+                    result = api_instance.export_status_async_with_http_info(
+                        path=path, export_type=export_type
                     )
+                state = {
+                    200: "Completed",
+                    202: "In Progress",
+                    404: "Not Found",
+                    500: "Failed",
+                }.get(result.status_code, "Error")
+            except ApiException as e:
+                state = {404: "Not Found", 500: "Failed"}.get(e.status, "Error")
+                logger.error("Error exporting %s: %s", path, e)
+            except Exception:
+                state = "Error"
+                logger.exception("Error exporting %s", path)
         return {
             "state": state
         }

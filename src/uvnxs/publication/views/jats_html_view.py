@@ -101,13 +101,16 @@ def _replace_external_publication_links(html: str):
     return LINK_PATTERN.sub(replace, html)
 
 
-def _get_html(context, include_edit_links=False):
+def _get_html(context, include_edit_links=False, synchronous=False):
     """Get the HTML representation of the JATS XML content.
     Returns a tuple of (html, error_message)."""
-    api_instance = ExportAsyncApi(get_api_client())
+    api_instance = (ExportApi if synchronous else ExportAsyncApi)(get_api_client())
     path = api.content.get_path(context, relative=True)
     try:
-        response = api_instance.export_html_async(
+        export_html = (
+            api_instance.export_html if synchronous else api_instance.export_html_async
+        )
+        response = export_html(
             path=path,
             include_edit_links=include_edit_links
         )
@@ -168,10 +171,10 @@ class JATSHtmlEditView(JATSHtmlView):
 @implementer(IJATSHtmlRawView)
 class JATSHtmlRawView(BrowserView):
     def __call__(self):
-        html, error_message = _get_html(self.context, include_edit_links=False)
-        if html is None and error_message is None:
-            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=html&redirect-view=jats-html-raw"
-            self.request.response.redirect(target_url, status=302)
+        # Versioning subscribers consume this view directly and cannot follow redirects.
+        html, error_message = _get_html(
+            self.context, include_edit_links=False, synchronous=True
+        )
         if error_message:
             self.request.response.setHeader("Content-Type", "text/plain; charset=utf-8")
             return error_message

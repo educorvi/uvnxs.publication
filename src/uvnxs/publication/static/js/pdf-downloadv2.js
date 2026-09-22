@@ -24,22 +24,26 @@ document.querySelectorAll('.article-action[download]').forEach((button) => {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    let completed = false;
+    async function exportStatus(start = false) {
+      const response = await fetch(
+        './@article_export_status?export-type=pdf' + (start ? '&start=true' : ''),
+        {headers: {Accept: 'application/json'}},
+      );
+      if (!response.ok) {
+        throw new Error(`Export status request failed with status ${response.status}`);
+      }
+      const result = await response.json();
+      if (!['Completed', 'In Progress'].includes(result.state)) {
+        throw new Error(`PDF export failed: ${result.state}`);
+      }
+      return result.state === 'Completed';
+    }
 
     try {
-      await (await fetch(`./@article_export_status?export-type=pdf&start=true`, {
-          headers: {
-            Accept: 'application/json'
-          }
-        })).json();
+      let completed = await exportStatus(true);
       while (!completed) {
-        const res = await (await fetch(`./@article_export_status?export-type=pdf`, {
-          headers: {
-            Accept: 'application/json'
-          }
-        })).json();
-        completed = (res.state === "Completed");
         await sleep(500);
+        completed = await exportStatus();
       }
       const response = await fetch(button.href, {
         credentials: 'same-origin',
