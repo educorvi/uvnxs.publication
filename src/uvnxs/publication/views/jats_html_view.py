@@ -6,7 +6,8 @@ from uvnxs.publication.views.common import get_api_client
 from zope.interface import implementer
 from zope.interface import Interface
 
-import jats_importexport_client
+from jats_importexport_client import ExportAsyncApi, HtmlDocumentResponse, ExportApi
+from jats_importexport_client.exceptions import ServiceException
 import re
 
 
@@ -42,7 +43,7 @@ _HTML_TEMPLATE = """
                 {article_title}
             </h1>
             <div class="article-actions d-flex mt-4">
-                <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}">
+                <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
                     <img src="/++resource++uvnxs.publication/icons/download.svg" alt="" aria-hidden="true">
                     <div class="loading-indicator loading-indicator--orbit loading-indicator--swing-flip d-none" role="status" aria-live="polite" aria-label="Lädt">
                         <span class="loading-indicator__dot"></span>
@@ -100,15 +101,22 @@ def _replace_external_publication_links(html: str):
     return LINK_PATTERN.sub(replace, html)
 
 
-def _get_html(context, include_edit_links=False):
+def _get_html(context, include_edit_links=False, synchronous=False):
     """Get the HTML representation of the JATS XML content.
     Returns a tuple of (html, error_message)."""
-    api_instance = jats_importexport_client.ExportApi(get_api_client())
+    api_instance = (ExportApi if synchronous else ExportAsyncApi)(get_api_client())
     path = api.content.get_path(context, relative=True)
     try:
-        response_dict = api_instance.export_html(
-            path=path, include_edit_links=include_edit_links
-        ).dict()
+        export_html = (
+            api_instance.export_html if synchronous else api_instance.export_html_async
+        )
+        response = export_html(
+            path=path,
+            include_edit_links=include_edit_links
+        )
+        if not isinstance(response, HtmlDocumentResponse):
+            return None, None
+        response_dict = response.dict()
         html = response_dict.get("html", "")
         html = _replace_external_publication_links(html)
         front = response_dict.get("front", "")
@@ -124,8 +132,9 @@ def _get_html(context, include_edit_links=False):
             pdf_url=pdf_url,
             pdf_filename=pdf_filename,
             download_pdf=api.portal.translate(_("Download PDF")),
+            document_path=path,
         ), None
-    except jats_importexport_client.exceptions.ServiceException:
+    except ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
         return None, _(
             "The article cannot be displayed in HTML format because"
@@ -139,11 +148,16 @@ def _get_html(context, include_edit_links=False):
 @implementer(IJATSHtmlView)
 class JATSHtmlView(BrowserView):
     INCLUDE_EDIT_LINKS = False
+    REDIRECT_VIEW = None
 
     def __call__(self):
         html, error_message = _get_html(
             self.context, include_edit_links=self.INCLUDE_EDIT_LINKS
         )
+        export_type = "html_edit_links" if self.INCLUDE_EDIT_LINKS else "html"
+        if html is None and error_message is None:
+            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=" + export_type + "&redirect-view=" + (self.REDIRECT_VIEW or "")
+            self.request.response.redirect(target_url, status=302)
         self.html = html or error_message
         return self.index()
 
@@ -151,12 +165,16 @@ class JATSHtmlView(BrowserView):
 @implementer(IJATSHtmlEditView)
 class JATSHtmlEditView(JATSHtmlView):
     INCLUDE_EDIT_LINKS = True
+    REDIRECT_VIEW = "jats-html-edit-view"
 
 
 @implementer(IJATSHtmlRawView)
 class JATSHtmlRawView(BrowserView):
     def __call__(self):
-        html, error_message = _get_html(self.context, include_edit_links=False)
+        # Versioning subscribers consume this view directly and cannot follow redirects.
+        html, error_message = _get_html(
+            self.context, include_edit_links=False, synchronous=True
+        )
         if error_message:
             self.request.response.setHeader("Content-Type", "text/plain; charset=utf-8")
             return error_message
@@ -168,12 +186,17 @@ class JATSHtmlRawView(BrowserView):
 @implementer(IJATSPdfView)
 class JATSPdfView(BrowserView):
     def __call__(self):
-        api_instance = jats_importexport_client.ExportApi(get_api_client())
+        api_instance = ExportAsyncApi(get_api_client())
         path = api.content.get_path(self.context, relative=True)
         try:
-            response = api_instance.export_pdf(path=path)
+            response = api_instance.export_pdf_async_with_http_info(path=path)
+            if response.status_code == 200:
+                return response.data
+            else:
+                target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=pdf&redirect-view=jats-pdf-view"
+                self.request.response.redirect(target_url, status=302)
             return response
-        except jats_importexport_client.exceptions.ServiceException:
+        except ServiceException:
             logger.error("ServiceException while exporting the article to PDF.")
             return None
         except Exception as e:

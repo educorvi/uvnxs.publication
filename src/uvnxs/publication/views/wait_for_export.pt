@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="uvnxs.publication"
+      metal:use-macro="context/main_template/macros/master">
+<body>
+
+<metal:custom_title fill-slot="content-title">
+  <h1 tal:replace="structure context/@@title"/>
+
+  <!-- @@title view template: -->
+  <!--
+  <h1 tal:define="title context/Title" tal:condition="title" tal:content="title">
+    Title or id
+  </h1>
+  -->
+
+</metal:custom_title>
+
+<metal:custom_description fill-slot="content-description">
+  <p tal:replace="structure context/@@description"/>
+</metal:custom_description>
+
+<metal:content-core fill-slot="content-core">
+  <metal:block define-macro="content-core">
+
+    <div id="export-progress" class="w-100 text-center" role="status">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+  </metal:block>
+  <script type="module" tal:attributes="nonce request/csp_nonce | nothing">
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const exportType = urlParams.get('export-type');
+    const redirectView = urlParams.get('redirect-view');
+    try {
+      let completed = false;
+      while (!completed) {
+        const response = await fetch('./@article_export_status?export-type=' + encodeURIComponent(exportType), {
+          headers: {Accept: 'application/json'}
+        });
+        if (!response.ok) {
+          throw new Error('Export status request failed with status ' + response.status);
+        }
+        const res = await response.json();
+        if (!['Completed', 'In Progress'].includes(res.state)) {
+          throw new Error('Export failed: ' + res.state);
+        }
+        completed = (res.state === 'Completed');
+        if (!completed) {
+          await sleep(200);
+        }
+      }
+      window.location.href = redirectView ? './' + redirectView : '.';
+    } catch (error) {
+      console.error('Export failed:', error);
+      const progress = document.getElementById('export-progress');
+      progress.setAttribute('role', 'alert');
+      progress.textContent = 'Export fehlgeschlagen. Bitte versuchen Sie es erneut.';
+    }
+  </script>
+</metal:content-core>
+
+
+</body>
+</html>
