@@ -39,7 +39,7 @@ _TYPES_WITH_CONTENT = [_EASY_SECTION]
 _TYPES_WITH_CHILDREN = [_ARTICLE, _BODY, _BACK, _APPENDIX_GROUP, _APPENDIX, _SECTION]
 
 
-def _collect_text_values(obj):
+def _collect_text_values(obj):  # noqa: C901
     """Collect text values from the given object for full-text indexing.
 
     This function recursively collects text from the object's title, raw content,
@@ -68,6 +68,9 @@ def _collect_text_values(obj):
         for subtitle in obj.article_subtitle or []:
             if subtitle:
                 values.append(subtitle)
+        for subject in obj.subject or ():
+            if subject:
+                values.append(subject)
 
     if portal_type in _TYPES_WITH_CONTENT_RAW and obj.content_raw:
         text_content = _TAG_REGEX.sub(" ", obj.content_raw)
