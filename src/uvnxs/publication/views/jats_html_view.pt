@@ -24,7 +24,7 @@
     </metal:block>
     <metal:block fill-slot="javascript_head_slot">
       <script defer=""
-              src="/++resource++uvnxs.publication/js/pdf-download.js"
+              src="/++resource++uvnxs.publication/js/pdf-downloadv2.js"
       >
       </script>
     </metal:block>

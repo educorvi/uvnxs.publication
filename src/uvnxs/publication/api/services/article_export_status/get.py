@@ -23,12 +23,14 @@ class ArticleExportStatus(object):
 
     def __call__(self, expand=False):
         export_type = self.request.form.get("export-type", "html")
+        start = self.request.form.get("start", False)
 
         state = "In Progress"
         if IArticle.providedBy(self.context):
             api_instance = ExportAsyncApi(get_api_client())
             path = api.content.get_path(self.context, relative=True)
-            try:
+
+            if start:
                 match export_type:
                     case "html":
                         result = api_instance.export_html_async_with_http_info(path=path)
@@ -38,10 +40,15 @@ class ArticleExportStatus(object):
                         raise BadRequest("Unsupported export-type. Supported values: html, pdf")
                 if result.status_code == 200:
                     state = "Completed"
-            except Exception as e:
-                logger.error(
-                    f"Error exporting {path}: {e}"
-                )
+            else:
+                try:
+                    result = api_instance.export_status_async_with_http_info(path=path, export_type=export_type)
+                    if result.status_code == 200:
+                        state = "Completed"
+                except Exception as e:
+                    logger.error(
+                        f"Error exporting {path}: {e}"
+                    )
         return {
             "state": state
         }

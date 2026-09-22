@@ -27,6 +27,11 @@ document.querySelectorAll('.article-action[download]').forEach((button) => {
     let completed = false;
 
     try {
+      await (await fetch(`./@article_export_status?export-type=pdf&start=true`, {
+          headers: {
+            Accept: 'application/json'
+          }
+        })).json();
       while (!completed) {
         const res = await (await fetch(`./@article_export_status?export-type=pdf`, {
           headers: {
@@ -34,7 +39,7 @@ document.querySelectorAll('.article-action[download]').forEach((button) => {
           }
         })).json();
         completed = (res.state === "Completed");
-        await sleep(200);
+        await sleep(500);
       }
       const response = await fetch(button.href, {
         credentials: 'same-origin',
