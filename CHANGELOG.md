@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a37 (2026-09-22)
+
+
+### Bug fixes:
+
+- fix derivation of status endpoint url [#106e6db](https://github.com/educorvi/uvnxs.publication/issues/106e6db)
+
 ## 1.0.0a36 (2026-09-22)
 
 
