@@ -43,7 +43,7 @@ _HTML_TEMPLATE = """
                 {article_title}
             </h1>
             <div class="article-actions d-flex mt-4">
-                <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}">
+                <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
                     <img src="/++resource++uvnxs.publication/icons/download.svg" alt="" aria-hidden="true">
                     <div class="loading-indicator loading-indicator--orbit loading-indicator--swing-flip d-none" role="status" aria-live="polite" aria-label="Lädt">
                         <span class="loading-indicator__dot"></span>
@@ -129,6 +129,7 @@ def _get_html(context, include_edit_links=False):
             pdf_url=pdf_url,
             pdf_filename=pdf_filename,
             download_pdf=api.portal.translate(_("Download PDF")),
+            document_path=path,
         ), None
     except ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
@@ -181,10 +182,15 @@ class JATSHtmlRawView(BrowserView):
 @implementer(IJATSPdfView)
 class JATSPdfView(BrowserView):
     def __call__(self):
-        api_instance = ExportApi(get_api_client())
+        api_instance = ExportAsyncApi(get_api_client())
         path = api.content.get_path(self.context, relative=True)
         try:
-            response = api_instance.export_pdf(path=path)
+            response = api_instance.export_pdf_async_with_http_info(path=path)
+            if response.status_code == 200:
+                return response.data
+            else:
+                target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=pdf&redirect-view=jats-pdf-view"
+                self.request.response.redirect(target_url, status=302)
             return response
         except ServiceException:
             logger.error("ServiceException while exporting the article to PDF.")

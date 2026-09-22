@@ -8,7 +8,7 @@ from uvnxs.publication.content.article import IArticle
 from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
-from jats_importexport_client import ExportAsyncApi, HtmlDocumentResponse
+from jats_importexport_client import ExportAsyncApi
 
 from uvnxs.publication.views.common import get_api_client
 
@@ -23,16 +23,20 @@ class ArticleExportStatus(object):
 
     def __call__(self, expand=False):
         export_type = self.request.form.get("export-type", "html")
-        if export_type != "html":
-            raise BadRequest("Unsupported export-type. Supported values: html")
 
         state = "In Progress"
         if IArticle.providedBy(self.context):
             api_instance = ExportAsyncApi(get_api_client())
             path = api.content.get_path(self.context, relative=True)
             try:
-                result = api_instance.export_html_async(path=path)
-                if isinstance(result, HtmlDocumentResponse):
+                match export_type:
+                    case "html":
+                        result = api_instance.export_html_async_with_http_info(path=path)
+                    case "pdf":
+                        result = api_instance.export_pdf_async_with_http_info(path=path)
+                    case _:
+                        raise BadRequest("Unsupported export-type. Supported values: html, pdf")
+                if result.status_code == 200:
                     state = "Completed"
             except Exception as e:
                 logger.error(

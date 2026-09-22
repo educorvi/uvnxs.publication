@@ -20,7 +20,22 @@ document.querySelectorAll('.article-action[download]').forEach((button) => {
     spinner.classList.remove('d-none')
     label.textContent = 'PDF wird erstellt …'
 
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    let completed = false;
+
     try {
+      while (!completed) {
+        const res = await (await fetch(`./@article_export_status?export-type=pdf`, {
+          headers: {
+            Accept: 'application/json'
+          }
+        })).json();
+        completed = (res.state === "Completed");
+        await sleep(200);
+      }
       const response = await fetch(button.href, {
         credentials: 'same-origin',
       })
