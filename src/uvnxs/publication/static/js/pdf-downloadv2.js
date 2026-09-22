@@ -25,8 +25,13 @@ document.querySelectorAll('.article-action[download]').forEach((button) => {
     }
 
     async function exportStatus(start = false) {
+      const statusUrl = new URL('@article_export_status', button.href);
+      statusUrl.searchParams.set('export-type', 'pdf');
+      if (start) {
+        statusUrl.searchParams.set('start', 'true');
+      }
       const response = await fetch(
-        './@article_export_status?export-type=pdf' + (start ? '&start=true' : ''),
+        statusUrl,
         {headers: {Accept: 'application/json'}},
       );
       if (!response.ok) {
