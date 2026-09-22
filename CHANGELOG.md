@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a36 (2026-09-22)
+
+
+### Internal:
+
+- update Hatch build config to include XML editor artifacts [#ae5382c](https://github.com/educorvi/uvnxs.publication/issues/ae5382c)
+
 ## 1.0.0a35 (2026-09-22)
 
 
