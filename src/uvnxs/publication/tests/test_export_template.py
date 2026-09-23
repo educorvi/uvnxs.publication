@@ -1,10 +1,11 @@
 """Check inline export JavaScript with the server-side template engine."""
 
 from pathlib import Path
+from z3c.pt.pagetemplate import PageTemplate
+from z3c.pt.pagetemplate import PageTemplateFile
+
 import re
 import unittest
-
-from z3c.pt.pagetemplate import PageTemplate, PageTemplateFile
 
 
 class ExportTemplateTests(unittest.TestCase):

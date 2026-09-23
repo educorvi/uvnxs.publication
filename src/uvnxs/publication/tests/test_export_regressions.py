@@ -1,14 +1,17 @@
 """Export regressions that do not require a running Plone or export service."""
 
-import unittest
-from unittest.mock import Mock, patch
-
-from jats_importexport_client import ExportApi, ExportAsyncApi, HtmlDocumentResponse
+from jats_importexport_client import ExportApi
+from jats_importexport_client import ExportAsyncApi
+from jats_importexport_client import HtmlDocumentResponse
 from jats_importexport_client.exceptions import ApiException
-from uvnxs.publication.api.services.article_export_status import get as status
+from unittest.mock import Mock
+from unittest.mock import patch
 from uvnxs.publication import subscribers
+from uvnxs.publication.api.services.article_export_status import get as status
 from uvnxs.publication.views import jats_html_view as html
 from uvnxs.publication.views.common import TimeoutApiClient
+
+import unittest
 
 
 class TimeoutClientTests(unittest.TestCase):
@@ -20,18 +23,20 @@ class TimeoutClientTests(unittest.TestCase):
             (ExportAsyncApi, "export_status_async_without_preload_content"),
         ):
             for timeout in (None, (2.0, 30.0)):
-                with self.subTest(method=method, timeout=timeout):
-                    with TimeoutApiClient() as client:
-                        with patch.object(client.rest_client, "request") as request:
-                            kwargs = {"path": "/article", "_request_timeout": timeout}
-                            if "status" in method:
-                                kwargs["export_type"] = "html"
-                            getattr(api_class(client), method)(**kwargs)
-                            request.assert_called_once()
-                            self.assertEqual(
-                                request.call_args.kwargs["_request_timeout"],
-                                timeout or (3.0, 15.0),
-                            )
+                with (
+                    self.subTest(method=method, timeout=timeout),
+                    TimeoutApiClient() as client,
+                    patch.object(client.rest_client, "request") as request,
+                ):
+                    kwargs = {"path": "/article", "_request_timeout": timeout}
+                    if "status" in method:
+                        kwargs["export_type"] = "html"
+                    getattr(api_class(client), method)(**kwargs)
+                    request.assert_called_once()
+                    self.assertEqual(
+                        request.call_args.kwargs["_request_timeout"],
+                        timeout or (3.0, 15.0),
+                    )
 
 
 class HtmlSnapshotTests(unittest.TestCase):
@@ -60,9 +65,7 @@ class HtmlSnapshotTests(unittest.TestCase):
             subscribers.save_jats_and_html_on_version(context, Mock())
             self.assertIn("<p>Snapshot body</p>", context.html_content_rev)
             self.assertEqual(context.jats_content_rev, "<article/>")
-            sync_api.return_value.export_html.assert_called_once_with(
-                path="/article", include_edit_links=False
-            )
+            sync_api.return_value.export_html.assert_called_once_with(path="/article", include_edit_links=False)
             async_api.assert_not_called()
             request.response.redirect.assert_not_called()
 
@@ -104,7 +107,8 @@ class ExportStatusTests(unittest.TestCase):
                         article.providedBy.return_value = True
                         client = export_api.return_value
                         method = (
-                            client.export_pdf_async_with_http_info if start
+                            client.export_pdf_async_with_http_info
+                            if start
                             else client.export_status_async_with_http_info
                         )
                         if isinstance(outcome, Exception):

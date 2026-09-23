@@ -3,10 +3,12 @@ from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
 
+
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class IWaitForExport(Interface):
-    """ Marker Interface for IWaitForExport"""
+    """Marker Interface for IWaitForExport"""
 
 
 @implementer(IWaitForExport)

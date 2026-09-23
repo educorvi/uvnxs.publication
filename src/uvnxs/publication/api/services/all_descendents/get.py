@@ -40,9 +40,7 @@ class AllDescendents:
                 continue
 
             summary = getMultiAdapter((brain, self.request), ISerializeToJsonSummary)()
-            item = getMultiAdapter(
-                (brain.getObject(), self.request), ISerializeToJson
-            )()
+            item = getMultiAdapter((brain.getObject(), self.request), ISerializeToJson)()
             item["children"] = []
             items.append(item)
             items_by_path[path] = item

@@ -42,12 +42,12 @@
               <label for="search-query">Im Regelwerk suchen</label>
               <div class="d-flex w-100">
                 <input id="search-query"
-                      name="SearchableText"
-                      placeholder="Suchbegriff oder Webcode"
-                      type="search"
-                      tal:attributes="
-                        value view/query;
-                      "
+                       name="SearchableText"
+                       placeholder="Suchbegriff oder Webcode"
+                       type="search"
+                       tal:attributes="
+                         value view/query;
+                       "
                 />
                 <button type="submit">Suchen</button>
               </div>
@@ -55,8 +55,10 @@
           </tal:block>
           <tal:block tal:condition="python: not view.has_query and view.has_subjects">
             <div class="vur-subjects">
-              <p class="label">Schlagwörter</p>
-              <p class="subjects" tal:content="python: ', '.join(view.subjects)"></p>
+              <p class="label">Schlagw&ouml;rter</p>
+              <p class="subjects"
+                 tal:content="python: ', '.join(view.subjects)"
+              ></p>
             </div>
           </tal:block>
 

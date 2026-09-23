@@ -21,12 +21,8 @@ class VuRSearchView(BrowserView):
         self.subjects = self.request.form.get("Subject", [])
         documents = self._search(self.query, self.subjects)
         self.documents_json = json.dumps(documents, ensure_ascii=False)
-        self.sachgebiete_json = json.dumps(
-            get_sachgebiete(documents), ensure_ascii=False
-        )
-        self.fachbereiche_json = json.dumps(
-            get_fachbereiche(documents), ensure_ascii=False
-        )
+        self.sachgebiete_json = json.dumps(get_sachgebiete(documents), ensure_ascii=False)
+        self.fachbereiche_json = json.dumps(get_fachbereiche(documents), ensure_ascii=False)
         self.rubriken_json = json.dumps(get_rubriken(documents), ensure_ascii=False)
         self.count = len(documents)
         self.has_results = self.count > 0
@@ -44,20 +40,14 @@ class VuRSearchView(BrowserView):
 
         if query:
             # An exact Webcode match wins, no further searching needed.
-            brain_results = catalog(
-                portal_type="Article", webcode=query, path=search_paths
-            )
+            brain_results = catalog(portal_type="Article", webcode=query, path=search_paths)
             if len(brain_results) == 0:
                 # No exact Webcode match, continue with fulltext search
-                brain_results = catalog(
-                    portal_type="Article", vur_fulltext=query, path=search_paths
-                )
+                brain_results = catalog(portal_type="Article", vur_fulltext=query, path=search_paths)
         elif subjects:
             seen_uids = set()
             for subject in subjects:
-                for brain in catalog(
-                    portal_type="Article", Subject=subject, path=search_paths
-                ):
+                for brain in catalog(portal_type="Article", Subject=subject, path=search_paths):
                     if brain.UID in seen_uids:
                         continue
                     seen_uids.add(brain.UID)
@@ -84,14 +74,7 @@ class VuRSearchView(BrowserView):
 
     def _get_search_paths(self):
         vur_landing_page = self._get_vur_landing_page()
-        if (
-            not vur_landing_page
-            or not vur_landing_page.rubriken
-            or len(vur_landing_page.rubriken) == 0
-        ):
+        if not vur_landing_page or not vur_landing_page.rubriken or len(vur_landing_page.rubriken) == 0:
             site = api.portal.get()
             return [site.absolute_url_path()]
-        return [
-            "/".join(rubrik.to_object.getPhysicalPath())
-            for rubrik in vur_landing_page.rubriken
-        ]
+        return ["/".join(rubrik.to_object.getPhysicalPath()) for rubrik in vur_landing_page.rubriken]

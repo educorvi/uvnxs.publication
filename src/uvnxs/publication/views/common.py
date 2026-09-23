@@ -2,6 +2,7 @@ from plone import api
 
 import jats_importexport_client
 
+
 class TimeoutApiClient(jats_importexport_client.ApiClient):
     def call_api(
         self,
@@ -23,6 +24,7 @@ class TimeoutApiClient(jats_importexport_client.ApiClient):
             post_params=post_params,
             _request_timeout=_request_timeout,
         )
+
 
 def get_api_client() -> jats_importexport_client.ApiClient:
     base_url = api.portal.get_registry_record("uvnxs.publication.base_url")

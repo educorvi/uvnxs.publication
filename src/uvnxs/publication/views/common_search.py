@@ -32,11 +32,6 @@ def get_sachgebiete(documents):
             continue
         if sachgebiet not in sachgebiete:
             sachgebiete[sachgebiet] = []
-        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[
-            sachgebiet
-        ]:
+        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[sachgebiet]:
             sachgebiete[sachgebiet].append(fachbereich)
-    return [
-        {"name": sg, "fachbereiche": fachbereiche}
-        for sg, fachbereiche in sorted(sachgebiete.items())
-    ]
+    return [{"name": sg, "fachbereiche": fachbereiche} for sg, fachbereiche in sorted(sachgebiete.items())]

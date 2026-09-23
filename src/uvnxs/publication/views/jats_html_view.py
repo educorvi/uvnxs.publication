@@ -1,3 +1,7 @@
+from jats_importexport_client import ExportApi
+from jats_importexport_client import ExportAsyncApi
+from jats_importexport_client import HtmlDocumentResponse
+from jats_importexport_client.exceptions import ServiceException
 from plone import api
 from Products.Five.browser import BrowserView
 from uvnxs.publication import _
@@ -6,8 +10,6 @@ from uvnxs.publication.views.common import get_api_client
 from zope.interface import implementer
 from zope.interface import Interface
 
-from jats_importexport_client import ExportAsyncApi, HtmlDocumentResponse, ExportApi
-from jats_importexport_client.exceptions import ServiceException
 import re
 
 
@@ -107,13 +109,8 @@ def _get_html(context, include_edit_links=False, synchronous=False):
     api_instance = (ExportApi if synchronous else ExportAsyncApi)(get_api_client())
     path = api.content.get_path(context, relative=True)
     try:
-        export_html = (
-            api_instance.export_html if synchronous else api_instance.export_html_async
-        )
-        response = export_html(
-            path=path,
-            include_edit_links=include_edit_links
-        )
+        export_html = api_instance.export_html if synchronous else api_instance.export_html_async
+        response = export_html(path=path, include_edit_links=include_edit_links)
         if not isinstance(response, HtmlDocumentResponse):
             return None, None
         response_dict = response.dict()
@@ -136,10 +133,7 @@ def _get_html(context, include_edit_links=False, synchronous=False):
         ), None
     except ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
-        return None, _(
-            "The article cannot be displayed in HTML format because"
-            " the body is missing."
-        )
+        return None, _("The article cannot be displayed in HTML format because the body is missing.")
     except Exception as e:
         logger.exception(f"Error while exporting the article to HTML: {e}")
         return None, _("Error while exporting the article to HTML.")
@@ -151,12 +145,16 @@ class JATSHtmlView(BrowserView):
     REDIRECT_VIEW = None
 
     def __call__(self):
-        html, error_message = _get_html(
-            self.context, include_edit_links=self.INCLUDE_EDIT_LINKS
-        )
+        html, error_message = _get_html(self.context, include_edit_links=self.INCLUDE_EDIT_LINKS)
         export_type = "html_edit_links" if self.INCLUDE_EDIT_LINKS else "html"
         if html is None and error_message is None:
-            target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=" + export_type + "&redirect-view=" + (self.REDIRECT_VIEW or "")
+            target_url = (
+                self.context.absolute_url()
+                + "/@@wait-for-export?export-type="
+                + export_type
+                + "&redirect-view="
+                + (self.REDIRECT_VIEW or "")
+            )
             self.request.response.redirect(target_url, status=302)
         self.html = html or error_message
         return self.index()
@@ -172,9 +170,7 @@ class JATSHtmlEditView(JATSHtmlView):
 class JATSHtmlRawView(BrowserView):
     def __call__(self):
         # Versioning subscribers consume this view directly and cannot follow redirects.
-        html, error_message = _get_html(
-            self.context, include_edit_links=False, synchronous=True
-        )
+        html, error_message = _get_html(self.context, include_edit_links=False, synchronous=True)
         if error_message:
             self.request.response.setHeader("Content-Type", "text/plain; charset=utf-8")
             return error_message
@@ -193,7 +189,9 @@ class JATSPdfView(BrowserView):
             if response.status_code == 200:
                 return response.data
             else:
-                target_url = self.context.absolute_url() + "/@@wait-for-export?export-type=pdf&redirect-view=jats-pdf-view"
+                target_url = (
+                    self.context.absolute_url() + "/@@wait-for-export?export-type=pdf&redirect-view=jats-pdf-view"
+                )
                 self.request.response.redirect(target_url, status=302)
             return response
         except ServiceException:

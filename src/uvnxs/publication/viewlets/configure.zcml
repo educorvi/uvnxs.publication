@@ -7,19 +7,19 @@
     >
 
   <browser:viewlet
-    name="plone.relateditems"
-    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-    class=".viewlets.HiddenViewlet"
-    for="uvnxs.publication.content.article.IArticle"
-    permission="zope2.View"
-    />
+      name="plone.relateditems"
+      for="uvnxs.publication.content.article.IArticle"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+      class=".viewlets.HiddenViewlet"
+      permission="zope2.View"
+      />
 
   <browser:viewlet
-    name="related-items-viewlet"
-    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-    class=".viewlets.HiddenViewlet"
-    for="uvnxs.publication.content.article.IArticle"
-    permission="zope2.View"
-    />
+      name="related-items-viewlet"
+      for="uvnxs.publication.content.article.IArticle"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+      class=".viewlets.HiddenViewlet"
+      permission="zope2.View"
+      />
 
 </configure>

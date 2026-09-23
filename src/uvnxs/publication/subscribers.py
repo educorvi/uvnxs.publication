@@ -49,7 +49,7 @@ def create_body_in_article(article, event):
 
 def article_ancestor_change_handler(obj, event):
     """
-    Event handler to clear the export cache and update the modified date for the 'Article' ancestor of a modified object.
+    Event handler to clear the export cache and update the modified date for the 'Article' ancestor of a modified object
     """
     request = getRequest()
 
