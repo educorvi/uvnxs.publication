@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a38 (2026-09-23)
+
+
+### Bug fixes:
+
+- add subjects to searchable text [#038b412](https://github.com/educorvi/uvnxs.publication/issues/038b412)
+- update modified date of article when children are modified [#818719d](https://github.com/educorvi/uvnxs.publication/issues/818719d)
+- styling of label title [#4d5b977](https://github.com/educorvi/uvnxs.publication/issues/4d5b977)
+- pull request comments, format, lint [#dc0dd05](https://github.com/educorvi/uvnxs.publication/issues/dc0dd05)
+- hide relateditems viewlets for IArticle [#e05898a](https://github.com/educorvi/uvnxs.publication/issues/e05898a)
+- subject buttons search [#e83a225](https://github.com/educorvi/uvnxs.publication/issues/e83a225)
+
 ## 1.0.0a37 (2026-09-22)
 
 
