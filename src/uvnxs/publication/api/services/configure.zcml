@@ -6,6 +6,7 @@
     >
 
   <!-- -*- extra stuff goes here -*- -->
+<include package=".article_export_status" />
   <include package=".all_descendents" />
 
 

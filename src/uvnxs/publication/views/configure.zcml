@@ -67,11 +67,20 @@
       />
 
   <browser:page
+      name="wait-for-export"
+      for="uvnxs.publication.content.article.IArticle"
+      class=".wait_for_export.WaitForExport"
+      template="wait_for_export.pt"
+      permission="zope2.View"
+      layer="uvnxs.publication.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
       name="jats-html-edit-view"
       for="uvnxs.publication.content.article.IArticle"
       class=".jats_html_view.JATSHtmlEditView"
       template="jats_html_view.pt"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       layer="uvnxs.publication.interfaces.IBrowserLayer"
       menu="plone_displayviews"
       title="JATS HTML Edit View"
@@ -100,7 +109,7 @@
       name="jats-view"
       for="uvnxs.publication.content.article.IArticle"
       class=".jats_view.JATSView"
-      permission="zope2.View"
+      permission="cmf.ManagePortal"
       layer="uvnxs.publication.interfaces.IBrowserLayer"
       menu="plone_displayviews"
       title="JATS View"

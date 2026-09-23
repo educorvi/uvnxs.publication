@@ -9,6 +9,44 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a37 (2026-09-22)
+
+
+### Bug fixes:
+
+- fix derivation of status endpoint url [#106e6db](https://github.com/educorvi/uvnxs.publication/issues/106e6db)
+
+## 1.0.0a36 (2026-09-22)
+
+
+### Internal:
+
+- update Hatch build config to include XML editor artifacts [#ae5382c](https://github.com/educorvi/uvnxs.publication/issues/ae5382c)
+
+## 1.0.0a35 (2026-09-22)
+
+
+### New features:
+
+- implement async export for PDFs [#b66467c](https://github.com/educorvi/uvnxs.publication/issues/b66467c)
+- add TimeoutApiClient with default request timeouts [#9d421b8](https://github.com/educorvi/uvnxs.publication/issues/9d421b8)
+- implement async export for html [#3dd53ae](https://github.com/educorvi/uvnxs.publication/issues/3dd53ae)
+
+
+### Internal:
+
+- update permission for JATS view configuration [#44a0661](https://github.com/educorvi/uvnxs.publication/issues/44a0661)
+- improve PDF export with status endpoint query [#b0d1846](https://github.com/educorvi/uvnxs.publication/issues/b0d1846)
+- reenable edit links in async HTML export [#2cea0eb](https://github.com/educorvi/uvnxs.publication/issues/2cea0eb)
+- other non pdf views [#e821164](https://github.com/educorvi/uvnxs.publication/issues/e821164)
+- refactor and enhance PDF export handling with improved status checks and error handling [#e170b22](https://github.com/educorvi/uvnxs.publication/issues/e170b22)
+- update cache management API usage in subscriber logic [#f869112](https://github.com/educorvi/uvnxs.publication/issues/f869112)
+
+
+### Tests
+
+- add unit tests for export functionality and templates, including timeout handling, export statuses, and client-side scripts [#b7f8e63](https://github.com/educorvi/uvnxs.publication/issues/b7f8e63)
+
 ## 1.0.0a34 (2026-09-17)
 
 

@@ -33,10 +33,7 @@ def create_body_in_article(article, event):
     # Create Body objects if they don't exist
     for i in range(len(types)):
         sub_type = types[i]
-        if not any(
-            getattr(item, "portal_type", None) == sub_type
-            for item in article.objectValues()
-        ):
+        if not any(getattr(item, "portal_type", None) == sub_type for item in article.objectValues()):
             article_child = api.content.create(
                 container=article,
                 type=sub_type,
@@ -68,14 +65,11 @@ def article_ancestor_change_handler(obj, event):
             # clear the export cache for the Article ancestor if not suppressed
             if not suppress_invalidation:
                 path = api.content.get_path(current_obj, relative=True)
-                webcode = getattr(current_obj, "webcode", None)
                 try:
-                    api_instance = jats_importexport_client.ExportApi(get_api_client())
-                    api_instance.clear_export_cache(path=path, webcode=webcode)
+                    api_instance = jats_importexport_client.CacheManagementApi(get_api_client())
+                    api_instance.clear_export_cache(path=path)
                 except Exception as e:
-                    logger.error(
-                        f"Error clearing export cache for {path} (webcode: {webcode}): {e}"
-                    )
+                    logger.error(f"Error clearing export cache for {path}: {e}")
             # update the modified date for the Article ancestor
             current_obj.setModificationDate(DateTime())
             current_obj.reindexObject(idxs=["modified"])
