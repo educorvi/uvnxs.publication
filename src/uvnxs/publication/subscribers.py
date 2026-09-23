@@ -5,6 +5,7 @@ from __future__ import annotations
 from .content.article import IArticle
 from .views.common import get_api_client
 from Acquisition import aq_parent
+from DateTime import DateTime
 from plone import api
 from plone.app.versioningbehavior.utils import get_change_note
 from plone.rest.interfaces import IAPIRequest
@@ -51,7 +52,7 @@ def create_body_in_article(article, event):
 
 def article_ancestor_change_handler(obj, event):
     """
-    Event handler to find and print the 'Article' ancestor of a modified object.
+    Event handler to clear the export cache and update the modified date for the 'Article' ancestor of a modified object.
     """
     request = getRequest()
 
@@ -61,21 +62,23 @@ def article_ancestor_change_handler(obj, event):
         and request.getHeader("X-UVNXS-Suppress-Cache-Invalidation") == "1"
     )
 
-    if suppress_invalidation:
-        return
-
     current_obj = obj
     while current_obj is not None:
         if IArticle.providedBy(current_obj):
-            path = api.content.get_path(current_obj, relative=True)
-            webcode = getattr(current_obj, "webcode", None)
-            try:
-                api_instance = jats_importexport_client.ExportApi(get_api_client())
-                api_instance.clear_export_cache(path=path, webcode=webcode)
-            except Exception as e:
-                logger.error(
-                    f"Error clearing export cache for {path} (webcode: {webcode}): {e}"
-                )
+            # clear the export cache for the Article ancestor if not suppressed
+            if not suppress_invalidation:
+                path = api.content.get_path(current_obj, relative=True)
+                webcode = getattr(current_obj, "webcode", None)
+                try:
+                    api_instance = jats_importexport_client.ExportApi(get_api_client())
+                    api_instance.clear_export_cache(path=path, webcode=webcode)
+                except Exception as e:
+                    logger.error(
+                        f"Error clearing export cache for {path} (webcode: {webcode}): {e}"
+                    )
+            # update the modified date for the Article ancestor
+            current_obj.setModificationDate(DateTime())
+            current_obj.reindexObject(idxs=["modified"])
             return
         # Traverse up the acquisition chain
         current_obj = aq_parent(current_obj)
