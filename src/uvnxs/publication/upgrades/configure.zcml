@@ -150,4 +150,13 @@
       handler=".to_1015.register_content_view"
       />
 
+  <genericsetup:upgradeStep
+      title="Migrate to 1016"
+      description="Reindex articles to update searchable text."
+      profile="uvnxs.publication:default"
+      source="1015"
+      destination="1016"
+      handler=".to_1012.add_article_searchable_text"
+      />
+
 </configure>

@@ -76,8 +76,7 @@ def parse_args() -> argparse.Namespace:
         default=None,
         dest="images_container",
         help=(
-            "Plone path (relative to --url) where images will be uploaded. "
-            "Defaults to the same value as --container."
+            "Plone path (relative to --url) where images will be uploaded. Defaults to the same value as --container."
         ),
     )
     parser.add_argument(
@@ -189,10 +188,7 @@ def upload_image(image_path: Path, images_url: str, auth: tuple[str, str]) -> st
     result = response.json()
     uploaded_url = result.get("@id") or result.get("url")
     if not uploaded_url:
-        raise ValueError(
-            f"Plone did not return an @id for uploaded image '{image_path.name}'. "
-            f"Response: {result}"
-        )
+        raise ValueError(f"Plone did not return an @id for uploaded image '{image_path.name}'. Response: {result}")
     return uploaded_url
 
 
@@ -214,9 +210,7 @@ def upload_xml(
 
     response = requests.post(upload_endpoint, files=files, data=data, auth=auth)
     response.raise_for_status()
-    console.print(
-        f"  [green]✓[/green] Upload succeeded with status [bold]{response.status_code}[/bold]"
-    )
+    console.print(f"  [green]✓[/green] Upload succeeded with status [bold]{response.status_code}[/bold]")
     return response
 
 
@@ -267,15 +261,11 @@ def process_xml(
     article_title = extract_article_title(tree)
     # Use explicit CLI name > JATS title > filename stem as fallback
     resolved_name = jats_name or article_title or xml_path.stem
-    console.print(
-        Panel(f"[bold]{resolved_name}[/bold]", title=str(xml_path), expand=False)
-    )
+    console.print(Panel(f"[bold]{resolved_name}[/bold]", title=str(xml_path), expand=False))
 
     # --- Step 1: find local image references ---
     image_elements = find_image_refs(tree)
-    console.print(
-        f"  Found [cyan]{len(image_elements)}[/cyan] local image reference(s)."
-    )
+    console.print(f"  Found [cyan]{len(image_elements)}[/cyan] local image reference(s).")
 
     # --- Step 2: upload images and rewrite hrefs ---
     uploaded: dict[str, str] = {}
@@ -300,15 +290,11 @@ def process_xml(
 
             image_path = resolve_image_path(href, xml_dir)
             if not image_path.is_file():
-                err_console.print(
-                    f"  [yellow]⚠[/yellow]  Image not found, skipping: [dim]{image_path}[/dim]"
-                )
+                err_console.print(f"  [yellow]⚠[/yellow]  Image not found, skipping: [dim]{image_path}[/dim]")
                 progress.advance(task)
                 continue
 
-            progress.update(
-                task, description=f"Uploading [bold]{image_path.name}[/bold]…"
-            )
+            progress.update(task, description=f"Uploading [bold]{image_path.name}[/bold]…")
             try:
                 plone_url = upload_image(image_path, images_url, auth)
             except requests.HTTPError as exc:
@@ -318,9 +304,7 @@ def process_xml(
                 )
                 raise
 
-            console.print(
-                f"  [green]✓[/green] [bold]{image_path.name}[/bold] → [link={plone_url}]{plone_url}[/link]"
-            )
+            console.print(f"  [green]✓[/green] [bold]{image_path.name}[/bold] → [link={plone_url}]{plone_url}[/link]")
             uploaded[href] = plone_url
             elem.set(XLINK_HREF, plone_url)
             progress.advance(task)
@@ -343,14 +327,10 @@ def process_xml(
         try:
             upload_xml(xml_bytes, resolved_name, article_url, auth)
         except requests.HTTPError as exc:
-            err_console.print(
-                f"  [red]✗[/red] Error uploading JATS XML: {exc}\n    Response: {exc.response.text}"
-            )
+            err_console.print(f"  [red]✗[/red] Error uploading JATS XML: {exc}\n    Response: {exc.response.text}")
             raise
 
-    console.print(
-        f"  [green bold]✓ Done.[/green bold] Article [bold]{resolved_name!r}[/bold] imported successfully.\n"
-    )
+    console.print(f"  [green bold]✓ Done.[/green bold] Article [bold]{resolved_name!r}[/bold] imported successfully.\n")
 
 
 def main() -> None:
@@ -359,9 +339,7 @@ def main() -> None:
     xml_paths = expand_paths(args.xml_files)
 
     if args.jats_name and len(xml_paths) > 1:
-        err_console.print(
-            "[red]Error:[/red] --jats-name can only be used when uploading a single file."
-        )
+        err_console.print("[red]Error:[/red] --jats-name can only be used when uploading a single file.")
         sys.exit(1)
 
     auth = (args.username, args.password)
@@ -378,9 +356,7 @@ def main() -> None:
     errors: list[Path] = []
     for xml_path in xml_paths:
         if not xml_path.is_file():
-            err_console.print(
-                f"[red]Error:[/red] XML file not found: [bold]{xml_path}[/bold]"
-            )
+            err_console.print(f"[red]Error:[/red] XML file not found: [bold]{xml_path}[/bold]")
             errors.append(xml_path)
             continue
 

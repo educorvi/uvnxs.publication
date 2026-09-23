@@ -1,23 +1,20 @@
+from jats_importexport_client import ExportAsyncApi
+from jats_importexport_client.exceptions import ApiException
 from plone import api
 from plone.restapi.interfaces import IExpandableElement
 from plone.restapi.services import Service
-from zExceptions import BadRequest
-
 from uvnxs.publication import logger
 from uvnxs.publication.content.article import IArticle
-from zope.component import adapter
-from zope.interface import Interface
-from zope.interface import implementer
-from jats_importexport_client import ExportAsyncApi
-from jats_importexport_client.exceptions import ApiException
-
 from uvnxs.publication.views.common import get_api_client
+from zExceptions import BadRequest
+from zope.component import adapter
+from zope.interface import implementer
+from zope.interface import Interface
 
 
 @implementer(IExpandableElement)
 @adapter(IArticle, Interface)
-class ArticleExportStatus(object):
-
+class ArticleExportStatus:
     def __init__(self, context, request):
         self.context = context.aq_explicit
         self.request = request
@@ -32,9 +29,7 @@ class ArticleExportStatus(object):
             path = api.content.get_path(self.context, relative=True)
 
             if export_type not in ("html", "html_edit_links", "pdf"):
-                raise BadRequest(
-                    "Unsupported export-type. Supported values: html, html_edit_links, pdf"
-                )
+                raise BadRequest("Unsupported export-type. Supported values: html, html_edit_links, pdf")
             try:
                 if start:
                     if export_type == "pdf":
@@ -44,9 +39,7 @@ class ArticleExportStatus(object):
                             path=path, include_edit_links=export_type == "html_edit_links"
                         )
                 else:
-                    result = api_instance.export_status_async_with_http_info(
-                        path=path, export_type=export_type
-                    )
+                    result = api_instance.export_status_async_with_http_info(path=path, export_type=export_type)
                 state = {
                     200: "Completed",
                     202: "In Progress",
@@ -59,13 +52,10 @@ class ArticleExportStatus(object):
             except Exception:
                 state = "Error"
                 logger.exception("Error exporting %s", path)
-        return {
-            "state": state
-        }
+        return {"state": state}
 
 
 class ArticleExportStatusGet(Service):
-
     def reply(self):
         service_factory = ArticleExportStatus(self.context, self.request)
         return service_factory(expand=True)

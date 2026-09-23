@@ -32,9 +32,7 @@ class IGeneralSection(model.Schema):
 
     sec_type = schema.TextLine(
         title=_("Type"),
-        description=_(
-            "The type of the section, equals to sec-type, app-type or content-type in the XML"  # noqa: E501
-        ),
+        description=_("The type of the section, equals to sec-type, app-type or content-type in the XML"),
         required=False,
     )
 

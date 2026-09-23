@@ -39,7 +39,7 @@ _TYPES_WITH_CONTENT = [_EASY_SECTION]
 _TYPES_WITH_CHILDREN = [_ARTICLE, _BODY, _BACK, _APPENDIX_GROUP, _APPENDIX, _SECTION]
 
 
-def _collect_text_values(obj):
+def _collect_text_values(obj):  # noqa: C901
     """Collect text values from the given object for full-text indexing.
 
     This function recursively collects text from the object's title, raw content,
@@ -68,6 +68,9 @@ def _collect_text_values(obj):
         for subtitle in obj.article_subtitle or []:
             if subtitle:
                 values.append(subtitle)
+        for subject in obj.subject or ():
+            if subject:
+                values.append(subject)
 
     if portal_type in _TYPES_WITH_CONTENT_RAW and obj.content_raw:
         text_content = _TAG_REGEX.sub(" ", obj.content_raw)
@@ -91,10 +94,7 @@ journal_title_values = [
     ("dguv-grundsatz", "DGUV Grundsatz"),
     ("fachbereich-aktuell", "Fachbereich AKTUELL"),
 ]
-journal_title_terms = [
-    SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
-    for pair in journal_title_values
-]
+journal_title_terms = [SimpleTerm(value=pair[0], token=pair[0], title=pair[1]) for pair in journal_title_values]
 journal_title_vocabulary = SimpleVocabulary(journal_title_terms)
 
 journal_subtitle_values = [
@@ -103,10 +103,7 @@ journal_subtitle_values = [
     ("konkretisierende-regel", "Konkretisierende Regel"),
     ("branchenregel", "Branchenregel"),
 ]
-journal_subtitle_terms = [
-    SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
-    for pair in journal_subtitle_values
-]
+journal_subtitle_terms = [SimpleTerm(value=pair[0], token=pair[0], title=pair[1]) for pair in journal_subtitle_values]
 journal_subtitle_vocabulary = SimpleVocabulary(journal_subtitle_terms)
 
 
@@ -444,9 +441,7 @@ class IArticle(model.Schema):
 
     bisherige_bestellnummer = schema.TextLine(
         title=_("Bisherige Bestellnummer"),
-        description=_(
-            "Corresponds to custom-meta 'Bisherige Bestellnummer' in JATS XML."
-        ),
+        description=_("Corresponds to custom-meta 'Bisherige Bestellnummer' in JATS XML."),
         required=False,
     )
 
@@ -476,9 +471,7 @@ class IArticle(model.Schema):
 
     ueberschriften_mit_nummerierung = schema.Bool(
         title=_("Überschriften mit Nummerierung"),
-        description=_(
-            "Corresponds to custom-meta 'Überschriften mit Nummerierung' in JATS XML."
-        ),
+        description=_("Corresponds to custom-meta 'Überschriften mit Nummerierung' in JATS XML."),
         required=False,
     )
 
@@ -486,18 +479,14 @@ class IArticle(model.Schema):
     form.omitted("html_content_rev")
     html_content_rev = schema.SourceText(
         title=_("HTML Content Revision"),
-        description=_(
-            "Stores the HTML content of the article for versioning purposes."
-        ),
+        description=_("Stores the HTML content of the article for versioning purposes."),
         required=False,
     )
 
     form.omitted("jats_content_rev")
     jats_content_rev = schema.SourceText(
         title=_("JATS Content Revision"),
-        description=_(
-            "Stores the JATS XML content of the article for versioning purposes."
-        ),
+        description=_("Stores the JATS XML content of the article for versioning purposes."),
         required=False,
     )
 
@@ -523,9 +512,7 @@ class IArticle(model.Schema):
         title=_("Language Variants"),
         required=False,
         default=[],
-        value_type=RelationChoice(
-            title=_("Language Variants"), vocabulary="plone.app.vocabularies.Catalog"
-        ),
+        value_type=RelationChoice(title=_("Language Variants"), vocabulary="plone.app.vocabularies.Catalog"),
     )
 
 

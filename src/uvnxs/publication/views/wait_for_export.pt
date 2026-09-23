@@ -1,39 +1,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="uvnxs.publication"
-      metal:use-macro="context/main_template/macros/master">
-<body>
+>
+  <body>
 
-<metal:custom_title fill-slot="content-title">
-  <h1 tal:replace="structure context/@@title"/>
+    <metal:custom_title fill-slot="content-title">
+      <h1 tal:replace="structure context/@@title"></h1>
 
-  <!-- @@title view template: -->
-  <!--
+      <!-- @@title view template: -->
+      <!--
   <h1 tal:define="title context/Title" tal:condition="title" tal:content="title">
     Title or id
   </h1>
   -->
 
-</metal:custom_title>
+    </metal:custom_title>
 
-<metal:custom_description fill-slot="content-description">
-  <p tal:replace="structure context/@@description"/>
-</metal:custom_description>
+    <metal:custom_description fill-slot="content-description">
+      <p tal:replace="structure context/@@description"></p>
+    </metal:custom_description>
 
-<metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
 
-    <div id="export-progress" class="w-100 text-center" role="status"
-         tal:attributes="data-article-url string:${context/absolute_url}/">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
+        <div class="w-100 text-center"
+             id="export-progress"
+             role="status"
+             tal:attributes="
+               data-article-url string:${context/absolute_url}/;
+             "
+        >
+          <div class="spinner-border text-primary"
+               role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
 
-  </metal:block>
-  <script type="module" tal:attributes="nonce request/csp_nonce | nothing">
+      </metal:block>
+      <script type="module"
+              tal:attributes="
+                nonce request/csp_nonce | nothing;
+              "
+      >
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -69,9 +81,9 @@
       progress.setAttribute('role', 'alert');
       progress.textContent = 'Export fehlgeschlagen. Bitte versuchen Sie es erneut.';
     }
-  </script>
-</metal:content-core>
+      </script>
+    </metal:content-core>
 
 
-</body>
+  </body>
 </html>

@@ -25,11 +25,7 @@ class VuRFilterView(BrowserView):
         ]
 
         self.documents_json = json.dumps(documents, ensure_ascii=False)
-        self.sachgebiete_json = json.dumps(
-            get_sachgebiete(documents), ensure_ascii=False
-        )
-        self.fachbereiche_json = json.dumps(
-            get_fachbereiche(documents), ensure_ascii=False
-        )
+        self.sachgebiete_json = json.dumps(get_sachgebiete(documents), ensure_ascii=False)
+        self.fachbereiche_json = json.dumps(get_fachbereiche(documents), ensure_ascii=False)
         self.count = len(documents)
         return self.index()
