@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a39 (2026-09-29)
+
+
+### Bug fixes:
+
+- update version of jats_importexport_client [#3d6506f](https://github.com/educorvi/uvnxs.publication/issues/3d6506f)
+- article export status only called on expand true [#d8dc2ea](https://github.com/educorvi/uvnxs.publication/issues/d8dc2ea)
+
 ## 1.0.0a38 (2026-09-23)
 
 
