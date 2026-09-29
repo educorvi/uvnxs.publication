@@ -20,6 +20,9 @@ class ArticleExportStatus:
         self.request = request
 
     def __call__(self, expand=False):
+        if not expand:
+            return {"state": "Not Found"}
+
         export_type = self.request.form.get("export-type", "html")
         start = self.request.form.get("start", False)
 
