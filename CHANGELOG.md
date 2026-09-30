@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a40 (2026-09-30)
+
+
+### Bug fixes:
+
+- wait for export browser history [#c71d9ef](https://github.com/educorvi/uvnxs.publication/issues/c71d9ef)
+
 ## 1.0.0a39 (2026-09-29)
 
 
