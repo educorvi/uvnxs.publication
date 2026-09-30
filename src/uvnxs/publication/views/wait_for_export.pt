@@ -75,7 +75,7 @@
           await sleep(200);
         }
       }
-      window.location.href = redirectView ? new URL('./' + redirectView, articleUrl).href : articleUrl;
+      window.location.replace(redirectView ? new URL('./' + redirectView, articleUrl).href : articleUrl);
     } catch (error) {
       console.error('Export failed:', error);
       progress.setAttribute('role', 'alert');
