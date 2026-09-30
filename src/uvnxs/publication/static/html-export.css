@@ -219,6 +219,10 @@
   font-weight: 700 !important;
 }
 
+.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-label {
+  color: var(--dguv-primary) !important;
+}
+
 .article-fragment .jats-html-export-toc .toc-entry:has(> .toc-label) {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
@@ -233,20 +237,6 @@
 .article-fragment .jats-html-export-toc .toc-entry:has(> .toc-label) > .toc-title {
   grid-column: 2;
   min-width: 0;
-}
-
-.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] {
-  display: block;
-}
-
-.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-label {
-  display: block;
-  color: #000;
-  font-weight: 400;
-}
-
-.article-fragment .jats-html-export-toc .toc-entry[data-toc-level="1"] > .toc-title {
-  display: block;
 }
 
 .article-fragment .jats-html-export-toc > ul > li:not(:last-child) {
@@ -320,28 +310,16 @@
 }
 
 .article-fragment h4,
-.article-fragment h4 * {
+.article-fragment h4 *,
+.article-fragment h5,
+.article-fragment h5 *,
+.article-fragment h6,
+.article-fragment h6 *,
+.article-fragment .section .section .section > .title,
+.article-fragment .section .section .section > .title * {
   margin: 28px 0 12px;
   font-size: 20px !important;
   font-weight: 700 !important;
-  line-height: 1.35 !important;
-  color: var(--dguv-text) !important;
-}
-
-.article-fragment h5,
-.article-fragment h5 * {
-  margin: 24px 0 10px;
-  font-size: 18px !important;
-  font-weight: 700 !important;
-  line-height: 1.35 !important;
-  color: var(--dguv-text) !important;
-}
-
-.article-fragment h6,
-.article-fragment h6 * {
-  margin: 20px 0 8px;
-  font-size: 18px !important;
-  font-weight: 600 !important;
   line-height: 1.35 !important;
   color: var(--dguv-text) !important;
 }
