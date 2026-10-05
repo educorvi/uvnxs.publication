@@ -44,6 +44,9 @@ _HTML_TEMPLATE = """
             <h1 class="article-header-article-title">
                 {article_title}
             </h1>
+            <h2 class="article-header-article-subtitle">
+                {article_subtitle}
+            </h2>
             <div class="article-actions d-flex mt-4">
                 <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
                     <img src="/++resource++uvnxs.publication/icons/download.svg" alt="" aria-hidden="true">
@@ -119,6 +122,7 @@ def _get_html(context, include_edit_links=False, synchronous=False):
         front = response_dict.get("front", "")
         article_id = context.article_id
         article_title = context.title
+        article_subtitle = (context.article_subtitle or [""])[0]
         pdf_url = context.absolute_url() + "/jats-pdf-view"
         pdf_filename = f"{article_title}.pdf"
         return _HTML_TEMPLATE.format(
@@ -126,6 +130,7 @@ def _get_html(context, include_edit_links=False, synchronous=False):
             html=html,
             article_id=article_id,
             article_title=article_title,
+            article_subtitle=article_subtitle,
             pdf_url=pdf_url,
             pdf_filename=pdf_filename,
             download_pdf=api.portal.translate(_("Download PDF")),
