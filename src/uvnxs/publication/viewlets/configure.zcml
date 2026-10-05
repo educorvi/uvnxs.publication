@@ -22,4 +22,12 @@
       permission="zope2.View"
       />
 
+  <browser:viewlet
+      name="plone.keywords"
+      for="uvnxs.publication.content.article.IArticle"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+      class=".viewlets.HiddenViewlet"
+      permission="zope2.View"
+      />
+
 </configure>
