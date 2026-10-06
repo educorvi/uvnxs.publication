@@ -9,6 +9,15 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a41 (2026-10-06)
+
+
+### Bug fixes:
+
+- hide plone.keywords viewlet for now [#ab9967e](https://github.com/educorvi/uvnxs.publication/issues/ab9967e)
+- include article subtitle in article header [#b17b0e0](https://github.com/educorvi/uvnxs.publication/issues/b17b0e0)
+- html styling: toc label and title one line, unify h4 h5 h6 [#38193e5](https://github.com/educorvi/uvnxs.publication/issues/38193e5)
+
 ## 1.0.0a40 (2026-09-30)
 
 
