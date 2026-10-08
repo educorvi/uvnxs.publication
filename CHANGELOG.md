@@ -9,6 +9,15 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a42 (2026-10-08)
+
+
+### Bug fixes:
+
+- html export link styling [#2948b87](https://github.com/educorvi/uvnxs.publication/issues/2948b87)
+- seacrh view - splitted single subject into list of characters [#027c829](https://github.com/educorvi/uvnxs.publication/issues/027c829)
+- search view - catch error when parsing query [#c6938d3](https://github.com/educorvi/uvnxs.publication/issues/c6938d3)
+
 ## 1.0.0a41 (2026-10-06)
 
 
