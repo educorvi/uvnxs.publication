@@ -1,5 +1,6 @@
 from plone import api
 from Products.Five.browser import BrowserView
+from Products.ZCTextIndex.ParseTree import ParseError
 from uvnxs.publication.views.common_search import get_document_for_article
 from uvnxs.publication.views.common_search import get_fachbereiche
 from uvnxs.publication.views.common_search import get_rubriken
@@ -19,7 +20,13 @@ class VuRSearchView(BrowserView):
     def __call__(self):
         self.query = (self.request.form.get("SearchableText") or "").strip()
         self.subjects = self.request.form.get("Subject", [])
-        documents = self._search(self.query, self.subjects)
+        try:
+            documents = self._search(self.query, self.subjects)
+            self.query_parse_error = None
+        except ParseError as e:
+            documents = []
+            self.query_parse_error = str(e)
+
         self.documents_json = json.dumps(documents, ensure_ascii=False)
         self.sachgebiete_json = json.dumps(get_sachgebiete(documents), ensure_ascii=False)
         self.fachbereiche_json = json.dumps(get_fachbereiche(documents), ensure_ascii=False)

@@ -242,7 +242,10 @@
 
           <tal:block tal:condition="not: view/has_results">
             <section class="vur-no-results">
-              <tal:block tal:condition="python: view.has_query or view.has_subjects">
+              <tal:block tal:condition="view/query_parse_error">
+                <p>Fehler bei der Verarbeitung der Suchanfrage (${view/query_parse_error})</p>
+              </tal:block>
+              <tal:block tal:condition="python: not view.query_parse_error and (view.has_query or view.has_subjects)">
                 <p>Keine Ergebnisse gefunden.</p>
               </tal:block>
               <tal:block tal:condition="python: not view.has_query and not view.has_subjects">
