@@ -19,7 +19,14 @@ class IVuRSearchView(Interface):
 class VuRSearchView(BrowserView):
     def __call__(self):
         self.query = (self.request.form.get("SearchableText") or "").strip()
-        self.subjects = self.request.form.get("Subject", [])
+        subject = self.request.form.get("Subject", None)
+        if subject is None:
+            self.subjects = []
+        elif isinstance(subject, str):
+            self.subjects = [subject]
+        else:
+            self.subjects = list(subject)
+
         try:
             documents = self._search(self.query, self.subjects)
             self.query_parse_error = None
