@@ -558,3 +558,12 @@
 .article-fragment #article-body li:last-child p:last-child {
   margin-bottom: 0;
 }
+
+
+/* External JATS links must look like surrounding running text.
+   The dguv theme styles links inside an @layer, so these unlayered
+   overrides always win, no !important needed. */
+.article-fragment a.jats-ext-link {
+  font: inherit; /* = font-family/size/weight/style/variant/stretch + line-height */
+  vertical-align: baseline;
+}
