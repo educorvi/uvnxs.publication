@@ -11,5 +11,10 @@
              name="any"
       />
     </type>
+    <type portal_type="ArticleMedia">
+      <field difftype="Compound Diff for Dexterity types"
+             name="any"
+      />
+    </type>
   </difftypes>
 </object>

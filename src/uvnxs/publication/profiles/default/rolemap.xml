@@ -83,5 +83,14 @@
       <role name="Contributor" />
     </permission>
 
+    <permission acquire="True"
+                name="uvnxs.publication: Add ArticleMedia"
+    >
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Owner" />
+      <role name="Contributor" />
+    </permission>
+
   </permissions>
 </rolemap>
