@@ -39,6 +39,11 @@
            zope.lifecycleevent.interfaces.IObjectAddedEvent"
       handler="uvnxs.publication.subscribers.create_body_in_article"
       />
+  <adapter
+      factory=".constraints.ArticleConstrainTypes"
+      provides="plone.base.interfaces.constrains.IConstrainTypes"
+      for=".content.article.IArticle"
+      />
   <subscriber
       for="zope.container.interfaces.IContained
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
