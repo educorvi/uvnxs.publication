@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Dexterity FTI"
+        name="Article"
+>
+  <property name="allowed_content_types"
+            purge="false"
+  >
+    <element value="ArticleMedia" />
+  </property>
+</object>

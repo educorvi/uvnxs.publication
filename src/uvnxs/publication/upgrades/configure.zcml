@@ -159,4 +159,16 @@
       handler=".to_1012.add_article_searchable_text"
       />
 
+  <genericsetup:upgradeSteps
+      profile="uvnxs.publication:default"
+      source="1016"
+      destination="1017"
+      >
+    <genericsetup:upgradeDepends
+        title="Add content type ArticleMedia"
+        description=""
+        import_profile="uvnxs.publication:to_1017"
+        />
+  </genericsetup:upgradeSteps>
+
 </configure>

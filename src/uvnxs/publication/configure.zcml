@@ -39,6 +39,13 @@
            zope.lifecycleevent.interfaces.IObjectAddedEvent"
       handler="uvnxs.publication.subscribers.create_body_in_article"
       />
+  <!-- Allow only one of each singleton child type in an Article -->
+  <adapter
+      factory=".constraints.ArticleConstrainTypes"
+      provides="plone.base.interfaces.constrains.IConstrainTypes"
+      for=".content.article.IArticle"
+      />
+  <!-- Clear export cache and update the Article modification date when a contained object is modified -->
   <subscriber
       for="zope.container.interfaces.IContained
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"

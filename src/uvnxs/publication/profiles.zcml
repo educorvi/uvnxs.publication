@@ -20,6 +20,14 @@
       directory="profiles/uninstall"
       />
 
+  <genericsetup:registerProfile
+      name="to_1017"
+      title="Migrate to 1017"
+      description="Applies the uvnxs.publication 1017 upgrade."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/to_1017"
+      />
+
   <!-- Hide Uninstall Profile-->
   <utility
       factory=".setuphandlers.HiddenProfiles"

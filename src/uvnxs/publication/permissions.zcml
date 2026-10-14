@@ -45,4 +45,9 @@
       title="uvnxs.publication: Add VurLandingPage"
       />
 
+  <permission
+      id="uvnxs.publication.AddArticleMedia"
+      title="uvnxs.publication: Add ArticleMedia"
+      />
+
 </configure>
