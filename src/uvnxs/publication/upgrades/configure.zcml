@@ -162,7 +162,7 @@
   <genericsetup:upgradeSteps
       profile="uvnxs.publication:default"
       source="1016"
-      destination="1027"
+      destination="1017"
       >
     <genericsetup:upgradeDepends
         title="Add content type ArticleMedia"
