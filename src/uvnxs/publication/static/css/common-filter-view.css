@@ -54,16 +54,16 @@
   border-bottom: 1px solid var(--dguv-border);
 }
 
-.vur .vur-documents-list__item:hover {
-  background: var(--dguv-background-light);
-  color: var(--dguv-text);
-}
-
 .vur .vur-documents-list__item > a {
-  padding: 32px 16px;
+  padding: 32px 16px 8px 16px;
   display: grid;
   align-items: start;
   grid-template-columns: 70% 30%;
+}
+
+.vur .vur-documents-list__item:hover {
+  background: var(--dguv-background-light);
+  color: var(--dguv-text);
 }
 
 .vur .vur-documents-list__item-content {
@@ -83,6 +83,22 @@
   margin-top: 10px;
   font-size: 22px;
   font-weight: 500;
+}
+
+.vur .vur-documents-list__matches {
+  padding: 0px 16px 32px 16px;
+}
+
+.vur .vur-documents-list__matches .vur-documents-list__snippet:not(:last-of-type) {
+  border-bottom: 1px solid var(--dguv-border);
+}
+
+.vur .vur-documents-list__matches .btn {
+  margin-top: 16px;
+  height: auto;
+  min-height: 0;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .vur .vur-documents-list__item-dates {

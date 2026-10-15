@@ -5,6 +5,7 @@ from uvnxs.publication.views.common_search import get_document_for_article
 from uvnxs.publication.views.common_search import get_fachbereiche
 from uvnxs.publication.views.common_search import get_rubriken
 from uvnxs.publication.views.common_search import get_sachgebiete
+from uvnxs.publication.views.common_search import get_text_matches
 from zope.interface import implementer
 from zope.interface import Interface
 
@@ -51,12 +52,14 @@ class VuRSearchView(BrowserView):
         catalog = api.portal.get_tool("portal_catalog")
         search_paths = self._get_search_paths()
         brain_results = []
+        fulltext_search = False
 
         if query:
             # An exact Webcode match wins, no further searching needed.
             brain_results = catalog(portal_type="Article", webcode=query, path=search_paths)
             if len(brain_results) == 0:
                 # No exact Webcode match, continue with fulltext search
+                fulltext_search = True
                 brain_results = catalog(portal_type="Article", vur_fulltext=query, path=search_paths)
         elif subjects:
             seen_uids = set()
@@ -67,7 +70,14 @@ class VuRSearchView(BrowserView):
                     seen_uids.add(brain.UID)
                     brain_results.append(brain)
 
-        return [get_document_for_article(brain.getObject()) for brain in brain_results]
+        documents = []
+        for brain in brain_results:
+            article = brain.getObject()
+            document = get_document_for_article(article)
+            if fulltext_search:
+                document["matches"] = get_text_matches(article.SearchableFullText(), query)
+            documents.append(document)
+        return documents
 
     def _get_vur_landing_page(self):
         # try to get the landing page from the default page property (view) first

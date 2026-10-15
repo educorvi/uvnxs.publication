@@ -45,19 +45,19 @@ addEventListener('DOMContentLoaded', () => {
         link.href = doc.url || '#';
         link.className = 'text-black text-decoration-none';
 
-        const content = document.createElement('div');
-        content.className = 'vur-documents-list__item-content';
+        const itemContent = document.createElement('div');
+        itemContent.className = 'vur-documents-list__item-content';
         const articleId = document.createElement('p');
         articleId.className = 'vur-documents-list__article-id';
         articleId.textContent = doc.article_id || '';
+        itemContent.appendChild(articleId);
         const title = document.createElement('h3');
         title.textContent = doc.title || '';
         title.className = 'vur-documents-list__title';
-        content.appendChild(articleId);
-        content.appendChild(title);
+        itemContent.appendChild(title);
 
-        const dates = document.createElement('div');
-        dates.className = 'vur-documents-list__item-dates';
+        const itemDates = document.createElement('div');
+        itemDates.className = 'vur-documents-list__item-dates';
         if (doc.pub_date) {
             const pubDate = document.createElement('div');
             const pubDateLabel = document.createElement('span');
@@ -66,7 +66,7 @@ addEventListener('DOMContentLoaded', () => {
             const pubDateValue = document.createElement('strong');
             pubDateValue.textContent = dateStringToGermanString(doc.pub_date);
             pubDate.appendChild(pubDateValue);
-            dates.appendChild(pubDate);
+            itemDates.appendChild(pubDate);
         }
         if (doc.pub_date_updated) {
             const pubDateUpdated = document.createElement('div');
@@ -76,12 +76,55 @@ addEventListener('DOMContentLoaded', () => {
             const pubDateUpdatedValue = document.createElement('strong');
             pubDateUpdatedValue.textContent = dateStringToGermanString(doc.pub_date_updated);
             pubDateUpdated.appendChild(pubDateUpdatedValue);
-            dates.appendChild(pubDateUpdated);
+            itemDates.appendChild(pubDateUpdated);
         }
 
-        link.appendChild(content);
-        link.appendChild(dates);
+        link.appendChild(itemContent);
+        link.appendChild(itemDates);
         item.appendChild(link);
+
+        if (doc.matches && doc.matches.length > 0) {
+            const matches = document.createElement('div');
+            matches.className = 'vur-documents-list__matches';
+            item.appendChild(matches);
+            const appendMatch = (container, match, isHidden = false) => {
+                const snippet = document.createElement('p');
+                snippet.className = 'vur-documents-list__snippet pb-1 mb-1';
+                const spanBefore = document.createElement('span');
+                spanBefore.textContent = '... ' + match.snippet.substring(0, match.start);
+                const spanMatch = document.createElement('mark');
+                spanMatch.textContent = match.snippet.substring(match.start, match.end);
+                const spanAfter = document.createElement('span');
+                spanAfter.textContent = match.snippet.substring(match.end) + ' ...';
+                snippet.appendChild(spanBefore);
+                snippet.appendChild(spanMatch);
+                snippet.appendChild(spanAfter);
+                if (isHidden) {
+                    snippet.hidden = true;
+                }
+                container.appendChild(snippet);
+            };
+            for (const match of doc.matches.slice(0, 2)) {
+                appendMatch(matches, match);
+            }
+            if (doc.matches.length > 2) {
+                const showMoreButton = document.createElement('button');
+                showMoreButton.type = 'button';
+                showMoreButton.className = 'btn btn-secondary btn-sm';
+                showMoreButton.textContent = `Weitere Auszüge anzeigen (${doc.matches.length - 2})`;
+                for (const match of doc.matches.slice(2)) {
+                    appendMatch(matches, match, true);
+                }
+                showMoreButton.addEventListener('click', () => {
+                    for (const snippet of matches.querySelectorAll('.vur-documents-list__snippet[hidden]')) {
+                        snippet.hidden = false;
+                    }
+                    showMoreButton.remove();
+                });
+                matches.appendChild(showMoreButton);
+            }
+        }
+
         return item;
     }
 
