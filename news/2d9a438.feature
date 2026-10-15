@@ -1,1 +1,0 @@
-add content_type ArticleMedia

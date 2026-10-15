@@ -9,6 +9,21 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a43 (2026-10-15)
+
+
+### New features:
+
+- show text snippets when searching documents [#ac80012](https://github.com/educorvi/uvnxs.publication/issues/ac80012)
+- allow at most one of Body, Back and ArticleMedia per Article [#8732c99](https://github.com/educorvi/uvnxs.publication/issues/8732c99)
+- add content_type ArticleMedia [#2d9a438](https://github.com/educorvi/uvnxs.publication/issues/2d9a438)
+
+
+### Bug fixes:
+
+- version and vur workflow [#6a590c7](https://github.com/educorvi/uvnxs.publication/issues/6a590c7)
+- enable behavior plone.basic for ArticleMedia [#cdfef07](https://github.com/educorvi/uvnxs.publication/issues/cdfef07)
+
 ## 1.0.0a42 (2026-10-08)
 
 
