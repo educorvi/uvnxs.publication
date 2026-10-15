@@ -1,3 +1,6 @@
+import re
+
+
 def get_document_for_article(obj):
     """Return a dictionary representation of the given article object."""
     pub_date = getattr(obj, "pub_date_ausgabedatum", None)
@@ -12,6 +15,29 @@ def get_document_for_article(obj):
         "sachgebiet": obj.sachgebiet or "",
         "url": obj.absolute_url(),
     }
+
+
+def get_text_matches(text, query, radius=200, max_matches=10):
+    try:
+        pattern = re.compile(re.escape(query), re.IGNORECASE)
+    except re.error:
+        return []
+
+    snippets = []
+    for i, match in enumerate(pattern.finditer(text)):
+        if i >= max_matches:
+            break
+        start = max(0, match.start() - radius)
+        end = min(len(text), match.end() + radius)
+        start_offset = match.start() - start
+        end_offset = match.end() - start
+        snippet_text = text[start:end]
+        snippets.append({
+            "start": start_offset,
+            "end": end_offset,
+            "snippet": snippet_text,
+        })
+    return snippets
 
 
 def get_rubriken(documents):
