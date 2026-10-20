@@ -276,6 +276,13 @@
 }
 
 
+/* sup and sub elements smaller */
+.article-fragment sup,
+.article-fragment sub {
+  font-size: 0.75em;
+}
+
+
 .article-fragment #article-body,
 .article-fragment #article-back {
   color: var(--dguv-text);
