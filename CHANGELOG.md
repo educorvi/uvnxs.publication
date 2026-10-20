@@ -9,6 +9,15 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a44 (2026-10-20)
+
+
+### Bug fixes:
+
+- remove obsolete link replacement [#612c8ad](https://github.com/educorvi/uvnxs.publication/issues/612c8ad)
+- styling sub and sup elements size [#2189f78](https://github.com/educorvi/uvnxs.publication/issues/2189f78)
+- styling of image and table captions [#2ffcaf5](https://github.com/educorvi/uvnxs.publication/issues/2ffcaf5)
+
 ## 1.0.0a43 (2026-10-15)
 
 
