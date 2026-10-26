@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Types Tool"
+        name="portal_types"
+>
+  <object meta_type="Dexterity FTI"
+          name="Article"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Body"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Back"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Section"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="AppendixGroup"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Appendix"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="EasySection"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="BauaDocument"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="VurLandingPage"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="ArticleMedia"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="RefList"
+          remove="True"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Glossary"
+          remove="True"
+  />
+</object>
