@@ -7,6 +7,6 @@
   <property name="view_methods"
             purge="false"
   >
-    <element value="vur-landing-page" />
+    <element value="vur-landing-page" remove="True" />
   </property>
 </object>

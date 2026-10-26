@@ -171,4 +171,16 @@
         />
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+      profile="uvnxs.publication:default"
+      source="1017"
+      destination="1018"
+      >
+    <genericsetup:upgradeDepends
+        title="Add content types Glossary and RefList"
+        description=""
+        import_profile="uvnxs.publication:to_1018"
+        />
+  </genericsetup:upgradeSteps>
+
 </configure>
