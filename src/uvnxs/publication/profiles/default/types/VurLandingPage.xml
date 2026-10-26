@@ -11,7 +11,7 @@
   >VurLandingPage</property>
   <property name="description"
             i18n:translate=""
-  >Landingpage fpr VuR Platform</property>
+  >Landingpage for VuR Platform</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">VurLandingPage</property>
