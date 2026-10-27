@@ -15,6 +15,12 @@ import json
 class IVuRSearchView(Interface):
     """Marker Interface for VuR Search View"""
 
+SEARCH_WEIGHTS = {
+    "vorschrift": 1000,
+    "vur_title": 100,
+    "vur_fulltext": 1,
+}
+VORSCHRIFT_VALUE = "Muster-DGUV Vorschrift"
 
 @implementer(IVuRSearchView)
 class VuRSearchView(BrowserView):
@@ -52,6 +58,7 @@ class VuRSearchView(BrowserView):
         catalog = api.portal.get_tool("portal_catalog")
         search_paths = self._get_search_paths()
         brain_results = []
+        brain_results_title = []
         fulltext_search = False
 
         if query:
@@ -61,6 +68,7 @@ class VuRSearchView(BrowserView):
                 # No exact Webcode match, continue with fulltext search
                 fulltext_search = True
                 brain_results = catalog(portal_type="Article", vur_fulltext=query, path=search_paths)
+                brain_results_title = catalog(portal_type="Article", vur_title=query, path=search_paths)
         elif subjects:
             seen_uids = set()
             for subject in subjects:
@@ -71,11 +79,20 @@ class VuRSearchView(BrowserView):
                     brain_results.append(brain)
 
         documents = []
+        uids_result_title = set(brain.UID for brain in brain_results_title)
         for brain in brain_results:
             article = brain.getObject()
             document = get_document_for_article(article)
             if fulltext_search:
                 document["matches"] = get_text_matches(article.SearchableFullText(), query)
+            score = 0
+            score += SEARCH_WEIGHTS["vur_fulltext"] * len(document["matches"])
+            if brain.UID in uids_result_title:
+                score += SEARCH_WEIGHTS["vur_title"]
+            if article.journal_title == VORSCHRIFT_VALUE:
+                score += SEARCH_WEIGHTS["vorschrift"]
+
+            document["score"] = score
             documents.append(document)
         return documents
 

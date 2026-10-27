@@ -7,10 +7,6 @@
 
 /* header section */
 
-.vur .vur-header {
-  padding-bottom: 96px;
-}
-
 .vur .vur-header h1 {
   margin: 24px 0;
   font-size: clamp(48px, 4.17vw, 72px);
@@ -79,10 +75,6 @@
   .vur .vur-header h1 {
     margin-block: 20px;
     font-size: clamp(42px, 12vw, 48px);
-  }
-
-  .vur .vur-header {
-    padding-bottom: 48px;
   }
 
   .vur .vur-section {

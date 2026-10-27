@@ -28,6 +28,14 @@
       directory="profiles/to_1017"
       />
 
+  <genericsetup:registerProfile
+      name="to_1018"
+      title="Migrate to 1018"
+      description="Applies the uvnxs.publication 1018 upgrade."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/to_1018"
+      />
+
   <!-- Hide Uninstall Profile-->
   <utility
       factory=".setuphandlers.HiddenProfiles"
