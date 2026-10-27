@@ -21,7 +21,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@untrouble/dguv-vanilla-sass/src/ui-helper-js/multi-select': resolve(__dirname, 'node_modules/@untrouble/dguv-vanilla-sass/src/ui-helper-js/multi-select.js'),
+      '@untrouble/dguv-vanilla-sass/src/ui-helper-js/multi-select': resolve(import.meta.dirname, 'node_modules/@untrouble/dguv-vanilla-sass/src/ui-helper-js/multi-select.js'),
     },
   },
   build: {
