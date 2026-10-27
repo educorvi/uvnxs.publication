@@ -15,12 +15,14 @@ import json
 class IVuRSearchView(Interface):
     """Marker Interface for VuR Search View"""
 
+
 SEARCH_WEIGHTS = {
     "vorschrift": 1000,
     "vur_title": 100,
     "vur_fulltext": 1,
 }
 VORSCHRIFT_VALUE = "Muster-DGUV Vorschrift"
+
 
 @implementer(IVuRSearchView)
 class VuRSearchView(BrowserView):

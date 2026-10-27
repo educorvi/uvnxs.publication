@@ -111,13 +111,16 @@
   </index>
 
   <index meta_type="ZCTextIndex"
-       name="vur_title">
-  <indexed_attr value="Title" />
-  <extra name="index_type"
-         value="Okapi BM25 Rank" />
-  <extra name="lexicon_id"
-         value="plone_lexicon" />
-</index>
+         name="vur_title"
+  >
+    <indexed_attr value="Title" />
+    <extra name="index_type"
+           value="Okapi BM25 Rank"
+    />
+    <extra name="lexicon_id"
+           value="plone_lexicon"
+    />
+  </index>
 
   <!-- Metadata columns (for use in listings without waking up objects) -->
   <column value="journal_id" />
