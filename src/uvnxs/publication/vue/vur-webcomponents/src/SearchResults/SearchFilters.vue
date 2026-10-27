@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { initMultiSelect } from '@untrouble/dguv-vanilla-sass/ui-helper-js/multi-select.js'
-import type { FilterSelections, SearchFilter, SortBy } from './types'
+import { filterIds, type FilterSelections, type SearchFilter, type SortBy } from './types'
 
 const props = defineProps<{
   filters: SearchFilter[]
@@ -18,12 +17,11 @@ let selectionObserver: MutationObserver | undefined
 
 function syncFilterSelections() {
   const next: FilterSelections = { rubrik: [], fachbereich: [], sachgebiet: [] }
-  for (const key of ['rubrik', 'fachbereich', 'sachgebiet'] as const) {
+  for (const key of filterIds) {
     const rows = filterSection.value?.querySelectorAll<HTMLElement>(
       `[data-filter="${key}"] .ms-option:not(.ms-option-all)[aria-selected="true"]`,
     )
-    const values = Array.from(rows ?? [], (row) => row.dataset.value ?? '')
-    next[key] = values
+    next[key] = Array.from(rows ?? [], (row) => row.dataset.value ?? '')
   }
   if (
     props.filters.some((filter) => {
@@ -39,9 +37,13 @@ function syncFilterSelections() {
 }
 
 onMounted(() => {
+  const initMultiSelect = window.uvnxstheme?.initMultiSelect;
+  if (!initMultiSelect) {
+    throw new Error('uvnxstheme.initMultiSelect is not available')
+  }
   filterSection.value?.querySelectorAll<HTMLElement>('.form-multi-select').forEach((container) => {
     destroyMultiSelects.push(initMultiSelect(container))
-  })
+  });
   // The vanilla control reports selection changes through aria-selected.
   selectionObserver = new MutationObserver(syncFilterSelections)
   if (filterSection.value) {
@@ -160,7 +162,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .vur-filter-section {
-  margin-top: 48px;
+  margin: 48px 0;
   border: 1px solid var(--dguv-text, #000);
 }
 
@@ -181,11 +183,6 @@ onBeforeUnmount(() => {
 
 .vur-filter-section__sort select {
   width: auto;
-}
-
-
-.vur-filter-section {
-  margin-bottom: 48px;
 }
 
 .vur-filter-section__filterlist {

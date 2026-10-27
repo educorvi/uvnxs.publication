@@ -93,6 +93,7 @@ class VuRSearchView(BrowserView):
                 score += SEARCH_WEIGHTS["vorschrift"]
 
             document["score"] = score
+            document["uid"] = brain.UID
             documents.append(document)
         return documents
 

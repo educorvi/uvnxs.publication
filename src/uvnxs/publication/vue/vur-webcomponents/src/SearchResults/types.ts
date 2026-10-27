@@ -15,15 +15,14 @@ export interface SearchResult {
   sachgebiet?: string
   matches?: SearchMatch[]
   score: number
+  uid: string
 }
 
 export type SortBy = 'article_id' | 'title' | 'pub_date' | 'score'
 
-export interface FilterSelections {
-  rubrik: string[]
-  fachbereich: string[]
-  sachgebiet: string[]
-}
+export const filterIds = ['rubrik', 'fachbereich', 'sachgebiet'] as const
+
+export type FilterSelections = Record<(typeof filterIds)[number], string[]>
 
 export interface SearchFilter {
   id: keyof FilterSelections

@@ -1,5 +1,6 @@
 [
   {
+    "uid": "bb38fb948b305049bca5f1963dd2b88b",
     "article_id": "DGUV Information 201-025",
     "title": "Taucher-Dienstbuch",
     "pub_date": "2018-10-01",
@@ -43,6 +44,7 @@
     "score": 6
   },
   {
+    "uid": "63bdfcca6ef95f14beb6538fef0ff13f",
     "article_id": "DGUV Vorschrift 40",
     "title": "Taucherarbeiten",
     "pub_date": "1979-10-01",
@@ -106,6 +108,7 @@
     "score": 1110
   },
   {
+    "uid": "c19ab15471ed595595ebab289a4dd624",
     "article_id": "DGUV Information 201-034",
     "title": "Taucheinsätze in kontaminiertem Wasser",
     "pub_date": "2020-12-03",
@@ -154,6 +157,7 @@
     "score": 7
   },
   {
+    "uid": "07a645eff7de567bafcfac9c29501f7e",
     "article_id": "DGUV Information 207-001",
     "title": "Sicheres Arbeiten mit therapeutischen Druckkammern",
     "pub_date": "2023-09-01",
@@ -212,6 +216,7 @@
     "score": 9
   },
   {
+    "uid": "4d587d6efebc5597a150b1a82e0bb35c",
     "article_id": "DGUV Information 203-059",
     "title": "Sicherheit beim Betreiben von Wasserkraftwerken",
     "pub_date": "2010-10-01",
@@ -265,6 +270,7 @@
     "score": 8
   },
   {
+    "uid": "a2a158c90a9352a7ad41cc6a156d57d0",
     "article_id": "DGUV Regel 101-022",
     "title": "Taucherdruckkammern",
     "pub_date": "1988-10-01",
@@ -298,6 +304,7 @@
     "score": 4
   },
   {
+    "uid": "17279307401f5c8896c4d9bb6699ca56",
     "article_id": "DGUV Information 201-033",
     "title": "Tauchen mit Mischgas",
     "pub_date": "2020-09-14",
@@ -326,6 +333,7 @@
     "score": 3
   },
   {
+    "uid": "718e2323f2865e4790af6caeccc8b25b",
     "article_id": "DGUV Regel 101-604",
     "title": "Branche Tiefbau",
     "pub_date": "2023-12-12",
@@ -379,6 +387,7 @@
     "score": 8
   },
   {
+    "uid": "8cdb9a6f5eb55ec492b0ee44156c33bb",
     "article_id": "DGUV Information 250-010",
     "title": "Eignungsbeurteilungen in der betrieblichen Praxis",
     "pub_date": "2024-05-10",
@@ -397,6 +406,7 @@
     "score": 1
   },
   {
+    "uid": "0d5851573d5a5f74960d0b28fc61685e",
     "article_id": "DGUV Information 201-061",
     "title": "Handlungsanleitung für sicheres Arbeiten in Druckluft",
     "pub_date": "2022-08-16",
