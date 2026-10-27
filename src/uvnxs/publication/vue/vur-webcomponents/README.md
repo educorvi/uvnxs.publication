@@ -52,6 +52,7 @@ Selection properties accept JavaScript arrays.
 | --- | --- | --- |
 | `search-results` | `searchResults` | JSON document array; `'[]'` |
 | `filter-heading` | `filterHeading` | Heading text; `'Dokumente filtern'` |
+| `hide-relevance` | `hideRelevance` | Boolean; defaults to `false`. Hides relevance sorting and defaults to article ID when enabled |
 | `rubriken-options` | `rubrikenOptions` | JSON string array; omitted hides the Rubrik filter |
 | `fachbereiche-options` | `fachbereicheOptions` | JSON string array; `'[]'` |
 | `sachgebiete-options` | `sachgebieteOptions` | JSON array of objects with `name`; `'[]'` |
@@ -108,7 +109,10 @@ Snippets render as text, with the matching range wrapped in `<mark>`.
 - Empty selections leave that filter unrestricted.
 - Selections within one filter use OR; different filters combine with AND.
 - Filter values must match document fields exactly.
-- Relevance sorts by descending `score` and is the default.
+- Relevance sorts by descending `score` and is the default for search results.
+  Folder views set `hide-relevance=""`, hiding relevance and defaulting to article ID.
+  Omit this Boolean attribute to allow relevance; in JavaScript, use
+  `hideRelevance = true` or `false`.
 - Article IDs sort ascending with German numeric collation; titles sort ascending
   with German collation. Publication dates sort descending.
 - Each document initially shows up to two excerpts. The expansion button reveals

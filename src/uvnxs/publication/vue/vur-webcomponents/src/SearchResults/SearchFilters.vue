@@ -5,6 +5,7 @@ import { filterIds, type FilterSelections, type SearchFilter, type SortBy } from
 const props = defineProps<{
   filters: SearchFilter[]
   filterHeading: string
+  hideRelevance?: boolean
   totalCount: number
   filteredCount: number
 }>()
@@ -150,7 +151,7 @@ onBeforeUnmount(() => {
       <label class="vur-filter-section__sort d-flex align-items-center gap-3">
         <strong>Sortieren nach</strong>
         <select v-model="sortBy" class="form-select">
-          <option value="score">Relevanz</option>
+          <option v-if="!hideRelevance" value="score">Relevanz</option>
           <option value="article_id">Artikel-ID</option>
           <option value="title">Titel</option>
           <option value="pub_date">Ausgabedatum</option>

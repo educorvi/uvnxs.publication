@@ -10,6 +10,7 @@ const meta = {
   args: {
     searchResults: JSON.stringify(documents),
     filterHeading: 'Dokumente filtern',
+    hideRelevance: false,
     fachbereicheOptions: JSON.stringify(fachbereicheOptions),
     sachgebieteOptions: JSON.stringify(sachgebieteOptions),
     rubrikenOptions: JSON.stringify(rubrikenOptions),
@@ -20,6 +21,7 @@ const meta = {
   argTypes: {
     searchResults: { control: 'text' },
     filterHeading: { control: 'text' },
+    hideRelevance: { control: 'boolean' },
     fachbereicheOptions: { control: 'text' },
     sachgebieteOptions: { control: 'text' },
     rubrikenOptions: { control: 'text' },
@@ -37,6 +39,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 export const Default: Story = {}
+export const FolderView: Story = {
+  args: { hideRelevance: true, rubrikenOptions: undefined },
+}
 export const Empty: Story = { args: { searchResults: '[]' } }
 export const Bauwesen: Story = { args: { fachbereiche: ['Bauwesen'] } }
 export const WithoutRubrikFilter: Story = { args: { rubrikenOptions: undefined } }

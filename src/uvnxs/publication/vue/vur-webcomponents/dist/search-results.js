@@ -3149,11 +3149,15 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 ], Go = ["id", "aria-labelledby"], Ko = ["id"], qo = ["data-value", "aria-selected"], Jo = { class: "ms-option-label" }, Yo = { class: "vur-filter-section__sorting d-flex flex-wrap align-items-center justify-content-between gap-3" }, Xo = {
 	"aria-live": "polite",
 	"aria-atomic": "true"
-}, Zo = { class: "vur-filter-section__results-count" }, Qo = { class: "vur-filter-section__sort d-flex align-items-center gap-3" }, $o = /*#__PURE__*/ Io(/* @__PURE__ */ qn({
+}, Zo = { class: "vur-filter-section__results-count" }, Qo = { class: "vur-filter-section__sort d-flex align-items-center gap-3" }, $o = {
+	key: 0,
+	value: "score"
+}, es = /*#__PURE__*/ Io(/* @__PURE__ */ qn({
 	__name: "SearchFilters",
 	props: /*@__PURE__*/ wr({
 		filters: {},
 		filterHeading: {},
+		hideRelevance: { type: Boolean },
 		totalCount: {},
 		filteredCount: {}
 	}, {
@@ -3262,20 +3266,20 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 			n[8] ||= Ji(" Dokumente ", -1),
 			n[9] ||= Z("span", { "aria-hidden": "true" }, " • ", -1),
 			Z("span", Zo, [Z("strong", null, k(e.filteredCount), 1), n[7] ||= Ji(" nach Filtern ", -1)])
-		]), Z("label", Qo, [n[11] ||= Z("strong", null, "Sortieren nach", -1), kn(Z("select", {
+		]), Z("label", Qo, [n[13] ||= Z("strong", null, "Sortieren nach", -1), kn(Z("select", {
 			"onUpdate:modelValue": n[0] ||= (e) => r.value = e,
 			class: "form-select"
-		}, [...n[10] ||= [
-			Z("option", { value: "score" }, "Relevanz", -1),
-			Z("option", { value: "article_id" }, "Artikel-ID", -1),
-			Z("option", { value: "title" }, "Titel", -1),
-			Z("option", { value: "pub_date" }, "Ausgabedatum", -1)
-		]], 512), [[mo, r.value]])])])], 512));
+		}, [
+			e.hideRelevance ? Yi("", !0) : (Y(), X("option", $o, "Relevanz")),
+			n[10] ||= Z("option", { value: "article_id" }, "Artikel-ID", -1),
+			n[11] ||= Z("option", { value: "title" }, "Titel", -1),
+			n[12] ||= Z("option", { value: "pub_date" }, "Ausgabedatum", -1)
+		], 512), [[mo, r.value]])])])], 512));
 	}
-}), [["__scopeId", "data-v-52b2f68b"]]), es = {
+}), [["__scopeId", "data-v-edb8fd24"]]), ts = {
 	class: "vur-documents-list",
 	"aria-label": "Suchergebnisse"
-}, ts = /* @__PURE__ */ co(/* @__PURE__ */ qn({
+}, ns = /* @__PURE__ */ co(/* @__PURE__ */ qn({
 	__name: "SearchResults.ce",
 	props: {
 		searchResults: {
@@ -3286,6 +3290,7 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 			default: "Dokumente filtern",
 			type: String
 		},
+		hideRelevance: { type: Boolean },
 		rubrikenOptions: { type: String },
 		fachbereicheOptions: {
 			default: "[]",
@@ -3325,7 +3330,11 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 				sachgebiet: [...r]
 			};
 		}, { immediate: !0 });
-		let r = /* @__PURE__ */ Gt("score"), i = /* @__PURE__ */ Gt(/* @__PURE__ */ new Set()), a = ba(() => JSON.parse(t.searchResults)), o = ba(() => ({
+		let r = /* @__PURE__ */ Gt("score");
+		In(() => t.hideRelevance, (e) => {
+			e && r.value === "score" && (r.value = "article_id");
+		}, { immediate: !0 });
+		let i = /* @__PURE__ */ Gt(/* @__PURE__ */ new Set()), a = ba(() => JSON.parse(t.searchResults)), o = ba(() => ({
 			rubrik: JSON.parse(t.rubrikenOptions ?? "[]"),
 			fachbereich: JSON.parse(t.fachbereicheOptions),
 			sachgebiet: JSON.parse(t.sachgebieteOptions).map(({ name: e }) => e)
@@ -3345,17 +3354,18 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 			return a.value.filter((t) => e.every(([e, n]) => n.size === 0 || n.has(t[e] ?? ""))).sort((e, t) => {
 				let n = String(e[r.value] ?? ""), i = String(t[r.value] ?? "");
 				switch (r.value) {
-					case "score": return t.score - e.score;
+					case "score": return (t.score || 0) - (e.score || 0);
 					case "pub_date": return i.localeCompare(n, "de");
 					default: return n.localeCompare(i, "de", { numeric: r.value === "article_id" });
 				}
 			});
 		});
-		return (t, o) => (Y(), X(K, null, [Q($o, {
+		return (t, o) => (Y(), X(K, null, [Q(es, {
 			"sort-by": r.value,
 			"onUpdate:sortBy": o[0] ||= (e) => r.value = e,
 			filters: c.value,
 			"filter-heading": e.filterHeading,
+			"hide-relevance": e.hideRelevance,
 			"total-count": a.value.length,
 			"filtered-count": l.value.length,
 			onSelectionChange: o[1] ||= (e) => n.value = e
@@ -3363,9 +3373,10 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 			"sort-by",
 			"filters",
 			"filter-heading",
+			"hide-relevance",
 			"total-count",
 			"filtered-count"
-		]), Z("section", es, [(Y(!0), X(K, null, vr(l.value, (e) => (Y(), Bi(Lo, {
+		]), Z("section", ts, [(Y(!0), X(K, null, vr(l.value, (e) => (Y(), Bi(Lo, {
 			key: e.uid,
 			doc: e,
 			expanded: i.value.has(e),
@@ -3377,6 +3388,6 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 		]))), 128))])], 64));
 	}
 }), { shadowRoot: !1 });
-customElements.define("search-results", ts);
+customElements.define("search-results", ns);
 
 //# sourceMappingURL=search-results.js.map

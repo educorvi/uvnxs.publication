@@ -14,7 +14,7 @@ export interface SearchResult {
   fachbereich?: string
   sachgebiet?: string
   matches?: SearchMatch[]
-  score: number
+  score?: number
   uid: string
 }
 

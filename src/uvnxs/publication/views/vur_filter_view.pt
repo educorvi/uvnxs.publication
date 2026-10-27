@@ -18,7 +18,7 @@
 
         </section>
 
-        <search-results tal:attributes="
+        <search-results hide-relevance="" tal:attributes="
                           search-results view/documents_json;
                           fachbereiche-options view/fachbereiche_json;
                           sachgebiete-options view/sachgebiete_json;

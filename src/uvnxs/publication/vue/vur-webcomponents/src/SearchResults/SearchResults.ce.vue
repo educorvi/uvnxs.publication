@@ -16,6 +16,7 @@ const props = withDefaults(
   defineProps<{
     searchResults?: string
     filterHeading?: string
+    hideRelevance?: boolean
     rubrikenOptions?: string
     fachbereicheOptions?: string
     sachgebieteOptions?: string
@@ -49,6 +50,13 @@ watch(
 )
 
 const sortBy = ref<SortBy>('score')
+watch(
+  () => props.hideRelevance,
+  (hidden) => {
+    if (hidden && sortBy.value === 'score') sortBy.value = 'article_id'
+  },
+  { immediate: true },
+)
 const expandedResults = ref(new Set<SearchResult>())
 const documents = computed<SearchResult[]>(() => JSON.parse(props.searchResults))
 
@@ -84,7 +92,7 @@ const filteredResults = computed(() => {
       const second = String(b[sortBy.value] ?? '')
       switch (sortBy.value) {
         case 'score':
-          return b.score - a.score
+          return (b.score || 0) - (a.score || 0)
         case 'pub_date':
           return second.localeCompare(first, 'de')
         default:
@@ -99,6 +107,7 @@ const filteredResults = computed(() => {
     v-model:sort-by="sortBy"
     :filters="filters"
     :filter-heading="filterHeading"
+    :hide-relevance="hideRelevance"
     :total-count="documents.length"
     :filtered-count="filteredResults.length"
     @selection-change="selectedFilters = $event"
