@@ -9,6 +9,21 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a45 (2026-10-29)
+
+
+### New features:
+
+- sort search results by relevance [#6f27300](https://github.com/educorvi/uvnxs.publication/issues/6f27300)
+
+
+### Internal:
+
+- format [#33b5d21](https://github.com/educorvi/uvnxs.publication/issues/33b5d21)
+- fix types, pass uid everywhere and hide relevance sorting in folder view [#757be4d](https://github.com/educorvi/uvnxs.publication/issues/757be4d)
+- update vite alias resolution to use `import.meta.dirname` [#cb2bbe0](https://github.com/educorvi/uvnxs.publication/issues/cb2bbe0)
+- cleanup and use global initMultiShell [#e11792c](https://github.com/educorvi/uvnxs.publication/issues/e11792c)
+
 ## 1.0.0a44 (2026-10-20)
 
 

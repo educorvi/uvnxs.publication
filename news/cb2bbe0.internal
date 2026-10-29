@@ -1,1 +1,0 @@
-update vite alias resolution to use `import.meta.dirname`
