@@ -171,4 +171,19 @@
         />
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+      profile="uvnxs.publication:default"
+      source="1017"
+      destination="1018"
+      >
+    <genericsetup:upgradeDepends
+        title="Add searchable vur_title to catalog"
+        import_profile="uvnxs.publication:to_1018"
+        />
+    <genericsetup:upgradeStep
+        title="Reindex article titles"
+        handler=".to_1018.add_article_searchable_text"
+        />
+  </genericsetup:upgradeSteps>
+
 </configure>
