@@ -9,6 +9,24 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a46 (2026-10-30)
+
+
+### New features:
+
+- new button DGUV Medien and renamed PDF Download BUtton [#6a4a2f1](https://github.com/educorvi/uvnxs.publication/issues/6a4a2f1)
+
+
+### Bug fixes:
+
+- normal spinner in download button [#771b97f](https://github.com/educorvi/uvnxs.publication/issues/771b97f)
+- fix card size and alignment [#022e499](https://github.com/educorvi/uvnxs.publication/issues/022e499)
+
+
+### Internal:
+
+- format [#b12be73](https://github.com/educorvi/uvnxs.publication/issues/b12be73)
+
 ## 1.0.0a45 (2026-10-29)
 
 
