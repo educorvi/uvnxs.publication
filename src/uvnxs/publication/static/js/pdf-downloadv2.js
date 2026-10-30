@@ -6,7 +6,7 @@ document.querySelectorAll('.article-action[download]').forEach((button) => {
       return
     }
 
-    const icon = button.querySelector(':scope > img')
+    const icon = button.querySelector(':scope > i')
     const spinner = button.querySelector(
       ':scope > .spinner-border',
     )
