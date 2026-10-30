@@ -96,7 +96,7 @@ def _get_html(context, include_edit_links=False, synchronous=False):
             pdf_filename=pdf_filename,
             download_pdf=api.portal.translate(_("Download PDF")),
             document_path=path,
-            webcode_url=webcode_url
+            webcode_url=webcode_url,
         ), None
     except ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
