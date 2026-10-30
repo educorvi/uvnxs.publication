@@ -8,7 +8,7 @@ document.querySelectorAll('.article-action[download]').forEach((button) => {
 
     const icon = button.querySelector(':scope > img')
     const spinner = button.querySelector(
-      ':scope > .loading-indicator',
+      ':scope > .spinner-border',
     )
     const label = button.querySelector(':scope > span:last-child')
     const originalLabel = label.textContent

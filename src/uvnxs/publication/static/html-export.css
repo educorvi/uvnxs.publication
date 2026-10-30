@@ -8,10 +8,6 @@
   pointer-events: none;
 }
 
-.article-action .loading-indicator {
-  height: 1em;
-}
-
 /* ==================== Edit View ==================== */
 
 .article-fragment a.section-edit-link > i {
