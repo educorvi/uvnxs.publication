@@ -110,6 +110,11 @@
   display: none;
 }
 
+/* Hide link because of button */
+tr[data-meta-field="document-uri"] {
+  display: none;
+}
+
 .article-fragment .metadata-small table {
   width: 100%;
   margin: 0;

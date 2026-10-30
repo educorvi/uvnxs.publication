@@ -47,11 +47,15 @@ _HTML_TEMPLATE = """
             </h2>
             <div class="article-actions d-flex mt-4">
                 <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
-                    <img src="/++resource++uvnxs.publication/icons/download.svg" alt="" aria-hidden="true">
+                    <i class="ph ph-download-simple"></i>
                     <div class="spinner-border text-primary d-none" style="width: 1em; height: 1em; role="status">
                       <span class="visually-hidden">Loading...</span>
                     </div>
                     <span>{download_pdf}</span>
+                </a>
+                <a class="ms-4 article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{webcode_url}">
+                    <i class="ph ph-books"></i>
+                    <span>DGUV Medien</span>
                 </a>
             </div>
         </div>
@@ -81,6 +85,7 @@ def _get_html(context, include_edit_links=False, synchronous=False):
         article_subtitle = (context.article_subtitle or [""])[0]
         pdf_url = context.absolute_url() + "/jats-pdf-view"
         pdf_filename = f"{article_title}.pdf"
+        webcode_url = f"https://publikationen.dguv.de/DguvWebcode/index/query/{context.webcode}"
         return _HTML_TEMPLATE.format(
             front=front,
             html=html,
@@ -91,6 +96,7 @@ def _get_html(context, include_edit_links=False, synchronous=False):
             pdf_filename=pdf_filename,
             download_pdf=api.portal.translate(_("Download PDF")),
             document_path=path,
+            webcode_url=webcode_url
         ), None
     except ServiceException:
         logger.error("ServiceException while exporting the article to HTML.")
