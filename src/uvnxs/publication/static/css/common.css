@@ -22,6 +22,7 @@
 /* section */
 
 .vur .vur-section {
+  container: vur-rubriken / inline-size;
   padding-top: 72px;
   padding-bottom: 96px;
   border-top: 1px solid var(--dguv-primary);
@@ -38,7 +39,7 @@
 .vur .vur-grid {
   display: grid!important;
   gap: 1.5rem!important;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .vur .vur-card {
@@ -52,6 +53,7 @@
 }
 
 .vur .vur-card-count {
+  margin-bottom: 48px;
   color: var(--dguv-primary);
   font-size: 14px;
   font-weight: 700;
@@ -65,9 +67,21 @@
 
 /* responsive - small width */
 
-@media (max-width: 1439.98px) {
+@container vur-rubriken (min-width: 600px) {
   .vur .vur-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container vur-rubriken (min-width: 900px) {
+  .vur .vur-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@container vur-rubriken (min-width: 1200px) {
+  .vur .vur-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -82,13 +96,4 @@
     padding-bottom: 64px;
   }
 
-  .vur .vur-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 767.98px) {
-  .vur .vur-grid {
-    grid-template-columns: 1fr;
-  }
 }

@@ -47,7 +47,7 @@
                   <span class="vur-card-count"
                         tal:content="rubrik/count"
                   ></span>
-                  <h3 class="vur-card-title mt-auto"
+                  <h3 class="vur-card-title"
                       tal:content="structure rubrik/title"
                   ></h3>
                   <span class="vur-card-description"
