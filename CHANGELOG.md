@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a47 (2026-10-30)
+
+
+### Bug fixes:
+
+- update PDF download button to use <i> instead of <img> for icons [#5b31c4b](https://github.com/educorvi/uvnxs.publication/issues/5b31c4b)
+
 ## 1.0.0a46 (2026-10-30)
 
 
