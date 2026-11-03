@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a48 (2026-11-03)
+
+
+### Bug fixes:
+
+- adapt export css to new classes [#5d6c88f](https://github.com/educorvi/uvnxs.publication/issues/5d6c88f)
+- add missing registration of upgrade step 19 [#ecea267](https://github.com/educorvi/uvnxs.publication/issues/ecea267)
+
 ## 1.0.0a47 (2026-10-30)
 
 
