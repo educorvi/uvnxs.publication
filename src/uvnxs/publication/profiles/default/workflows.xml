@@ -40,5 +40,11 @@
     <type type_id="ArticleMedia">
       <bound-workflow workflow_id="vur" />
     </type>
+    <type type_id="RefList">
+      <bound-workflow workflow_id="vur" />
+    </type>
+    <type type_id="Glossary">
+      <bound-workflow workflow_id="vur" />
+    </type>
   </bindings>
 </object>

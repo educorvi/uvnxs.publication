@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-13 07:10+0000\n"
+"POT-Creation-Date: 2026-10-26 12:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,10 @@ msgstr ""
 msgid "Applies the uvnxs.publication 1017 upgrade."
 msgstr ""
 
+#: uvnxs/publication/profiles.zcml:37
+msgid "Applies the uvnxs.publication 1018 upgrade."
+msgstr ""
+
 #: uvnxs/publication/profiles/default/types/Article.xml
 msgid "Article"
 msgstr ""
@@ -77,6 +81,11 @@ msgstr ""
 #: uvnxs/publication/profiles/default/types/ArticleMedia.xml
 #: uvnxs/publication/profiles/to_1017/types/ArticleMedia.xml
 msgid "ArticleMedia"
+msgstr ""
+
+#: uvnxs/publication/profiles/default/types/ArticleMedia.xml
+#: uvnxs/publication/profiles/to_1017/types/ArticleMedia.xml
+msgid "ArticleMedia Container of a JATS Document"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:259
@@ -132,7 +141,7 @@ msgstr ""
 msgid "Co-Author Surname"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:55
+#: uvnxs/publication/content/common.py:47
 #: uvnxs/publication/content/easy_section.py:27
 msgid "Content"
 msgstr ""
@@ -189,7 +198,7 @@ msgstr ""
 msgid "DGUV Metadata"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:136
+#: uvnxs/publication/views/jats_html_view.py:93
 msgid "Download PDF"
 msgstr ""
 
@@ -201,7 +210,11 @@ msgstr ""
 msgid "EasySection"
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:144
+#: uvnxs/publication/content/common.py:48
+msgid "Equals to content in the XML."
+msgstr ""
+
+#: uvnxs/publication/views/jats_html_view.py:101
 msgid "Error while exporting the article to HTML."
 msgstr ""
 
@@ -219,6 +232,16 @@ msgstr ""
 
 #: uvnxs/publication/profiles/default/types/Front.xml
 msgid "Front of a JATS Document"
+msgstr ""
+
+#: uvnxs/publication/profiles/default/types/Glossary.xml
+#: uvnxs/publication/profiles/to_1018/types/Glossary.xml
+msgid "Glossary"
+msgstr ""
+
+#: uvnxs/publication/profiles/default/types/Glossary.xml
+#: uvnxs/publication/profiles/to_1018/types/Glossary.xml
+msgid "Glossary of a JATS Document. Glossaries are displayed or exported at the end of a section or appendix; in other containers, they appear at their position in the content."
 msgstr ""
 
 #: uvnxs/publication/content/article.py:481
@@ -393,12 +416,12 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:48
+#: uvnxs/publication/content/common.py:40
 msgid "Label and Title Raw"
 msgstr ""
 
 #: uvnxs/publication/profiles/default/types/VurLandingPage.xml
-msgid "Landingpage fpr VuR Platform"
+msgid "Landingpage for VuR Platform"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:123
@@ -423,6 +446,10 @@ msgstr ""
 
 #: uvnxs/publication/profiles.zcml:29
 msgid "Migrate to 1017"
+msgstr ""
+
+#: uvnxs/publication/profiles.zcml:37
+msgid "Migrate to 1018"
 msgstr ""
 
 #: uvnxs/publication/content/article.py:449
@@ -483,6 +510,16 @@ msgstr ""
 
 #: uvnxs/publication/content/front.py:14
 msgid "Raw content"
+msgstr ""
+
+#: uvnxs/publication/profiles/default/types/RefList.xml
+#: uvnxs/publication/profiles/to_1018/types/RefList.xml
+msgid "Reference List"
+msgstr ""
+
+#: uvnxs/publication/profiles/default/types/RefList.xml
+#: uvnxs/publication/profiles/to_1018/types/RefList.xml
+msgid "Reference List of a JATS Document. Reference lists are displayed or exported at the end of a section or appendix; in other containers, they appear at their position in the content."
 msgstr ""
 
 #: uvnxs/publication/widgets/xml_editor.py:12
@@ -550,20 +587,16 @@ msgstr ""
 msgid "Summary Abstract Title"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:49
-msgid "The XML content for the label and title of the section."
+#: uvnxs/publication/content/common.py:41
+msgid "The XML content for the label and title."
 msgstr ""
 
-#: uvnxs/publication/views/jats_html_view.py:141
+#: uvnxs/publication/views/jats_html_view.py:98
 msgid "The article cannot be displayed in HTML format because the body is missing."
 msgstr ""
 
 #: uvnxs/publication/content/easy_section.py:28
 msgid "The content of the section"
-msgstr ""
-
-#: uvnxs/publication/content/common.py:56
-msgid "The content of the section, equals to content in the XML"
 msgstr ""
 
 #: uvnxs/publication/content/easy_section.py:16
@@ -574,7 +607,7 @@ msgstr ""
 msgid "The raw XML content of the Front section."
 msgstr ""
 
-#: uvnxs/publication/content/common.py:41
+#: uvnxs/publication/content/common.py:33
 msgid "The title is only used to generate an ID. Once the ID is generated, the title can be changed without changing the ID. The title is not used for display purposes. For changing the displayed title, use the label and title xml field."
 msgstr ""
 
@@ -590,7 +623,7 @@ msgstr ""
 msgid "The title of the section"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:35
+#: uvnxs/publication/content/common.py:60
 msgid "The type of the section, equals to sec-type, app-type or content-type in the XML"
 msgstr ""
 
@@ -600,7 +633,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: uvnxs/publication/content/common.py:34
+#: uvnxs/publication/content/common.py:59
 msgid "Type"
 msgstr ""
 

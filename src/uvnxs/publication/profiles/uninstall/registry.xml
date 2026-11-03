@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="uvnxs.publication"
+>
+
+  <records interface="uvnxs.publication.interfaces.IUvnxsPublicationSettings"
+           prefix="uvnxs.publication" remove="True"
+  />
+
+  <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
+           prefix="plone.bundles/uvnxs.publication.xml-editor" remove="True"
+  />
+
+  <record field="default_page_types"
+          interface="plone.base.interfaces.controlpanel.ITypesSchema"
+          name="plone.default_page_types"
+  >
+    <value purge="false">
+      <element remove="True">VurLandingPage</element>
+    </value>
+  </record>
+
+  <record field="displayed_types"
+          interface="plone.base.interfaces.controlpanel.INavigationSchema"
+          name="plone.displayed_types"
+  >
+    <value purge="false">
+      <element remove="True">VurLandingPage</element>
+    </value>
+  </record>
+
+  <record field="displayed_types"
+          interface="plone.base.interfaces.controlpanel.INavigationSchema"
+          name="plone.displayed_types"
+  >
+    <value purge="false">
+      <element remove="True">EasySection</element>
+    </value>
+  </record>
+
+</registry>

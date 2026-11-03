@@ -32,4 +32,10 @@
   <object meta_type="Dexterity FTI"
           name="ArticleMedia"
   />
+  <object meta_type="Dexterity FTI"
+          name="RefList"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Glossary"
+  />
 </object>

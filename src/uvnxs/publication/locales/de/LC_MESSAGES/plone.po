@@ -29,3 +29,9 @@ msgstr "JATS-Abschnitt"
 
 msgid "Draft"
 msgstr "Entwurf"
+
+msgid "Reference List"
+msgstr "Literaturverzeichnis"
+
+msgid "Glossary"
+msgstr "Glossar"
