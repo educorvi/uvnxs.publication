@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Workflow Tool"
+        name="portal_workflow"
+>
+  <bindings>
+    <type type_id="RefList">
+      <bound-workflow workflow_id="vur" />
+    </type>
+    <type type_id="Glossary">
+      <bound-workflow workflow_id="vur" />
+    </type>
+  </bindings>
+</object>

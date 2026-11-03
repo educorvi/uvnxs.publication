@@ -170,7 +170,7 @@
         import_profile="uvnxs.publication:to_1017"
         />
   </genericsetup:upgradeSteps>
-
+  
   <genericsetup:upgradeSteps
       profile="uvnxs.publication:default"
       source="1017"
@@ -183,6 +183,18 @@
     <genericsetup:upgradeStep
         title="Reindex article titles"
         handler=".to_1018.add_article_searchable_text"
+        />
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+      profile="uvnxs.publication:default"
+      source="1018"
+      destination="1019"
+      >
+    <genericsetup:upgradeDepends
+        title="Add content types Glossary and RefList"
+        description=""
+        import_profile="uvnxs.publication:to_1019"
         />
   </genericsetup:upgradeSteps>
 

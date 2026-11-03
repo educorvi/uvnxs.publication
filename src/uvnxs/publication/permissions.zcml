@@ -50,4 +50,14 @@
       title="uvnxs.publication: Add ArticleMedia"
       />
 
+  <permission
+      id="uvnxs.publication.AddRefList"
+      title="uvnxs.publication: Add RefList"
+      />
+
+  <permission
+      id="uvnxs.publication.AddGlossary"
+      title="uvnxs.publication: Add Glossary"
+      />
+
 </configure>
