@@ -89,13 +89,16 @@ build-backend = "hatchling.build"
 [tool.hatch.build]
 strict-naming = true
 artifacts = [
-  "src/uvnxs/publication/vue/xml-editor-webcomponent/dist/**",
+    "src/uvnxs/publication/vue/xml-editor-webcomponent/dist/**",
+    "src/uvnxs/publication/vue/vur-webcomponents/dist/**"
 ]
 
 [tool.hatch.build.targets.sdist]
 exclude = [
-  "/.github",
-  "/tests/testdata",
+    "/.github",
+    "/tests/testdata",
+    "src/uvnxs/publication/vue/vur-webcomponents/storybook-static",
+    "src/uvnxs/publication/vue/vur-webcomponents/.vscode"
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -105,6 +108,7 @@ packages = ["src/uvnxs"]
 [tool.check-manifest]
 ignore = [
     "tests/testdata/**",
+    "src/uvnxs/publication/vue/vur-webcomponents/.vscode/**"
 ]
 
 [tool.towncrier]
@@ -207,7 +211,7 @@ source_pkgs = ["uvnxs.publication", "tests"]
 branch = true
 parallel = true
 omit = [
-  "src/uvnxs/publication/locales/*.py",
+    "src/uvnxs/publication/locales/*.py",
 ]
 
 [tool.zest-releaser]

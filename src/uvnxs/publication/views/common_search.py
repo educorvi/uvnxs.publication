@@ -14,6 +14,7 @@ def get_document_for_article(obj):
         "fachbereich": obj.fachbereich or "",
         "sachgebiet": obj.sachgebiet or "",
         "url": obj.absolute_url(),
+        "uid": obj.UID(),
     }
 
 

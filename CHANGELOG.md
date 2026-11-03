@@ -9,6 +9,46 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a47 (2026-10-30)
+
+
+### Bug fixes:
+
+- update PDF download button to use <i> instead of <img> for icons [#5b31c4b](https://github.com/educorvi/uvnxs.publication/issues/5b31c4b)
+
+## 1.0.0a46 (2026-10-30)
+
+
+### New features:
+
+- new button DGUV Medien and renamed PDF Download BUtton [#6a4a2f1](https://github.com/educorvi/uvnxs.publication/issues/6a4a2f1)
+
+
+### Bug fixes:
+
+- normal spinner in download button [#771b97f](https://github.com/educorvi/uvnxs.publication/issues/771b97f)
+- fix card size and alignment [#022e499](https://github.com/educorvi/uvnxs.publication/issues/022e499)
+
+
+### Internal:
+
+- format [#b12be73](https://github.com/educorvi/uvnxs.publication/issues/b12be73)
+
+## 1.0.0a45 (2026-10-29)
+
+
+### New features:
+
+- sort search results by relevance [#6f27300](https://github.com/educorvi/uvnxs.publication/issues/6f27300)
+
+
+### Internal:
+
+- format [#33b5d21](https://github.com/educorvi/uvnxs.publication/issues/33b5d21)
+- fix types, pass uid everywhere and hide relevance sorting in folder view [#757be4d](https://github.com/educorvi/uvnxs.publication/issues/757be4d)
+- update vite alias resolution to use `import.meta.dirname` [#cb2bbe0](https://github.com/educorvi/uvnxs.publication/issues/cb2bbe0)
+- cleanup and use global initMultiShell [#e11792c](https://github.com/educorvi/uvnxs.publication/issues/e11792c)
+
 ## 1.0.0a44 (2026-10-20)
 
 

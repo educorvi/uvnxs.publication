@@ -1,0 +1,3 @@
+// Compile together so the Bootstrap bridge inherits the .nexus scope.
+@use '@untrouble/dguv-vanilla-sass/main-scoped.scss';
+@use '@untrouble/dguv-vanilla-sass/bootstrap-bridge.scss';

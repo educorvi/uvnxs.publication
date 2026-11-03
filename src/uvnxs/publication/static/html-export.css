@@ -8,10 +8,6 @@
   pointer-events: none;
 }
 
-.article-action .loading-indicator {
-  height: 1em;
-}
-
 /* ==================== Edit View ==================== */
 
 .article-fragment a.section-edit-link > i {
@@ -111,6 +107,11 @@
 
 /* Dont display plone external link icon in metadata table */
 .article-fragment svg.markspeciallinks__icon {
+  display: none;
+}
+
+/* Hide link because of button */
+tr[data-meta-field="document-uri"] {
   display: none;
 }
 

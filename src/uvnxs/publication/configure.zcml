@@ -16,6 +16,11 @@
       name="uvnxs.publication.xml-editor"
       directory="vue/xml-editor-webcomponent/dist"
       />
+  <browser:resourceDirectory
+      xmlns:browser="http://namespaces.zope.org/browser"
+      name="uvnxs.publication.webcomponents"
+      directory="vue/vur-webcomponents/dist"
+      />
   <include package="Products.CMFPlone" />
   <include
       package="Products.CMFCore"
