@@ -30,4 +30,12 @@
       permission="zope2.View"
       />
 
+  <browser:viewlet
+      name="plone.searchbox"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+      class=".viewlets.HiddenViewlet"
+      permission="zope2.View"
+      />
+
 </configure>
