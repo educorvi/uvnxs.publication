@@ -9,7 +9,7 @@
     <metal:block fill-slot="main">
       <div class="vur">
         <section>
-          <h1>Recherche</h1>
+          <h1 tal:content="view/heading"></h1>
           <tal:block tal:condition="python: view.has_query or not view.has_subjects">
             <form class="vur-search"
                   action=""

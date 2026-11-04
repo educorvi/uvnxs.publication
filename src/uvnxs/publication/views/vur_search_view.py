@@ -27,6 +27,9 @@ VORSCHRIFT_VALUE = "Muster-DGUV Vorschrift"
 @implementer(IVuRSearchView)
 class VuRSearchView(BrowserView):
     def __call__(self):
+        _landing_page = self._get_vur_landing_page()
+        self.heading = _landing_page.title if _landing_page else "Recherche"
+
         self.query = (self.request.form.get("SearchableText") or "").strip()
         subject = self.request.form.get("Subject", None)
         if subject is None:
