@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+/* section */
+
+.vur .vur-section {
+  padding: var(--space-l4) 0 var(--space-l5);
+}
+
+.vur .vur-section h2 {
+  font: var(--font-h2);
+  margin-bottom: var(--space-l2);
+}
+
+/* grid */
+
+.vur .vur-grid {
+  display: grid !important;
+  gap: var(--space-l) !important;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 48rem) {
+  .vur .vur-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .vur .vur-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 90rem) {
+  .vur .vur-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* card */
+
+.vur .vur-card {
+  min-height: 16rem;
+  padding: var(--space-l3) var(--space-l) !important;
+}
+
+.vur .vur-card:hover {
+  background: var(--dguv-background-light);
+}
+
+.vur .vur-card-title {
+  font: var(--font-h3);
+  color: var(--dguv-text);
+}
