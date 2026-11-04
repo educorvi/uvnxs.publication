@@ -9,6 +9,15 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a49 (2026-11-04)
+
+
+### Bug fixes:
+
+- use vur landing page title as search view heading [#a86ce91](https://github.com/educorvi/uvnxs.publication/issues/a86ce91)
+- rename PDF download button [#218c5c2](https://github.com/educorvi/uvnxs.publication/issues/218c5c2)
+- hide searchbox in portal header [#03f8186](https://github.com/educorvi/uvnxs.publication/issues/03f8186)
+
 ## 1.0.0a48 (2026-11-03)
 
 
