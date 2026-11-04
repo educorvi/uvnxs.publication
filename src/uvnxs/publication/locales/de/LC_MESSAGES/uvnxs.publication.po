@@ -201,7 +201,7 @@ msgstr "DGUV-Metadaten"
 
 #: uvnxs/publication/views/jats_html_view.py:93
 msgid "Download PDF"
-msgstr "Ansichtspdf"
+msgstr "Ansichts-PDF"
 
 #: uvnxs/publication/profiles/default/types/EasySection.xml
 msgid "Easy to use alternative to the Section"
