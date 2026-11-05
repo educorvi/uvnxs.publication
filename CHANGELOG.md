@@ -9,6 +9,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a50 (2026-11-05)
+
+
+### Bug fixes:
+
+- organize and refactor html-export css, update heading styles, update spacing [#accceb0](https://github.com/educorvi/uvnxs.publication/issues/accceb0)
+- add missing import for root.css in Storybook preview [#01cc0c1](https://github.com/educorvi/uvnxs.publication/issues/01cc0c1)
+
+
+### Internal:
+
+- reorganize CSS files and update styles for consistency [#0f58332](https://github.com/educorvi/uvnxs.publication/issues/0f58332)
+
 ## 1.0.0a49 (2026-11-04)
 
 
