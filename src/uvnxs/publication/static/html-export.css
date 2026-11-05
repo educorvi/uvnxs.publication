@@ -1,243 +1,159 @@
 @charset "UTF-8";
 
+/* =================================================== */
+/* ================== Article Header ================= */
+/* =================================================== */
 
-/* Custom edits */
+.article-header {
+  margin-bottom: var(--space-l2);
+}
+
+.article-header-article-id {
+  color: var(--dguv-text-secondary);
+  font: var(--font-s-bold);
+  text-transform: uppercase;
+}
+
+.article-header-article-title {
+  margin: var(--space-m) 0;
+  font: var(--font-h1);
+}
+
+.article-header-article-subtitle {
+  margin: var(--space-m) 0 var(--space-l);
+  font: var(--font-xxl);
+  color: var(--dguv-text-secondary);
+}
+
+/* ===================== Actions ===================== */
+
+.article-actions {
+  display: flex;
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+}
+
+.article-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+  padding: var(--space-sm) var(--space-m);
+  border: 1px solid var(--dguv-border);
+  font: var(--font-s);
+  color: var(--dguv-text);
+  text-decoration: none;
+}
+
+.article-action:hover {
+  background: var(--dguv-background-light);
+}
+
 .article-action[aria-disabled="true"] {
   cursor: wait;
   opacity: 0.65;
   pointer-events: none;
 }
 
-/* ==================== Edit View ==================== */
-
-.article-fragment a.section-edit-link > i {
-  font-size: .75em;
-}
-
-/* ==================== Variables ==================== */
-
-:root {
-  --dguv-primary: #004994;
-  --dguv-text: #000;
-  --dguv-text-secondary: #555;
-  --dguv-table-border: #d9d9d9;
-  --dguv-background-light: #ededed;
-  --dguv-background-blue: rgb(0 99 175 / 5%);
-  --dguv-advisory: #62a72b;
-  --dguv-advisory-background: rgb(98 167 43 / 5%);
-  --dguv-space-xs: 6px;
-  --dguv-space-sm: 12px;
-  --dguv-space-lg: 24px;
-  --dguv-space-xl: 48px;
-}
-
-/* ==================== Article Header ==================== */
-
-.article-header {
-  margin-bottom: 48px;
-}
-
-.article-header-article-id {
-  margin: 0;
-  color: var(--dguv-text-secondary);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.article-header-article-title {
-  margin: 24px 0 12px 0;
-  font-size: clamp(48px, 4.17vw, 72px);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.015em;
-}
-
-.article-header-article-subtitle {
-  margin: 0 0 24px 0;
-  font-size: clamp(24px, 2.08vw, 36px);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.015em;
-  color: var(--dguv-text-secondary);
-}
-
-.article-action {
-  min-height: 44px;
-  gap: 10px;
-  margin-right: -1px;
-  padding: 12px 16px;
-  font-size: 14px;
-}
-
-.article-action:hover {
-  background: var(--dguv-background-light);
-  color: #000;
-}
-
-.article-action img {
-  width: 11px;
-  height: 11px;
-}
-
-/* ==================== Article Sidebar ==================== */
+/* =================================================== */
+/* ================= Article Sidebar ================= */
+/* =================================================== */
 
 .article-sidebar-panel {
   overflow: auto;
+  border: 1px solid var(--dguv-border);
 }
 
-.article-fragment--front .article-front,
-.article-fragment--content .article-content {
-  display: block;
-  flex: 0 0 100%;
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-}
-
-.article-fragment--front .metadata-and-toc {
-  display: block;
-  margin: 0;
-  border: 0;
-  font-size: 14px;
-}
-
-/* ==================== Article Sidebar - Metadata ==================== */
-
-/* Dont display plone external link icon in metadata table */
-.article-fragment svg.markspeciallinks__icon {
-  display: none;
-}
-
-/* Hide link because of button */
-tr[data-meta-field="document-uri"] {
-  display: none;
-}
+/* ==================== Metadata ===================== */
 
 .article-fragment .metadata-small table {
   width: 100%;
-  margin: 0;
-  border: 0;
-  border-collapse: collapse;
-  font-size: 14px;
+  font: var(--font-s);
+  color: var(--dguv-text);
+}
+
+.article-fragment .metadata-small a {
+  color: var(--dguv-text);
 }
 
 .article-fragment .metadata-small td {
-  padding: 12px;
-  border: 0;
-  border-bottom: 1px solid #000;
+  padding: var(--space-sm);
+  border-bottom: 1px solid var(--dguv-border);
 }
 
-.article-fragment .metadata-small table tr[data-meta-field="journal-title"] td,
-.article-fragment .metadata-small table tr[data-meta-field="journal-subtitle"] td,
-.metadata-title {
-  font-weight: 700;
+.article-fragment .metadata-small tr[data-meta-field="journal-title"] td,
+.article-fragment .metadata-small tr[data-meta-field="journal-subtitle"] td,
+.article-fragment .metadata-small .metadata-title,
+.article-fragment .toc .metadata-title {
+  font: var(--font-s-bold);
   text-transform: uppercase;
 }
 
-.metadata-title {
-  margin-bottom: 0.5em !important;
+.article-fragment .metadata-small .metadata-title,
+.article-fragment .toc .metadata-title {
+  margin-bottom: var(--space-s);
 }
 
-.article-fragment .metadata-small table tr[data-meta-field="related-articles"] td ul {
+.article-fragment .metadata-small tr[data-meta-field="related-articles"] td ul {
   list-style-type: none;
   padding: 0;
   margin-bottom: 0;
 }
 
-.article-fragment .metadata-small table tr[data-meta-field="related-articles"] td ul > li:last-child {
+/* Hide publication link because of button */
+.article-fragment .metadata-small tr[data-meta-field="document-uri"] {
+  display: none;
 }
 
-.article-fragment .metadata-small tr:first-child,
-.article-fragment .metadata-small tr:first-child > * {
-  border-top: 0;
-}
-
-.article-fragment .metadata-small table,
-.article-fragment .metadata-small td,
-.article-fragment .metadata-small td a {
-  color: var(--dguv-text);
-}
-
-.article-fragment .metadata-small tr[data-meta-field="document-uri"] td a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.article-fragment .metadata-small tr[data-meta-field="document-uri"] td a::after {
-  content: "";
-  width: 1em;
-  height: 1em;
-  flex: 0 0 auto;
-  margin-left: auto;
-  background-color: currentcolor;
-  -webkit-mask: url("icons/arrow-right.svg") center/contain no-repeat;
-  mask: url("icons/arrow-right.svg") center/contain no-repeat;
-}
-
-/* ==================== Article Sidebar - TOC ==================== */
+/* ======================= TOC ======================= */
 
 .article-fragment .toc {
-  position: static;
-  max-height: none;
-  overflow: visible;
-  padding: 12px;
-  font-size: 14px;
-  line-height: 1.35;
-}
-
-.article-fragment .toc-meta-title {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.article-fragment .toc-meta-title {
-  margin-bottom: 0.5em !important;
+  padding: var(--space-sm);
+  font: var(--font-m);
 }
 
 .article-fragment .toc ul {
-  margin: 0;
-  padding-left: 14px;
   list-style: none;
+  padding-left: var(--space-m);
 }
 
+/* Remove padding for top-level TOC list */
 .article-fragment .toc > ul {
   padding-left: 0;
 }
 
 .article-fragment .toc li {
-  margin-block: 3px;
+  margin-block: var(--space-xxs);
+}
+
+/* Add margin to TOC list items except the last one */
+.article-fragment .toc > ul > li:not(:last-child) {
+  margin-block-end: var(--space-sm);
 }
 
 .article-fragment .toc a {
-  color: #000;
+  color: var(--dguv-text);
   text-decoration: none;
 }
 
 .article-fragment .toc a:hover {
-  color: var(--dguv-primary);
   text-decoration: underline;
 }
 
 .article-fragment .toc .toc-entry[data-toc-level="1"] > .toc-title,
-.article-fragment .toc .toc-entry[data-toc-level="1"] > .toc-title *,
-.article-fragment .toc > ul > li > .toc-label,
-.article-fragment .toc > ul > li > a {
-  color: var(--dguv-primary) !important;
-  font-weight: 700 !important;
+.article-fragment .toc .toc-entry[data-toc-level="1"] > .toc-title * {
+  color: var(--dguv-primary);
+  font: var(--font-m-bold);
 }
 
 .article-fragment .toc .toc-entry[data-toc-level="1"] > .toc-label {
-  color: var(--dguv-primary) !important;
+  color: var(--dguv-primary);
 }
 
 .article-fragment .toc .toc-entry:has(> .toc-label) {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
-  column-gap: 0.25em;
+  column-gap: var(--space-xxs);
   align-items: baseline;
 }
 
@@ -247,113 +163,118 @@ tr[data-meta-field="document-uri"] {
 
 .article-fragment .toc .toc-entry:has(> .toc-label) > .toc-title {
   grid-column: 2;
-  min-width: 0;
 }
 
-.article-fragment .toc > ul > li:not(:last-child) {
-  margin-block-end: var(--dguv-space-sm);
-}
+/* =================================================== */
+/* ================= Article Content ================= */
+/* =================================================== */
 
-/* ==================== Article Body ==================== */
-
-/* Relative image sizes */
-.article-fragment--content {
-  container-type: inline-size;
-}
-.article-fragment--content img.image-size-icon {
-  width: 5cqw;
-}
-.article-fragment--content img.image-size-small {
-  width: 25cqw;
-}
-.article-fragment--content img.image-size-medium {
-  width: 50cqw;
-}
-.article-fragment--content img.image-size-large {
-  width: 100cqw;
-}
-.article-fragment--content img {
-  max-width: 100%;
-  height: auto;
-}
-
-
-/* sup and sub elements smaller */
-.article-fragment sup,
-.article-fragment sub {
-  font-size: 0.75em;
-}
-
-
-.article-fragment .article-body,
-.article-fragment .article-back {
+.article-fragment .article-content {
   color: var(--dguv-text);
-  font-size: 18px;
-  line-height: 1.42;
+  font: var(--font-l);
 }
 
-.article-fragment .article-body p {
-  margin-block: 1lh;
-}
+/* ============= Sections and headings =============== */
 
 .article-fragment .article-body > .section,
 .article-fragment .article-back > .section {
-  margin-bottom: 48px;
+  margin-bottom: var(--space-l3);
 }
 
-.article-fragment .article-body h2.title,
-.article-fragment .article-back h2.title {
+.article-fragment .section > :is(h1, h2).title,
+.article-fragment .section > :is(h1, h2).title * {
+  margin: var(--space-l3) 0 var(--space-l);
+  font: var(--font-h2);
   color: var(--dguv-primary);
 }
 
-.article-fragment h2,
-.article-fragment h2 *,
-.article-fragment .section > .title,
-.article-fragment .section > .title * {
-  margin: 48px 0 24px;
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  line-height: 1.35 !important;
+.article-fragment .section > h3.title,
+.article-fragment .section > h3.title * {
+  margin: var(--space-l2) 0 var(--space-m);
+  font: var(--font-h3);
+  color: var(--dguv-text);
 }
 
-.article-fragment h3,
-.article-fragment h3 *,
-.article-fragment .section .section > .title,
-.article-fragment .section .section > .title * {
-  margin: 32px 0 16px;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 1.35 !important;
-  color: var(--dguv-text) !important;
+.article-fragment .section > :is(h4, h5, h6).title,
+.article-fragment .section > :is(h4, h5, h6).title * {
+  margin: var(--space-l) 0 var(--space-sm);
+  color: var(--dguv-text);
 }
 
-.article-fragment h4,
-.article-fragment h4 *,
-.article-fragment h5,
-.article-fragment h5 *,
-.article-fragment h6,
-.article-fragment h6 *,
-.article-fragment .section .section .section > .title,
-.article-fragment .section .section .section > .title * {
-  margin: 28px 0 12px;
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  line-height: 1.35 !important;
-  color: var(--dguv-text) !important;
+.article-fragment .section > h4.title,
+.article-fragment .section > h4.title * {
+  font: var(--font-h4);
+}
+.article-fragment .section > h5.title,
+.article-fragment .section > h5.title * {
+  font: var(--font-h5);
+}
+.article-fragment .section > h6.title,
+.article-fragment .section > h6.title * {
+  font: var(--font-h6);
 }
 
-.article-fragment p {
-  margin: 0 0 1em;
+/* Other titles */
+.article-fragment .section h4.title,
+.article-fragment .section h4.title * {
+  margin: var(--space-l) 0 var(--space-sm);
+  font: var(--font-h4);
+  color: var(--dguv-text);
 }
+
+/* Other labels */
+.article-fragment .section h5.label,
+.article-fragment .section h5.label * {
+  font: var(--font-h5);
+  color: var(--dguv-text);
+}
+
+/* ============ Boxed text, DA, Preamble ============= */
 
 .article-fragment .boxed-text,
-.article-fragment .disp-quote,
-.article-fragment [content-type*=durchf i] {
-  margin-block: 24px;
-  padding: 24px;
-  border-left: 1px solid var(--dguv-advisory);
+.article-fragment .section[data-sec-type=highlight-info],
+.article-fragment .section[data-sec-type=preamble] {
+  margin-block: var(--space-l);
+  padding: var(--space-l);
+}
+/* Boxed text */
+
+.article-fragment .boxed-text {
+  border-left: 2px solid var(--dguv-advisory);
   background: var(--dguv-advisory-background);
 }
+
+.article-fragment .boxed-text > .caption {
+  margin-bottom: var(--space-s);
+}
+
+.article-fragment .boxed-text > .caption * {
+  font: var(--font-l-bold);
+}
+
+/* Durchführungsanweisungen */
+
+.article-fragment .section[data-sec-type=highlight-info] {
+  border-left: 2px solid var(--dguv-advisory);
+  background: var(--dguv-advisory-background);
+}
+
+.article-fragment .section[data-sec-type=highlight-info] > .title {
+  margin-top: 0;
+}
+
+/* Vorbemerkungen */
+
+.article-fragment .section[data-sec-type=preamble] {
+  border-left: 2px solid var(--dguv-highlight);
+  background: var(--dguv-highlight-background);
+}
+
+.article-fragment .section[data-sec-type=preamble] > .title {
+  margin-top: 0;
+}
+
+/* ===================== Tables ====================== */
 
 .article-fragment .table-wrap {
   max-width: 100%;
@@ -389,32 +310,7 @@ tr[data-meta-field="document-uri"] {
 .article-fragment .table-wrap th,
 .article-fragment .table-wrap td {
   padding: 8px 10px;
-  border: 1px solid var(--dguv-table-border);
   vertical-align: top;
-}
-
-.article-fragment .article-body > .section[data-sec-type=preamble] {
-  padding: var(--dguv-space-lg);
-  background: var(--dguv-background-blue);
-}
-
-.article-fragment .article-body > .section[data-sec-type=preamble] > h2.title {
-  margin-top: 0;
-}
-
-.article-fragment .article-body .section[data-sec-type=highlight-info],
-.article-fragment .article-back .section[data-sec-type=highlight-info] {
-  margin-block: var(--dguv-space-lg);
-  margin-block-end: var(--dguv-space-xl);
-  padding: var(--dguv-space-lg);
-  border-left: 2px solid var(--dguv-advisory);
-  background: var(--dguv-advisory-background);
-}
-
-.article-fragment .article-body .section[data-sec-type=highlight-info] > p.first {
-  margin-block-start: 0;
-  font-weight: 700;
-  font-style: italic;
 }
 
 .article-fragment .table-wrap table {
@@ -477,6 +373,8 @@ tr[data-meta-field="document-uri"] {
   margin: 0;
 }
 
+/* =============== Figures and Images ================ */
+
 .article-fragment .fig {
   margin-block: 32px;
 }
@@ -501,6 +399,29 @@ tr[data-meta-field="document-uri"] {
   font-size: 16px;
   margin-block: 0 !important;
 }
+
+/* Relative image sizes */
+.article-fragment .article-content {
+  container-type: inline-size;
+}
+.article-fragment img.image-size-icon {
+  width: 5cqw;
+}
+.article-fragment img.image-size-small {
+  width: 25cqw;
+}
+.article-fragment img.image-size-medium {
+  width: 50cqw;
+}
+.article-fragment img.image-size-large {
+  width: 100cqw;
+}
+.article-fragment img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===================== Lists ======================= */
 
 .article-fragment .article-body .list > :is(ul, ol),
 .article-fragment .article-back .list > :is(ul, ol) {
@@ -545,6 +466,8 @@ tr[data-meta-field="document-uri"] {
   margin-block: 0;
 }
 
+/* ================== Free Lists ===================== */
+
 .article-fragment :is(.article-body, .article-back) .freie-liste {
   margin-block: 0.1lh;
 }
@@ -552,7 +475,7 @@ tr[data-meta-field="document-uri"] {
 .article-fragment :is(.article-body, .article-back) .freie-liste > p {
   display: grid;
   grid-template-columns: minmax(1.5em, max-content) minmax(0, 1fr);
-  column-gap: var(--dguv-space-sm);
+  column-gap: var(--space-sm);
   margin-block: 0;
 }
 
@@ -568,15 +491,15 @@ tr[data-meta-field="document-uri"] {
 }
 
 .article-fragment :is(.article-body, .article-back) .freie-liste[data-list-level="2"] > p {
-  margin-inline-start: calc(1.5em + var(--dguv-space-sm));
+  margin-inline-start: calc(1.5em + var(--space-sm));
 }
 
 .article-fragment :is(.article-body, .article-back) .freie-liste[data-list-level="3"] > p {
-  margin-inline-start: calc(2 * (1.5em + var(--dguv-space-sm)));
+  margin-inline-start: calc(2 * (1.5em + var(--space-sm)));
 }
 
 .article-fragment :is(.article-body, .article-back) .freie-liste[data-list-type=ordered] + .list {
-  margin-inline-start: calc(1.5em + var(--dguv-space-sm));
+  margin-inline-start: calc(1.5em + var(--space-sm));
 }
 
 .article-fragment :is(.article-body, .article-back) .freie-liste[data-list-type=ordered] + .list > :is(ul, ol) {
@@ -594,11 +517,18 @@ tr[data-meta-field="document-uri"] {
   margin-bottom: 0;
 }
 
+/* ===================== Other ======================= */
+
+/* sup and sub elements smaller */
+.article-fragment sup,
+.article-fragment sub {
+  font-size: 0.75em;
+}
 
 /* External JATS links must look like surrounding running text.
    The dguv theme styles links inside an @layer, so these unlayered
    overrides always win, no !important needed. */
 .article-fragment a.jats-ext-link {
-  font: inherit; /* = font-family/size/weight/style/variant/stretch + line-height */
+  font: inherit;
   vertical-align: baseline;
 }

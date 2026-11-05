@@ -15,23 +15,30 @@
 /* spacing */
 :root {
   --space-0: 0rem;      /* 0px */
-  --space-xs: 0.25rem;  /* 4px */
+  --space-xxs: 0.25rem; /* 4px */
+  --space-xs: 0.375rem; /* 6px */
   --space-s: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;  /* 12px */
   --space-m: 1rem;      /* 16px */
   --space-l: 1.5rem;    /* 24px */
   --space-l2: 2rem;     /* 32px */
   --space-l3: 3rem;     /* 48px */
   --space-l4: 4rem;     /* 64px */
   --space-l5: 5rem;     /* 80px */
-  --space-l6: 6rem;     /* 96px */
 }
 
 /* colors */
 :root {
   --dguv-primary: #004994;
   --dguv-text: #000;
+  --dguv-text-secondary: #555;
   --dguv-white: #fff;
+  --dguv-border: var(--dguv-text);
   --dguv-background-light: #ededed;
+  --dguv-highlight: rgb(0 99 175);
+  --dguv-highlight-background: rgb(0 99 175 / 5%);
+  --dguv-advisory: rgb(98 167 43 );
+  --dguv-advisory-background: rgb(98 167 43 / 5%);
 }
 
 /* font style variables */
