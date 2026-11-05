@@ -18,6 +18,12 @@
       <link rel="stylesheet"
             type="text/css"
             tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/root.css;
+            "
+      />
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
               href string:${context/portal_url}/++resource++uvnxs.publication/html-export.css;
             "
       />

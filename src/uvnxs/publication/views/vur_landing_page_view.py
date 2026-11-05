@@ -19,7 +19,7 @@ class VuRLandingPageView(BrowserView):
                 "title": folder.Title(),
                 "description": folder.Description(),
                 "url": folder.absolute_url(),
-                "count": len(folder.restrictedTraverse("@@contentlisting")()),
+                # "count": len(folder.restrictedTraverse("@@contentlisting")()),
             })
         self.rubriken = rubriken
         return self.index()

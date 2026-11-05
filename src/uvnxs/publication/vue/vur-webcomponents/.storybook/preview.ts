@@ -2,6 +2,7 @@ import { setup } from '@storybook/vue3-vite'
 import type { Preview } from '@storybook/vue3-vite'
 import './dguv.scss'
 import '../../../static/css/common.css'
+import '../../../static/css/root.css'
 import './preview.css'
 
 setup((app) => {

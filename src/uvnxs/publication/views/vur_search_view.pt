@@ -74,6 +74,12 @@
       <link rel="stylesheet"
             type="text/css"
             tal:attributes="
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/root.css;
+            "
+      />
+      <link rel="stylesheet"
+            type="text/css"
+            tal:attributes="
               href string:${context/portal_url}/++resource++uvnxs.publication/css/common.css;
             "
       />
@@ -86,13 +92,13 @@
       <link rel="stylesheet"
             type="text/css"
             tal:attributes="
-              href string:${context/portal_url}/++resource++uvnxs.publication.webcomponents/search-results.css;
+              href string:${context/portal_url}/++resource++uvnxs.publication/css/search-view.css;
             "
       />
       <link rel="stylesheet"
             type="text/css"
             tal:attributes="
-              href string:${context/portal_url}/++resource++uvnxs.publication/css/search-filter-view.css;
+              href string:${context/portal_url}/++resource++uvnxs.publication.webcomponents/search-results.css;
             "
       />
     </metal:block>

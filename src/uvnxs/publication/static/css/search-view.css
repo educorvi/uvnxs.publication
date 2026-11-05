@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/* subject search */
+
+.vur .vur-subjects {
+  margin-top: var(--space-l2);
+}
+
+.vur .vur-subjects .label {
+  display: block;
+  margin-bottom: var(--space-s);
+  font: var(--font-s-bold);
+  text-transform: uppercase;
+}
+
+.vur .vur-subjects .subjects {
+  font: var(--font-m);
+}
+
+@media (min-width: 1024px) {
+  .vur .vur-subjects {
+    margin-top: var(--space-l3);
+  }
+
+  .vur .vur-subjects .subjects {
+    font: var(--font-xl);
+  }
+}
+
+/* no results */
+
+.vur .vur-no-results {
+  font: var(--font-xl);
+  padding: var(--space-l3) 0 var(--space-l2);
+}

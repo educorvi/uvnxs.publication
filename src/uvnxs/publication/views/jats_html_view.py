@@ -30,7 +30,7 @@ class IJATSPdfView(Interface):
 _HTML_TEMPLATE = """
 <div class="article-shell row gx-10">
     <aside class="article-sidebar col-12 col-md-4 col-lg-3 col-xl-3">
-        <div class="article-sidebar-panel border border-black article-fragment article-fragment--front">
+        <div class="article-sidebar-panel article-fragment">
             {front}
         </div>
     </aside>
@@ -45,21 +45,21 @@ _HTML_TEMPLATE = """
             <h2 class="article-header-article-subtitle">
                 {article_subtitle}
             </h2>
-            <div class="article-actions d-flex mt-4">
-                <a class="article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
+            <div class="article-actions">
+                <a class="article-action" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
                     <i class="ph ph-download-simple"></i>
                     <div class="spinner-border text-primary d-none" style="width: 1em; height: 1em; role="status">
                       <span class="visually-hidden">Loading...</span>
                     </div>
                     <span>{download_pdf}</span>
                 </a>
-                <a class="ms-4 article-action d-inline-flex align-items-center justify-content-center border border-black rounded-0 text-black text-decoration-none" href="{webcode_url}">
+                <a class="article-action" href="{webcode_url}">
                     <i class="ph ph-books"></i>
                     <span>DGUV Medien</span>
                 </a>
             </div>
         </div>
-        <div class="article-fragment article-fragment--content">
+        <div class="article-fragment">
             {html}
         </div>
     </div>
