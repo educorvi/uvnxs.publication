@@ -90,6 +90,8 @@ class VuRSearchView(BrowserView):
             document = get_document_for_article(article)
             if fulltext_search:
                 document["matches"] = get_text_matches(article.SearchableFullText(), query)
+            else:
+                document["matches"] = []
             score = 0
             score += SEARCH_WEIGHTS["vur_fulltext"] * len(document["matches"])
             if brain.UID in uids_result_title:
