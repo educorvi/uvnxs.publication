@@ -425,7 +425,7 @@
 
 .article-fragment .article-body .list > :is(ul, ol),
 .article-fragment .article-back .list > :is(ul, ol) {
-  margin-block: 1lh;
+  /* margin-block: 1lh; */
   padding-inline-start: 1.5em;
   list-style-position: outside;
 }
@@ -528,7 +528,7 @@
 /* External JATS links must look like surrounding running text.
    The dguv theme styles links inside an @layer, so these unlayered
    overrides always win, no !important needed. */
-.article-fragment a.jats-ext-link {
+.article-fragment .article-content a {
   font: inherit;
   vertical-align: baseline;
 }
