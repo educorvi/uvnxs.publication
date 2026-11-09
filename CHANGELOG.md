@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a51 (2026-11-09)
+
+
+### Bug fixes:
+
+- ensure matches are initialized as empty list on webcode search [#c82d16f](https://github.com/educorvi/uvnxs.publication/issues/c82d16f)
+- lists styling [#5480588](https://github.com/educorvi/uvnxs.publication/issues/5480588)
+
 ## 1.0.0a50 (2026-11-05)
 
 
