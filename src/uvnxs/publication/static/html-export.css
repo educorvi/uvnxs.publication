@@ -1,6 +1,103 @@
 @charset "UTF-8";
 
 /* =================================================== */
+/* ================= Article Sidebar ================= */
+/* =================================================== */
+
+.article-sidebar {
+  margin-bottom: var(--space-l2);
+}
+
+/* ===================== Sticky ====================== */
+
+body:has(.article-shell),
+body:has(.article-shell) *:has(.article-shell) {
+  overflow: visible !important;
+}
+
+@media (min-width: 768px) {
+  .article-sidebar {
+    position: sticky;
+    top: var(--space-l);
+    align-self: flex-start;
+  }
+
+  .article-toc {
+    max-height: calc(100vh - 2 * var(--space-l));
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+/* ====================== TOC ====================== */
+
+.article-toc {
+  border: 1px solid var(--dguv-border);
+  padding: var(--space-sm);
+  font: var(--font-m);
+}
+
+.article-toc .metadata-title {
+  font: var(--font-s-bold);
+  text-transform: uppercase;
+  color: var(--dguv-text-secondary);
+  margin-bottom: var(--space-s);
+}
+
+.article-toc ul {
+  list-style: none;
+  padding-left: var(--space-m);
+}
+
+/* Remove padding for top-level TOC list */
+.article-toc > ul {
+  padding-left: 0;
+}
+
+.article-toc li {
+  margin-block: var(--space-xxs);
+}
+
+/* Add margin to TOC list items except the last one */
+.article-toc > ul > li:not(:last-child) {
+  margin-block-end: var(--space-sm);
+}
+
+.article-toc a {
+  color: var(--dguv-text);
+  text-decoration: none;
+}
+
+.article-toc a:hover {
+  text-decoration: underline;
+}
+
+.article-toc .toc-entry[data-toc-level="1"] > .toc-title,
+.article-toc .toc-entry[data-toc-level="1"] > .toc-title * {
+  color: var(--dguv-primary);
+  font: var(--font-m-bold);
+}
+
+.article-toc .toc-entry[data-toc-level="1"] > .toc-label {
+  color: var(--dguv-primary);
+}
+
+.article-toc .toc-entry:has(> .toc-label) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: var(--space-xxs);
+  align-items: baseline;
+}
+
+.article-toc .toc-entry:has(> .toc-label) > .toc-label {
+  grid-column: 1;
+}
+
+.article-toc .toc-entry:has(> .toc-label) > .toc-title {
+  grid-column: 2;
+}
+
+/* =================================================== */
 /* ================== Article Header ================= */
 /* =================================================== */
 
@@ -8,29 +105,30 @@
   margin-bottom: var(--space-l2);
 }
 
-.article-header-article-id {
+.article-header .article-id {
   color: var(--dguv-text-secondary);
   font: var(--font-s-bold);
-  text-transform: uppercase;
 }
 
-.article-header-article-title {
+.article-header .article-title {
   margin: var(--space-m) 0;
   font: var(--font-h1);
 }
 
-.article-header-article-subtitle {
+.article-header .article-subtitle {
   margin: var(--space-m) 0 var(--space-l);
   font: var(--font-xxl);
   color: var(--dguv-text-secondary);
 }
 
-/* ===================== Actions ===================== */
+/* =================================================== */
+/* ================== Article Actions ================ */
+/* =================================================== */
 
 .article-actions {
   display: flex;
   gap: var(--space-m);
-  margin-top: var(--space-l);
+  margin-bottom: var(--space-l2);
 }
 
 .article-action {
@@ -56,283 +154,225 @@
 }
 
 /* =================================================== */
-/* ================= Article Sidebar ================= */
+/* ================= Article Metadata ================ */
 /* =================================================== */
 
-.article-sidebar-panel {
-  overflow: auto;
-  border: 1px solid var(--dguv-border);
-}
-
-/* ==================== Metadata ===================== */
-
-.article-fragment .metadata-small table {
+.article-metadata {
   width: 100%;
-  font: var(--font-s);
+  font: var(--font-m);
+  color: var(--dguv-text);
+  border: 1px solid var(--dguv-border);
+  margin-bottom: var(--space-l2);
+}
+
+.article-metadata a {
   color: var(--dguv-text);
 }
 
-.article-fragment .metadata-small a {
-  color: var(--dguv-text);
-}
-
-.article-fragment .metadata-small td {
+.article-metadata td {
   padding: var(--space-sm);
   border-bottom: 1px solid var(--dguv-border);
 }
 
-.article-fragment .metadata-small tr[data-meta-field="journal-title"] td,
-.article-fragment .metadata-small tr[data-meta-field="journal-subtitle"] td,
-.article-fragment .metadata-small .metadata-title,
-.article-fragment .toc .metadata-title {
-  font: var(--font-s-bold);
-  text-transform: uppercase;
+.article-metadata tr[data-meta-field="journal-title-group"] * {
+  font: var(--font-m-bold);
 }
 
-.article-fragment .metadata-small .metadata-title,
-.article-fragment .toc .metadata-title {
+.article-metadata tr[data-meta-field="journal-title-group"] td,
+.article-metadata tr[data-meta-field="pub-dates"] td {
+  display: flex;
+  gap: var(--space-m);
+}
+
+.article-metadata .metadata-title {
+  font: var(--font-s-bold);
+  text-transform: uppercase;
+  color: var(--dguv-text-secondary);
   margin-bottom: var(--space-s);
 }
 
-.article-fragment .metadata-small tr[data-meta-field="related-articles"] td ul {
-  list-style-type: none;
-  padding: 0;
+.article-metadata a {
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.article-metadata tr[data-meta-field="related-articles"] td ul {
   margin-bottom: 0;
 }
 
 /* Hide publication link because of button */
-.article-fragment .metadata-small tr[data-meta-field="document-uri"] {
+.article-metadata tr[data-meta-field="document-uri"] {
   display: none;
-}
-
-/* ======================= TOC ======================= */
-
-.article-fragment .toc {
-  padding: var(--space-sm);
-  font: var(--font-m);
-}
-
-.article-fragment .toc ul {
-  list-style: none;
-  padding-left: var(--space-m);
-}
-
-/* Remove padding for top-level TOC list */
-.article-fragment .toc > ul {
-  padding-left: 0;
-}
-
-.article-fragment .toc li {
-  margin-block: var(--space-xxs);
-}
-
-/* Add margin to TOC list items except the last one */
-.article-fragment .toc > ul > li:not(:last-child) {
-  margin-block-end: var(--space-sm);
-}
-
-.article-fragment .toc a {
-  color: var(--dguv-text);
-  text-decoration: none;
-}
-
-.article-fragment .toc a:hover {
-  text-decoration: underline;
-}
-
-.article-fragment .toc .toc-entry[data-toc-level="1"] > .toc-title,
-.article-fragment .toc .toc-entry[data-toc-level="1"] > .toc-title * {
-  color: var(--dguv-primary);
-  font: var(--font-m-bold);
-}
-
-.article-fragment .toc .toc-entry[data-toc-level="1"] > .toc-label {
-  color: var(--dguv-primary);
-}
-
-.article-fragment .toc .toc-entry:has(> .toc-label) {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  column-gap: var(--space-xxs);
-  align-items: baseline;
-}
-
-.article-fragment .toc .toc-entry:has(> .toc-label) > .toc-label {
-  grid-column: 1;
-}
-
-.article-fragment .toc .toc-entry:has(> .toc-label) > .toc-title {
-  grid-column: 2;
 }
 
 /* =================================================== */
 /* ================= Article Content ================= */
 /* =================================================== */
 
-.article-fragment .article-content {
+.article-content {
   color: var(--dguv-text);
   font: var(--font-l);
 }
 
 /* ============= Sections and headings =============== */
 
-.article-fragment .article-body > .section,
-.article-fragment .article-back > .section {
+.article-content .article-body > .section,
+.article-content .article-back > .section {
   margin-bottom: var(--space-l3);
 }
 
-.article-fragment .section > :is(h1, h2).title,
-.article-fragment .section > :is(h1, h2).title * {
+.article-content .section > :is(h1, h2).title,
+.article-content .section > :is(h1, h2).title * {
   margin: var(--space-l3) 0 var(--space-l);
   font: var(--font-h2);
   color: var(--dguv-primary);
 }
 
-.article-fragment .section > h3.title,
-.article-fragment .section > h3.title * {
+.article-content .section > h3.title,
+.article-content .section > h3.title * {
   margin: var(--space-l2) 0 var(--space-m);
   font: var(--font-h3);
   color: var(--dguv-text);
 }
 
-.article-fragment .section > :is(h4, h5, h6).title,
-.article-fragment .section > :is(h4, h5, h6).title * {
+.article-content .section > :is(h4, h5, h6).title,
+.article-content .section > :is(h4, h5, h6).title * {
   margin: var(--space-l) 0 var(--space-sm);
   color: var(--dguv-text);
 }
 
-.article-fragment .section > h4.title,
-.article-fragment .section > h4.title * {
+.article-content .section > h4.title,
+.article-content .section > h4.title * {
   font: var(--font-h4);
 }
-.article-fragment .section > h5.title,
-.article-fragment .section > h5.title * {
+.article-content .section > h5.title,
+.article-content .section > h5.title * {
   font: var(--font-h5);
 }
-.article-fragment .section > h6.title,
-.article-fragment .section > h6.title * {
+.article-content .section > h6.title,
+.article-content .section > h6.title * {
   font: var(--font-h6);
 }
 
 /* Other titles */
-.article-fragment .section h4.title,
-.article-fragment .section h4.title * {
+.article-content .section h4.title,
+.article-content .section h4.title * {
   margin: var(--space-l) 0 var(--space-sm);
   font: var(--font-h4);
   color: var(--dguv-text);
 }
 
 /* Other labels */
-.article-fragment .section h5.label,
-.article-fragment .section h5.label * {
+.article-content .section h5.label,
+.article-content .section h5.label * {
   font: var(--font-h5);
   color: var(--dguv-text);
 }
 
 /* ============ Boxed text, DA, Preamble ============= */
 
-.article-fragment .boxed-text,
-.article-fragment .section[data-sec-type=highlight-info],
-.article-fragment .section[data-sec-type=preamble] {
+.article-content .boxed-text,
+.article-content .section[data-sec-type=highlight-info],
+.article-content .section[data-sec-type=preamble] {
   margin-block: var(--space-l);
   padding: var(--space-l);
 }
 /* Boxed text */
 
-.article-fragment .boxed-text {
+.article-content .boxed-text {
   border-left: 2px solid var(--dguv-advisory);
   background: var(--dguv-advisory-background);
 }
 
-.article-fragment .boxed-text > .caption {
+.article-content .boxed-text > .caption {
   margin-bottom: var(--space-s);
 }
 
-.article-fragment .boxed-text > .caption * {
+.article-content .boxed-text > .caption * {
   font: var(--font-l-bold);
 }
 
 /* Durchführungsanweisungen */
 
-.article-fragment .section[data-sec-type=highlight-info] {
+.article-content .section[data-sec-type=highlight-info] {
   border-left: 2px solid var(--dguv-advisory);
   background: var(--dguv-advisory-background);
 }
 
-.article-fragment .section[data-sec-type=highlight-info] > .title {
+.article-content .section[data-sec-type=highlight-info] > .title {
   margin-top: 0;
 }
 
 /* Vorbemerkungen */
 
-.article-fragment .section[data-sec-type=preamble] {
+.article-content .section[data-sec-type=preamble] {
   border-left: 2px solid var(--dguv-highlight);
   background: var(--dguv-highlight-background);
 }
 
-.article-fragment .section[data-sec-type=preamble] > .title {
+.article-content .section[data-sec-type=preamble] > .title {
   margin-top: 0;
 }
 
 /* ===================== Tables ====================== */
 
-.article-fragment .table-wrap {
+.article-content .table-wrap {
   max-width: 100%;
   margin-block: 32px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
 }
 
-.article-fragment .table-wrap .caption {
+.article-content .table-wrap .caption {
   margin-bottom: 8px;
   display: flex;
   gap: 8px;
   color: var(--dguv-text-secondary);
 }
 
-.article-fragment .table-wrap .caption * {
+.article-content .table-wrap .caption * {
   color: inherit;
 }
 
-.article-fragment .table-wrap .caption .label {
+.article-content .table-wrap .caption .label {
   font-weight: 700;
 }
 
-.article-fragment table {
+.article-content table {
   border-collapse: collapse;
 }
 
-.article-fragment .table-wrap table {
+.article-content .table-wrap table {
   min-width: 720px;
   font-size: 16px;
 }
 
-.article-fragment .table-wrap th,
-.article-fragment .table-wrap td {
+.article-content .table-wrap th,
+.article-content .table-wrap td {
   padding: 8px 10px;
   vertical-align: top;
 }
 
-.article-fragment .table-wrap table {
+.article-content .table-wrap table {
   border-block: 1px solid #000;
 }
 
-.article-fragment .table-wrap :is(th, td) {
+.article-content .table-wrap :is(th, td) {
   border: 0;
   border-bottom: 1px solid #000;
 }
 
-.article-fragment .table-wrap tr:last-child :is(th, td) {
+.article-content .table-wrap tr:last-child :is(th, td) {
   border-bottom: 0;
 }
 
-.article-fragment :is(.article-body, .article-back) div.table {
+.article-content div.table {
   width: 100%;
   margin-block: 32px;
   border-block: 1px solid #000;
 }
 
-.article-fragment :is(.article-body, .article-back) div.table > .row {
+.article-content div.table > .row {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
@@ -340,11 +380,11 @@
   border-bottom: 1px solid #000;
 }
 
-.article-fragment :is(.article-body, .article-back) div.table > .row:last-child {
+.article-content div.table > .row:last-child {
   border-bottom: 0;
 }
 
-.article-fragment :is(.article-body, .article-back) div.table > .row > :is(.col-2, .col) {
+.article-content div.table > .row > :is(.col-2, .col) {
   min-width: 0;
   width: auto;
   max-width: none;
@@ -352,183 +392,173 @@
   padding: 8px 10px;
 }
 
-.article-fragment :is(.article-body, .article-back) div.table > .row > .col-2 {
+.article-content div.table > .row > .col-2 {
   flex: 0 0 16.666667%;
   width: 16.666667%;
   max-width: 16.666667%;
 }
 
-.article-fragment :is(.article-body, .article-back) div.table > .row > .col:not(.col-2) {
+.article-content div.table > .row > .col:not(.col-2) {
   flex: 1 1 0;
   overflow-wrap: anywhere;
 }
 
-.article-fragment :is(.article-body, .article-back) div.table > :not(caption) > * > p {
+.article-content div.table > :not(caption) > * > p {
   padding: 0;
   margin: 0;
 }
 
-.article-fragment :is(.article-body, .article-back) :is(table, .table) p {
+.article-content :is(table, .table) p {
   padding: 0;
   margin: 0;
 }
 
 /* =============== Figures and Images ================ */
 
-.article-fragment .fig {
+.article-content .fig {
   margin-block: 32px;
 }
 
-.article-fragment .fig .caption {
+.article-content .fig .caption {
   margin-top: 8px;
   display: flex;
   gap: 8px;
   color: var(--dguv-text-secondary);
 }
 
-.article-fragment .fig .caption * {
+.article-content .fig .caption * {
   color: inherit;
 }
 
-.article-fragment .fig .caption .label {
+.article-content .fig .caption .label {
   font-weight: 700;
 }
 
-.article-fragment .fig .permissions * {
+.article-content .fig .permissions * {
   color: var(--dguv-text-secondary);
   font-size: 16px;
   margin-block: 0 !important;
 }
 
 /* Relative image sizes */
-.article-fragment .article-content {
+.article-content {
   container-type: inline-size;
 }
-.article-fragment img.image-size-icon {
+.article-content img.image-size-icon {
   width: 5cqw;
 }
-.article-fragment img.image-size-small {
+.article-content img.image-size-small {
   width: 25cqw;
 }
-.article-fragment img.image-size-medium {
+.article-content img.image-size-medium {
   width: 50cqw;
 }
-.article-fragment img.image-size-large {
+.article-content img.image-size-large {
   width: 100cqw;
 }
-.article-fragment img {
+.article-content img {
   max-width: 100%;
   height: auto;
 }
 
 /* ===================== Lists ======================= */
 
-.article-fragment .article-body .list > :is(ul, ol),
-.article-fragment .article-back .list > :is(ul, ol) {
+.article-content .list > :is(ul, ol) {
   /* margin-block: 1lh; */
   padding-inline-start: 1.5em;
   list-style-position: outside;
 }
 
-.article-fragment .article-body .list > ul,
-.article-fragment .article-back .list > ul {
+.article-content .list > ul {
   padding-inline-start: 1.25em;
   list-style-type: disc !important;
 }
 
-.article-fragment .article-body .list > ul > li,
-.article-fragment .article-back .list > ul > li {
+.article-content .list > ul > li {
   padding-inline-start: 0;
 }
 
-.article-fragment .article-body .list > ul > li::marker,
-.article-fragment .article-back .list > ul > li::marker {
+.article-content .list > ul > li::marker {
   font-size: 0.75em;
 }
 
-.article-fragment .article-body .list > ol,
-.article-fragment .article-back .list > ol {
+.article-content .list > ol {
   list-style-type: decimal;
 }
 
-.article-fragment .article-body .list > :is(ul, ol) > li,
-.article-fragment .article-back .list > :is(ul, ol) > li {
+.article-content .list > :is(ul, ol) > li {
   padding-inline-start: 0.25em;
 }
 
-.article-fragment .article-body .list > :is(ul, ol) > li + li,
-.article-fragment .article-back .list > :is(ul, ol) > li + li {
+.article-content .list > :is(ul, ol) > li + li {
   margin-block-start: 0.1lh;
 }
 
-.article-fragment .article-body .list > :is(ul, ol) > li > p,
-.article-fragment .article-back .list > :is(ul, ol) > li > p {
+.article-content .list > :is(ul, ol) > li > p {
   margin-block: 0;
 }
 
 /* ================== Free Lists ===================== */
 
-.article-fragment :is(.article-body, .article-back) .freie-liste {
+.article-content .freie-liste {
   margin-block: 0.1lh;
 }
 
-.article-fragment :is(.article-body, .article-back) .freie-liste > p {
+.article-content .freie-liste > p {
   display: grid;
   grid-template-columns: minmax(1.5em, max-content) minmax(0, 1fr);
   column-gap: var(--space-sm);
   margin-block: 0;
 }
 
-.article-fragment :is(.article-body, .article-back) .freie-liste .list-label {
+.article-content .freie-liste .list-label {
   grid-column: 1;
   font-weight: 700;
   white-space: nowrap;
 }
 
-.article-fragment :is(.article-body, .article-back) .freie-liste .list-item {
+.article-content .freie-liste .list-item {
   grid-column: 2;
   min-width: 0;
 }
 
-.article-fragment :is(.article-body, .article-back) .freie-liste[data-list-level="2"] > p {
+.article-content .freie-liste[data-list-level="2"] > p {
   margin-inline-start: calc(1.5em + var(--space-sm));
 }
 
-.article-fragment :is(.article-body, .article-back) .freie-liste[data-list-level="3"] > p {
+.article-content .freie-liste[data-list-level="3"] > p {
   margin-inline-start: calc(2 * (1.5em + var(--space-sm)));
 }
 
-.article-fragment :is(.article-body, .article-back) .freie-liste[data-list-type=ordered] + .list {
+.article-content .freie-liste[data-list-type=ordered] + .list {
   margin-inline-start: calc(1.5em + var(--space-sm));
 }
 
-.article-fragment :is(.article-body, .article-back) .freie-liste[data-list-type=ordered] + .list > :is(ul, ol) {
+.article-content .freie-liste[data-list-type=ordered] + .list > :is(ul, ol) {
   margin-block-start: 0.5lh;
 }
 
-.article-fragment .article-body .section[data-sec-type=highlight-info] .list > :is(ul, ol),
-.article-fragment .article-back .section[data-sec-type=highlight-info] .list > :is(ul, ol) {
+.article-content .section[data-sec-type=highlight-info] .list > :is(ul, ol) {
   margin: 0;
 }
 
-
-.article-fragment .article-body p:last-child,
-.article-fragment .article-body li:last-child p:last-child {
+.article-content .article-body p:last-child,
+.article-content .article-body li:last-child p:last-child {
   margin-bottom: 0;
 }
 
 /* ===================== Other ======================= */
 
 /* sup and sub elements smaller */
-.article-fragment sup,
-.article-fragment sub {
+.article-content sup,
+.article-content sub {
   font-size: 0.75em;
 }
 
 /* External JATS links must look like surrounding running text.
    The dguv theme styles links inside an @layer, so these unlayered
    overrides always win, no !important needed. */
-.article-fragment .article-content a {
+.article-content a {
   font: inherit;
   vertical-align: baseline;
 }

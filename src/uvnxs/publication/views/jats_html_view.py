@@ -29,39 +29,26 @@ class IJATSPdfView(Interface):
 
 _HTML_TEMPLATE = """
 <div class="article-shell row gx-10">
-    <aside class="article-sidebar col-12 col-md-4 col-lg-3 col-xl-3">
-        <div class="article-sidebar-panel article-fragment">
-            {front}
-        </div>
-    </aside>
+    <div class="article-sidebar col-12 col-md-4 col-lg-3 col-xl-3 mb-md-0">
+        {toc}
+    </div>
     <div class="article-main col-12 col-md-8 col-lg-9 col-xl-9">
-        <div class="article-header mt-5 mt-md-0">
-            <div class="article-header-article-id">
-                {article_id}
-            </div>
-            <h1 class="article-header-article-title">
-                {article_title}
-            </h1>
-            <h2 class="article-header-article-subtitle">
-                {article_subtitle}
-            </h2>
-            <div class="article-actions">
-                <a class="article-action" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
-                    <i class="ph ph-download-simple"></i>
-                    <div class="spinner-border text-primary d-none" style="width: 1em; height: 1em; role="status">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <span>{download_pdf}</span>
-                </a>
-                <a class="article-action" href="{webcode_url}">
-                    <i class="ph ph-books"></i>
-                    <span>DGUV Medien</span>
-                </a>
-            </div>
+        {header}
+        <div class="article-actions">
+            <a class="article-action" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
+                <i class="ph ph-download-simple"></i>
+                <div class="spinner-border text-primary d-none" style="width: 1em; height: 1em; role="status">
+                <span class="visually-hidden">Loading...</span>
+                </div>
+                <span>{download_pdf}</span>
+            </a>
+            <a class="article-action" href="{webcode_url}">
+                <i class="ph ph-books"></i>
+                <span>DGUV Medien</span>
+            </a>
         </div>
-        <div class="article-fragment">
-            {html}
-        </div>
+        {metadata}
+        {content}
     </div>
 </div>
 """  # noqa: E501
@@ -78,20 +65,18 @@ def _get_html(context, include_edit_links=False, synchronous=False):
         if not isinstance(response, HtmlDocumentResponse):
             return None, None
         response_dict = response.dict()
-        html = response_dict.get("html", "")
-        front = response_dict.get("front", "")
-        article_id = context.article_id
-        article_title = context.title
-        article_subtitle = (context.article_subtitle or [""])[0]
+        toc = response_dict.get("toc", "")
+        header = response_dict.get("header", "")
+        metadata = response_dict.get("metadata", "")
+        content = response_dict.get("content", "")
         pdf_url = context.absolute_url() + "/jats-pdf-view"
-        pdf_filename = f"{article_title}.pdf"
+        pdf_filename = f"{context.title}.pdf"
         webcode_url = f"https://publikationen.dguv.de/DguvWebcode/index/query/{context.webcode}"
         return _HTML_TEMPLATE.format(
-            front=front,
-            html=html,
-            article_id=article_id,
-            article_title=article_title,
-            article_subtitle=article_subtitle,
+            toc=toc,
+            header=header,
+            metadata=metadata,
+            content=content,
             pdf_url=pdf_url,
             pdf_filename=pdf_filename,
             download_pdf=api.portal.translate(_("Download PDF")),
