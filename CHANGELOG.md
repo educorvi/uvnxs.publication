@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a52 (2026-11-10)
+
+
+### New features:
+
+- restructure HTML template and styling for html view and make sidebar sticky [#f12ce23](https://github.com/educorvi/uvnxs.publication/issues/f12ce23)
+
+
+### Bug fixes:
+
+- update jats_importexport_client dependency to version 1.0.0a56 [#6c3a261](https://github.com/educorvi/uvnxs.publication/issues/6c3a261)
+
 ## 1.0.0a51 (2026-11-09)
 
 
