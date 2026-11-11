@@ -29,6 +29,16 @@ body:has(.article-shell) *:has(.article-shell) {
   }
 }
 
+@media (min-width: 768px) and (min-height: 480px) {
+  .article-sidebar {
+    top: calc(var(--app-shell-top-height) + var(--space-l)) !important;
+  }
+
+  .article-toc {
+    max-height: calc(100vh - var(--app-shell-top-height) - 2 * var(--space-l)) !important;
+  }
+}
+
 /* ====================== TOC ====================== */
 
 .article-toc {
