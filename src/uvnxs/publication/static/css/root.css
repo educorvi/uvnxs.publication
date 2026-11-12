@@ -29,16 +29,23 @@
 
 /* colors */
 :root {
-  --dguv-primary: #004994;
-  --dguv-text: #000;
-  --dguv-text-secondary: #555;
+  --dguv-black: #000;
   --dguv-white: #fff;
-  --dguv-border: var(--dguv-text);
-  --dguv-background-light: #ededed;
-  --dguv-highlight: rgb(0 99 175);
-  --dguv-highlight-background: rgb(0 99 175 / 5%);
-  --dguv-advisory: rgb(98 167 43 );
-  --dguv-advisory-background: rgb(98 167 43 / 5%);
+  --dguv-primary: #004994;
+  --dguv-primary-light: #a1daf8;
+  --dguv-secondary: #555;
+  --dguv-secondary-light: #ededed;
+  --dguv-green: #afca0b;
+  --dguv-green-light: #ecf3da;
+  --dguv-red: #9b1c18;
+  --dguv-red-light: #f8c7c8;
+  --dguv-pink: #cb5d9f;
+  --dguv-light-blue: #0095db;
+
+  --dguv-text: var(--dguv-black);
+  --dguv-text-secondary: var(--dguv-secondary);
+  --dguv-background-light: var(--dguv-secondary-light);
+  --dguv-border: var(--dguv-secondary);
 }
 
 /* font style variables */
@@ -66,7 +73,7 @@
 	--font-xs-bold:  700 0.75rem/1.5 "Source Sans 3";
 	--font-xxs-bold: 700 0.625rem/1.5 "Source Sans 3";
 }
-@media(min-width: 48em) {
+@media(min-width: 48rem) {
 	:root {
 		--font-h1: 900 2.5rem/1.2 "Source Sans 3";
 		--font-h2: 900 2.25rem/1.2 "Source Sans 3";
