@@ -699,11 +699,11 @@ body:has(.article-shell) *:has(.article-shell) {
   min-width: 0;
 }
 
-.article-content .freie-liste[data-list-level="2"] > p {
+.article-content .freie-liste[data-list-level="2"] {
   margin-left: calc(var(--space-l) + var(--space-s));
 }
 
-.article-content .freie-liste[data-list-level="3"] > p {
+.article-content .freie-liste[data-list-level="3"] {
   margin-left: calc(2 * (var(--space-l) + var(--space-s)));
 }
 
