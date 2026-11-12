@@ -712,6 +712,18 @@ body:has(.article-shell) *:has(.article-shell) {
 /* ===================== Other ======================= */
 /* =================================================== */
 
+/* also children of i italic */
+.article-content i,
+.article-content i > * {
+  font-style: italic;
+}
+
+/* also children of b bold */
+.article-content b,
+.article-content b > * {
+  font-weight: 700;
+}
+
 /* sup and sub elements smaller */
 .article-content sup,
 .article-content sub {
