@@ -648,39 +648,33 @@ body:has(.article-shell) *:has(.article-shell) {
 /* ===================== Lists ======================= */
 /* =================================================== */
 
+.article-content .list {
+  margin-bottom: var(--space-l);
+}
+
+.article-content .list .list {
+  margin-bottom: 0;
+}
+
 .article-content .list > :is(ul, ol) {
-  /* margin-block: 1lh; */
-  padding-inline-start: 1.5em;
-  list-style-position: outside;
-}
-
-.article-content .list > ul {
-  padding-inline-start: 1.25em;
-  list-style-type: disc !important;
-}
-
-.article-content .list > ul > li {
-  padding-inline-start: 0;
-}
-
-.article-content .list > ul > li::marker {
-  font-size: 0.75em;
-}
-
-.article-content .list > ol {
-  list-style-type: decimal;
+  padding-left: var(--space-l);
 }
 
 .article-content .list > :is(ul, ol) > li {
-  padding-inline-start: 0.25em;
-}
-
-.article-content .list > :is(ul, ol) > li + li {
-  margin-block-start: 0.1lh;
+  padding-left: var(--space-s);
+  margin-block: var(--space-xs);
 }
 
 .article-content .list > :is(ul, ol) > li > p {
   margin-block: 0;
+}
+
+.article-content .list > ul {
+  list-style-type: disc !important;
+}
+
+.article-content .list > ol {
+  list-style-type: decimal;
 }
 
 /* =================================================== */
@@ -688,14 +682,10 @@ body:has(.article-shell) *:has(.article-shell) {
 /* =================================================== */
 
 .article-content .freie-liste {
-  margin-block: 0.1lh;
-}
-
-.article-content .freie-liste > p {
   display: grid;
-  grid-template-columns: minmax(1.5em, max-content) minmax(0, 1fr);
-  column-gap: var(--space-sm);
-  margin-block: 0;
+  grid-template-columns: minmax(var(--space-l), max-content) minmax(0, 1fr);
+  column-gap: var(--space-s);
+  margin-block: var(--space-xs);
 }
 
 .article-content .freie-liste .list-label {
@@ -710,19 +700,11 @@ body:has(.article-shell) *:has(.article-shell) {
 }
 
 .article-content .freie-liste[data-list-level="2"] > p {
-  margin-inline-start: calc(1.5em + var(--space-sm));
+  margin-left: calc(var(--space-l) + var(--space-s));
 }
 
 .article-content .freie-liste[data-list-level="3"] > p {
-  margin-inline-start: calc(2 * (1.5em + var(--space-sm)));
-}
-
-.article-content .freie-liste[data-list-type=ordered] + .list {
-  margin-inline-start: calc(1.5em + var(--space-sm));
-}
-
-.article-content .freie-liste[data-list-type=ordered] + .list > :is(ul, ol) {
-  margin-block-start: 0.5lh;
+  margin-left: calc(2 * (var(--space-l) + var(--space-s)));
 }
 
 /* =================================================== */
