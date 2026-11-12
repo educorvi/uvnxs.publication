@@ -9,6 +9,26 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a53 (2026-11-12)
+
+
+### New features:
+
+- headings and boxed-text styles [#385518a](https://github.com/educorvi/uvnxs.publication/issues/385518a)
+- styling of styled-content [#173a9f7](https://github.com/educorvi/uvnxs.publication/issues/173a9f7)
+- styling for tables [#5007933](https://github.com/educorvi/uvnxs.publication/issues/5007933)
+- styling of disp-quote and disp-formula [#6185428](https://github.com/educorvi/uvnxs.publication/issues/6185428)
+
+
+### Bug fixes:
+
+- styling for children of italic and bold [#5a7d3ab](https://github.com/educorvi/uvnxs.publication/issues/5a7d3ab)
+- figure styling [#17c2c04](https://github.com/educorvi/uvnxs.publication/issues/17c2c04)
+- suggestions [#52831d9](https://github.com/educorvi/uvnxs.publication/issues/52831d9)
+- list styles [#dd6da9f](https://github.com/educorvi/uvnxs.publication/issues/dd6da9f)
+- freie listen spacing [#5665f4a](https://github.com/educorvi/uvnxs.publication/issues/5665f4a)
+- article sidebar toc styles responsiveness (sticky header) [#8319293](https://github.com/educorvi/uvnxs.publication/issues/8319293)
+
 ## 1.0.0a52 (2026-11-10)
 
 

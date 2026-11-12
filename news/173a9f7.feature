@@ -1,1 +1,0 @@
-styling of styled-content
