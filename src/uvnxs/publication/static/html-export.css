@@ -752,6 +752,47 @@ body:has(.article-shell) *:has(.article-shell) {
   font-size: 0.75em;
 }
 
+/* ================== styled content ================== */
+
+.article-content *[data-style-type="_4octextinline_Medium"] {
+  font-weight: 600;
+}
+
+.article-content *[data-style-type="_4octextinline_MediumItalic"] {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.article-content *[data-style-type="_WFarbeRot"] {
+  color: var(--dguv-red);
+}
+
+.article-content *[data-style-type="_WFarbeBlau"] {
+  color: var(--dguv-primary);
+}
+
+/* Grau */
+.article-content *[data-style-type="_4Farbe1"] {
+  color: var(--dguv-secondary);
+}
+
+/* Grün */
+.article-content *[data-style-type="_4Farbe2"] {
+  color: var(--dguv-green);
+}
+
+/* Pink */
+.article-content *[data-style-type="_4Farbe3"] {
+  color: var(--dguv-pink);
+}
+
+/* Hellblau */
+.article-content *[data-style-type="_4octextinline_Farbe4"] {
+  color: var(--dguv-light-blue);
+}
+
+/* ================== other styles ==================== */
+
 /* External JATS links must look like surrounding running text.
    The dguv theme styles links inside an @layer, so these unlayered
    overrides always win, no !important needed. */
