@@ -711,6 +711,29 @@ body:has(.article-shell) *:has(.article-shell) {
 /* ===================== Other ======================= */
 /* =================================================== */
 
+/* =================== disp-formula ================== */
+.article-content .disp-formula {
+  margin-block: var(--space-m);
+}
+
+/* =================== disp-quote ==================== */
+
+.article-content .blockquote {
+  border-bottom: 2px solid var(--dguv-border);
+  border-top: 2px solid var(--dguv-border);
+}
+
+.article-content .blockquote .blockquote-content,
+.article-content .blockquote .blockquote-content * {
+  font-style: italic;
+}
+
+.article-content .blockquote .blockquote-attrib {
+  text-align: right;
+}
+
+/* ================== inline styles =================== */
+
 /* also children of i italic */
 .article-content i,
 .article-content i > * {
