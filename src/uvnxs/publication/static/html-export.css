@@ -117,7 +117,7 @@ body:has(.article-shell) *:has(.article-shell) {
 
 .article-header .article-id {
   color: var(--dguv-text-secondary);
-  font: var(--font-s-bold);
+  font: var(--font-m-bold);
 }
 
 .article-header .article-title {
@@ -148,7 +148,7 @@ body:has(.article-shell) *:has(.article-shell) {
   gap: var(--space-s);
   padding: var(--space-sm) var(--space-m);
   border: 1px solid var(--dguv-border);
-  font: var(--font-s);
+  font: var(--font-m);
   color: var(--dguv-text);
   text-decoration: none;
 }
@@ -222,15 +222,27 @@ body:has(.article-shell) *:has(.article-shell) {
 .article-content {
   color: var(--dguv-text);
   font: var(--font-l);
+  margin-bottom: var(--space-l);
 }
 
+.article-content :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* =================================================== */
 /* ============= Sections and headings =============== */
+/* =================================================== */
 
 .article-content .article-body > .section,
 .article-content .article-back > .section {
   margin-bottom: var(--space-l3);
 }
 
+/* _4octextparaUeberschriftVorwort as Heading Level 1 */
+.article-content .section[data-sec-type=_1KapitelUeberschrift] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_1KapitelUeberschrift] > :nth-child(1 of .title) *,
+.article-content .section[data-sec-type=_4octextparaUeberschriftVorwort] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_4octextparaUeberschriftVorwort] > :nth-child(1 of .title) *,
 .article-content .section > :is(h1, h2).title,
 .article-content .section > :is(h1, h2).title * {
   margin: var(--space-l3) 0 var(--space-l);
@@ -238,6 +250,8 @@ body:has(.article-shell) *:has(.article-shell) {
   color: var(--dguv-primary);
 }
 
+.article-content .section[data-sec-type=_1Ueberschrift2] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_1Ueberschrift2] > :nth-child(1 of .title) *,
 .article-content .section > h3.title,
 .article-content .section > h3.title * {
   margin: var(--space-l2) 0 var(--space-m);
@@ -245,23 +259,33 @@ body:has(.article-shell) *:has(.article-shell) {
   color: var(--dguv-text);
 }
 
-.article-content .section > :is(h4, h5, h6).title,
-.article-content .section > :is(h4, h5, h6).title * {
+.article-content .section[data-sec-type=_1Ueberschrift3] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_1Ueberschrift3] > :nth-child(1 of .title) *,
+.article-content .section > h4.title,
+.article-content .section > h4.title * {
   margin: var(--space-l) 0 var(--space-sm);
+  font: var(--font-h4);
   color: var(--dguv-text);
 }
 
-.article-content .section > h4.title,
-.article-content .section > h4.title * {
-  font: var(--font-h4);
-}
+.article-content .section[data-sec-type=_1Ueberschrift4] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_1Ueberschrift4] > :nth-child(1 of .title) *,
 .article-content .section > h5.title,
 .article-content .section > h5.title * {
+  margin: var(--space-m) 0 var(--space-s);
   font: var(--font-h5);
+  color: var(--dguv-text);
 }
+
+.article-content .section[data-sec-type=_1Ueberschrift5] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_1Ueberschrift5] > :nth-child(1 of .title) *,
+.article-content .section[data-sec-type=_1Ueberschrift6] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_1Ueberschrift6] > :nth-child(1 of .title) *,
 .article-content .section > h6.title,
 .article-content .section > h6.title * {
+  margin: var(--space-m) 0 var(--space-s);
   font: var(--font-h6);
+  color: var(--dguv-text);
 }
 
 /* Other titles */
@@ -279,34 +303,160 @@ body:has(.article-shell) *:has(.article-shell) {
   color: var(--dguv-text);
 }
 
-/* ============ Boxed text, DA, Preamble ============= */
+/* =========== Special headings with type ============ */
 
-.article-content .boxed-text,
-.article-content .section[data-sec-type=highlight-info],
-.article-content .section[data-sec-type=preamble] {
-  margin-block: var(--space-l);
-  padding: var(--space-l);
+.article-content .section[data-sec-type=_4octextparaPrologZwischenueberschrift] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_4octextparaPrologZwischenueberschrift] > :nth-child(1 of .title) * {
+  font: var(--font-l-bold);
 }
-/* Boxed text */
+
+.article-content p[data-content-type=_1UnterUeberschrift],
+.article-content p[data-content-type=_1UnterUeberschrift] * {
+  font: var(--font-l-bold);
+  font-size: calc(1em + 1pt);
+}
+
+.article-content .section[data-sec-type=_4octextparaUeberschrift3BR] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_4octextparaUeberschrift4BR] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_4octextparaUeberschrift3BR] > :nth-child(1 of .title) *,
+.article-content .section[data-sec-type=_4octextparaUeberschrift4BR] > :nth-child(1 of .title) * {
+  margin: var(--space-l) 0 var(--space-sm);
+  font: var(--font-h4);
+}
+
+.article-content .section[data-sec-type=_4octextparaUeberschrift3BR] > :nth-child(1 of .title),
+.article-content .section[data-sec-type=_4octextparaUeberschrift4BR] > :nth-child(1 of .title) {
+  background: var(--dguv-green);
+  padding: var(--space-m);
+}
+
+/* =================================================== */
+/* ============ Boxed text, DA, Preamble ============= */
+/* =================================================== */
+
+/* ================ General spacing ================== */
 
 .article-content .boxed-text {
-  border-left: 2px solid var(--dguv-advisory);
-  background: var(--dguv-advisory-background);
+  margin-block: var(--space-l);
+}
+
+.article-content .boxed-text > .boxed-text-content {
+  padding: var(--space-l);
 }
 
 .article-content .boxed-text > .caption {
-  margin-bottom: var(--space-s);
+  padding: var(--space-m) var(--space-l);
 }
 
 .article-content .boxed-text > .caption * {
   font: var(--font-l-bold);
 }
 
+.boxed-text:has(> .caption > .title > img.image-size-icon:first-child) {
+    position: relative;
+    margin-top: calc(var(--space-l) + 0.5 * 5cqw);
+}
+
+.boxed-text:has(> .caption > .title > img.image-size-icon:first-child)
+> .caption > .title > img.image-size-icon:first-child {
+    position: absolute;
+    left: var(--space-m);
+    top: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.boxed-text:has(> .caption > .title > img.image-size-icon:first-child)
+> .caption > .title {
+    padding-left: calc(2 * var(--space-m) + 5cqw - var(--space-l));
+}
+
+/* ============= Default - oct_ext_Blau ============== */
+
+.article-content .boxed-text[data-content-type=oct_ext_Blau] {
+  background: var(--dguv-primary-light);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Blau] > .caption {
+  background: var(--dguv-primary);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Blau] > .caption * {
+  color: var(--dguv-white);
+}
+
+/* ====== oct_ext_Gruen und oct_ext_BR-Hinweis ======= */
+
+.article-content .boxed-text[data-content-type=oct_ext_Gruen],
+.article-content .boxed-text[data-content-type=oct_ext_BR-Hinweis] {
+  background: var(--dguv-green-light);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Gruen] > .caption,
+.article-content .boxed-text[data-content-type=oct_ext_BR-Hinweis] > .caption {
+  background: var(--dguv-green);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Gruen] > .caption *,
+.article-content .boxed-text[data-content-type=oct_ext_BR-Hinweis] > .caption * {
+  color: var(--dguv-black);
+}
+
+/* ================== oct_ext_Rot ==================== */
+
+.article-content .boxed-text[data-content-type=oct_ext_Rot] {
+  background: var(--dguv-red-light);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Rot] > .caption {
+  background: var(--dguv-red);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Rot] > .caption * {
+  color: var(--dguv-white);
+}
+
+/* ================== oct_ext_Grau =================== */
+
+.article-content .boxed-text[data-content-type=oct_ext_Grau] {
+  background: var(--dguv-secondary-light);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Grau] > .caption {
+  background: var(--dguv-secondary);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Grau] > .caption * {
+  color: var(--dguv-white);
+}
+
+/* ===================== Hinweis ===================== */
+
+.article-content .boxed-text[data-content-type=Hinweis] {
+  border: 2px solid var(--dguv-border);
+}
+
+/* ========= Literaturhinweis / Norm-Auszug ========== */
+
+.article-content .boxed-text[data-content-type=oct_ext_Literaturhinweis],
+.article-content .boxed-text[data-content-type=oct_ext_Norm-Auszug] {
+  border-bottom: 2px solid var(--dguv-border);
+  border-top: 2px solid var(--dguv-border);
+}
+
+.article-content .boxed-text[data-content-type=oct_ext_Literaturhinweis] *,
+.article-content .boxed-text[data-content-type=oct_ext_Norm-Auszug] * {
+  color: var(--dguv-secondary);
+  font-style: italic;
+}
+
 /* Durchführungsanweisungen */
 
 .article-content .section[data-sec-type=highlight-info] {
-  border-left: 2px solid var(--dguv-advisory);
-  background: var(--dguv-advisory-background);
+  margin-block: var(--space-l);
+  padding: var(--space-l);
+  border-left: 2px solid var(--dguv-green);
+  background: var(--dguv-green-light);
 }
 
 .article-content .section[data-sec-type=highlight-info] > .title {
@@ -316,15 +466,19 @@ body:has(.article-shell) *:has(.article-shell) {
 /* Vorbemerkungen */
 
 .article-content .section[data-sec-type=preamble] {
-  border-left: 2px solid var(--dguv-highlight);
-  background: var(--dguv-highlight-background);
+  margin-block: var(--space-l);
+  padding: var(--space-l);
+  border-left: 2px solid var(--dguv-primary);
+  background: var(--dguv-primary-light);
 }
 
 .article-content .section[data-sec-type=preamble] > .title {
   margin-top: 0;
 }
 
+/* =================================================== */
 /* ===================== Tables ====================== */
+/* =================================================== */
 
 .article-content .table-wrap {
   max-width: 100%;
@@ -423,7 +577,9 @@ body:has(.article-shell) *:has(.article-shell) {
   margin: 0;
 }
 
+/* =================================================== */
 /* =============== Figures and Images ================ */
+/* =================================================== */
 
 .article-content .fig {
   margin-block: 32px;
@@ -471,7 +627,9 @@ body:has(.article-shell) *:has(.article-shell) {
   height: auto;
 }
 
+/* =================================================== */
 /* ===================== Lists ======================= */
+/* =================================================== */
 
 .article-content .list > :is(ul, ol) {
   /* margin-block: 1lh; */
@@ -508,7 +666,9 @@ body:has(.article-shell) *:has(.article-shell) {
   margin-block: 0;
 }
 
+/* =================================================== */
 /* ================== Free Lists ===================== */
+/* =================================================== */
 
 .article-content .freie-liste {
   margin-block: 0.1lh;
@@ -548,16 +708,9 @@ body:has(.article-shell) *:has(.article-shell) {
   margin-block-start: 0.5lh;
 }
 
-.article-content .section[data-sec-type=highlight-info] .list > :is(ul, ol) {
-  margin: 0;
-}
-
-.article-content .article-body p:last-child,
-.article-content .article-body li:last-child p:last-child {
-  margin-bottom: 0;
-}
-
+/* =================================================== */
 /* ===================== Other ======================= */
+/* =================================================== */
 
 /* sup and sub elements smaller */
 .article-content sup,
