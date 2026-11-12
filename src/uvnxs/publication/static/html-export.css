@@ -481,100 +481,110 @@ body:has(.article-shell) *:has(.article-shell) {
 /* =================================================== */
 
 .article-content .table-wrap {
-  max-width: 100%;
-  margin-block: 32px;
+  width: 100%;
+  margin-block: var(--space-l2);
   overflow-x: auto;
   overscroll-behavior-inline: contain;
 }
 
 .article-content .table-wrap .caption {
-  margin-bottom: 8px;
   display: flex;
-  gap: 8px;
-  color: var(--dguv-text-secondary);
+  gap: var(--space-s);
 }
 
-.article-content .table-wrap .caption * {
-  color: inherit;
+.article-content .table-wrap .caption,
+.article-content .table-wrap .caption *,
+.article-content .table-wrap .abstract,
+.article-content .table-wrap .abstract * {
+  margin-bottom: var(--space-s);
+  color: var(--dguv-text-secondary);
 }
 
 .article-content .table-wrap .caption .label {
   font-weight: 700;
+  flex-shrink: 0;
 }
 
-.article-content table {
-  border-collapse: collapse;
-}
-
-.article-content .table-wrap table {
-  min-width: 720px;
-  font-size: 16px;
-}
-
-.article-content .table-wrap th,
-.article-content .table-wrap td {
-  padding: 8px 10px;
-  vertical-align: top;
-}
+/* ================ Width / Spacing ================== */
 
 .article-content .table-wrap table {
-  border-block: 1px solid #000;
-}
-
-.article-content .table-wrap :is(th, td) {
-  border: 0;
-  border-bottom: 1px solid #000;
-}
-
-.article-content .table-wrap tr:last-child :is(th, td) {
-  border-bottom: 0;
-}
-
-.article-content div.table {
   width: 100%;
-  margin-block: 32px;
-  border-block: 1px solid #000;
 }
 
-.article-content div.table > .row {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  margin: 0;
-  border-bottom: 1px solid #000;
+@media (max-width: 64rem) {
+  .article-content .table-wrap table {
+    min-width: 48rem;
+  }
 }
 
-.article-content div.table > .row:last-child {
-  border-bottom: 0;
-}
-
-.article-content div.table > .row > :is(.col-2, .col) {
-  min-width: 0;
-  width: auto;
-  max-width: none;
-  margin: 0;
-  padding: 8px 10px;
-}
-
-.article-content div.table > .row > .col-2 {
-  flex: 0 0 16.666667%;
-  width: 16.666667%;
-  max-width: 16.666667%;
-}
-
-.article-content div.table > .row > .col:not(.col-2) {
-  flex: 1 1 0;
-  overflow-wrap: anywhere;
-}
-
-.article-content div.table > :not(caption) > * > p {
+.article-content .table-wrap table p {
   padding: 0;
   margin: 0;
 }
 
-.article-content :is(table, .table) p {
-  padding: 0;
-  margin: 0;
+.article-content .table-wrap table :is(th, td) {
+  padding: var(--space-s);
+  vertical-align: top;
+  border: 0;
+}
+
+.article-content .table-wrap table :is(th, td)[rowspan] {
+  vertical-align: middle;
+}
+
+.article-content .table-wrap table th,
+.article-content .table-wrap table th * {
+  font-weight: 700;
+}
+
+/* ==================== Borders ====================== */
+
+.article-content .table-wrap table td {
+  border-block: 1px solid var(--dguv-border);
+}
+
+.article-content .table-wrap table :is(th, td) {
+  border-left: 1px solid var(--dguv-border);
+}
+
+.article-content .table-wrap table :is(th, td):first-child {
+  border-left: 0;
+}
+
+/* ===================== Colors ====================== */
+
+.article-content .table-wrap table tbody tr.even {
+  background: var(--dguv-background-light);
+}
+
+.article-content .table-wrap table th,
+.article-content .table-wrap table[style=_4octextparaTabelleKopfblau] th,
+.article-content .table-wrap table[style=_4octextparaTabelleKopfSpalte1blau] th,
+.article-content .table-wrap table[style=_4octextparaTabelleKopfSpalte1blau] td:first-of-type {
+  background: var(--dguv-primary);
+  color: var(--dguv-white);
+  border-color: var(--dguv-white);
+}
+
+.article-content .table-wrap table[style=_4octextparaTabelleKopfgrau] th,
+.article-content .table-wrap table[style=_4octextparaTabelleKopfSpalte1grau] th,
+.article-content .table-wrap table[style=_4octextparaTabelleKopfSpalte1grau] td:first-of-type {
+  background: var(--dguv-secondary);
+  color: var(--dguv-white);
+  border-color: var(--dguv-white);
+}
+
+.article-content .table-wrap table[style=_4octextparaTabelleKopfgruen] th,
+.article-content .table-wrap table[style=_4octextparaTabelleKopfSpalte1gruen] th,
+.article-content .table-wrap table[style=_4octextparaTabelleKopfSpalte1gruen] td:first-of-type {
+  background: var(--dguv-green);
+  color: var(--dguv-black);
+  border-color: var(--dguv-border);
+}
+
+.article-content .table-wrap table th *,
+.article-content .table-wrap table td:first-of-type * {
+  color: inherit;
 }
 
 /* =================================================== */
