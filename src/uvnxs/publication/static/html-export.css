@@ -508,6 +508,7 @@ body:has(.article-shell) *:has(.article-shell) {
 /* ================ Width / Spacing ================== */
 
 .article-content .table-wrap table {
+  border-collapse: collapse;
   width: 100%;
 }
 

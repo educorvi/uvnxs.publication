@@ -10,7 +10,7 @@ function assignRowClasses(tbody) {
   rows.forEach(row => {
     row.classList.add(currentClass);
 
-    const cells = row.querySelectorAll("td");
+    const cells = row.querySelectorAll("td, th");
     let maximumRowspan = 1;
     for (const cell of cells) {
       const rowspan = parseInt(cell.getAttribute("rowspan") || "1") || 1;
