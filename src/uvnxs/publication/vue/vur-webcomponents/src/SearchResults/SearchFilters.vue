@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { filterIds, type FilterSelections, type SearchFilter, type SortBy } from './types'
+import MultiSelect from '../components/MultiSelect.vue'
+import { type FilterSelections, type SearchFilter, type SortBy } from './types'
 
 const props = defineProps<{
   filters: SearchFilter[]
@@ -12,58 +12,17 @@ const props = defineProps<{
 const sortBy = defineModel<SortBy>('sortBy', { required: true })
 const emit = defineEmits<{ 'selection-change': [selections: FilterSelections] }>()
 
-const filterSection = ref<HTMLElement>()
-const destroyMultiSelects: Array<() => void> = []
-let selectionObserver: MutationObserver | undefined
-
-function syncFilterSelections() {
-  const next: FilterSelections = { rubrik: [], fachbereich: [], sachgebiet: [] }
-  for (const key of filterIds) {
-    const rows = filterSection.value?.querySelectorAll<HTMLElement>(
-      `[data-filter="${key}"] .ms-option:not(.ms-option-all)[aria-selected="true"]`,
-    )
-    next[key] = Array.from(rows ?? [], (row) => row.dataset.value ?? '')
+function updateSelection(id: SearchFilter['id'], values: string[]) {
+  const selections: FilterSelections = { rubrik: [], fachbereich: [], sachgebiet: [] }
+  for (const filter of props.filters) {
+    selections[filter.id] = filter.id === id ? values : filter.selected
   }
-  if (
-    props.filters.some((filter) => {
-      const values = next[filter.id]
-      return (
-        values.length !== filter.selected.length ||
-        values.some((value, index) => value !== filter.selected[index])
-      )
-    })
-  ) {
-    emit('selection-change', next)
-  }
+  emit('selection-change', selections)
 }
-
-onMounted(() => {
-  const initMultiSelect = window.uvnxstheme?.initMultiSelect;
-  if (!initMultiSelect) {
-    throw new Error('uvnxstheme.initMultiSelect is not available')
-  }
-  filterSection.value?.querySelectorAll<HTMLElement>('.form-multi-select').forEach((container) => {
-    destroyMultiSelects.push(initMultiSelect(container))
-  });
-  // The vanilla control reports selection changes through aria-selected.
-  selectionObserver = new MutationObserver(syncFilterSelections)
-  if (filterSection.value) {
-    selectionObserver.observe(filterSection.value, {
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['aria-selected'],
-    })
-  }
-})
-
-onBeforeUnmount(() => {
-  selectionObserver?.disconnect()
-  destroyMultiSelects.forEach((destroy) => destroy())
-})
 </script>
 
 <template>
-  <section class="vur-filter-section" ref="filterSection">
+  <section class="vur-filter-section">
     <div class="vur-filter-section__filters">
       <div
         class="vur-filter-section__header d-flex flex-wrap align-items-baseline justify-content-between gap-3"
@@ -73,69 +32,17 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="vur-filter-section__filterlist" :style="{ '--filter-columns': filters.length }">
-        <div
+        <MultiSelect
           v-for="filter in filters"
           :key="filter.id"
+          :id="filter.id"
+          :label="filter.label"
+          :options="filter.options"
+          :model-value="filter.selected"
           class="form-group"
           :class="{ 'flex-fill': filter.id === 'sachgebiet' }"
-        >
-          <label :id="`${filter.id}-label`" :for="`${filter.id}-multi-select`">{{
-            filter.label
-          }}</label>
-          <div
-            class="form-multi-select"
-            :data-filter="filter.id"
-            :id="`${filter.id}-multi-select-container`"
-            data-max-chips="5"
-            data-placeholder="Auswählen"
-          >
-            <div class="ms-field">
-              <button
-                class="ms-trigger"
-                :id="`${filter.id}-multi-select`"
-                :aria-controls="`${filter.id}-multi-select-listbox`"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                :aria-labelledby="`${filter.id}-label`"
-                type="button"
-              ></button>
-              <span class="ms-value"></span>
-              <span class="ms-chevron" aria-hidden="true"></span>
-            </div>
-            <ul
-              class="ms-listbox"
-              :id="`${filter.id}-multi-select-listbox`"
-              :aria-labelledby="`${filter.id}-label`"
-              aria-multiselectable="true"
-              hidden
-              role="listbox"
-            >
-              <li
-                class="ms-option ms-option-all"
-                :id="`${filter.id}-multi-select-option-all`"
-                aria-selected="false"
-                role="option"
-                tabindex="-1"
-              >
-                <span class="ms-check" aria-hidden="true"></span
-                ><span class="ms-option-label">Alle auswählen</span>
-              </li>
-              <li
-                v-for="option in filter.options"
-                :key="option"
-                class="ms-option"
-                :data-value="option"
-                :aria-selected="filter.selected.includes(option)"
-                role="option"
-                tabindex="-1"
-              >
-                <span class="ms-check" aria-hidden="true"></span
-                ><span class="ms-option-label">{{ option }}</span>
-              </li>
-            </ul>
-            <span class="ms-visually-hidden" aria-live="polite"></span>
-          </div>
-        </div>
+          @update:model-value="updateSelection(filter.id, $event)"
+        />
       </div>
     </div>
     <div
@@ -151,7 +58,9 @@ onBeforeUnmount(() => {
       <label class="vur-filter-section__sort d-flex align-items-center gap-3">
         <strong>Sortieren nach</strong>
         <select v-model="sortBy" class="form-select">
-          <option v-if="!hideRelevance" value="score" :selected="sortBy === 'score'">Relevanz</option>
+          <option v-if="!hideRelevance" value="score" :selected="sortBy === 'score'">
+            Relevanz
+          </option>
           <option value="article_id" :selected="sortBy === 'article_id'">Artikel-ID</option>
           <option value="title" :selected="sortBy === 'title'">Titel</option>
           <option value="pub_date" :selected="sortBy === 'pub_date'">Ausgabedatum</option>

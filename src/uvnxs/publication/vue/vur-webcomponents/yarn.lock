@@ -2019,6 +2019,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@untrouble/dguv-angular-elements@npm:^22.0.2":
+  version: 22.0.2
+  resolution: "@untrouble/dguv-angular-elements@npm:22.0.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40untrouble%2Fdguv-angular-elements%2F22.0.2%2F305c9778f1bb322cbd5b8e15b797bb787fce943e"
+  dependencies:
+    tslib: "npm:^2.8.0"
+  peerDependencies:
+    "@angular/common": ^22.0.0
+    "@angular/core": ^22.0.0
+    "@angular/forms": ^22.0.0
+    "@untrouble/dguv-vanilla-sass": ^0.36.2
+  checksum: 10c0/ee76659169b4c3006101fae22c511371a34ec13a5119145dbdff1fe3d81921b082df37e1528d3cb2225db845f00c048a0b8ece2df8a464047ff0f15597240807
+  languageName: node
+  linkType: hard
+
 "@untrouble/dguv-vanilla-sass@npm:0.36.0":
   version: 0.36.0
   resolution: "@untrouble/dguv-vanilla-sass@npm:0.36.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40untrouble%2Fdguv-vanilla-sass%2F0.36.0%2Fd9ded96fdc0313f30414307e51252cf130c6a70e"
@@ -5115,6 +5129,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.8.0":
+  version: 2.9.1
+  resolution: "tslib@npm:2.9.1"
+  checksum: 10c0/8ff46e7a4d19fa62c23483c89cf5ccc3906e742ef6e6d60bd3826b686143b300b4f6f04161cc1cf31a6b11fe70e1058ae4d4e4a108b5c68326d469684736a83c
+  languageName: node
+  linkType: hard
+
 "type-check@npm:^0.4.0, type-check@npm:~0.4.0":
   version: 0.4.0
   resolution: "type-check@npm:0.4.0"
@@ -5502,6 +5523,7 @@ __metadata:
     "@storybook/vue3-vite": "npm:^10.6.4"
     "@tsconfig/node24": "npm:^24.0.5"
     "@types/node": "npm:^24.13.4"
+    "@untrouble/dguv-angular-elements": "npm:^22.0.2"
     "@untrouble/dguv-vanilla-sass": "npm:0.36.0"
     "@vitejs/plugin-vue": "npm:^6.0.8"
     "@vue/eslint-config-typescript": "npm:^14.9.0"

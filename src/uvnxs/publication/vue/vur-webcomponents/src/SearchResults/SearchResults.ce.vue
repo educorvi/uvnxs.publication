@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import {computed, ref, watch} from 'vue'
 import SearchResultItem from './SearchResult.vue'
 import SearchFilters from './SearchFilters.vue'
 import {
@@ -9,6 +9,7 @@ import {
   type SearchResult,
   type SortBy,
 } from './types'
+import {includesAny} from "../helpers.ts";
 
 // Supply JSON via the search-results attribute or searchResults property.
 // External filter controls supply their selections as array properties.
@@ -36,7 +37,7 @@ const props = withDefaults(
   },
 )
 
-const selectedFilters = ref<FilterSelections>({ rubrik: [], fachbereich: [], sachgebiet: [] })
+const selectedFilters = ref<FilterSelections>({rubrik: [], fachbereich: [], sachgebiet: []})
 
 watch(
   () => [props.rubriken, props.fachbereiche, props.sachgebiete] as const,
@@ -47,7 +48,7 @@ watch(
       sachgebiet: [...sachgebiete],
     }
   },
-  { immediate: true },
+  {immediate: true},
 )
 
 const sortBy = ref<SortBy>(props.sortBy as SortBy ?? 'score')
@@ -56,18 +57,30 @@ watch(
   (hidden) => {
     if (hidden && sortBy.value === 'score') sortBy.value = 'article_id'
   },
-  { immediate: true },
+  {immediate: true},
 )
 const expandedResults = ref(new Set<SearchResult>())
 const documents = computed<SearchResult[]>(() => JSON.parse(props.searchResults))
 
-const filterOptions = computed(() => ({
-  rubrik: JSON.parse(props.rubrikenOptions ?? '[]') as string[],
-  fachbereich: JSON.parse(props.fachbereicheOptions) as string[],
-  sachgebiet: (JSON.parse(props.sachgebieteOptions) as { name: string }[]).map(({ name }) => name),
-}))
+const filterOptions = computed(() => {
+    const fachbereiche = JSON.parse(props.fachbereicheOptions) as string[]
+    const sachgebiete = (JSON.parse(props.sachgebieteOptions) as {
+      name: string,
+      fachbereiche: string[];
+    }[]);
+    let sachgebieteFiltered = sachgebiete;
+    if (selectedFilters.value.fachbereich.length > 0) {
+      sachgebieteFiltered =sachgebieteFiltered.filter(s => includesAny(s.fachbereiche, selectedFilters.value.fachbereich))
+    }
+    return {
+      rubrik: JSON.parse(props.rubrikenOptions ?? '[]') as string[],
+      fachbereich: fachbereiche,
+      sachgebiet: sachgebieteFiltered.map(s => s.name),
+    };
+  }
+)
 
-const filterLabels = { rubrik: 'Rubrik', fachbereich: 'Fachbereich', sachgebiet: 'Sachgebiet' }
+const filterLabels = {rubrik: 'Rubrik', fachbereich: 'Fachbereich', sachgebiet: 'Sachgebiet'}
 const filters = computed<SearchFilter[]>(() =>
   filterIds
     .filter((id) => id !== 'rubrik' || props.rubrikenOptions !== undefined)
@@ -85,10 +98,10 @@ const filteredResults = computed(() => {
   const selections = filterIds.map((id) => [id, new Set(selectedFilters.value[id])] as const)
 
   return documents.value
-    .filter(( doc ) =>
+    .filter((doc) =>
       selections.every(([key, values]) => values.size === 0 || values.has(doc[key] ?? '')),
     )
-    .sort(( a, b) => {
+    .sort((a, b) => {
       const first = String(a[sortBy.value] ?? '')
       const second = String(b[sortBy.value] ?? '')
       switch (sortBy.value) {
@@ -97,7 +110,7 @@ const filteredResults = computed(() => {
         case 'pub_date':
           return second.localeCompare(first, 'de')
         default:
-          return first.localeCompare(second, 'de', { numeric: sortBy.value === 'article_id' })
+          return first.localeCompare(second, 'de', {numeric: sortBy.value === 'article_id'})
       }
     })
 })
