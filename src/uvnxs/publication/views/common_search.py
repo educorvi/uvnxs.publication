@@ -1,4 +1,41 @@
+from plone import api
+
 import re
+
+
+def get_vur_landing_page():
+    """Return the VurLandingPage object referenced by the default page property if it exists, otherwise None."""
+    # try to get the landing page from the default page property (view) first
+    site = api.portal.get()
+    vur_landing_page_id = site.getProperty("default_page")
+    if vur_landing_page_id:
+        vur_landing_page = site.get(vur_landing_page_id)
+        if vur_landing_page and vur_landing_page.portal_type == "VurLandingPage":
+            return vur_landing_page
+
+    # if no landing page is found via the default page property (view),
+    # return the first root object that is a VurLandingPage
+    for child in site.objectValues():
+        if child.portal_type == "VurLandingPage":
+            return child
+
+    return None
+
+
+def get_vur_folders(vur_landing_page=None):
+    """Return a list of Folder objects referenced by the VurLandingPage."""
+    if vur_landing_page is None:
+        vur_landing_page = get_vur_landing_page()
+    if not vur_landing_page:
+        return []
+    if not vur_landing_page.rubriken or len(vur_landing_page.rubriken) == 0:
+        return []
+    return [rubrik.to_object for rubrik in vur_landing_page.rubriken if rubrik.to_object]
+
+
+def get_vur_folders_paths(vur_landing_page=None):
+    vur_folders = get_vur_folders(vur_landing_page)
+    return ["/".join(folder.getPhysicalPath()) for folder in vur_folders]
 
 
 def get_document_for_article(obj):
@@ -16,6 +53,16 @@ def get_document_for_article(obj):
         "url": obj.absolute_url(),
         "uid": obj.UID(),
     }
+
+
+def get_documents(folders):
+    """Return a list of document dictionaries for all articles in the given folders."""
+    documents = []
+    for folder in folders:
+        for brain in folder.restrictedTraverse("@@contentlisting")():
+            if getattr(brain, "portal_type", None) == "Article":
+                documents.append(get_document_for_article(brain.getObject()))
+    return documents
 
 
 def get_text_matches(text, query, radius=200, max_matches=10):

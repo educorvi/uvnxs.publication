@@ -8,8 +8,13 @@
   <body>
     <metal:block fill-slot="main">
       <div class="vur">
-        <section>
+        <section class="vur-header">
           <h1 tal:content="view/heading"></h1>
+          <tal:block tal:condition="view/description">
+            <p class="vur-header-description"
+               tal:content="structure view/description"
+            ></p>
+          </tal:block>
           <tal:block tal:condition="python: view.has_query or not view.has_subjects">
             <form class="vur-search"
                   action=""
@@ -48,7 +53,7 @@
                 <p>Fehler bei der Verarbeitung der Suchanfrage (${view/query_parse_error})</p>
               </tal:block>
               <tal:block tal:condition="python: not view.query_parse_error and (view.has_query or view.has_subjects)">
-                <p>Keine Ergebnisse gefunden.</p>
+                <p tal:content="view/no_results_message" ></p>
               </tal:block>
               <tal:block tal:condition="python: not view.has_query and not view.has_subjects">
                 <p>Bitte geben Sie einen Suchbegriff oder Webcode ein.</p>
@@ -58,8 +63,9 @@
         </section>
 
         <tal:block tal:condition="view/has_results">
-          <search-results filter-heading="Ergebnisse filtern"
-                          tal:attributes="
+          <search-results tal:attributes="
+                            sort-by view/sort_by;
+                            filter-heading view/filter_heading;
                             search-results view/documents_json;
                             fachbereiche-options view/fachbereiche_json;
                             sachgebiete-options view/sachgebiete_json;
@@ -81,12 +87,6 @@
             type="text/css"
             tal:attributes="
               href string:${context/portal_url}/++resource++uvnxs.publication/css/common.css;
-            "
-      />
-      <link rel="stylesheet"
-            type="text/css"
-            tal:attributes="
-              href string:${context/portal_url}/++resource++uvnxs.publication/css/search-field.css;
             "
       />
       <link rel="stylesheet"
