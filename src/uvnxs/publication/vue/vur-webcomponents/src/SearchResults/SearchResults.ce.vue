@@ -17,6 +17,7 @@ const props = withDefaults(
     searchResults?: string
     filterHeading?: string
     hideRelevance?: boolean
+    sortBy?: string
     rubrikenOptions?: string
     fachbereicheOptions?: string
     sachgebieteOptions?: string
@@ -49,7 +50,7 @@ watch(
   { immediate: true },
 )
 
-const sortBy = ref<SortBy>('score')
+const sortBy = ref<SortBy>(props.sortBy as SortBy ?? 'score')
 watch(
   () => props.hideRelevance,
   (hidden) => {

@@ -151,10 +151,10 @@ onBeforeUnmount(() => {
       <label class="vur-filter-section__sort d-flex align-items-center gap-3">
         <strong>Sortieren nach</strong>
         <select v-model="sortBy" class="form-select">
-          <option v-if="!hideRelevance" value="score">Relevanz</option>
-          <option value="article_id">Artikel-ID</option>
-          <option value="title">Titel</option>
-          <option value="pub_date">Ausgabedatum</option>
+          <option v-if="!hideRelevance" value="score" :selected="sortBy === 'score'">Relevanz</option>
+          <option value="article_id" :selected="sortBy === 'article_id'">Artikel-ID</option>
+          <option value="title" :selected="sortBy === 'title'">Titel</option>
+          <option value="pub_date" :selected="sortBy === 'pub_date'">Ausgabedatum</option>
         </select>
       </label>
     </div>

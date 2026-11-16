@@ -3149,10 +3149,7 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 ], Go = ["id", "aria-labelledby"], Ko = ["id"], qo = ["data-value", "aria-selected"], Jo = { class: "ms-option-label" }, Yo = { class: "vur-filter-section__sorting d-flex flex-wrap align-items-center justify-content-between gap-3" }, Xo = {
 	"aria-live": "polite",
 	"aria-atomic": "true"
-}, Zo = { class: "vur-filter-section__results-count" }, Qo = { class: "vur-filter-section__sort d-flex align-items-center gap-3" }, $o = {
-	key: 0,
-	value: "score"
-}, es = /*#__PURE__*/ Io(/* @__PURE__ */ qn({
+}, Zo = { class: "vur-filter-section__results-count" }, Qo = { class: "vur-filter-section__sort d-flex align-items-center gap-3" }, $o = ["selected"], es = ["selected"], ts = ["selected"], ns = ["selected"], rs = /*#__PURE__*/ Io(/* @__PURE__ */ qn({
 	__name: "SearchFilters",
 	props: /*@__PURE__*/ wr({
 		filters: {},
@@ -3266,20 +3263,33 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 			n[8] ||= Ji(" Dokumente ", -1),
 			n[9] ||= Z("span", { "aria-hidden": "true" }, " • ", -1),
 			Z("span", Zo, [Z("strong", null, k(e.filteredCount), 1), n[7] ||= Ji(" nach Filtern ", -1)])
-		]), Z("label", Qo, [n[13] ||= Z("strong", null, "Sortieren nach", -1), kn(Z("select", {
+		]), Z("label", Qo, [n[10] ||= Z("strong", null, "Sortieren nach", -1), kn(Z("select", {
 			"onUpdate:modelValue": n[0] ||= (e) => r.value = e,
 			class: "form-select"
 		}, [
-			e.hideRelevance ? Yi("", !0) : (Y(), X("option", $o, "Relevanz")),
-			n[10] ||= Z("option", { value: "article_id" }, "Artikel-ID", -1),
-			n[11] ||= Z("option", { value: "title" }, "Titel", -1),
-			n[12] ||= Z("option", { value: "pub_date" }, "Ausgabedatum", -1)
+			e.hideRelevance ? Yi("", !0) : (Y(), X("option", {
+				key: 0,
+				value: "score",
+				selected: r.value === "score"
+			}, "Relevanz", 8, $o)),
+			Z("option", {
+				value: "article_id",
+				selected: r.value === "article_id"
+			}, "Artikel-ID", 8, es),
+			Z("option", {
+				value: "title",
+				selected: r.value === "title"
+			}, "Titel", 8, ts),
+			Z("option", {
+				value: "pub_date",
+				selected: r.value === "pub_date"
+			}, "Ausgabedatum", 8, ns)
 		], 512), [[mo, r.value]])])])], 512));
 	}
-}), [["__scopeId", "data-v-edb8fd24"]]), ts = {
+}), [["__scopeId", "data-v-69e76955"]]), is = {
 	class: "vur-documents-list",
 	"aria-label": "Suchergebnisse"
-}, ns = /* @__PURE__ */ co(/* @__PURE__ */ qn({
+}, as = /* @__PURE__ */ co(/* @__PURE__ */ qn({
 	__name: "SearchResults.ce",
 	props: {
 		searchResults: {
@@ -3291,6 +3301,7 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 			type: String
 		},
 		hideRelevance: { type: Boolean },
+		sortBy: { type: String },
 		rubrikenOptions: { type: String },
 		fachbereicheOptions: {
 			default: "[]",
@@ -3330,7 +3341,7 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 				sachgebiet: [...r]
 			};
 		}, { immediate: !0 });
-		let r = /* @__PURE__ */ Gt("score");
+		let r = /* @__PURE__ */ Gt(t.sortBy ?? "score");
 		In(() => t.hideRelevance, (e) => {
 			e && r.value === "score" && (r.value = "article_id");
 		}, { immediate: !0 });
@@ -3360,7 +3371,7 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 				}
 			});
 		});
-		return (t, o) => (Y(), X(K, null, [Q(es, {
+		return (t, o) => (Y(), X(K, null, [Q(rs, {
 			"sort-by": r.value,
 			"onUpdate:sortBy": o[0] ||= (e) => r.value = e,
 			filters: c.value,
@@ -3376,7 +3387,7 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 			"hide-relevance",
 			"total-count",
 			"filtered-count"
-		]), Z("section", ts, [(Y(!0), X(K, null, vr(l.value, (e) => (Y(), Bi(Lo, {
+		]), Z("section", is, [(Y(!0), X(K, null, vr(l.value, (e) => (Y(), Bi(Lo, {
 			key: e.uid,
 			doc: e,
 			expanded: i.value.has(e),
@@ -3388,6 +3399,6 @@ var To = { class: "vur-documents-list__item" }, Eo = ["href"], Do = { class: "vu
 		]))), 128))])], 64));
 	}
 }), { shadowRoot: !1 });
-customElements.define("search-results", ns);
+customElements.define("search-results", as);
 
 //# sourceMappingURL=search-results.js.map
