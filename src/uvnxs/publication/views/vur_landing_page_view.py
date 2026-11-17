@@ -34,7 +34,8 @@ class VuRLandingPageView(BrowserView):
 
         self.query = ""
         self.has_results = self.count > 0
-        self.has_query = False
+        self.has_query = True
         self.has_subjects = False
+        self.query_parse_error = None
 
         return self.index()
