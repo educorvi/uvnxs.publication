@@ -32,7 +32,15 @@
 
   <browser:viewlet
       name="plone.searchbox"
-      for="*"
+      for="uvnxs.publication.content.vur_landing_page.IVurLandingPage"
+      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+      class=".viewlets.HiddenViewlet"
+      permission="zope2.View"
+      />
+
+  <browser:viewlet
+      name="plone.searchbox"
+      for="plone.base.interfaces.IPloneSiteRoot"
       manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
       class=".viewlets.HiddenViewlet"
       permission="zope2.View"

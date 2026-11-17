@@ -108,6 +108,10 @@
                 src string:${context/portal_url}/++resource++uvnxs.publication.webcomponents/search-results.js;
               "
       ></script>
+      <script defer=""
+              src="/++resource++uvnxs.publication/js/hide-search-icon.js"
+      >
+      </script>
     </metal:block>
   </body>
 </html>
