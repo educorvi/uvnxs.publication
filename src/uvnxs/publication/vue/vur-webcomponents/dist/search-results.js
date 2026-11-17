@@ -3358,11 +3358,11 @@ var os = {
 			e && r.value === "score" && (r.value = "article_id");
 		}, { immediate: !0 });
 		let i = /* @__PURE__ */ Wt(/* @__PURE__ */ new Set()), a = Ca(() => JSON.parse(t.searchResults)), o = Ca(() => {
-			let e = JSON.parse(t.fachbereicheOptions), r = JSON.parse(t.sachgebieteOptions);
-			return n.value.fachbereich.length > 0 && (r = r.filter((e) => as(e.fachbereiche, n.value.fachbereich))), {
-				rubrik: JSON.parse(t.rubrikenOptions ?? "[]"),
-				fachbereich: e,
-				sachgebiet: r.map((e) => e.name)
+			let e = JSON.parse(t.rubrikenOptions ?? "[]"), r = JSON.parse(t.fachbereicheOptions), i = JSON.parse(t.sachgebieteOptions), a = r, o = i;
+			return n.value.rubrik.length > 0 && (a = a.filter((e) => as(e.rubriken, n.value.rubrik)), o = o.filter((e) => as(e.rubriken, n.value.rubrik))), n.value.fachbereich.length > 0 && (o = o.filter((e) => as(e.fachbereiche, n.value.fachbereich))), {
+				rubrik: e,
+				fachbereich: a.map((e) => e.name),
+				sachgebiet: o.map((e) => e.name)
 			};
 		}), s = {
 			rubrik: "Rubrik",

@@ -63,22 +63,31 @@ const expandedResults = ref(new Set<SearchResult>())
 const documents = computed<SearchResult[]>(() => JSON.parse(props.searchResults))
 
 const filterOptions = computed(() => {
-    const fachbereiche = JSON.parse(props.fachbereicheOptions) as string[]
-    const sachgebiete = (JSON.parse(props.sachgebieteOptions) as {
-      name: string,
-      fachbereiche: string[];
-    }[]);
-    let sachgebieteFiltered = sachgebiete;
-    if (selectedFilters.value.fachbereich.length > 0) {
-      sachgebieteFiltered =sachgebieteFiltered.filter(s => includesAny(s.fachbereiche, selectedFilters.value.fachbereich))
-    }
-    return {
-      rubrik: JSON.parse(props.rubrikenOptions ?? '[]') as string[],
-      fachbereich: fachbereiche,
-      sachgebiet: sachgebieteFiltered.map(s => s.name),
-    };
+  const rubriken = JSON.parse(props.rubrikenOptions ?? '[]') as string[]
+  const fachbereiche = JSON.parse(props.fachbereicheOptions) as {
+    name: string,
+    rubriken: string[];
+  }[];
+  const sachgebiete = JSON.parse(props.sachgebieteOptions) as {
+    name: string,
+    rubriken: string[];
+    fachbereiche: string[];
+  }[];
+  let fachbereicheFiltered = fachbereiche;
+  let sachgebieteFiltered = sachgebiete;
+  if (selectedFilters.value.rubrik.length > 0) {
+    fachbereicheFiltered = fachbereicheFiltered.filter(f => includesAny(f.rubriken, selectedFilters.value.rubrik))
+    sachgebieteFiltered = sachgebieteFiltered.filter(s => includesAny(s.rubriken, selectedFilters.value.rubrik))
   }
-)
+  if (selectedFilters.value.fachbereich.length > 0) {
+    sachgebieteFiltered = sachgebieteFiltered.filter(s => includesAny(s.fachbereiche, selectedFilters.value.fachbereich))
+  }
+  return {
+    rubrik: rubriken,
+    fachbereich: fachbereicheFiltered.map(f => f.name),
+    sachgebiet: sachgebieteFiltered.map(s => s.name),
+  };
+})
 
 const filterLabels = {rubrik: 'Rubrik', fachbereich: 'Fachbereich', sachgebiet: 'Sachgebiet'}
 const filters = computed<SearchFilter[]>(() =>

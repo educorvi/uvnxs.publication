@@ -94,18 +94,31 @@ def get_rubriken(documents):
 
 
 def get_fachbereiche(documents):
-    """Return a list of unique fachbereiche from the given documents."""
-    return sorted({doc["fachbereich"] for doc in documents if doc["fachbereich"]})
+    """Return a list of fachbereiche with their associated rubriken."""
+    fachbereiche = {}
+    for doc in documents:
+        if not (fachbereich := doc["fachbereich"]):
+            continue
+        if fachbereich not in fachbereiche:
+            fachbereiche[fachbereich] = []
+        if (rubrik := doc["rubrik"]) and rubrik not in fachbereiche[fachbereich]:
+            fachbereiche[fachbereich].append(rubrik)
+    return [{"name": fb, "rubriken": rubriken} for fb, rubriken in sorted(fachbereiche.items())]
 
 
 def get_sachgebiete(documents):
-    """Return a list of sachgebiete with their associated fachbereiche."""
+    """Return a list of sachgebiete with their associated rubriken and fachbereiche."""
     sachgebiete = {}
     for doc in documents:
         if not (sachgebiet := doc["sachgebiet"]):
             continue
         if sachgebiet not in sachgebiete:
-            sachgebiete[sachgebiet] = []
-        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[sachgebiet]:
-            sachgebiete[sachgebiet].append(fachbereich)
-    return [{"name": sg, "fachbereiche": fachbereiche} for sg, fachbereiche in sorted(sachgebiete.items())]
+            sachgebiete[sachgebiet] = {"rubriken": [], "fachbereiche": []}
+        if (rubrik := doc["rubrik"]) and rubrik not in sachgebiete[sachgebiet]["rubriken"]:
+            sachgebiete[sachgebiet]["rubriken"].append(rubrik)
+        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[sachgebiet]["fachbereiche"]:
+            sachgebiete[sachgebiet]["fachbereiche"].append(fachbereich)
+    return [
+        {"name": sg, "rubriken": data["rubriken"], "fachbereiche": data["fachbereiche"]}
+        for sg, data in sorted(sachgebiete.items())
+    ]
