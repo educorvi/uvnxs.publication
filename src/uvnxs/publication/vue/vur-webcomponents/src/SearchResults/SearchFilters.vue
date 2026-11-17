@@ -72,23 +72,23 @@ function updateSelection(id: SearchFilter['id'], values: string[]) {
 
 <style scoped>
 .vur-filter-section {
-  margin: 48px 0;
-  border: 1px solid var(--dguv-text, #000);
+  margin: var(--space-l3, 3rem) 0;
+  border: 1px solid var(--dguv-border, #555);
 }
 
 .vur-filter-section > * {
-  padding: 24px;
+  padding: var(--space-l, 1.5rem);
 }
 
 .vur-filter-section__header h2 {
   margin: 0;
-  font-size: 22px;
-  font-weight: 500;
+  font: var(--font-xxl-bold, 700 1.5rem/1.5 "Source Sans 3");
+  font-weight: 600;
   color: var(--dguv-text, #000);
 }
 
 .vur-filter-section__sorting {
-  border-top: 1px solid var(--dguv-text, #000);
+  border-top: 1px solid var(--dguv-border, #555);
 }
 
 .vur-filter-section__sort select {
@@ -97,13 +97,13 @@ function updateSelection(id: SearchFilter['id'], values: string[]) {
 
 .vur-filter-section__filterlist {
   display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(var(--filter-columns, 3), minmax(0, 1fr));
+  gap: var(--space-sm, 0.75rem);
+  grid-template-columns: minmax(0, 1fr);
 }
 
-@media (max-width: 1023.99px) {
+@media (min-width: 1024px) {
   .vur-filter-section__filterlist {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(var(--filter-columns, 3), minmax(0, 1fr));
   }
 }
 </style>

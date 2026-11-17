@@ -15,7 +15,7 @@
 
 .vur .vur-search input {
   flex: 1;
-  border: 1px solid var(--dguv-text);
+  border: 1px solid var(--dguv-border);
   border-radius: 0;
   height: var(--space-l4);
   padding: var(--space-s) var(--space-m);
@@ -24,7 +24,7 @@
 
 .vur .vur-search button {
   min-width: auto;
-  border: 1px solid var(--dguv-text);
+  border: 1px solid var(--dguv-border);
   border-radius: 0;
   margin-left: -1px;
   padding: var(--space-s) var(--space-m);

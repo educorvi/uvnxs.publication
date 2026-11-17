@@ -3158,7 +3158,7 @@ var Oo = { class: "vur-documents-list__item" }, ko = ["href"], Ao = { class: "vu
 	let n = e.__vccOpts || e;
 	for (let [e, r] of t) n[e] = r;
 	return n;
-}, Bo = /*#__PURE__*/ zo(Ro, [["__scopeId", "data-v-a8df1b81"]]);
+}, Bo = /*#__PURE__*/ zo(Ro, [["__scopeId", "data-v-06bb0d46"]]);
 // src/components/load-dguv-components.ts
 async function Vo() {
 	await import("./dguv-elements-NFR3qj8_.js"), await customElements.whenDefined("dguv-multi-select");
@@ -3292,7 +3292,7 @@ var Ho = ["id", "for"], Uo = [
 			}, "Ausgabedatum", 8, rs)
 		], 512), [[_o, r.value]])])])]));
 	}
-}), [["__scopeId", "data-v-3fb11daa"]]);
+}), [["__scopeId", "data-v-e2be9fd1"]]);
 // src/helpers.ts
 function as(e, t) {
 	return t.some((t) => e.includes(t));

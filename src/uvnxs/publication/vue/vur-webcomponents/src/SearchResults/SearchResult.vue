@@ -56,14 +56,14 @@ function formatDate(dateString: string) {
 
 <style scoped>
 .vur-documents-list__item:not(:last-child) {
-  border-bottom: 1px solid var(--dguv-border, #d5d5d5);
+  border-bottom: 1px solid var(--dguv-border, #555);
 }
 
 .vur-documents-list__item > a {
-  padding: 32px 16px 8px;
+  padding: var(--space-l2, 2rem) var(--space-m, 1rem) var(--space-s, 0.5rem);
   display: grid;
   align-items: start;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 1fr;
 }
 
 .vur-documents-list__item:hover {
@@ -72,54 +72,55 @@ function formatDate(dateString: string) {
 }
 
 .vur-documents-list__item-content {
-  padding-right: 48px;
+  padding-right: var(--space-l3, 3rem);
 }
 
 .vur-documents-list__article-id {
   margin: 0;
   color: var(--dguv-text-secondary, #555);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
+  font: var(--font-s-bold, 700 0.875rem/1.5 "Source Sans 3");
 }
 
 .vur-documents-list__title {
-  margin-top: 10px;
-  font-size: 22px;
-  font-weight: 500;
+  margin-top: var(--space-s, 0.5rem);
+  font: var(--font-xxl-bold, 700 1.5rem/1.5 "Source Sans 3");
+}
+
+.vur-documents-list__item-dates {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-l, 1.5rem);
 }
 
 .vur-documents-list__matches {
-  padding: 0 16px 32px;
+  padding: 0 var(--space-m, 1rem) var(--space-l2, 2rem);
+}
+
+.vur-documents-list__matches .vur-documents-list__snippet {
+  margin: 0;
+  padding: var(--space-s, 0.5rem) 0;
 }
 
 .vur-documents-list__matches .vur-documents-list__snippet:not(:last-of-type) {
-  border-bottom: 1px solid var(--dguv-border, #d5d5d5);
+  border-bottom: 1px solid var(--dguv-border, #555);
 }
 
 .vur-documents-list__matches .btn {
-  margin-top: 16px;
+  margin-top: var(--space-l2, 2rem);
   height: auto;
   min-height: 0;
   font-size: 1rem;
   line-height: 1;
 }
 
-.vur-documents-list__item-dates {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-@media (max-width: 1023.99px) {
+@media (min-width: 1024px) {
   .vur-documents-list__item > a {
-    grid-template-columns: 1fr;
+    grid-template-columns: 70% 30%;
   }
 
   .vur-documents-list__item-dates {
-    flex-direction: row;
-    gap: 24px;
+    flex-direction: column;
+    gap: var(--space-sm, 0.75rem);
   }
 }
 </style>
