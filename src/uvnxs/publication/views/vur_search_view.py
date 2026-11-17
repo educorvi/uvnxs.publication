@@ -36,6 +36,8 @@ class VuRSearchView(BrowserView):
         self.no_results_message = "Keine Ergebnisse gefunden."
         self.sort_by = "score"
 
+        self.text = "" # Dont show landing page text on the search view
+
         self.query = (self.request.form.get("SearchableText") or "").strip()
         subject = self.request.form.get("Subject", None)
         if subject is None:

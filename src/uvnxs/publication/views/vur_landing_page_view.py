@@ -23,6 +23,8 @@ class VuRLandingPageView(BrowserView):
         self.no_results_message = "Keine Dokumente vorhanden."
         self.sort_by = "pub_date"
 
+        self.text = "" if not self.context.text else self.context.text.raw
+
         documents = get_documents(get_vur_folders(self.context))
         self.documents_json = json.dumps(documents, ensure_ascii=False)
         self.sachgebiete_json = json.dumps(get_sachgebiete(documents), ensure_ascii=False)
