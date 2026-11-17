@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [
     vue({
-      template: { compilerOptions: { isCustomElement: (tag) => tag === 'search-results' } },
+      template: { compilerOptions: { isCustomElement: (tag) => tag === 'search-results' || tag.startsWith('dguv-') } },
     }),
   ],
 })

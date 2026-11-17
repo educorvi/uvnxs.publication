@@ -1,7 +1,7 @@
 from Products.Five.browser import BrowserView
-from uvnxs.publication.views.common_search import get_document_for_article
 from uvnxs.publication.views.common_search import get_fachbereiche
 from uvnxs.publication.views.common_search import get_sachgebiete
+from uvnxs.publication.views.common_search import get_documents
 from zope.interface import implementer
 from zope.interface import Interface
 
@@ -15,14 +15,7 @@ class IVuRFilterView(Interface):
 @implementer(IVuRFilterView)
 class VuRFilterView(BrowserView):
     def __call__(self):
-        documents = [
-            get_document_for_article(doc)
-            for doc in (
-                brain.getObject()
-                for brain in self.context.restrictedTraverse("@@contentlisting")()
-                if brain.portal_type == "Article"
-            )
-        ]
+        documents = get_documents([self.context])
 
         self.documents_json = json.dumps(documents, ensure_ascii=False)
         self.sachgebiete_json = json.dumps(get_sachgebiete(documents), ensure_ascii=False)

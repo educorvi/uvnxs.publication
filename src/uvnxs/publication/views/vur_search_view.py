@@ -6,6 +6,8 @@ from uvnxs.publication.views.common_search import get_fachbereiche
 from uvnxs.publication.views.common_search import get_rubriken
 from uvnxs.publication.views.common_search import get_sachgebiete
 from uvnxs.publication.views.common_search import get_text_matches
+from uvnxs.publication.views.common_search import get_vur_landing_page
+from uvnxs.publication.views.common_search import get_vur_folders_paths
 from zope.interface import implementer
 from zope.interface import Interface
 
@@ -27,8 +29,14 @@ VORSCHRIFT_VALUE = "Muster-DGUV Vorschrift"
 @implementer(IVuRSearchView)
 class VuRSearchView(BrowserView):
     def __call__(self):
-        _landing_page = self._get_vur_landing_page()
+        _landing_page = get_vur_landing_page()
         self.heading = _landing_page.title if _landing_page else "Recherche"
+        self.description = _landing_page.description if _landing_page else ""
+        self.filter_heading = "Ergebnisse filtern"
+        self.no_results_message = "Keine Ergebnisse gefunden."
+        self.sort_by = "score"
+
+        self.text = "" # Dont show landing page text on the search view
 
         self.query = (self.request.form.get("SearchableText") or "").strip()
         subject = self.request.form.get("Subject", None)
@@ -61,7 +69,7 @@ class VuRSearchView(BrowserView):
             return []
 
         catalog = api.portal.get_tool("portal_catalog")
-        search_paths = self._get_search_paths()
+        search_paths = get_vur_folders_paths()
         brain_results = []
         brain_results_title = []
         fulltext_search = False
@@ -102,27 +110,3 @@ class VuRSearchView(BrowserView):
             document["score"] = score
             documents.append(document)
         return documents
-
-    def _get_vur_landing_page(self):
-        # try to get the landing page from the default page property (view) first
-        site = api.portal.get()
-        vur_landing_page_id = site.getProperty("default_page")
-        if vur_landing_page_id:
-            vur_landing_page = site.get(vur_landing_page_id)
-            if vur_landing_page and vur_landing_page.portal_type == "VurLandingPage":
-                return vur_landing_page
-
-        # if no landing page is found via the default page property (view),
-        # return the first root object that is a VurLandingPage
-        for child in site.objectValues():
-            if child.portal_type == "VurLandingPage":
-                return child
-
-        return None
-
-    def _get_search_paths(self):
-        vur_landing_page = self._get_vur_landing_page()
-        if not vur_landing_page or not vur_landing_page.rubriken or len(vur_landing_page.rubriken) == 0:
-            site = api.portal.get()
-            return [site.absolute_url_path()]
-        return ["/".join(rubrik.to_object.getPhysicalPath()) for rubrik in vur_landing_page.rubriken]

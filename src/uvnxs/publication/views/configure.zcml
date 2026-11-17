@@ -11,7 +11,7 @@
       name="vur-landing-page"
       for="uvnxs.publication.content.vur_landing_page.IVurLandingPage"
       class=".vur_landing_page_view.VuRLandingPageView"
-      template="vur_landing_page_view.pt"
+      template="vur_search_view.pt"
       permission="zope2.View"
       layer="uvnxs.publication.interfaces.IBrowserLayer"
       menu="plone_displayviews"

@@ -1,4 +1,41 @@
+from plone import api
+
 import re
+
+
+def get_vur_landing_page():
+    """Return the VurLandingPage object referenced by the default page property if it exists, otherwise None."""
+    # try to get the landing page from the default page property (view) first
+    site = api.portal.get()
+    vur_landing_page_id = site.getProperty("default_page")
+    if vur_landing_page_id:
+        vur_landing_page = site.get(vur_landing_page_id)
+        if vur_landing_page and vur_landing_page.portal_type == "VurLandingPage":
+            return vur_landing_page
+
+    # if no landing page is found via the default page property (view),
+    # return the first root object that is a VurLandingPage
+    for child in site.objectValues():
+        if child.portal_type == "VurLandingPage":
+            return child
+
+    return None
+
+
+def get_vur_folders(vur_landing_page=None):
+    """Return a list of Folder objects referenced by the VurLandingPage."""
+    if vur_landing_page is None:
+        vur_landing_page = get_vur_landing_page()
+    if not vur_landing_page:
+        return []
+    if not vur_landing_page.rubriken or len(vur_landing_page.rubriken) == 0:
+        return []
+    return [rubrik.to_object for rubrik in vur_landing_page.rubriken if rubrik.to_object]
+
+
+def get_vur_folders_paths(vur_landing_page=None):
+    vur_folders = get_vur_folders(vur_landing_page)
+    return ["/".join(folder.getPhysicalPath()) for folder in vur_folders]
 
 
 def get_document_for_article(obj):
@@ -16,6 +53,16 @@ def get_document_for_article(obj):
         "url": obj.absolute_url(),
         "uid": obj.UID(),
     }
+
+
+def get_documents(folders):
+    """Return a list of document dictionaries for all articles in the given folders."""
+    documents = []
+    for folder in folders:
+        for brain in folder.restrictedTraverse("@@contentlisting")():
+            if getattr(brain, "portal_type", None) == "Article":
+                documents.append(get_document_for_article(brain.getObject()))
+    return documents
 
 
 def get_text_matches(text, query, radius=200, max_matches=10):
@@ -47,18 +94,31 @@ def get_rubriken(documents):
 
 
 def get_fachbereiche(documents):
-    """Return a list of unique fachbereiche from the given documents."""
-    return sorted({doc["fachbereich"] for doc in documents if doc["fachbereich"]})
+    """Return a list of fachbereiche with their associated rubriken."""
+    fachbereiche = {}
+    for doc in documents:
+        if not (fachbereich := doc["fachbereich"]):
+            continue
+        if fachbereich not in fachbereiche:
+            fachbereiche[fachbereich] = []
+        if (rubrik := doc["rubrik"]) and rubrik not in fachbereiche[fachbereich]:
+            fachbereiche[fachbereich].append(rubrik)
+    return [{"name": fb, "rubriken": rubriken} for fb, rubriken in sorted(fachbereiche.items())]
 
 
 def get_sachgebiete(documents):
-    """Return a list of sachgebiete with their associated fachbereiche."""
+    """Return a list of sachgebiete with their associated rubriken and fachbereiche."""
     sachgebiete = {}
     for doc in documents:
         if not (sachgebiet := doc["sachgebiet"]):
             continue
         if sachgebiet not in sachgebiete:
-            sachgebiete[sachgebiet] = []
-        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[sachgebiet]:
-            sachgebiete[sachgebiet].append(fachbereich)
-    return [{"name": sg, "fachbereiche": fachbereiche} for sg, fachbereiche in sorted(sachgebiete.items())]
+            sachgebiete[sachgebiet] = {"rubriken": [], "fachbereiche": []}
+        if (rubrik := doc["rubrik"]) and rubrik not in sachgebiete[sachgebiet]["rubriken"]:
+            sachgebiete[sachgebiet]["rubriken"].append(rubrik)
+        if (fachbereich := doc["fachbereich"]) and fachbereich not in sachgebiete[sachgebiet]["fachbereiche"]:
+            sachgebiete[sachgebiet]["fachbereiche"].append(fachbereich)
+    return [
+        {"name": sg, "rubriken": data["rubriken"], "fachbereiche": data["fachbereiche"]}
+        for sg, data in sorted(sachgebiete.items())
+    ]

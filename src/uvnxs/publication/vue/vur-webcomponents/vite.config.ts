@@ -8,11 +8,19 @@ import {resolve} from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    {
+      name: 'keep-dguv-registration',
+      transform(code, id) {
+        if (id.includes('@untrouble/dguv-angular-elements/dist/bundle/dguv-elements.js')) {
+          return { code, moduleSideEffects: true }
+        }
+      },
+    },
     vue({
       template: {
         compilerOptions: {
           isCustomElement: (tag: string) =>
-            tag.includes('search-results'),
+            tag.includes('search-results') || tag.startsWith('dguv-'),
         },
       },
     }),
@@ -25,7 +33,7 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: true,
+    sourcemap: false,
     lib: {
       entry: './src/main.ce.ts',
       name: 'search-results',

@@ -5,8 +5,9 @@ import '../../../static/css/common.css'
 import '../../../static/css/root.css'
 import './preview.css'
 
+
 setup((app) => {
-  app.config.compilerOptions.isCustomElement = (tag) => tag === 'search-results'
+  app.config.compilerOptions.isCustomElement = (tag) => tag === 'search-results' || tag.startsWith('dguv-')
 })
 
 const preview: Preview = {
