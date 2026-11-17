@@ -30,11 +30,15 @@
     </metal:block>
     <metal:block fill-slot="javascript_head_slot">
       <script defer=""
-              src="/++resource++uvnxs.publication/js/pdf-downloadv2.js"
+              tal:attributes="
+                src string:${context/portal_url}/++resource++uvnxs.publication/js/pdf-downloadv2.js;
+              "
       >
       </script>
       <script defer=""
-              src="/++resource++uvnxs.publication/js/html-export-tables.js"
+              tal:attributes="
+                src string:${context/portal_url}/++resource++uvnxs.publication/js/html-export-tables.js;
+              "
       >
       </script>
     </metal:block>
