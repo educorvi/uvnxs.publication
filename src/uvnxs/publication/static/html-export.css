@@ -82,6 +82,11 @@ body:has(.article-shell) *:has(.article-shell) {
   text-decoration: underline;
 }
 
+.article-toc a:focus-visible {
+  outline: 2px solid var(--dguv-primary);
+  outline-offset: 2px;
+}
+
 .article-toc .toc-entry[data-toc-level="1"] > .toc-title,
 .article-toc .toc-entry[data-toc-level="1"] > .toc-title * {
   color: var(--dguv-primary);
@@ -175,21 +180,28 @@ body:has(.article-shell) *:has(.article-shell) {
   margin-bottom: var(--space-l2);
 }
 
+.article-metadata dd {
+  margin: 0;
+}
+
 .article-metadata a {
   color: var(--dguv-text);
 }
 
-.article-metadata td {
+.article-metadata div[data-meta-field] {
   padding: var(--space-sm);
+}
+
+.article-metadata div[data-meta-field]:not(:last-child) {
   border-bottom: 1px solid var(--dguv-border);
 }
 
-.article-metadata tr[data-meta-field="journal-title-group"] * {
+.article-metadata div[data-meta-field="journal-title-group"] * {
   font: var(--font-m-bold);
 }
 
-.article-metadata tr[data-meta-field="journal-title-group"] td,
-.article-metadata tr[data-meta-field="pub-dates"] td {
+.article-metadata div[data-meta-field="journal-title-group"] dd,
+.article-metadata div[data-meta-field="pub-dates"] dd {
   display: flex;
   gap: var(--space-m);
 }
@@ -206,13 +218,30 @@ body:has(.article-shell) *:has(.article-shell) {
   vertical-align: baseline;
 }
 
-.article-metadata tr[data-meta-field="related-articles"] td ul {
+.article-metadata div[data-meta-field="related-articles"] ul {
   margin-bottom: 0;
 }
 
 /* Hide publication link because of button */
-.article-metadata tr[data-meta-field="document-uri"] {
+.article-metadata div[data-meta-field="document-uri"] {
   display: none;
+}
+
+/* =================================================== */
+/* ================== Miscellaneous ================== */
+/* =================================================== */
+
+/* Visually hidden but still announced by assistive technology */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* =================================================== */
@@ -289,16 +318,16 @@ body:has(.article-shell) *:has(.article-shell) {
 }
 
 /* Other titles */
-.article-content .section h4.title,
-.article-content .section h4.title * {
+.article-content .section title.other,
+.article-content .section title.other * {
   margin: var(--space-l) 0 var(--space-sm);
   font: var(--font-h4);
   color: var(--dguv-text);
 }
 
 /* Other labels */
-.article-content .section h5.label,
-.article-content .section h5.label * {
+.article-content .section label.other,
+.article-content .section label.other * {
   font: var(--font-h5);
   color: var(--dguv-text);
 }
@@ -723,6 +752,33 @@ body:has(.article-shell) *:has(.article-shell) {
   text-align: right;
 }
 
+/* ===================== def-list ===================== */
+
+.article-content .def-list {
+  margin-block: var(--space-m);
+}
+
+.article-content .def-list > dl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.article-content .def-item {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  column-gap: var(--space-m);
+}
+
+.article-content .def-term {
+  font-weight: 700;
+  grid-column: 1;
+}
+
+.article-content .def-def {
+  grid-column: 2;
+}
+
 /* ================== inline styles =================== */
 
 /* also children of i italic */
@@ -769,7 +825,7 @@ body:has(.article-shell) *:has(.article-shell) {
 
 /* Grün */
 .article-content *[data-style-type="_4Farbe2"] {
-  color: var(--dguv-green);
+  color: var(--dguv-green-dark);
 }
 
 /* Pink */
