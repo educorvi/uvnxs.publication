@@ -352,13 +352,12 @@ body:has(.article-shell) *:has(.article-shell) {
   font: var(--font-l-bold);
 }
 
-.boxed-text:has(> .caption > .title > img.image-size-icon:first-child) {
+.article-content .boxed-text--has-icon {
     position: relative;
     margin-top: calc(var(--space-l) + 0.5 * 5cqw);
 }
 
-.boxed-text:has(> .caption > .title > img.image-size-icon:first-child)
-> .caption > .title > img.image-size-icon:first-child {
+.article-content .boxed-text--has-icon > .caption > .title > img.image-size-icon:first-child {
     position: absolute;
     left: var(--space-m);
     top: 0;
@@ -366,8 +365,7 @@ body:has(.article-shell) *:has(.article-shell) {
     z-index: 2;
 }
 
-.boxed-text:has(> .caption > .title > img.image-size-icon:first-child)
-> .caption > .title {
+.article-content .boxed-text--has-icon > .caption > .title {
     padding-left: calc(2 * var(--space-m) + 5cqw - var(--space-l));
 }
 
@@ -509,6 +507,8 @@ body:has(.article-shell) *:has(.article-shell) {
 
 .article-content .table-wrap table {
   border-collapse: collapse;
+  border-left: hidden;
+  border-right: hidden;
   width: 100%;
 }
 
@@ -538,18 +538,8 @@ body:has(.article-shell) *:has(.article-shell) {
   font-weight: 700;
 }
 
-/* ==================== Borders ====================== */
-
-.article-content .table-wrap table td {
-  border-block: 1px solid var(--dguv-border);
-}
-
 .article-content .table-wrap table :is(th, td) {
-  border-left: 1px solid var(--dguv-border);
-}
-
-.article-content .table-wrap table :is(th, td):first-child {
-  border-left: 0;
+  border: 1px solid var(--dguv-border);
 }
 
 /* ===================== Colors ====================== */
@@ -794,10 +784,21 @@ body:has(.article-shell) *:has(.article-shell) {
 
 /* ================== other styles ==================== */
 
+.article-content p {
+  margin-top: 0;
+  margin-bottom: var(--space-m);
+}
+
+.article-content ol,
+.article-content ul {
+  margin-top: 0;
+}
+
 /* External JATS links must look like surrounding running text.
    The dguv theme styles links inside an @layer, so these unlayered
    overrides always win, no !important needed. */
 .article-content a {
+  color: var(--dguv-primary);
   font: inherit;
   vertical-align: baseline;
 }
