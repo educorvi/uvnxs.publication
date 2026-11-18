@@ -4,11 +4,13 @@
 >
 
   <records interface="uvnxs.publication.interfaces.IUvnxsPublicationSettings"
-           prefix="uvnxs.publication" remove="True"
+           prefix="uvnxs.publication"
+           remove="True"
   />
 
   <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
-           prefix="plone.bundles/uvnxs.publication.xml-editor" remove="True"
+           prefix="plone.bundles/uvnxs.publication.xml-editor"
+           remove="True"
   />
 
   <record field="default_page_types"

@@ -1,6 +1,6 @@
+from plone.app.textfield import RichText
 from plone.app.z3cform.widgets.relateditems import RelatedItemsFieldWidget
 from plone.autoform import directives
-from plone.app.textfield import RichText
 from plone.dexterity.content import Container
 
 # from plone.namedfile import field as namedfile
@@ -18,7 +18,7 @@ class IVurLandingPage(model.Schema):
     """Marker interface and Dexterity Python Schema for VurLandingPage"""
 
     text = RichText(
-        title=_('Text'),
+        title=_("Text"),
         required=False,
     )
 

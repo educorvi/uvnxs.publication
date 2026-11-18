@@ -26,8 +26,10 @@ class ICommon(model.Schema):
         required=True,
     )
 
+
 class ICommonSection(model.Schema):
     """Interface: Title is not displayed.label_title_raw is used for display purposes."""
+
     title = schema.TextLine(
         title=_("Title"),
         description=_(
@@ -51,6 +53,12 @@ class ICommonSection(model.Schema):
 
     form.widget(content_raw=XmlEditorFieldWidget, label_title_raw=XmlEditorFieldWidget)
 
+    section_id = schema.TextLine(
+        title=_("Section ID"),
+        description=_("The ID of the section, equals to section-id in the XML."),
+        required=False,
+    )
+
 
 class IGeneralSection(ICommonSection):
     """Marker interface and Dexterity Python Schema for GeneralSection"""
@@ -60,4 +68,3 @@ class IGeneralSection(ICommonSection):
         description=_("The type of the section, equals to sec-type, app-type or content-type in the XML"),
         required=False,
     )
-

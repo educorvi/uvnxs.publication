@@ -7,7 +7,11 @@
   <property name="view_methods"
             purge="false"
   >
-    <element value="vur-filter-view" remove="True" />
-    <element value="jats-list-view" remove="True" />
+    <element remove="True"
+             value="vur-filter-view"
+    />
+    <element remove="True"
+             value="jats-list-view"
+    />
   </property>
 </object>

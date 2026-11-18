@@ -1,7 +1,7 @@
 from Products.Five.browser import BrowserView
+from uvnxs.publication.views.common_search import get_documents
 from uvnxs.publication.views.common_search import get_fachbereiche
 from uvnxs.publication.views.common_search import get_sachgebiete
-from uvnxs.publication.views.common_search import get_documents
 from zope.interface import implementer
 from zope.interface import Interface
 

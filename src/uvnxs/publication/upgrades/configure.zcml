@@ -170,7 +170,7 @@
         import_profile="uvnxs.publication:to_1017"
         />
   </genericsetup:upgradeSteps>
-  
+
   <genericsetup:upgradeSteps
       profile="uvnxs.publication:default"
       source="1017"

@@ -6,8 +6,8 @@ from uvnxs.publication.views.common_search import get_fachbereiche
 from uvnxs.publication.views.common_search import get_rubriken
 from uvnxs.publication.views.common_search import get_sachgebiete
 from uvnxs.publication.views.common_search import get_text_matches
-from uvnxs.publication.views.common_search import get_vur_landing_page
 from uvnxs.publication.views.common_search import get_vur_folders_paths
+from uvnxs.publication.views.common_search import get_vur_landing_page
 from zope.interface import implementer
 from zope.interface import Interface
 
@@ -36,7 +36,7 @@ class VuRSearchView(BrowserView):
         self.no_results_message = "Keine Ergebnisse gefunden."
         self.sort_by = "score"
 
-        self.text = "" # Dont show landing page text on the search view
+        self.text = ""  # Dont show landing page text on the search view
 
         self.query = (self.request.form.get("SearchableText") or "").strip()
         subject = self.request.form.get("Subject", None)
@@ -92,7 +92,7 @@ class VuRSearchView(BrowserView):
                     brain_results.append(brain)
 
         documents = []
-        uids_result_title = set(brain.UID for brain in brain_results_title)
+        uids_result_title = {brain.UID for brain in brain_results_title}
         for brain in brain_results:
             article = brain.getObject()
             document = get_document_for_article(article)

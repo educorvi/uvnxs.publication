@@ -14,11 +14,17 @@
             <div class="vur-header-description-container">
               <tal:block tal:condition="view/description">
                 <p class="vur-header-description"
-                  tal:content="structure view/description"
+                   tal:content="structure view/description"
                 ></p>
               </tal:block>
               <tal:block tal:condition="view/text">
-                <button class="vur-header-text-button btn btn-secondary btn-sm collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseText" aria-expanded="false" aria-controls="collapseText">
+                <button class="vur-header-text-button btn btn-secondary btn-sm collapsed"
+                        aria-controls="collapseText"
+                        aria-expanded="false"
+                        type="button"
+                        data-bs-target="#collapseText"
+                        data-bs-toggle="collapse"
+                >
                   <span class="label-collapsed">Mehr anzeigen</span>
                   <span class="label-expanded">Weniger anzeigen</span>
                 </button>
@@ -26,7 +32,9 @@
             </div>
           </tal:block>
           <tal:block tal:condition="view/text">
-            <div class="vur-header-text collapse" id="collapseText" tal:content="structure view/text"
+            <div class="vur-header-text collapse"
+                 id="collapseText"
+                 tal:content="structure view/text"
             ></div>
           </tal:block>
           <tal:block tal:condition="python: view.has_query or not view.has_subjects">
@@ -67,7 +75,7 @@
                 <p>Fehler bei der Verarbeitung der Suchanfrage (${view/query_parse_error})</p>
               </tal:block>
               <tal:block tal:condition="python: not view.query_parse_error and (view.has_query or view.has_subjects)">
-                <p tal:content="view/no_results_message" ></p>
+                <p tal:content="view/no_results_message"></p>
               </tal:block>
               <tal:block tal:condition="python: not view.has_query and not view.has_subjects">
                 <p>Bitte geben Sie einen Suchbegriff oder Webcode ein.</p>
@@ -84,8 +92,7 @@
                             fachbereiche-options view/fachbereiche_json;
                             sachgebiete-options view/sachgebiete_json;
                             rubriken-options view/rubriken_json;
-                          "
-          ></search-results>
+                          "></search-results>
         </tal:block>
       </div>
     </metal:block>
