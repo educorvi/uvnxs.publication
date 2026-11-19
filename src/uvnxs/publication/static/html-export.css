@@ -4,10 +4,6 @@
 /* ================= Article Sidebar ================= */
 /* =================================================== */
 
-.article-sidebar {
-  margin-bottom: var(--space-l2);
-}
-
 /* ===================== Sticky ====================== */
 
 body:has(.article-shell),
@@ -42,9 +38,14 @@ body:has(.article-shell) *:has(.article-shell) {
 /* ====================== TOC ====================== */
 
 .article-toc {
-  border: 1px solid var(--dguv-border);
-  padding: var(--space-sm);
   font: var(--font-m);
+}
+
+@media (min-width: 48rem) {
+  .article-toc {
+    border: 1px solid var(--dguv-border);
+    padding: var(--space-sm);
+  }
 }
 
 .article-toc .metadata-title {
@@ -156,6 +157,25 @@ body:has(.article-shell) *:has(.article-shell) {
   cursor: wait;
   opacity: 0.65;
   pointer-events: none;
+}
+
+button.open-toc {
+  width: 100%;
+  text-align: left;
+  align-items: center;
+  margin-bottom: var(--space-l2);
+  padding: var(--space-s) var(--space-m);
+  font: var(--font-xl-bold);
+  background: var(--dguv-secondary-30);
+  border: none;
+}
+
+button.open-toc i {
+  font: var(--font-xl-bold);
+}
+
+button.open-toc:hover {
+  background: var(--dguv-background-light);
 }
 
 /* =================================================== */
