@@ -11,7 +11,7 @@ body:has(.article-shell) *:has(.article-shell) {
   overflow: visible !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .article-sidebar {
     position: sticky;
     top: var(--space-l);
@@ -25,7 +25,7 @@ body:has(.article-shell) *:has(.article-shell) {
   }
 }
 
-@media (min-width: 768px) and (min-height: 480px) {
+@media (min-width: 48rem) and (min-height: 30rem) {
   .article-sidebar {
     top: calc(var(--app-shell-top-height) + var(--space-l)) !important;
   }
@@ -138,6 +138,7 @@ body:has(.article-shell) *:has(.article-shell) {
 }
 
 .article-action {
+  flex-grow: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -147,6 +148,12 @@ body:has(.article-shell) *:has(.article-shell) {
   font: var(--font-m);
   color: var(--dguv-text);
   text-decoration: none;
+}
+
+@media (min-width: 48rem) {
+  .article-action {
+    flex-grow: 0;
+  }
 }
 
 .article-action:hover {
@@ -214,6 +221,17 @@ button.open-toc:hover {
 .article-metadata div[data-meta-field="pub-dates"] dd {
   display: flex;
   gap: var(--space-m);
+}
+
+@media (max-width: 48rem) {
+  .article-metadata div[data-meta-field="journal-title-group"] dd,
+  .article-metadata div[data-meta-field="pub-dates"] dd {
+    flex-direction: column;
+  }
+  .article-metadata div[data-meta-field="journal-title-group"] dd span[aria-hidden="true"],
+  .article-metadata div[data-meta-field="pub-dates"] dd span[aria-hidden="true"] {
+    display: none;
+  }
 }
 
 .article-metadata .metadata-title {
