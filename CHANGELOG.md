@@ -9,6 +9,32 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a54 (2026-11-19)
+
+
+### New features:
+
+- add offcanvas TOC functionality and styles [#c323d79](https://github.com/educorvi/uvnxs.publication/issues/c323d79)
+- make filters also dependent on rubriken if present [#05cf716](https://github.com/educorvi/uvnxs.publication/issues/05cf716)
+- use search view template also for landing page [#969330d](https://github.com/educorvi/uvnxs.publication/issues/969330d)
+- add section_id to ICommonSection, format [#492d18e](https://github.com/educorvi/uvnxs.publication/issues/492d18e)
+- add prop sortBy to SearchResults component (initially selected sortBy option) [#236e515](https://github.com/educorvi/uvnxs.publication/issues/236e515)
+- implement optional text field and collapsible for vur landing page [#f79311e](https://github.com/educorvi/uvnxs.publication/issues/f79311e)
+
+
+### Bug fixes:
+
+- enhance responsiveness of article actions and metadata [#672630a](https://github.com/educorvi/uvnxs.publication/issues/672630a)
+- update color variables, enhance accessibility styles and adapt styles to html changes [#6a7962d](https://github.com/educorvi/uvnxs.publication/issues/6a7962d)
+- toc link alignment [#982aa1e](https://github.com/educorvi/uvnxs.publication/issues/982aa1e)
+- show correct message when site has no articles [#a9d59d6](https://github.com/educorvi/uvnxs.publication/issues/a9d59d6)
+- hide searchbox and searchToggle only on landingpage and search [#c4a2c82](https://github.com/educorvi/uvnxs.publication/issues/c4a2c82)
+- html export boyed-text icon, table borders and margins [#885ced1](https://github.com/educorvi/uvnxs.publication/issues/885ced1)
+- enhance accessibility by adding ARIA attributes to TOC and buttons [#78894d3](https://github.com/educorvi/uvnxs.publication/issues/78894d3)
+- fix dependencies in Multiselect [#99d47e0](https://github.com/educorvi/uvnxs.publication/issues/99d47e0)
+- update script src attributes to use portal_url for dynamic resource loading [#66e827a](https://github.com/educorvi/uvnxs.publication/issues/66e827a)
+- : unify styles in SearchFilters and SearchResult components [#90983fc](https://github.com/educorvi/uvnxs.publication/issues/90983fc)
+
 ## 1.0.0a53 (2026-11-12)
 
 
