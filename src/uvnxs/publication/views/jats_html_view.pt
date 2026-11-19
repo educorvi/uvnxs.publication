@@ -41,6 +41,12 @@
               "
       >
       </script>
+      <script defer=""
+              tal:attributes="
+                src string:${context/portal_url}/++resource++uvnxs.publication/js/html-export-toc.js;
+              "
+      >
+      </script>
     </metal:block>
   </body>
 </html>

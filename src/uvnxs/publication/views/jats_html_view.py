@@ -29,15 +29,23 @@ class IJATSPdfView(Interface):
 
 _HTML_TEMPLATE = """
 <div class="article-shell row gx-10">
-    <div class="article-sidebar col-12 col-md-4 col-lg-3 col-xl-3 mb-md-0">
-        {toc}
+    <div class="article-sidebar col-12 col-md-4 col-lg-3 col-xl-3">
+        <div class="offcanvas-md offcanvas-start" id="article-toc-offcanvas" tabindex="-1" aria-labelledby="toc-title">
+            <div class="offcanvas-header d-md-none">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Schließen"></button>
+            </div>
+            <div class="offcanvas-body">{toc}</div>
+        </div>
     </div>
     <div class="article-main col-12 col-md-8 col-lg-9 col-xl-9">
         {header}
+        <button type="button" class="open-toc d-md-none" data-bs-toggle="offcanvas" data-bs-target="#article-toc-offcanvas" aria-controls="article-toc-offcanvas" aria-label="Inhaltsverzeichnis öffnen">
+            <i class="ph ph-list" aria-hidden="true"></i>
+        </button>
         <div class="article-actions">
             <a class="article-action" href="{pdf_url}" download="{pdf_filename}" data-document-path="{document_path}">
                 <i class="ph ph-download-simple"></i>
-                <div class="spinner-border text-primary d-none" style="width: 1em; height: 1em; role="status">
+                <div class="spinner-border text-primary d-none" style="width: 1em; height: 1em;" role="status">
                 <span class="visually-hidden">Loading...</span>
                 </div>
                 <span>{download_pdf}</span>
