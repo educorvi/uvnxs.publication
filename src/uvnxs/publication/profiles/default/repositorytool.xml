@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <repositorytool>
   <policymap>
-    <type name="EasySection">
-      <policy name="at_edit_autoversion" />
-      <policy name="version_on_revert" />
-    </type>
     <type name="VurLandingPage">
       <policy name="at_edit_autoversion" />
       <policy name="version_on_revert" />

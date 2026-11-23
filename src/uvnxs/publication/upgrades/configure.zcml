@@ -198,4 +198,23 @@
         />
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+      profile="uvnxs.publication:default"
+      source="1019"
+      destination="1020"
+      >
+    <genericsetup:upgradeStep
+        title="Delete existing EasySections"
+        handler=".to_1020.delete_easy_sections"
+        />
+    <genericsetup:upgradeDepends
+        title="Remove type EasySection"
+        import_profile="uvnxs.publication:to_1020"
+        />
+    <genericsetup:upgradeStep
+        title="Remove EasySection permission from site"
+        handler=".to_1020.remove_easy_section_permission"
+        />
+  </genericsetup:upgradeSteps>
+
 </configure>

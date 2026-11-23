@@ -25,9 +25,6 @@
     <type type_id="Body">
       <bound-workflow workflow_id="vur" />
     </type>
-    <type type_id="EasySection">
-      <bound-workflow workflow_id="vur" />
-    </type>
     <type type_id="Section">
       <bound-workflow workflow_id="vur" />
     </type>

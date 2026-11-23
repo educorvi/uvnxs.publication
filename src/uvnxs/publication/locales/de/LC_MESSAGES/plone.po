@@ -21,9 +21,6 @@ msgstr "Schlussteil"
 msgid "Body"
 msgstr "Textkörper"
 
-msgid "EasySection"
-msgstr "HTML-Abschnitt"
-
 msgid "Section"
 msgstr "JATS-Abschnitt"
 

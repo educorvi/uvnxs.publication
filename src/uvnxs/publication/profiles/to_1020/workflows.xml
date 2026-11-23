@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Workflow Tool"
+        name="portal_workflow"
+>
+  <property name="title">Contains workflow definitions for package uvnxs.publication</property>
+  <object meta_type="Workflow"
+          name="vur"
+  />
+  <bindings purge="false">
+    <type remove="true"
+          type_id="EasySection"
+    >
+    </type>
+  </bindings>
+</object>

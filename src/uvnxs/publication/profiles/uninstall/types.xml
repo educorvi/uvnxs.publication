@@ -27,10 +27,6 @@
           remove="True"
   />
   <object meta_type="Dexterity FTI"
-          name="EasySection"
-          remove="True"
-  />
-  <object meta_type="Dexterity FTI"
           name="BauaDocument"
           remove="True"
   />

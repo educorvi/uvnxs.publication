@@ -5,7 +5,7 @@
           name="plone.displayed_types"
   >
     <value purge="false">
-      <element>EasySection</element>
+      <element remove="true">EasySection</element>
     </value>
   </record>
 </registry>

@@ -31,11 +31,6 @@
       />
 
   <permission
-      id="uvnxs.publication.AddEasySection"
-      title="uvnxs.publication: Add EasySection"
-      />
-
-  <permission
       id="uvnxs.publication.AddBauaDocument"
       title="uvnxs.publication: Add BauaDocument"
       />
