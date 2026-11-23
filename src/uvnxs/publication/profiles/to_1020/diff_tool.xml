@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+  <difftypes purge="false">
+    <type portal_type="EasySection"
+          remove="true"
+    >
+    </type>
+  </difftypes>
+</object>

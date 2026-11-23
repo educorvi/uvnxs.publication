@@ -23,23 +23,11 @@ _BACK = "Back"
 _APPENDIX_GROUP = "AppendixGroup"
 _APPENDIX = "Appendix"
 _SECTION = "Section"
-_EASY_SECTION = "EasySection"
 _GLOSSARY = "Glossary"
 _REF_LIST = "RefList"
 
-_TYPES_WITH_TITLE = [
-    _ARTICLE,
-    _BODY,
-    _BACK,
-    _APPENDIX_GROUP,
-    _APPENDIX,
-    _SECTION,
-    _EASY_SECTION,
-    _GLOSSARY,
-    _REF_LIST,
-]
+_TYPES_WITH_TITLE = [_ARTICLE, _BODY, _BACK, _APPENDIX_GROUP, _APPENDIX, _SECTION, _GLOSSARY, _REF_LIST]
 _TYPES_WITH_CONTENT_RAW = [_APPENDIX_GROUP, _APPENDIX, _SECTION, _GLOSSARY, _REF_LIST]
-_TYPES_WITH_CONTENT = [_EASY_SECTION]
 _TYPES_WITH_CHILDREN = [_ARTICLE, _BODY, _BACK, _APPENDIX_GROUP, _APPENDIX, _SECTION]
 
 
@@ -78,10 +66,6 @@ def _collect_text_values(obj):  # noqa: C901
 
     if portal_type in _TYPES_WITH_CONTENT_RAW and obj.content_raw:
         text_content = _TAG_REGEX.sub(" ", obj.content_raw)
-        values.append(text_content)
-
-    if portal_type in _TYPES_WITH_CONTENT and obj.content and obj.content.raw:
-        text_content = _TAG_REGEX.sub(" ", obj.content.raw)
         values.append(text_content)
 
     if portal_type in _TYPES_WITH_CHILDREN:
