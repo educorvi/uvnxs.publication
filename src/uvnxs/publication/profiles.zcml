@@ -53,6 +53,13 @@
       />
 
 
+  <genericsetup:registerProfile
+      name="to_1021"
+      title="Use the Plone translation domain for content types"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/to_1021"
+      />
+
   <!-- Hide Uninstall Profile-->
   <utility
       factory=".setuphandlers.HiddenProfiles"

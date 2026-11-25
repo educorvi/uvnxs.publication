@@ -217,4 +217,12 @@
         />
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeDepends
+      title="Use the Plone translation domain for content types"
+      profile="uvnxs.publication:default"
+      source="1020"
+      destination="1021"
+      import_profile="uvnxs.publication:to_1021"
+      />
+
 </configure>
