@@ -9,6 +9,22 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0a56 (2026-11-26)
+
+
+### Bug fixes:
+
+- use Plone translation domain for plone content types [#1bd5546](https://github.com/educorvi/uvnxs.publication/issues/1bd5546)
+- if a p contains block elements, generate a div and wrap inline elements in own p [#d15122f](https://github.com/educorvi/uvnxs.publication/issues/d15122f)
+- remove EasySection content type and related stuff [#8800151](https://github.com/educorvi/uvnxs.publication/issues/8800151)
+
+
+### Internal:
+
+- replace div elements with paragraph tags in caption templates [#bd5e6ce](https://github.com/educorvi/uvnxs.publication/issues/bd5e6ce)
+- remove div elements from lists [#9c12372](https://github.com/educorvi/uvnxs.publication/issues/9c12372)
+- update HTML structure for free list items and labels [#ffc8867](https://github.com/educorvi/uvnxs.publication/issues/ffc8867)
+
 ## 1.0.0a54 (2026-11-19)
 
 
